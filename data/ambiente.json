@@ -1,0 +1,120 @@
+{
+  "id": "ambiente",
+  "tema": "Meio Ambiente",
+  "ordem": 7,
+  "capituloGuia": "Capítulo 9 — Infraestrutura e Território",
+  "fontesRelacionadas": [
+    "PRODES — INPE (taxa anual de desmatamento)",
+    "DETER — INPE (alertas em tempo quase real)",
+    "MapBiomas — Cobertura e uso da terra",
+    "SEEG — Sistema de Estimativas de Emissões (Observatório do Clima)",
+    "Cadastro Ambiental Rural (CAR)"
+  ],
+  "indicadores": [
+    {
+      "id": "amazonia",
+      "titulo": "Desmatamento na Amazônia",
+      "indicador": "Área desmatada anual (PRODES)",
+      "valor": 5796,
+      "unidade": "km² (ago/2024 a jul/2025)",
+      "destaque": "Terceira menor taxa em 37 anos de série histórica",
+      "totalAbsoluto": "Redução de 50% em 3 anos",
+      "tendencia": "queda",
+      "formatoValor": "inteiro",
+      "serie": [
+        {"ano": 2015, "valor": 6207},
+        {"ano": 2016, "valor": 7893},
+        {"ano": 2017, "valor": 6947},
+        {"ano": 2018, "valor": 7536},
+        {"ano": 2019, "valor": 10129},
+        {"ano": 2020, "valor": 10851},
+        {"ano": 2021, "valor": 13038},
+        {"ano": 2022, "valor": 11594},
+        {"ano": 2023, "valor": 9001},
+        {"ano": 2024, "valor": 6518},
+        {"ano": 2025, "valor": 5796}
+      ],
+      "rotuloSerieY": "km² desmatados",
+      "recorte": {
+        "titulo": "Amazônia 2024-2025 por estado (km²)",
+        "valores": [
+          {"rotulo": "Pará", "valor": 1842, "max": 2000},
+          {"rotulo": "Mato Grosso", "valor": 1100, "max": 2000},
+          {"rotulo": "Amazonas", "valor": 1016, "max": 2000},
+          {"rotulo": "Rondônia", "valor": 712, "max": 2000},
+          {"rotulo": "Maranhão", "valor": 432, "max": 2000},
+          {"rotulo": "Outros", "valor": 694, "max": 2000}
+        ]
+      },
+      "fonte": {
+        "nome": "INPE — PRODES (Programa de Cálculo do Desflorestamento)",
+        "produtor": "Instituto Nacional de Pesquisas Espaciais",
+        "periodicidade": "Anual (ciclo agosto-julho)",
+        "ultimaAtualizacao": "Outubro/2025 (ciclo 2024-2025)",
+        "url": "http://terrabrasilis.dpi.inpe.br/app/dashboard/deforestation/biomes/legal_amazon/rates"
+      },
+      "notaMetodologica": "PRODES usa imagens Landsat e Sentinel para mapear corte raso na Amazônia Legal. Para alertas em tempo quase real, o complementar é o DETER. Não capta degradação florestal (apenas conversão integral). Recortes estaduais 2025 são preliminares."
+    },
+    {
+      "id": "cerrado",
+      "titulo": "Desmatamento no Cerrado",
+      "indicador": "Área desmatada anual no bioma Cerrado",
+      "valor": 7235,
+      "unidade": "km² (ago/2024 a jul/2025)",
+      "destaque": "Segundo ano consecutivo de queda",
+      "totalAbsoluto": "77,9% concentrado no Matopiba (MA, TO, PI, BA)",
+      "tendencia": "queda",
+      "formatoValor": "inteiro",
+      "serie": [
+        {"ano": 2017, "valor": 7408},
+        {"ano": 2018, "valor": 6657},
+        {"ano": 2019, "valor": 6483},
+        {"ano": 2020, "valor": 7340},
+        {"ano": 2021, "valor": 8531},
+        {"ano": 2022, "valor": 10689},
+        {"ano": 2023, "valor": 11011},
+        {"ano": 2024, "valor": 8174},
+        {"ano": 2025, "valor": 7235}
+      ],
+      "rotuloSerieY": "km² desmatados",
+      "fonte": {
+        "nome": "INPE — PRODES Cerrado",
+        "produtor": "Instituto Nacional de Pesquisas Espaciais",
+        "periodicidade": "Anual (ciclo agosto-julho)",
+        "ultimaAtualizacao": "Outubro/2025 (ciclo 2024-2025)",
+        "url": "http://terrabrasilis.dpi.inpe.br/app/dashboard/deforestation/biomes/cerrado/rates"
+      },
+      "notaMetodologica": "Cerrado é o segundo maior bioma brasileiro, ocupando ~24% do território. Diferente da Amazônia, o Código Florestal exige preservação de apenas 20-35% das propriedades rurais no bioma — daí a maior pressão. Estados com maior área suprimida em 2025: Maranhão (2.006 km²), Tocantins (1.489 km²) e Piauí (1.350 km²)."
+    },
+    {
+      "id": "emissoes",
+      "titulo": "Emissões de Gases de Efeito Estufa",
+      "indicador": "Emissões brutas totais do Brasil",
+      "valor": 2.3,
+      "unidade": "bilhões t CO₂eq (2023)",
+      "destaque": "Mudança de uso do solo é maior fonte (~49%)",
+      "totalAbsoluto": "Meta NDC 2030: redução de 53% vs 2005",
+      "tendencia": "queda",
+      "serie": [
+        {"ano": 2015, "valor": 2.2},
+        {"ano": 2016, "valor": 2.3},
+        {"ano": 2017, "valor": 2.3},
+        {"ano": 2018, "valor": 2.4},
+        {"ano": 2019, "valor": 2.5},
+        {"ano": 2020, "valor": 2.5},
+        {"ano": 2021, "valor": 2.6},
+        {"ano": 2022, "valor": 2.5},
+        {"ano": 2023, "valor": 2.3}
+      ],
+      "rotuloSerieY": "Bilhões t CO₂eq",
+      "fonte": {
+        "nome": "SEEG — Sistema de Estimativas de Emissões e Remoções de Gases de Efeito Estufa",
+        "produtor": "Observatório do Clima (consórcio de organizações da sociedade civil)",
+        "periodicidade": "Anual",
+        "ultimaAtualizacao": "2024 (dados de 2023)",
+        "url": "https://seeg.eco.br/"
+      },
+      "notaMetodologica": "SEEG é a principal fonte independente de emissões brasileiras, baseada na metodologia oficial do IPCC. Mudança de uso do solo (desmatamento) é a maior fonte no Brasil, seguida de agropecuária e energia. Diferente da maioria dos países (onde energia é dominante). Valores são estimativas; o Inventário Nacional oficial é publicado de forma menos frequente pelo MCTI."
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "id": "seguranca",
+  "tema": "Segurança Pública",
+  "ordem": 1,
+  "capituloGuia": "Capítulo 8 — Segurança Pública",
+  "fontesRelacionadas": [
+    "Atlas da Violência (Ipea/FBSP)",
+    "Anuário Brasileiro de Segurança Pública (FBSP)",
+    "SIM — Sistema de Informações sobre Mortalidade (MS)",
+    "Registros de Ocorrências Estaduais (ISP-RJ, SSP-SP)"
+  ],
+  "indicadores": [
+    {
+      "id": "homicidios",
+      "titulo": "Homicídios no Brasil",
+      "indicador": "Taxa de homicídios por 100 mil habitantes",
+      "valor": 21.2,
+      "unidade": "por 100 mil hab.",
+      "destaque": "Menor taxa em 11 anos",
+      "totalAbsoluto": "45.747 homicídios registrados em 2023",
+      "tendencia": "queda",
+      "serie": [
+        {"ano": 2013, "valor": 28.6},
+        {"ano": 2014, "valor": 29.8},
+        {"ano": 2015, "valor": 28.9},
+        {"ano": 2016, "valor": 30.3},
+        {"ano": 2017, "valor": 31.6},
+        {"ano": 2018, "valor": 27.5},
+        {"ano": 2019, "valor": 21.7},
+        {"ano": 2020, "valor": 23.7},
+        {"ano": 2021, "valor": 22.3},
+        {"ano": 2022, "valor": 21.7},
+        {"ano": 2023, "valor": 21.2}
+      ],
+      "rotuloSerieY": "Por 100 mil hab.",
+      "fonte": {
+        "nome": "Atlas da Violência 2025 — Ipea/FBSP, a partir do SIM/MS",
+        "produtor": "Ipea e Fórum Brasileiro de Segurança Pública",
+        "periodicidade": "Anual",
+        "ultimaAtualizacao": "Maio/2025 (dados de 2023)",
+        "url": "https://www.ipea.gov.br/atlasviolencia"
+      },
+      "notaMetodologica": "Taxa considera óbitos por agressão (CID-10 X85-Y09) e intervenção legal (Y35-Y36). O Atlas estima ainda 'homicídios ocultos' classificados como MVCI. Limitação: depende da qualidade do preenchimento da declaração de óbito."
+    },
+    {
+      "id": "mvci",
+      "titulo": "Homicídios Ocultos (MVCI)",
+      "indicador": "Estimativa de homicídios não contabilizados (Mortes Violentas por Causa Indeterminada)",
+      "valor": 4692,
+      "unidade": "homicídios ocultos por ano (média 2013-2023)",
+      "destaque": "21 UFs reduziram MVCI em 2023",
+      "totalAbsoluto": "51.608 homicídios ocultos estimados em 11 anos",
+      "tendencia": "queda",
+      "formatoValor": "inteiro",
+      "serie": [
+        {"ano": 2013, "valor": 3850},
+        {"ano": 2014, "valor": 4100},
+        {"ano": 2015, "valor": 3950},
+        {"ano": 2016, "valor": 4300},
+        {"ano": 2017, "valor": 4450},
+        {"ano": 2018, "valor": 5200},
+        {"ano": 2019, "valor": 5400},
+        {"ano": 2020, "valor": 5300},
+        {"ano": 2021, "valor": 5500},
+        {"ano": 2022, "valor": 5100},
+        {"ano": 2023, "valor": 4470}
+      ],
+      "rotuloSerieY": "Estimativa anual",
+      "fonte": {
+        "nome": "Atlas da Violência 2025 — Ipea/FBSP (metodologia Cerqueira & Lins, 2024)",
+        "produtor": "Ipea e Fórum Brasileiro de Segurança Pública",
+        "periodicidade": "Anual",
+        "ultimaAtualizacao": "Maio/2025 (dados de 2023)",
+        "url": "https://www.ipea.gov.br/atlasviolencia"
+      },
+      "notaMetodologica": "MVCI são óbitos violentos sem identificação da intencionalidade. SP, RJ, MG e BA concentram 66,4% das MVCI. Os valores anuais da série são aproximados a partir das totalizações do Atlas — para análises rigorosas, consultar a publicação original."
+    },
+    {
+      "id": "feminicidios",
+      "titulo": "Feminicídios",
+      "indicador": "Mulheres assassinadas em razão do gênero",
+      "valor": 1492,
+      "unidade": "vítimas em 2024",
+      "destaque": "Recorde da série iniciada em 2015",
+      "totalAbsoluto": "Taxa: 1,4 por 100 mil mulheres — 84% mortas em casa",
+      "tendencia": "alta",
+      "formatoValor": "inteiro",
+      "serie": [
+        {"ano": 2016, "valor": 933},
+        {"ano": 2017, "valor": 1133},
+        {"ano": 2018, "valor": 1206},
+        {"ano": 2019, "valor": 1330},
+        {"ano": 2020, "valor": 1354},
+        {"ano": 2021, "valor": 1342},
+        {"ano": 2022, "valor": 1439},
+        {"ano": 2023, "valor": 1463},
+        {"ano": 2024, "valor": 1492}
+      ],
+      "rotuloSerieY": "Vítimas registradas",
+      "fonte": {
+        "nome": "19º Anuário Brasileiro de Segurança Pública — FBSP (2025)",
+        "produtor": "Fórum Brasileiro de Segurança Pública",
+        "periodicidade": "Anual",
+        "ultimaAtualizacao": "Julho/2025 (dados de 2024)",
+        "url": "https://forumseguranca.org.br/publicacoes/anuario-brasileiro-de-seguranca-publica/"
+      },
+      "notaMetodologica": "Lei 13.104/2015 tipificou feminicídio. Dados a partir de 2016 são comparáveis. 68% das vítimas são mulheres negras; companheiro/ex-companheiro é o autor mais comum. Subnotificação é limitação relevante: muitos casos são classificados como homicídios sem a qualificadora."
+    }
+  ]
+}
