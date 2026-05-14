@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "versao": "1.0",
+    "publicado": "Maio de 2026",
+    "atualizado": "Maio de 2026",
+    "descricao": "Painel institucional do FGV CLEAR para divulgação de indicadores de monitoramento e avaliação de políticas públicas no Brasil. Acompanha o Guia de Fontes de Dados para Avaliação de Políticas Públicas.",
+    "instituicao": "FGV CLEAR — Centro de Aprendizado e Pesquisa em Avaliação e Resultados"
+  },
+  "indicadores": [
+    "seguranca.json",
+    "educacao.json",
+    "saude.json",
+    "assistencia.json",
+    "saneamento.json",
+    "trabalho.json",
+    "ambiente.json"
+  ],
+  "links": {
+    "clear": "https://fgvclear.org",
+    "guia": "https://fgvclear.org/publicacoes/guia-fontes-de-dados",
+    "serie": "https://fgvclear.org/publicacoes/avaliacao-na-pratica",
+    "publicacoes": "https://fgvclear.org/publicacoes",
+    "cursos": "https://fgvclear.org/cursos"
+  }
+}
