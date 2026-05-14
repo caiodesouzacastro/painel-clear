@@ -1,0 +1,120 @@
+{
+  "id": "educacao",
+  "tema": "Educação",
+  "ordem": 2,
+  "capituloGuia": "Capítulo 6 — Educação",
+  "fontesRelacionadas": [
+    "Censo Escolar da Educação Básica (INEP)",
+    "SAEB — Sistema de Avaliação da Educação Básica",
+    "PNAD Contínua — Módulo Educação (IBGE)",
+    "ENEM — Exame Nacional do Ensino Médio",
+    "SIOPE — Orçamentos Públicos em Educação"
+  ],
+  "indicadores": [
+    {
+      "id": "ideb",
+      "titulo": "Qualidade da Educação Básica",
+      "indicador": "IDEB — Índice de Desenvolvimento da Educação Básica (rede pública, anos iniciais EF)",
+      "valor": 5.7,
+      "unidade": "anos iniciais do EF",
+      "destaque": "Estagnação pós-pandemia",
+      "totalAbsoluto": "Anos finais EF: 5,1 — Ensino Médio: 4,5",
+      "tendencia": "estavel",
+      "serie": [
+        {"ano": 2005, "valor": 3.6},
+        {"ano": 2007, "valor": 4.0},
+        {"ano": 2009, "valor": 4.4},
+        {"ano": 2011, "valor": 4.7},
+        {"ano": 2013, "valor": 4.9},
+        {"ano": 2015, "valor": 5.3},
+        {"ano": 2017, "valor": 5.5},
+        {"ano": 2019, "valor": 5.7},
+        {"ano": 2021, "valor": 5.8},
+        {"ano": 2023, "valor": 5.7}
+      ],
+      "rotuloSerieY": "IDEB (escala 0-10)",
+      "recorte": {
+        "titulo": "IDEB 2023 por etapa (rede pública)",
+        "valores": [
+          {"rotulo": "Anos iniciais EF", "valor": 5.7, "max": 10},
+          {"rotulo": "Anos finais EF", "valor": 5.1, "max": 10},
+          {"rotulo": "Ensino Médio", "valor": 4.5, "max": 10}
+        ]
+      },
+      "fonte": {
+        "nome": "INEP — SAEB e Censo Escolar",
+        "produtor": "Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira",
+        "periodicidade": "Bienal",
+        "ultimaAtualizacao": "Agosto/2024 (dados de 2023)",
+        "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/ideb"
+      },
+      "notaMetodologica": "O IDEB combina aprendizagem (proficiência em Português e Matemática no SAEB) e fluxo (taxa de aprovação). Em 2023, as taxas de aprovação melhoraram, mas a proficiência permanece abaixo do nível pré-pandemia. Limitação: agregação em índice único pode esconder movimentos opostos nos dois componentes."
+    },
+    {
+      "id": "analfabetismo",
+      "titulo": "Analfabetismo",
+      "indicador": "Pessoas de 15 anos ou mais que não sabem ler e escrever",
+      "valor": 5.3,
+      "unidade": "% da população de 15+ anos",
+      "destaque": "Menor taxa da série histórica",
+      "totalAbsoluto": "9,1 milhões de analfabetos — meta PNE 2024: erradicação",
+      "tendencia": "queda",
+      "serie": [
+        {"ano": 2016, "valor": 6.7},
+        {"ano": 2017, "valor": 6.5},
+        {"ano": 2018, "valor": 6.6},
+        {"ano": 2019, "valor": 6.1},
+        {"ano": 2022, "valor": 5.6},
+        {"ano": 2023, "valor": 5.4},
+        {"ano": 2024, "valor": 5.3}
+      ],
+      "rotuloSerieY": "% da população 15+",
+      "recorte": {
+        "titulo": "Analfabetismo por região (2024)",
+        "valores": [
+          {"rotulo": "Nordeste", "valor": 11.1, "max": 15},
+          {"rotulo": "Norte", "valor": 6.0, "max": 15},
+          {"rotulo": "Centro-Oeste", "valor": 3.3, "max": 15},
+          {"rotulo": "Sudeste", "valor": 2.8, "max": 15},
+          {"rotulo": "Sul", "valor": 2.7, "max": 15}
+        ]
+      },
+      "fonte": {
+        "nome": "PNAD Contínua — Módulo Educação (IBGE)",
+        "produtor": "Instituto Brasileiro de Geografia e Estatística",
+        "periodicidade": "Anual",
+        "ultimaAtualizacao": "Junho/2025 (dados de 2024)",
+        "url": "https://www.ibge.gov.br/estatisticas/sociais/educacao/17270-pnad-continua.html"
+      },
+      "notaMetodologica": "Considera-se alfabetizado quem sabe ler e escrever um bilhete simples. Pandemia interrompeu série em 2020-2021. Desigualdades raciais persistem: 3,1% entre brancos vs 6,9% entre pretos e pardos. Entre idosos (60+), taxa nacional é 14,9%."
+    },
+    {
+      "id": "ensino-medio",
+      "titulo": "Conclusão do Ensino Médio",
+      "indicador": "Pessoas com 25+ anos que concluíram a educação básica obrigatória",
+      "valor": 56.0,
+      "unidade": "% das pessoas de 25+ anos",
+      "destaque": "Maior percentual da série histórica",
+      "totalAbsoluto": "20,5% com nível superior completo (recorde)",
+      "tendencia": "alta",
+      "serie": [
+        {"ano": 2016, "valor": 46.2},
+        {"ano": 2017, "valor": 47.4},
+        {"ano": 2018, "valor": 48.8},
+        {"ano": 2019, "valor": 50.5},
+        {"ano": 2022, "valor": 53.2},
+        {"ano": 2023, "valor": 54.7},
+        {"ano": 2024, "valor": 56.0}
+      ],
+      "rotuloSerieY": "% concluíram EM",
+      "fonte": {
+        "nome": "PNAD Contínua — Módulo Educação (IBGE)",
+        "produtor": "Instituto Brasileiro de Geografia e Estatística",
+        "periodicidade": "Anual",
+        "ultimaAtualizacao": "Junho/2025 (dados de 2024)",
+        "url": "https://www.ibge.gov.br/estatisticas/sociais/educacao/17270-pnad-continua.html"
+      },
+      "notaMetodologica": "Mede o estoque acumulado de adultos com ensino médio concluído. Desigualdades persistem: 63,4% das pessoas brancas vs 50,0% das pretas ou pardas. Cerca de 18,5% dos jovens 15-29 anos não trabalham, estudam nem se qualificam (NEM-NEM). Necessidade de trabalhar, gravidez e desinteresse são os principais motivos de abandono."
+    }
+  ]
+}

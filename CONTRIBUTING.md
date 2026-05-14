@@ -1,133 +1,140 @@
-# Como atualizar os dados
-
-O painel foi desenhado para ser atualizado **sem mexer no código**. Cada indicador vive em um arquivo JSON na pasta `data/`.
-
-## Atualizar um indicador existente
-
-### Exemplo: novos dados do CAGED são divulgados em fevereiro
-
-1. Abra `data/trabalho.json`
-2. Atualize o campo `valor` com o novo número
-3. Adicione o ano novo ao array `serie`:
-   ```json
-   "serie": [
-     ...,
-     {"ano": 2025, "valor": 1279498},
-     {"ano": 2026, "valor": 1850000}
-   ]
-   ```
-4. Atualize `fonte.ultimaAtualizacao` (ex.: `"Fevereiro/2026"`)
-5. Se necessário, atualize `destaque` e `totalAbsoluto`
-6. *Commit* e *push* — pronto
-
-### Exemplo: o recorte por estado/setor mudou
-
-Edite o bloco `recorte.valores`:
-
-```json
-"recorte": {
-  "titulo": "Saldo por setor (2025)",
-  "valores": [
-    {"rotulo": "Serviços", "valor": 758355, "max": 800000},
-    ...
-  ]
-}
-```
-
-- `max` define a escala da barra (use um valor maior ou igual ao maior `valor` do conjunto).
-
-## Adicionar um novo indicador
-
-1. Crie um arquivo `data/<id>.json` seguindo o esquema padrão (veja qualquer um dos existentes)
-2. Adicione o nome do arquivo à lista em `data/manifesto.json`:
-   ```json
-   "indicadores": [
-     ...,
-     "novo-indicador.json"
-   ]
-   ```
-3. Atualize `meta.atualizado` no manifesto
-
-## Remover um indicador
-
-Basta retirar o nome do arquivo da lista em `manifesto.json`. O JSON pode ser mantido no repositório para histórico.
-
-## Esquema JSON de um indicador
-
-```json
 {
-  "id": "identificador-curto",
-  "tema": "Nome do Tema",
-  "ordem": 1,
-  "titulo": "Título do indicador",
-  "indicador": "Descrição do que está sendo medido",
-  "valor": 12.4,
-  "unidade": "unidade do valor (por 100 mil hab., %, etc.)",
-  "destaque": "Frase curta em itálico sobre o valor",
-  "totalAbsoluto": "Contexto adicional (opcional)",
-  "tendencia": "queda | alta | estavel",
-  "formatoValor": "inteiro",
-  "serie": [
-    {"ano": 2020, "valor": 14.2},
-    {"ano": 2021, "valor": 13.5}
-  ],
-  "rotuloSerieY": "Texto do eixo Y",
-  "recorte": {
-    "titulo": "Título do recorte",
-    "valores": [
-      {"rotulo": "Categoria", "valor": 100, "max": 200}
-    ]
-  },
-  "fonte": {
-    "nome": "Nome completo da fonte",
-    "produtor": "Órgão/Ministério",
-    "periodicidade": "Anual / Mensal / Bienal",
-    "ultimaAtualizacao": "Mês/Ano (dados de referência: ano)",
-    "url": "https://..."
-  },
-  "notaMetodologica": "Como o indicador é calculado e suas limitações.",
-  "capituloGuia": "Capítulo X — Tema",
+  "id": "trabalho",
+  "tema": "Mercado de Trabalho",
+  "ordem": 6,
+  "capituloGuia": "Capítulo 4 — Mercado de Trabalho",
   "fontesRelacionadas": [
-    "Outra fonte 1",
-    "Outra fonte 2"
+    "Novo CAGED — Ministério do Trabalho e Emprego",
+    "RAIS — Relação Anual de Informações Sociais",
+    "PNAD Contínua (IBGE)",
+    "eSocial — Sistema de Escrituração Digital",
+    "Pesquisa de Orçamentos Familiares (POF/IBGE)"
+  ],
+  "indicadores": [
+    {
+      "id": "emprego-formal",
+      "titulo": "Emprego Formal",
+      "indicador": "Saldo anual de empregos com carteira assinada",
+      "valor": 1279498,
+      "unidade": "empregos formais (saldo de 2025)",
+      "destaque": "Saldo positivo em todas as 27 UFs",
+      "totalAbsoluto": "Estoque: 48,47 milhões de vínculos celetistas",
+      "tendencia": "alta",
+      "formatoValor": "inteiro",
+      "serie": [
+        {"ano": 2020, "valor": -191995},
+        {"ano": 2021, "valor": 2730597},
+        {"ano": 2022, "valor": 2034626},
+        {"ano": 2023, "valor": 1480067},
+        {"ano": 2024, "valor": 1677575},
+        {"ano": 2025, "valor": 1279498}
+      ],
+      "rotuloSerieY": "Saldo anual",
+      "recorte": {
+        "titulo": "Saldo por setor (2025)",
+        "valores": [
+          {"rotulo": "Serviços", "valor": 758355, "max": 800000},
+          {"rotulo": "Comércio", "valor": 247097, "max": 800000},
+          {"rotulo": "Indústria", "valor": 144319, "max": 800000},
+          {"rotulo": "Construção", "valor": 87878, "max": 800000},
+          {"rotulo": "Agropecuária", "valor": 41870, "max": 800000}
+        ]
+      },
+      "fonte": {
+        "nome": "Novo CAGED — Cadastro Geral de Empregados e Desempregados",
+        "produtor": "Ministério do Trabalho e Emprego (a partir do eSocial e CAGEDWeb)",
+        "periodicidade": "Mensal",
+        "ultimaAtualizacao": "Janeiro/2026 (fechamento de 2025)",
+        "url": "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/novo-caged"
+      },
+      "notaMetodologica": "Saldo é a diferença entre admissões e desligamentos CLT. Novo CAGED, ativo desde 2020, integra CAGEDWeb, eSocial e Empregador Web — quebra de série em 2020. Limitação: cobre apenas emprego formal; para informais e autônomos, usar PNAD Contínua."
+    },
+    {
+      "id": "desocupacao",
+      "titulo": "Taxa de Desocupação",
+      "indicador": "Pessoas desocupadas como % da força de trabalho",
+      "valor": 5.6,
+      "unidade": "% da força de trabalho (2025)",
+      "destaque": "Menor taxa da série histórica iniciada em 2012",
+      "totalAbsoluto": "103 milhões ocupados (recorde) — 6,2 milhões desocupados",
+      "tendencia": "queda",
+      "serie": [
+        {"ano": 2014, "valor": 6.8},
+        {"ano": 2015, "valor": 8.5},
+        {"ano": 2016, "valor": 11.5},
+        {"ano": 2017, "valor": 12.7},
+        {"ano": 2018, "valor": 12.3},
+        {"ano": 2019, "valor": 11.8},
+        {"ano": 2020, "valor": 13.7},
+        {"ano": 2021, "valor": 14.0},
+        {"ano": 2022, "valor": 9.3},
+        {"ano": 2023, "valor": 7.8},
+        {"ano": 2024, "valor": 6.6},
+        {"ano": 2025, "valor": 5.6}
+      ],
+      "rotuloSerieY": "% desocupados",
+      "recorte": {
+        "titulo": "Desocupação por grupo (4º tri 2025)",
+        "valores": [
+          {"rotulo": "Mulheres", "valor": 6.2, "max": 10},
+          {"rotulo": "Homens", "valor": 4.2, "max": 10},
+          {"rotulo": "Pretos", "valor": 6.1, "max": 10},
+          {"rotulo": "Pardos", "valor": 5.9, "max": 10},
+          {"rotulo": "Brancos", "valor": 4.0, "max": 10}
+        ]
+      },
+      "fonte": {
+        "nome": "PNAD Contínua Trimestral — IBGE",
+        "produtor": "Instituto Brasileiro de Geografia e Estatística",
+        "periodicidade": "Trimestral",
+        "ultimaAtualizacao": "Fevereiro/2026 (média anual de 2025)",
+        "url": "https://www.ibge.gov.br/estatisticas/sociais/trabalho/17270-pnad-continua.html"
+      },
+      "notaMetodologica": "Desocupado é quem não tem trabalho, busca ativamente e está disponível. Não inclui desalentados (que pararam de procurar). Taxa de informalidade em 2025: 38,1%. Recomenda-se ler em conjunto com taxa de subutilização (14,5% em 2025), que captura precariedade do mercado."
+    },
+    {
+      "id": "rendimento",
+      "titulo": "Rendimento Médio do Trabalho",
+      "indicador": "Rendimento real habitual de todos os trabalhos",
+      "valor": 3560,
+      "unidade": "R$ por mês (2025)",
+      "destaque": "Alta de 5,7% real frente a 2024",
+      "totalAbsoluto": "Massa salarial recorde: R$ 361,7 bilhões/ano",
+      "tendencia": "alta",
+      "formatoValor": "inteiro",
+      "serie": [
+        {"ano": 2014, "valor": 2920},
+        {"ano": 2015, "valor": 2900},
+        {"ano": 2016, "valor": 2840},
+        {"ano": 2017, "valor": 2870},
+        {"ano": 2018, "valor": 2920},
+        {"ano": 2019, "valor": 2980},
+        {"ano": 2020, "valor": 2960},
+        {"ano": 2021, "valor": 2770},
+        {"ano": 2022, "valor": 2920},
+        {"ano": 2023, "valor": 3210},
+        {"ano": 2024, "valor": 3370},
+        {"ano": 2025, "valor": 3560}
+      ],
+      "rotuloSerieY": "R$ (real, base 2025)",
+      "recorte": {
+        "titulo": "Rendimento médio por UF (2025, R$/mês)",
+        "valores": [
+          {"rotulo": "Distrito Federal", "valor": 6320, "max": 6500},
+          {"rotulo": "São Paulo", "valor": 4190, "max": 6500},
+          {"rotulo": "Rio de Janeiro", "valor": 4177, "max": 6500},
+          {"rotulo": "Bahia", "valor": 2284, "max": 6500},
+          {"rotulo": "Maranhão", "valor": 2228, "max": 6500}
+        ]
+      },
+      "fonte": {
+        "nome": "PNAD Contínua — Rendimento Real Habitual (IBGE)",
+        "produtor": "Instituto Brasileiro de Geografia e Estatística",
+        "periodicidade": "Trimestral/anual",
+        "ultimaAtualizacao": "Fevereiro/2026 (média anual de 2025)",
+        "url": "https://www.ibge.gov.br/estatisticas/sociais/trabalho/17270-pnad-continua.html"
+      },
+      "notaMetodologica": "Rendimento médio de todos os trabalhos (principal + outros), considerando todas as pessoas ocupadas — formais e informais. Valores deflacionados pelo IBGE para preços de dezembro/2025. Desigualdade regional é estrutural: DF tem rendimento quase 3× maior que MA."
+    }
   ]
 }
-```
-
-### Campos obrigatórios
-`id`, `tema`, `titulo`, `indicador`, `valor`, `unidade`, `destaque`, `fonte`, `notaMetodologica`
-
-### Campos opcionais
-`recorte`, `totalAbsoluto`, `formatoValor`, `capituloGuia`, `fontesRelacionadas`, `ordem`, `tendencia`, `rotuloSerieY`
-
-### Sobre `formatoValor`
-
-- `"inteiro"` para números grandes (ex.: 1.279.498) — formata sem casas decimais
-- Omita para taxas e percentuais — formata com uma casa decimal
-
-## Validação rápida
-
-Antes de fazer *commit*, valide o JSON:
-
-```bash
-# valida sintaxe de todos os arquivos
-for f in data/*.json; do python3 -m json.tool "$f" > /dev/null && echo "OK: $f" || echo "ERRO: $f"; done
-```
-
-Ou cole o conteúdo em https://jsonlint.com.
-
-## Calendário recomendado de atualizações
-
-| Fonte | Frequência | Mês típico de divulgação |
-|---|---|---|
-| Atlas da Violência | Anual | Maio/Junho |
-| IDEB | Bienal | Agosto (anos ímpares) |
-| Mortalidade infantil (IBGE) | Anual | Agosto |
-| Bolsa Família (MDS) | Mensal | Todo mês |
-| SINISA | Anual | Março |
-| Novo CAGED | Mensal | ~25 dias após o mês de referência |
-| PRODES | Anual | Outubro/Novembro |
-
----
-
-Em caso de dúvidas, abra uma *issue* no repositório ou contate a equipe do CLEAR.
