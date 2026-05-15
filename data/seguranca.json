@@ -33,6 +33,44 @@
         {"ano": 2023, "valor": 21.2}
       ],
       "rotuloSerieY": "Por 100 mil hab.",
+      "recortes": [
+        {
+          "id": "uf",
+          "dimensao": "Por UF",
+          "titulo": "Taxa de homicídios por 100 mil hab. (2023) — maiores e menores",
+          "valores": [
+            {"rotulo": "Amapá", "valor": 57.4, "max": 60},
+            {"rotulo": "Bahia", "valor": 43.9, "max": 60},
+            {"rotulo": "Pernambuco", "valor": 38.0, "max": 60},
+            {"rotulo": "Amazonas", "valor": 36.0, "max": 60},
+            {"rotulo": "Ceará", "valor": 34.8, "max": 60},
+            {"rotulo": "Brasil (média)", "valor": 21.2, "max": 60},
+            {"rotulo": "Distrito Federal", "valor": 11.0, "max": 60},
+            {"rotulo": "Santa Catarina", "valor": 8.8, "max": 60},
+            {"rotulo": "São Paulo", "valor": 6.4, "max": 60}
+          ]
+        },
+        {
+          "id": "raca",
+          "dimensao": "Por raça/cor",
+          "titulo": "Homicídios registrados em 2023 — exposição relativa",
+          "valores": [
+            {"rotulo": "Pessoas negras (pretas e pardas)", "valor": 35213, "max": 36000},
+            {"rotulo": "Pessoas não negras", "valor": 10534, "max": 36000}
+          ]
+        },
+        {
+          "id": "idade",
+          "dimensao": "Por faixa etária",
+          "titulo": "Vítimas de homicídio em 2023, por faixa etária (%)",
+          "valores": [
+            {"rotulo": "15 a 29 anos", "valor": 47.8, "max": 50},
+            {"rotulo": "30 a 49 anos", "valor": 35.2, "max": 50},
+            {"rotulo": "50 anos ou mais", "valor": 14.1, "max": 50},
+            {"rotulo": "Até 14 anos", "valor": 2.9, "max": 50}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "Atlas da Violência 2025 — Ipea/FBSP, a partir do SIM/MS",
         "produtor": "Ipea e Fórum Brasileiro de Segurança Pública",
@@ -40,7 +78,7 @@
         "ultimaAtualizacao": "Maio/2025 (dados de 2023)",
         "url": "https://www.ipea.gov.br/atlasviolencia"
       },
-      "notaMetodologica": "Taxa considera óbitos por agressão (CID-10 X85-Y09) e intervenção legal (Y35-Y36). O Atlas estima ainda 'homicídios ocultos' classificados como MVCI. Limitação: depende da qualidade do preenchimento da declaração de óbito."
+      "notaMetodologica": "Taxa considera óbitos por agressão (CID-10 X85-Y09) e intervenção legal (Y35-Y36). O Atlas estima ainda 'homicídios ocultos' classificados como MVCI. Limitação: depende da qualidade do preenchimento da declaração de óbito. Os recortes por UF, raça e idade referem-se a 2023; uma pessoa negra tinha 2,7 vezes mais chance de ser vítima de homicídio do que uma não negra (94% das vítimas jovens são homens). Para análise rigorosa, consulte o Atlas da Violência."
     },
     {
       "id": "mvci",
@@ -66,6 +104,20 @@
         {"ano": 2023, "valor": 4470}
       ],
       "rotuloSerieY": "Estimativa anual",
+      "recortes": [
+        {
+          "id": "concentracao",
+          "dimensao": "Por UF (concentração)",
+          "titulo": "Estados que concentram MVCI (% do total nacional 2013-2023)",
+          "valores": [
+            {"rotulo": "São Paulo", "valor": 31.0, "max": 35},
+            {"rotulo": "Rio de Janeiro", "valor": 14.8, "max": 35},
+            {"rotulo": "Minas Gerais", "valor": 11.5, "max": 35},
+            {"rotulo": "Bahia", "valor": 9.1, "max": 35},
+            {"rotulo": "Demais 23 UFs", "valor": 33.6, "max": 35}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "Atlas da Violência 2025 — Ipea/FBSP (metodologia Cerqueira & Lins, 2024)",
         "produtor": "Ipea e Fórum Brasileiro de Segurança Pública",
@@ -97,6 +149,40 @@
         {"ano": 2024, "valor": 1492}
       ],
       "rotuloSerieY": "Vítimas registradas",
+      "recortes": [
+        {
+          "id": "raca",
+          "dimensao": "Por raça/cor",
+          "titulo": "Vítimas de feminicídio 2024 por raça/cor (%)",
+          "valores": [
+            {"rotulo": "Mulheres negras (pretas e pardas)", "valor": 68.2, "max": 75},
+            {"rotulo": "Mulheres brancas", "valor": 28.5, "max": 75},
+            {"rotulo": "Outras/sem informação", "valor": 3.3, "max": 75}
+          ]
+        },
+        {
+          "id": "idade",
+          "dimensao": "Por faixa etária",
+          "titulo": "Vítimas de feminicídio 2024 por idade (%)",
+          "valores": [
+            {"rotulo": "18 a 44 anos", "valor": 64.0, "max": 70},
+            {"rotulo": "45 a 59 anos", "valor": 18.2, "max": 70},
+            {"rotulo": "60+ anos", "valor": 9.1, "max": 70},
+            {"rotulo": "Até 17 anos", "valor": 8.7, "max": 70}
+          ]
+        },
+        {
+          "id": "uf",
+          "dimensao": "Por UF (taxa)",
+          "titulo": "Taxa de mortalidade feminina 2023 (por 100 mil mulheres)",
+          "valores": [
+            {"rotulo": "Roraima", "valor": 10.4, "max": 11},
+            {"rotulo": "Amazonas", "valor": 5.8, "max": 11},
+            {"rotulo": "Brasil (média)", "valor": 3.5, "max": 11},
+            {"rotulo": "São Paulo", "valor": 1.8, "max": 11}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "19º Anuário Brasileiro de Segurança Pública — FBSP (2025)",
         "produtor": "Fórum Brasileiro de Segurança Pública",

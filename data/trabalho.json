@@ -30,16 +30,46 @@
         {"ano": 2025, "valor": 1279498}
       ],
       "rotuloSerieY": "Saldo anual",
-      "recorte": {
-        "titulo": "Saldo por setor (2025)",
-        "valores": [
-          {"rotulo": "Serviços", "valor": 758355, "max": 800000},
-          {"rotulo": "Comércio", "valor": 247097, "max": 800000},
-          {"rotulo": "Indústria", "valor": 144319, "max": 800000},
-          {"rotulo": "Construção", "valor": 87878, "max": 800000},
-          {"rotulo": "Agropecuária", "valor": 41870, "max": 800000}
-        ]
-      },
+      "recortes": [
+        {
+          "id": "setor",
+          "dimensao": "Por setor",
+          "titulo": "Saldo de empregos por setor (2025)",
+          "valores": [
+            {"rotulo": "Serviços", "valor": 758355, "max": 800000},
+            {"rotulo": "Comércio", "valor": 247097, "max": 800000},
+            {"rotulo": "Indústria", "valor": 144319, "max": 800000},
+            {"rotulo": "Construção", "valor": 87878, "max": 800000},
+            {"rotulo": "Agropecuária", "valor": 41870, "max": 800000}
+          ]
+        },
+        {
+          "id": "regiao",
+          "dimensao": "Por região",
+          "titulo": "Saldo de empregos por região (2025)",
+          "valores": [
+            {"rotulo": "Sudeste", "valor": 504972, "max": 550000},
+            {"rotulo": "Nordeste", "valor": 347940, "max": 550000},
+            {"rotulo": "Sul", "valor": 186126, "max": 550000},
+            {"rotulo": "Centro-Oeste", "valor": 149530, "max": 550000},
+            {"rotulo": "Norte", "valor": 90613, "max": 550000}
+          ]
+        },
+        {
+          "id": "uf",
+          "dimensao": "Por UF",
+          "titulo": "Maiores saldos por estado (2025)",
+          "valores": [
+            {"rotulo": "São Paulo", "valor": 311228, "max": 320000},
+            {"rotulo": "Rio de Janeiro", "valor": 100920, "max": 320000},
+            {"rotulo": "Bahia", "valor": 94380, "max": 320000},
+            {"rotulo": "Pernambuco", "valor": 72565, "max": 320000},
+            {"rotulo": "Ceará", "valor": 49184, "max": 320000},
+            {"rotulo": "Maranhão", "valor": 31713, "max": 320000},
+            {"rotulo": "Paraíba", "valor": 31043, "max": 320000}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "Novo CAGED — Cadastro Geral de Empregados e Desempregados",
         "produtor": "Ministério do Trabalho e Emprego (a partir do eSocial e CAGEDWeb)",
@@ -73,16 +103,40 @@
         {"ano": 2025, "valor": 5.6}
       ],
       "rotuloSerieY": "% desocupados",
-      "recorte": {
-        "titulo": "Desocupação por grupo (4º tri 2025)",
-        "valores": [
-          {"rotulo": "Mulheres", "valor": 6.2, "max": 10},
-          {"rotulo": "Homens", "valor": 4.2, "max": 10},
-          {"rotulo": "Pretos", "valor": 6.1, "max": 10},
-          {"rotulo": "Pardos", "valor": 5.9, "max": 10},
-          {"rotulo": "Brancos", "valor": 4.0, "max": 10}
-        ]
-      },
+      "recortes": [
+        {
+          "id": "sexo",
+          "dimensao": "Por sexo",
+          "titulo": "Taxa de desocupação por sexo (4º tri 2025, %)",
+          "valores": [
+            {"rotulo": "Mulheres", "valor": 6.2, "max": 8},
+            {"rotulo": "Brasil (média)", "valor": 5.6, "max": 8},
+            {"rotulo": "Homens", "valor": 4.2, "max": 8}
+          ]
+        },
+        {
+          "id": "raca",
+          "dimensao": "Por raça/cor",
+          "titulo": "Taxa de desocupação por raça/cor (4º tri 2025, %)",
+          "valores": [
+            {"rotulo": "Pretos", "valor": 6.1, "max": 8},
+            {"rotulo": "Pardos", "valor": 5.9, "max": 8},
+            {"rotulo": "Brancos", "valor": 4.0, "max": 8}
+          ]
+        },
+        {
+          "id": "idade",
+          "dimensao": "Por idade",
+          "titulo": "Desocupação por faixa etária (4º tri 2025, %)",
+          "valores": [
+            {"rotulo": "14 a 17 anos", "valor": 18.4, "max": 22},
+            {"rotulo": "18 a 24 anos", "valor": 12.6, "max": 22},
+            {"rotulo": "25 a 39 anos", "valor": 5.0, "max": 22},
+            {"rotulo": "40 a 59 anos", "valor": 3.2, "max": 22},
+            {"rotulo": "60+ anos", "valor": 2.1, "max": 22}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "PNAD Contínua Trimestral — IBGE",
         "produtor": "Instituto Brasileiro de Geografia e Estatística",
@@ -117,16 +171,41 @@
         {"ano": 2025, "valor": 3560}
       ],
       "rotuloSerieY": "R$ (real, base 2025)",
-      "recorte": {
-        "titulo": "Rendimento médio por UF (2025, R$/mês)",
-        "valores": [
-          {"rotulo": "Distrito Federal", "valor": 6320, "max": 6500},
-          {"rotulo": "São Paulo", "valor": 4190, "max": 6500},
-          {"rotulo": "Rio de Janeiro", "valor": 4177, "max": 6500},
-          {"rotulo": "Bahia", "valor": 2284, "max": 6500},
-          {"rotulo": "Maranhão", "valor": 2228, "max": 6500}
-        ]
-      },
+      "recortes": [
+        {
+          "id": "uf",
+          "dimensao": "Por UF",
+          "titulo": "Rendimento médio por UF (2025, R$/mês)",
+          "valores": [
+            {"rotulo": "Distrito Federal", "valor": 6320, "max": 6500},
+            {"rotulo": "São Paulo", "valor": 4190, "max": 6500},
+            {"rotulo": "Rio de Janeiro", "valor": 4177, "max": 6500},
+            {"rotulo": "Brasil (média)", "valor": 3560, "max": 6500},
+            {"rotulo": "Bahia", "valor": 2284, "max": 6500},
+            {"rotulo": "Maranhão", "valor": 2228, "max": 6500}
+          ]
+        },
+        {
+          "id": "sexo",
+          "dimensao": "Por sexo",
+          "titulo": "Rendimento médio por sexo (2025, R$/mês)",
+          "valores": [
+            {"rotulo": "Homens", "valor": 3950, "max": 4500},
+            {"rotulo": "Brasil (média)", "valor": 3560, "max": 4500},
+            {"rotulo": "Mulheres", "valor": 3080, "max": 4500}
+          ]
+        },
+        {
+          "id": "raca",
+          "dimensao": "Por raça/cor",
+          "titulo": "Rendimento médio por raça/cor (2025, R$/mês)",
+          "valores": [
+            {"rotulo": "Brancos", "valor": 4570, "max": 5000},
+            {"rotulo": "Brasil (média)", "valor": 3560, "max": 5000},
+            {"rotulo": "Pretos e pardos", "valor": 2680, "max": 5000}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "PNAD Contínua — Rendimento Real Habitual (IBGE)",
         "produtor": "Instituto Brasileiro de Geografia e Estatística",

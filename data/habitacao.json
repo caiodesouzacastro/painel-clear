@@ -1,0 +1,212 @@
+{
+  "id": "habitacao",
+  "tema": "Habitação",
+  "ordem": 8,
+  "capituloGuia": "Capítulo 9 — Infraestrutura e Território",
+  "fontesRelacionadas": [
+    "Fundação João Pinheiro — Déficit Habitacional",
+    "PNAD Contínua (IBGE) — domicílios e renda",
+    "Ministério das Cidades — Minha Casa Minha Vida",
+    "Cadastro Único (MDS) — base do MCMV Faixa 1",
+    "Censo Demográfico (IBGE)"
+  ],
+  "indicadores": [
+    {
+      "id": "deficit-habitacional",
+      "titulo": "Déficit Habitacional",
+      "indicador": "Domicílios em situação de déficit habitacional",
+      "valor": 5.77,
+      "unidade": "milhões de domicílios (2024)",
+      "destaque": "Menor patamar da série histórica",
+      "totalAbsoluto": "7,4% dos domicílios — segundo recuo anual seguido",
+      "tendencia": "queda",
+      "serie": [
+        {"ano": 2016, "valor": 6.18},
+        {"ano": 2017, "valor": 6.21},
+        {"ano": 2018, "valor": 5.78},
+        {"ano": 2019, "valor": 5.96},
+        {"ano": 2022, "valor": 6.22},
+        {"ano": 2023, "valor": 5.98},
+        {"ano": 2024, "valor": 5.77}
+      ],
+      "rotuloSerieY": "Milhões de domicílios",
+      "recortes": [
+        {
+          "id": "composicao",
+          "dimensao": "Por componente",
+          "titulo": "Composição do déficit 2024 (em milhões de domicílios)",
+          "valores": [
+            {"rotulo": "Ônus excessivo aluguel", "valor": 3.24, "max": 4},
+            {"rotulo": "Coabitação familiar", "valor": 1.69, "max": 4},
+            {"rotulo": "Habitação precária", "valor": 0.62, "max": 4},
+            {"rotulo": "Adensamento excessivo", "valor": 0.22, "max": 4}
+          ]
+        },
+        {
+          "id": "uf",
+          "dimensao": "Por UF",
+          "titulo": "Estados com maior déficit (2022, em milhões — dado mais recente por UF)",
+          "valores": [
+            {"rotulo": "São Paulo", "valor": 1.20, "max": 1.3},
+            {"rotulo": "Minas Gerais", "valor": 0.556, "max": 1.3},
+            {"rotulo": "Bahia", "valor": 0.461, "max": 1.3},
+            {"rotulo": "Rio de Janeiro", "valor": 0.453, "max": 1.3},
+            {"rotulo": "Pernambuco", "valor": 0.298, "max": 1.3},
+            {"rotulo": "Roraima", "valor": 0.031, "max": 1.3},
+            {"rotulo": "Acre", "valor": 0.029, "max": 1.3}
+          ]
+        },
+        {
+          "id": "renda",
+          "dimensao": "Por faixa de renda",
+          "titulo": "Déficit por faixa de renda (2022, % das famílias)",
+          "valores": [
+            {"rotulo": "Até 2 SM (Faixa 1 MCMV)", "valor": 74.5, "max": 100},
+            {"rotulo": "2 a 5 SM", "valor": 19.2, "max": 100},
+            {"rotulo": "5 a 10 SM", "valor": 4.8, "max": 100},
+            {"rotulo": "Mais de 10 SM", "valor": 1.5, "max": 100}
+          ]
+        }
+      ],
+      "fonte": {
+        "nome": "Fundação João Pinheiro — Déficit Habitacional (com Min. das Cidades)",
+        "produtor": "Fundação João Pinheiro / Ministério das Cidades",
+        "periodicidade": "Anual",
+        "ultimaAtualizacao": "Abril/2026 (dados de 2024)",
+        "url": "https://fjp.mg.gov.br/deficit-habitacional-no-brasil/"
+      },
+      "notaMetodologica": "O déficit habitacional considera quatro componentes: ônus excessivo com aluguel urbano (famílias até 3 SM que gastam >30% da renda com aluguel), coabitação familiar (mais de uma família por domicílio), habitação precária (improvisados e rústicos) e adensamento excessivo. Base: PNAD Contínua/IBGE e CadÚnico/MDS. O ônus excessivo é o componente dominante (56% do déficit em 2024). Valores anteriores a 2022 baseiam-se em estimativas a partir da PNAD anual."
+    },
+    {
+      "id": "mcmv",
+      "titulo": "Minha Casa Minha Vida",
+      "indicador": "Unidades habitacionais contratadas no ano",
+      "valor": 880000,
+      "unidade": "unidades contratadas em 2025",
+      "destaque": "Meta de 3 milhões antecipada para 2026",
+      "totalAbsoluto": "R$ 180 bilhões investidos em 2025 — 2,1 mi em 2023-2025",
+      "tendencia": "alta",
+      "formatoValor": "inteiro",
+      "serie": [
+        {"ano": 2018, "valor": 312000},
+        {"ano": 2019, "valor": 360000},
+        {"ano": 2020, "valor": 425000},
+        {"ano": 2021, "valor": 480000},
+        {"ano": 2022, "valor": 520000},
+        {"ano": 2023, "valor": 540000},
+        {"ano": 2024, "valor": 680000},
+        {"ano": 2025, "valor": 880000}
+      ],
+      "rotuloSerieY": "Unidades",
+      "recortes": [
+        {
+          "id": "regiao",
+          "dimensao": "Por região",
+          "titulo": "Contratações MCMV 2023-2025 por região (em milhares)",
+          "valores": [
+            {"rotulo": "Sudeste", "valor": 870, "max": 900},
+            {"rotulo": "Nordeste", "valor": 555, "max": 900},
+            {"rotulo": "Sul", "valor": 345, "max": 900},
+            {"rotulo": "Centro-Oeste", "valor": 231, "max": 900},
+            {"rotulo": "Norte", "valor": 108, "max": 900}
+          ]
+        },
+        {
+          "id": "uf",
+          "dimensao": "Por UF",
+          "titulo": "Estados líderes em contratações MCMV (2023-2025, em milhares)",
+          "valores": [
+            {"rotulo": "São Paulo", "valor": 588, "max": 600},
+            {"rotulo": "Minas Gerais", "valor": 175, "max": 600},
+            {"rotulo": "Rio Grande do Sul", "valor": 146, "max": 600},
+            {"rotulo": "Paraná", "valor": 142, "max": 600},
+            {"rotulo": "Goiás", "valor": 138, "max": 600},
+            {"rotulo": "Bahia", "valor": 108, "max": 600}
+          ]
+        },
+        {
+          "id": "faixa",
+          "dimensao": "Por faixa de renda",
+          "titulo": "Contratações 2025 por faixa do programa (em milhares)",
+          "valores": [
+            {"rotulo": "Faixas 1 e 2 (até R$ 4.700)", "valor": 661, "max": 700},
+            {"rotulo": "Faixa 3 (até R$ 8.600)", "valor": 190, "max": 700},
+            {"rotulo": "Faixa 4 / Classe Média", "valor": 30, "max": 700}
+          ]
+        }
+      ],
+      "fonte": {
+        "nome": "Ministério das Cidades — Balanço MCMV",
+        "produtor": "Secretaria Nacional de Habitação (Ministério das Cidades)",
+        "periodicidade": "Mensal/anual",
+        "ultimaAtualizacao": "Janeiro/2026 (fechamento de 2025)",
+        "url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/habitacao"
+      },
+      "notaMetodologica": "Inclui as 4 faixas do programa: Faixa 1 (até R$ 2.850), Faixa 2 (até R$ 4.700), Faixa 3 (até R$ 8.600) e Faixa 4 / Classe Média (até R$ 12.000, criada em 2024). Faixas 1 e 2 concentraram 661 mil unidades em 2025 com subsídio direto. Contratação ≠ entrega: 923,9 mil moradias foram efetivamente entregues entre 2023 e 2024. Valores da série pré-2023 são aproximados — diferentes critérios entre ciclos do programa (suspenso em 2020-2022)."
+    },
+    {
+      "id": "domicilios-proprios",
+      "titulo": "Casa Própria",
+      "indicador": "Domicílios próprios (já pagos ou em aquisição)",
+      "valor": 73.4,
+      "unidade": "% dos domicílios particulares",
+      "destaque": "Padrão estável há uma década",
+      "totalAbsoluto": "Aluguel cresceu de 17,8% (2016) para 20,1% (2024)",
+      "tendencia": "estavel",
+      "serie": [
+        {"ano": 2016, "valor": 74.0},
+        {"ano": 2017, "valor": 73.6},
+        {"ano": 2018, "valor": 73.3},
+        {"ano": 2019, "valor": 73.1},
+        {"ano": 2022, "valor": 73.2},
+        {"ano": 2023, "valor": 73.3},
+        {"ano": 2024, "valor": 73.4}
+      ],
+      "rotuloSerieY": "% domicílios próprios",
+      "recortes": [
+        {
+          "id": "situacao",
+          "dimensao": "Urbano × Rural",
+          "titulo": "Domicílios próprios por situação (2024, %)",
+          "valores": [
+            {"rotulo": "Rural", "valor": 85.4, "max": 90},
+            {"rotulo": "Urbano", "valor": 71.6, "max": 90},
+            {"rotulo": "Brasil (média)", "valor": 73.4, "max": 90}
+          ]
+        },
+        {
+          "id": "regiao",
+          "dimensao": "Por região",
+          "titulo": "Domicílios próprios por região (2024, %)",
+          "valores": [
+            {"rotulo": "Sul", "valor": 76.2, "max": 80},
+            {"rotulo": "Nordeste", "valor": 75.8, "max": 80},
+            {"rotulo": "Norte", "valor": 73.5, "max": 80},
+            {"rotulo": "Brasil (média)", "valor": 73.4, "max": 80},
+            {"rotulo": "Sudeste", "valor": 71.9, "max": 80},
+            {"rotulo": "Centro-Oeste", "valor": 70.8, "max": 80}
+          ]
+        },
+        {
+          "id": "padrao",
+          "dimensao": "Por tipo de ocupação",
+          "titulo": "Forma de ocupação dos domicílios (2024, %)",
+          "valores": [
+            {"rotulo": "Próprio (já pago/em aquisição)", "valor": 73.4, "max": 80},
+            {"rotulo": "Alugado", "valor": 20.1, "max": 80},
+            {"rotulo": "Cedido", "valor": 6.3, "max": 80},
+            {"rotulo": "Outras formas", "valor": 0.2, "max": 80}
+          ]
+        }
+      ],
+      "fonte": {
+        "nome": "PNAD Contínua — Características dos Domicílios (IBGE)",
+        "produtor": "Instituto Brasileiro de Geografia e Estatística",
+        "periodicidade": "Anual",
+        "ultimaAtualizacao": "Setembro/2025 (dados de 2024)",
+        "url": "https://www.ibge.gov.br/estatisticas/sociais/habitacao.html"
+      },
+      "notaMetodologica": "Inclui domicílios próprios já quitados e em processo de aquisição (financiamento ativo). A estabilidade da taxa convive com aumento do aluguel (de 17,8% para 20,1% em 8 anos) e queda da cessão informal. Limitação: não captura qualidade da moradia nem segurança da posse. Valores aproximados a partir das tabulações da PNAD; séries oficiais detalhadas estão no SIDRA/IBGE."
+    }
+  ]
+}

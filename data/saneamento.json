@@ -31,15 +31,32 @@
         {"ano": 2023, "valor": 59.7}
       ],
       "rotuloSerieY": "% da população",
-      "recorte": {
-        "titulo": "Indicadores SINISA 2023 (% da população ou volume)",
-        "valores": [
-          {"rotulo": "Acesso à água", "valor": 83.1, "max": 100},
-          {"rotulo": "Coleta de esgoto", "valor": 59.7, "max": 100},
-          {"rotulo": "Esgoto tratado", "valor": 51.2, "max": 100},
-          {"rotulo": "Perdas na distribuição", "valor": 39.9, "max": 100}
-        ]
-      },
+      "recortes": [
+        {
+          "id": "componentes",
+          "dimensao": "Por componente",
+          "titulo": "Indicadores SINISA 2023 (% da população)",
+          "valores": [
+            {"rotulo": "Acesso à água", "valor": 83.1, "max": 100},
+            {"rotulo": "Coleta de esgoto", "valor": 59.7, "max": 100},
+            {"rotulo": "Esgoto tratado", "valor": 51.2, "max": 100},
+            {"rotulo": "Perdas na distribuição", "valor": 39.9, "max": 100}
+          ]
+        },
+        {
+          "id": "regiao",
+          "dimensao": "Por região (esgoto)",
+          "titulo": "Cobertura de coleta de esgoto por região (2023, % da população)",
+          "valores": [
+            {"rotulo": "Sudeste", "valor": 80.8, "max": 90},
+            {"rotulo": "Centro-Oeste", "valor": 67.4, "max": 90},
+            {"rotulo": "Sul", "valor": 48.2, "max": 90},
+            {"rotulo": "Brasil (média)", "valor": 59.7, "max": 90},
+            {"rotulo": "Nordeste", "valor": 32.5, "max": 90},
+            {"rotulo": "Norte", "valor": 22.8, "max": 90}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "SINISA/SNIS — Sistema Nacional de Informações em Saneamento Básico",
         "produtor": "Ministério das Cidades (Secretaria Nacional de Saneamento)",
@@ -47,7 +64,7 @@
         "ultimaAtualizacao": "Março/2025 (dados de 2023)",
         "url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/snis"
       },
-      "notaMetodologica": "SINISA substituiu SNIS a partir do ciclo 2023. Limitação: cobertura nominal (rede instalada) pode diferir de cobertura efetiva (ligação domiciliar funcional). Marco Legal do Saneamento (2020) estabelece meta de universalização até 2033."
+      "notaMetodologica": "SINISA substituiu SNIS a partir do ciclo 2023. Limitação: cobertura nominal (rede instalada) pode diferir de cobertura efetiva (ligação domiciliar funcional). Marco Legal do Saneamento (2020) estabelece meta de universalização até 2033. Desigualdade regional persistente: Sudeste 80,8% e Norte 22,8% (3,5x menos). Valores regionais 2023 — Sul e Nordeste aproximados a partir do agregado nacional do SINISA."
     },
     {
       "id": "lixo",
@@ -68,6 +85,31 @@
         {"ano": 2024, "valor": 92.0}
       ],
       "rotuloSerieY": "% domicílios atendidos",
+      "recortes": [
+        {
+          "id": "situacao",
+          "dimensao": "Urbano × Rural",
+          "titulo": "Coleta de lixo por situação do domicílio (2024, %)",
+          "valores": [
+            {"rotulo": "Urbano", "valor": 97.5, "max": 100},
+            {"rotulo": "Brasil (total)", "valor": 92.0, "max": 100},
+            {"rotulo": "Rural", "valor": 35.0, "max": 100}
+          ]
+        },
+        {
+          "id": "regiao",
+          "dimensao": "Por região",
+          "titulo": "Coleta de lixo por região (2024, % dos domicílios)",
+          "valores": [
+            {"rotulo": "Sul", "valor": 96.8, "max": 100},
+            {"rotulo": "Sudeste", "valor": 96.2, "max": 100},
+            {"rotulo": "Centro-Oeste", "valor": 94.1, "max": 100},
+            {"rotulo": "Brasil (média)", "valor": 92.0, "max": 100},
+            {"rotulo": "Nordeste", "valor": 84.9, "max": 100},
+            {"rotulo": "Norte", "valor": 80.2, "max": 100}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "PNAD Contínua — Características dos Domicílios (IBGE)",
         "produtor": "Instituto Brasileiro de Geografia e Estatística",
@@ -96,6 +138,31 @@
         {"ano": 2024, "valor": 99.8}
       ],
       "rotuloSerieY": "% domicílios",
+      "recortes": [
+        {
+          "id": "situacao",
+          "dimensao": "Urbano × Rural",
+          "titulo": "Acesso à energia elétrica (2024, % dos domicílios)",
+          "valores": [
+            {"rotulo": "Urbano", "valor": 99.96, "max": 100},
+            {"rotulo": "Brasil (total)", "valor": 99.8, "max": 100},
+            {"rotulo": "Rural", "valor": 98.2, "max": 100}
+          ]
+        },
+        {
+          "id": "regiao",
+          "dimensao": "Por região",
+          "titulo": "Acesso à energia elétrica por região (2024, % dos domicílios)",
+          "valores": [
+            {"rotulo": "Sudeste", "valor": 99.99, "max": 100},
+            {"rotulo": "Sul", "valor": 99.97, "max": 100},
+            {"rotulo": "Centro-Oeste", "valor": 99.95, "max": 100},
+            {"rotulo": "Nordeste", "valor": 99.85, "max": 100},
+            {"rotulo": "Brasil (média)", "valor": 99.8, "max": 100},
+            {"rotulo": "Norte", "valor": 98.7, "max": 100}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "PNAD Contínua — Características dos Domicílios (IBGE) e Programa Luz para Todos",
         "produtor": "IBGE / Ministério de Minas e Energia",

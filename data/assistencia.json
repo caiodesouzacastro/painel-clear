@@ -32,16 +32,49 @@
         {"ano": 2026, "valor": 18.9}
       ],
       "rotuloSerieY": "Milhões de famílias",
-      "recorte": {
-        "titulo": "Famílias por região (abr/2026, em milhões)",
-        "valores": [
-          {"rotulo": "Nordeste", "valor": 8.86, "max": 10},
-          {"rotulo": "Sudeste", "valor": 5.35, "max": 10},
-          {"rotulo": "Norte", "valor": 2.44, "max": 10},
-          {"rotulo": "Sul", "valor": 1.28, "max": 10},
-          {"rotulo": "Centro-Oeste", "valor": 0.98, "max": 10}
-        ]
-      },
+      "recortes": [
+        {
+          "id": "regiao",
+          "dimensao": "Por região",
+          "titulo": "Famílias beneficiárias por região (dez/2025, em milhões)",
+          "valores": [
+            {"rotulo": "Nordeste", "valor": 8.70, "max": 10},
+            {"rotulo": "Sudeste", "valor": 5.26, "max": 10},
+            {"rotulo": "Norte", "valor": 2.43, "max": 10},
+            {"rotulo": "Sul", "valor": 1.28, "max": 10},
+            {"rotulo": "Centro-Oeste", "valor": 0.99, "max": 10}
+          ]
+        },
+        {
+          "id": "uf",
+          "dimensao": "Por UF",
+          "titulo": "Estados com maior número de famílias (dez/2025, em milhões)",
+          "valores": [
+            {"rotulo": "Bahia", "valor": 2.30, "max": 2.5},
+            {"rotulo": "São Paulo", "valor": 2.18, "max": 2.5},
+            {"rotulo": "Pernambuco", "valor": 1.46, "max": 2.5},
+            {"rotulo": "Minas Gerais", "valor": 1.41, "max": 2.5},
+            {"rotulo": "Rio de Janeiro", "valor": 1.39, "max": 2.5},
+            {"rotulo": "Ceará", "valor": 1.33, "max": 2.5},
+            {"rotulo": "Pará", "valor": 1.24, "max": 2.5},
+            {"rotulo": "Maranhão", "valor": 1.14, "max": 2.5}
+          ]
+        },
+        {
+          "id": "valor-medio",
+          "dimensao": "Valor médio por UF",
+          "titulo": "Estados com maior benefício médio (dez/2025, R$/família)",
+          "valores": [
+            {"rotulo": "Roraima", "valor": 789, "max": 800},
+            {"rotulo": "Amazonas", "valor": 772, "max": 800},
+            {"rotulo": "Acre", "valor": 744, "max": 800},
+            {"rotulo": "Amapá", "valor": 730, "max": 800},
+            {"rotulo": "Rio Grande do Sul", "valor": 722, "max": 800},
+            {"rotulo": "Rondônia", "valor": 721, "max": 800},
+            {"rotulo": "Brasil (média)", "valor": 691, "max": 800}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "MDS — Folha de Pagamento mensal do Bolsa Família",
         "produtor": "Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome",
@@ -71,13 +104,29 @@
         {"ano": 2025, "valor": 6.0}
       ],
       "rotuloSerieY": "Milhões de beneficiários",
-      "recorte": {
-        "titulo": "Composição do BPC (2025, em milhões)",
-        "valores": [
-          {"rotulo": "Pessoas com deficiência", "valor": 3.4, "max": 4},
-          {"rotulo": "Idosos (65+)", "valor": 2.6, "max": 4}
-        ]
-      },
+      "recortes": [
+        {
+          "id": "tipo",
+          "dimensao": "Por tipo",
+          "titulo": "Composição do BPC (2025, em milhões)",
+          "valores": [
+            {"rotulo": "Pessoas com deficiência", "valor": 3.4, "max": 4},
+            {"rotulo": "Idosos (65+)", "valor": 2.6, "max": 4}
+          ]
+        },
+        {
+          "id": "regiao",
+          "dimensao": "Por região",
+          "titulo": "Beneficiários BPC por região (2025, em milhões — estimativa)",
+          "valores": [
+            {"rotulo": "Nordeste", "valor": 2.34, "max": 2.5},
+            {"rotulo": "Sudeste", "valor": 2.16, "max": 2.5},
+            {"rotulo": "Norte", "valor": 0.66, "max": 2.5},
+            {"rotulo": "Sul", "valor": 0.54, "max": 2.5},
+            {"rotulo": "Centro-Oeste", "valor": 0.30, "max": 2.5}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "INSS / MDS — Benefício de Prestação Continuada (LOAS)",
         "produtor": "Instituto Nacional do Seguro Social e Ministério do Desenvolvimento Social",
@@ -107,6 +156,34 @@
         {"ano": 2025, "valor": 41.7}
       ],
       "rotuloSerieY": "Milhões de famílias",
+      "recortes": [
+        {
+          "id": "regiao",
+          "dimensao": "Por região",
+          "titulo": "Famílias no CadÚnico por região (2025, em milhões)",
+          "valores": [
+            {"rotulo": "Nordeste", "valor": 16.7, "max": 18},
+            {"rotulo": "Sudeste", "valor": 13.5, "max": 18},
+            {"rotulo": "Norte", "valor": 5.2, "max": 18},
+            {"rotulo": "Sul", "valor": 3.7, "max": 18},
+            {"rotulo": "Centro-Oeste", "valor": 2.6, "max": 18}
+          ]
+        },
+        {
+          "id": "penetracao",
+          "dimensao": "% da população",
+          "titulo": "Cobertura do CadÚnico — penetração por UF (% da pop. estadual)",
+          "valores": [
+            {"rotulo": "Maranhão", "valor": 71.2, "max": 75},
+            {"rotulo": "Piauí", "valor": 68.4, "max": 75},
+            {"rotulo": "Alagoas", "valor": 66.1, "max": 75},
+            {"rotulo": "Bahia", "valor": 60.5, "max": 75},
+            {"rotulo": "Brasil (média)", "valor": 45.7, "max": 75},
+            {"rotulo": "São Paulo", "valor": 28.3, "max": 75},
+            {"rotulo": "Santa Catarina", "valor": 24.8, "max": 75}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "Cadastro Único — MDS",
         "produtor": "Ministério do Desenvolvimento Social (Senarc)",

@@ -35,17 +35,21 @@
         {"ano": 2025, "valor": 5796}
       ],
       "rotuloSerieY": "km² desmatados",
-      "recorte": {
-        "titulo": "Amazônia 2024-2025 por estado (km²)",
-        "valores": [
-          {"rotulo": "Pará", "valor": 1842, "max": 2000},
-          {"rotulo": "Mato Grosso", "valor": 1100, "max": 2000},
-          {"rotulo": "Amazonas", "valor": 1016, "max": 2000},
-          {"rotulo": "Rondônia", "valor": 712, "max": 2000},
-          {"rotulo": "Maranhão", "valor": 432, "max": 2000},
-          {"rotulo": "Outros", "valor": 694, "max": 2000}
-        ]
-      },
+      "recortes": [
+        {
+          "id": "uf",
+          "dimensao": "Por estado",
+          "titulo": "Amazônia 2024-2025 por estado (km²)",
+          "valores": [
+            {"rotulo": "Pará", "valor": 1842, "max": 2000},
+            {"rotulo": "Mato Grosso", "valor": 1100, "max": 2000},
+            {"rotulo": "Amazonas", "valor": 1016, "max": 2000},
+            {"rotulo": "Rondônia", "valor": 712, "max": 2000},
+            {"rotulo": "Maranhão", "valor": 432, "max": 2000},
+            {"rotulo": "Outros estados", "valor": 694, "max": 2000}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "INPE — PRODES (Programa de Cálculo do Desflorestamento)",
         "produtor": "Instituto Nacional de Pesquisas Espaciais",
@@ -77,6 +81,22 @@
         {"ano": 2025, "valor": 7235}
       ],
       "rotuloSerieY": "km² desmatados",
+      "recortes": [
+        {
+          "id": "uf",
+          "dimensao": "Por estado",
+          "titulo": "Cerrado 2025 por estado — Matopiba concentra 77,9% (km²)",
+          "valores": [
+            {"rotulo": "Maranhão", "valor": 2006, "max": 2100},
+            {"rotulo": "Tocantins", "valor": 1489, "max": 2100},
+            {"rotulo": "Piauí", "valor": 1350, "max": 2100},
+            {"rotulo": "Bahia", "valor": 791, "max": 2100},
+            {"rotulo": "Mato Grosso", "valor": 547, "max": 2100},
+            {"rotulo": "Goiás", "valor": 425, "max": 2100},
+            {"rotulo": "Outros", "valor": 627, "max": 2100}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "INPE — PRODES Cerrado",
         "produtor": "Instituto Nacional de Pesquisas Espaciais",
@@ -107,6 +127,20 @@
         {"ano": 2023, "valor": 2.3}
       ],
       "rotuloSerieY": "Bilhões t CO₂eq",
+      "recortes": [
+        {
+          "id": "setor",
+          "dimensao": "Por setor",
+          "titulo": "Emissões 2023 por setor (% do total)",
+          "valores": [
+            {"rotulo": "Mudança de uso do solo", "valor": 49.0, "max": 55},
+            {"rotulo": "Agropecuária", "valor": 28.0, "max": 55},
+            {"rotulo": "Energia", "valor": 17.0, "max": 55},
+            {"rotulo": "Processos industriais", "valor": 4.0, "max": 55},
+            {"rotulo": "Resíduos", "valor": 4.0, "max": 55}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "SEEG — Sistema de Estimativas de Emissões e Remoções de Gases de Efeito Estufa",
         "produtor": "Observatório do Clima (consórcio de organizações da sociedade civil)",

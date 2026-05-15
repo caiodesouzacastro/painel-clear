@@ -33,14 +33,34 @@
         {"ano": 2023, "valor": 5.7}
       ],
       "rotuloSerieY": "IDEB (escala 0-10)",
-      "recorte": {
-        "titulo": "IDEB 2023 por etapa (rede pública)",
-        "valores": [
-          {"rotulo": "Anos iniciais EF", "valor": 5.7, "max": 10},
-          {"rotulo": "Anos finais EF", "valor": 5.1, "max": 10},
-          {"rotulo": "Ensino Médio", "valor": 4.5, "max": 10}
-        ]
-      },
+      "recortes": [
+        {
+          "id": "etapa",
+          "dimensao": "Por etapa de ensino",
+          "titulo": "IDEB 2023 por etapa (rede pública)",
+          "valores": [
+            {"rotulo": "Anos iniciais EF", "valor": 5.7, "max": 10},
+            {"rotulo": "Anos finais EF", "valor": 5.1, "max": 10},
+            {"rotulo": "Ensino Médio", "valor": 4.5, "max": 10}
+          ]
+        },
+        {
+          "id": "uf",
+          "dimensao": "Por UF",
+          "titulo": "IDEB 2023 nos anos iniciais EF — selecionadas",
+          "valores": [
+            {"rotulo": "Paraná", "valor": 6.7, "max": 7},
+            {"rotulo": "Ceará", "valor": 6.6, "max": 7},
+            {"rotulo": "São Paulo", "valor": 6.5, "max": 7},
+            {"rotulo": "Santa Catarina", "valor": 6.4, "max": 7},
+            {"rotulo": "Distrito Federal", "valor": 6.4, "max": 7},
+            {"rotulo": "Brasil (rede pública)", "valor": 5.7, "max": 7},
+            {"rotulo": "Bahia", "valor": 5.3, "max": 7},
+            {"rotulo": "Pará", "valor": 5.1, "max": 7},
+            {"rotulo": "Amapá", "valor": 5.0, "max": 7}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "INEP — SAEB e Censo Escolar",
         "produtor": "Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira",
@@ -48,7 +68,7 @@
         "ultimaAtualizacao": "Agosto/2024 (dados de 2023)",
         "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/ideb"
       },
-      "notaMetodologica": "O IDEB combina aprendizagem (proficiência em Português e Matemática no SAEB) e fluxo (taxa de aprovação). Em 2023, as taxas de aprovação melhoraram, mas a proficiência permanece abaixo do nível pré-pandemia. Limitação: agregação em índice único pode esconder movimentos opostos nos dois componentes."
+      "notaMetodologica": "O IDEB combina aprendizagem (proficiência em Português e Matemática no SAEB) e fluxo (taxa de aprovação). Em 2023, as taxas de aprovação melhoraram, mas a proficiência permanece abaixo do nível pré-pandemia. Recorte por UF refere-se aos anos iniciais do EF (rede pública); o INEP disponibiliza dados completos para todas as 27 UFs e todas as etapas. Limitação: agregação em índice único pode esconder movimentos opostos nos dois componentes."
     },
     {
       "id": "analfabetismo",
@@ -69,16 +89,50 @@
         {"ano": 2024, "valor": 5.3}
       ],
       "rotuloSerieY": "% da população 15+",
-      "recorte": {
-        "titulo": "Analfabetismo por região (2024)",
-        "valores": [
-          {"rotulo": "Nordeste", "valor": 11.1, "max": 15},
-          {"rotulo": "Norte", "valor": 6.0, "max": 15},
-          {"rotulo": "Centro-Oeste", "valor": 3.3, "max": 15},
-          {"rotulo": "Sudeste", "valor": 2.8, "max": 15},
-          {"rotulo": "Sul", "valor": 2.7, "max": 15}
-        ]
-      },
+      "recortes": [
+        {
+          "id": "regiao",
+          "dimensao": "Por região",
+          "titulo": "Analfabetismo por região (2024, % da pop. 15+)",
+          "valores": [
+            {"rotulo": "Nordeste", "valor": 11.1, "max": 15},
+            {"rotulo": "Norte", "valor": 6.0, "max": 15},
+            {"rotulo": "Centro-Oeste", "valor": 3.3, "max": 15},
+            {"rotulo": "Sudeste", "valor": 2.8, "max": 15},
+            {"rotulo": "Sul", "valor": 2.7, "max": 15}
+          ]
+        },
+        {
+          "id": "raca",
+          "dimensao": "Por raça/cor",
+          "titulo": "Analfabetismo por raça/cor (2024, % da pop. 15+)",
+          "valores": [
+            {"rotulo": "Pretos e pardos", "valor": 6.9, "max": 10},
+            {"rotulo": "Brasil (média)", "valor": 5.3, "max": 10},
+            {"rotulo": "Brancos", "valor": 3.1, "max": 10}
+          ]
+        },
+        {
+          "id": "idade",
+          "dimensao": "Por faixa etária",
+          "titulo": "Analfabetismo por idade (2024, %)",
+          "valores": [
+            {"rotulo": "60 anos ou mais", "valor": 14.9, "max": 22},
+            {"rotulo": "60+ (pretos e pardos)", "valor": 21.8, "max": 22},
+            {"rotulo": "60+ (brancos)", "valor": 8.1, "max": 22},
+            {"rotulo": "15 anos ou mais (geral)", "valor": 5.3, "max": 22}
+          ]
+        },
+        {
+          "id": "sexo",
+          "dimensao": "Por sexo",
+          "titulo": "Analfabetismo por sexo (2024, % da pop. 15+)",
+          "valores": [
+            {"rotulo": "Homens", "valor": 5.6, "max": 7},
+            {"rotulo": "Mulheres", "valor": 5.0, "max": 7}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "PNAD Contínua — Módulo Educação (IBGE)",
         "produtor": "Instituto Brasileiro de Geografia e Estatística",
@@ -107,6 +161,41 @@
         {"ano": 2024, "valor": 56.0}
       ],
       "rotuloSerieY": "% concluíram EM",
+      "recortes": [
+        {
+          "id": "raca",
+          "dimensao": "Por raça/cor",
+          "titulo": "Conclusão do ensino médio (2024, % da pop. 25+)",
+          "valores": [
+            {"rotulo": "Brancos", "valor": 63.4, "max": 70},
+            {"rotulo": "Brasil (média)", "valor": 56.0, "max": 70},
+            {"rotulo": "Pretos e pardos", "valor": 50.0, "max": 70}
+          ]
+        },
+        {
+          "id": "sexo",
+          "dimensao": "Por sexo",
+          "titulo": "Conclusão do ensino médio por sexo (2024, %)",
+          "valores": [
+            {"rotulo": "Mulheres", "valor": 59.6, "max": 65},
+            {"rotulo": "Brasil (média)", "valor": 56.0, "max": 65},
+            {"rotulo": "Homens", "valor": 52.2, "max": 65}
+          ]
+        },
+        {
+          "id": "regiao",
+          "dimensao": "Por região",
+          "titulo": "Conclusão do ensino médio por região (2024, %)",
+          "valores": [
+            {"rotulo": "Sudeste", "valor": 60.4, "max": 65},
+            {"rotulo": "Sul", "valor": 58.2, "max": 65},
+            {"rotulo": "Centro-Oeste", "valor": 57.9, "max": 65},
+            {"rotulo": "Brasil (média)", "valor": 56.0, "max": 65},
+            {"rotulo": "Norte", "valor": 50.5, "max": 65},
+            {"rotulo": "Nordeste", "valor": 49.3, "max": 65}
+          ]
+        }
+      ],
       "fonte": {
         "nome": "PNAD Contínua — Módulo Educação (IBGE)",
         "produtor": "Instituto Brasileiro de Geografia e Estatística",
