@@ -125,7 +125,9 @@ html[data-theme="dark"] .header { background: rgb(18, 38, 60); }
 .filter-chip.active { background: var(--clear-blue); color: var(--paper); border-color: var(--clear-blue); }
 
 /* GRID */
-.indicators-grid { max-width: 1320px; margin: 0 auto; padding: 24px 48px 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.indicators-grid { max-width: 1320px; margin: 0 auto; padding: 24px 48px 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+@media (max-width: 1024px) { .indicators-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .indicators-grid { grid-template-columns: 1fr; } }
 .indicator-card { background: var(--card-bg); padding: 28px 28px 24px; cursor: pointer; transition: background 0.2s ease; display: flex; flex-direction: column; min-height: 360px; position: relative; border: none; font-family: inherit; text-align: left; width: 100%; color: var(--ink); }
 .indicator-card:hover { background: var(--card-hover); }
 .indicator-card:hover .card-arrow { transform: translateX(4px); opacity: 1; }
@@ -252,6 +254,46 @@ html[data-theme="dark"] .header { background: rgb(18, 38, 60); }
 .chart-svg .zero-line { stroke: rgba(127,127,127,0.4); stroke-width: 1; stroke-dasharray: 3,3; }
 
 .recortes { display: grid; gap: 11px; }
+
+/* Sub-abas de recortes (dentro do modal) */
+.subtabs-wrap { }
+.subtabs {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.subtab {
+  font-family: inherit;
+  font-size: 12px;
+  padding: 8px 14px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--clear-gray);
+  cursor: pointer;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-bottom: -1px;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.subtab:hover { color: var(--clear-blue); }
+.subtab.active {
+  color: var(--clear-blue);
+  border-bottom-color: var(--clear-light-blue);
+  font-weight: 600;
+}
+.subpane { display: none; }
+.subpane.active { display: block; }
+.subpane-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--clear-gray);
+  margin-bottom: 14px;
+}
 .recorte-row { display: grid; grid-template-columns: 170px 1fr 100px; gap: 16px; align-items: center; font-size: 13px; }
 .recorte-rotulo { color: var(--ink); font-weight: 500; }
 .recorte-bar-wrap { background: rgba(127,127,127,0.12); height: 24px; position: relative; overflow: hidden; }
@@ -378,10 +420,10 @@ body.modal-open { overflow: hidden; }
     <h1 class="title">Indicadores para a avaliação<br>de <em>políticas públicas</em> no Brasil</h1>
     <p class="subtitle">Painel institucional que reúne indicadores-chave de fontes oficiais brasileiras — em segurança, educação, saúde, assistência social, saneamento, trabalho e meio ambiente. Acompanha o <em>Guia de Fontes de Dados</em> do FGV CLEAR.</p>
     <div class="header-meta">
-      <div class="header-meta-item">Versão<strong id="meta-versao">2.1</strong></div>
+      <div class="header-meta-item">Versão<strong id="meta-versao">3.1</strong></div>
       <div class="header-meta-item">Última atualização<strong id="meta-atualizado">Maio de 2026</strong></div>
-      <div class="header-meta-item">Temas<strong id="meta-temas">7</strong></div>
-      <div class="header-meta-item">Indicadores<strong id="meta-indicadores">21</strong></div>
+      <div class="header-meta-item">Temas<strong id="meta-temas">9</strong></div>
+      <div class="header-meta-item">Indicadores<strong id="meta-indicadores">27</strong></div>
     </div>
   </div>
 </header>
@@ -490,7 +532,7 @@ async function carregarDados() {
 
     renderPublications();
     renderFilters();
-    renderGrid(TEMAS);
+    renderGrid(TEMAS, { expandido: false });
 
     // Deep-link: se há um #indicador na URL, abre direto
     handleHash();
@@ -534,8 +576,14 @@ function renderFilters() {
     document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
     e.target.classList.add('active');
     const f = e.target.dataset.filter;
-    const filtrados = f === 'todos' ? TEMAS : TEMAS.filter(t => t.id === f);
-    renderGrid(filtrados);
+    if (f === 'todos') {
+      // Modo síntese: 1 card por tema
+      renderGrid(TEMAS, { expandido: false });
+    } else {
+      // Modo expandido: todos os indicadores do tema viram cards
+      const tema = TEMAS.find(t => t.id === f);
+      renderGrid([tema], { expandido: true });
+    }
   });
 }
 
@@ -583,39 +631,60 @@ function ultimaAtualizacaoCurta(ultStr) {
   return m2 ? m2[1] : '';
 }
 
-function renderGrid(temas) {
+function cardHTML(tema, ind, opts) {
+  const ult = ultimaAtualizacaoCurta(ind.fonte?.ultimaAtualizacao);
+  const outros = (tema.indicadores.length - 1);
+  const mostrarTemaTag = !opts.expandido; // no modo expandido, todos os cards são do mesmo tema, então não repete
+  return `
+    <button class="indicator-card" data-tema="${tema.id}" data-ind="${ind.id}" aria-label="Ver detalhes: ${ind.titulo}">
+      <div class="card-top-row">
+        <div class="card-tema">${mostrarTemaTag ? tema.tema : ind.titulo.toUpperCase()}</div>
+        ${ult ? `<div class="card-update">atualizado<br><strong>${ult}</strong></div>` : ''}
+      </div>
+      <div class="card-titulo">${opts.expandido ? ind.titulo : ind.titulo}</div>
+      <div class="card-indicador">${ind.indicador}</div>
+      ${!opts.expandido && outros > 0 ? `<div class="card-extras-count">+ ${outros} ${outros === 1 ? 'indicador relacionado' : 'indicadores relacionados'}</div>` : ''}
+      <div class="card-valor-wrap">
+        <div class="card-valor-row">
+          <div class="card-valor">${fmtNumero(ind.valor, ind.formatoValor)}</div>
+          ${tendenciaBadge(ind.tendencia)}
+        </div>
+        <div class="card-unidade">${ind.unidade}</div>
+        <div class="card-sparkline">${sparkSVG(ind.serie)}</div>
+      </div>
+      <div class="card-destaque">${ind.destaque}</div>
+      <span class="card-arrow">→</span>
+    </button>
+  `;
+}
+
+function renderGrid(temas, opts) {
+  opts = opts || { expandido: false };
   const grid = document.getElementById('grid');
   if (!temas.length) { grid.innerHTML = '<div class="loading">Nenhum tema encontrado.</div>'; return; }
-  grid.innerHTML = temas.map(tema => {
-    const ind = tema.indicadores[0];
-    const outros = tema.indicadores.length - 1;
-    const ult = ultimaAtualizacaoCurta(ind.fonte?.ultimaAtualizacao);
-    return `
-      <button class="indicator-card" data-tema="${tema.id}" aria-label="Ver detalhes: ${tema.tema}">
-        <div class="card-top-row">
-          <div class="card-tema">${tema.tema}</div>
-          ${ult ? `<div class="card-update">atualizado<br><strong>${ult}</strong></div>` : ''}
-        </div>
-        <div class="card-titulo">${ind.titulo}</div>
-        <div class="card-indicador">${ind.indicador}</div>
-        ${outros > 0 ? `<div class="card-extras-count">+ ${outros} ${outros === 1 ? 'indicador relacionado' : 'indicadores relacionados'}</div>` : ''}
-        <div class="card-valor-wrap">
-          <div class="card-valor-row">
-            <div class="card-valor">${fmtNumero(ind.valor, ind.formatoValor)}</div>
-            ${tendenciaBadge(ind.tendencia)}
-          </div>
-          <div class="card-unidade">${ind.unidade}</div>
-          <div class="card-sparkline">${sparkSVG(ind.serie)}</div>
-        </div>
-        <div class="card-destaque">${ind.destaque}</div>
-        <span class="card-arrow">→</span>
-      </button>
-    `;
-  }).join('');
+
+  let cardsHTML;
+  if (opts.expandido) {
+    // Modo expandido: mostra todos os indicadores do tema filtrado
+    const tema = temas[0];
+    cardsHTML = tema.indicadores.map(ind => cardHTML(tema, ind, { expandido: true })).join('');
+  } else {
+    // Modo síntese: 1 card (o destaque) por tema
+    cardsHTML = temas.map(tema => cardHTML(tema, tema.indicadores[0], { expandido: false })).join('');
+  }
+
+  grid.innerHTML = cardsHTML;
+
   grid.querySelectorAll('.indicator-card').forEach(card => {
     card.addEventListener('click', () => {
       const tema = TEMAS.find(t => t.id === card.dataset.tema);
-      abrirModal(tema, 0);
+      const indId = card.dataset.ind;
+      let idx = 0;
+      if (indId) {
+        const found = tema.indicadores.findIndex(i => i.id === indId);
+        if (found >= 0) idx = found;
+      }
+      abrirModal(tema, idx);
     });
   });
 }
@@ -682,6 +751,51 @@ function gerarRecorteHTML(recorte, formato) {
   `;
 }
 
+/* Renderiza bloco de recortes — suporta tanto recorte único (objeto) quanto múltiplos (array) */
+function renderRecortesSection(ind, indSlug) {
+  // Retrocompatível: aceita ind.recorte (objeto) ou ind.recortes (array)
+  let lista = [];
+  if (ind.recortes && Array.isArray(ind.recortes) && ind.recortes.length) {
+    lista = ind.recortes;
+  } else if (ind.recorte) {
+    lista = [ind.recorte];
+  }
+  if (!lista.length) return '';
+
+  if (lista.length === 1) {
+    // Recorte único: mostra direto, sem sub-abas
+    const r = lista[0];
+    return `
+      <div class="section-block">
+        <h3>${r.titulo}</h3>
+        ${gerarRecorteHTML(r, ind.formatoValor)}
+      </div>
+    `;
+  }
+
+  // Múltiplos recortes: sub-abas internas
+  const subtabsId = `subtabs-${indSlug}`;
+  const subpanesId = `subpanes-${indSlug}`;
+  const subtabsHTML = lista.map((r, i) => `
+    <button class="subtab ${i === 0 ? 'active' : ''}" data-subtab="${subpanesId}-${i}">${r.dimensao || r.titulo}</button>
+  `).join('');
+  const subpanesHTML = lista.map((r, i) => `
+    <div class="subpane ${i === 0 ? 'active' : ''}" id="${subpanesId}-${i}">
+      <div class="subpane-title">${r.titulo}</div>
+      ${gerarRecorteHTML(r, ind.formatoValor)}
+    </div>
+  `).join('');
+  return `
+    <div class="section-block">
+      <h3>Recortes</h3>
+      <div class="subtabs-wrap" id="${subtabsId}">
+        <div class="subtabs">${subtabsHTML}</div>
+        <div class="subpanes">${subpanesHTML}</div>
+      </div>
+    </div>
+  `;
+}
+
 function renderTabs(tema, activeIdx) {
   const tabsContainer = document.getElementById('modal-tabs');
   tabsContainer.innerHTML = tema.indicadores.map((ind, i) => `
@@ -709,16 +823,19 @@ function gerarCSV(tema, ind) {
   if (ind.serie) {
     ind.serie.forEach(d => linhas.push(d.ano + ',' + d.valor));
   }
-  if (ind.recorte) {
+  // Recortes (suporta recorte único OU array de recortes)
+  const listaRecortes = (ind.recortes && Array.isArray(ind.recortes) && ind.recortes.length)
+    ? ind.recortes
+    : (ind.recorte ? [ind.recorte] : []);
+  listaRecortes.forEach(r => {
     linhas.push('');
-    linhas.push('## ' + ind.recorte.titulo);
+    linhas.push('## ' + r.titulo);
     linhas.push('categoria,valor');
-    ind.recorte.valores.forEach(d => {
-      // escapa vírgulas eventuais do rótulo
+    r.valores.forEach(d => {
       const rotulo = String(d.rotulo).includes(',') ? '"' + d.rotulo + '"' : d.rotulo;
       linhas.push(rotulo + ',' + d.valor);
     });
-  }
+  });
   return linhas.join('\n');
 }
 
@@ -789,8 +906,8 @@ function renderIndicadorBody(tema, ind) {
       </div>
     `;
   }
-  if (ind.recorte) {
-    html += `<div class="section-block"><h3>${ind.recorte.titulo}</h3>${gerarRecorteHTML(ind.recorte, ind.formatoValor)}</div>`;
+  if (ind.recorte || (ind.recortes && ind.recortes.length)) {
+    html += renderRecortesSection(ind, `${tema.id}-${ind.id}`);
   }
 
   html += `
@@ -894,8 +1011,31 @@ document.getElementById('modal-close').addEventListener('click', fecharModal);
 document.getElementById('modal-overlay').addEventListener('click', fecharModal);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
 
-// Delegação para botões dentro do modal-body (download + share)
+// Delegação para botões dentro do modal-body (download + share + sub-abas)
 document.getElementById('modal-body').addEventListener('click', e => {
+  // Sub-abas de recortes
+  const subtab = e.target.closest('.subtab');
+  if (subtab) {
+    const targetId = subtab.dataset.subtab;
+    const wrap = subtab.closest('.subtabs-wrap');
+    if (wrap) {
+      wrap.querySelectorAll('.subtab').forEach(t => t.classList.remove('active'));
+      wrap.querySelectorAll('.subpane').forEach(p => p.classList.remove('active'));
+      subtab.classList.add('active');
+      const pane = document.getElementById(targetId);
+      if (pane) {
+        pane.classList.add('active');
+        // re-anima as barras quando muda sub-aba
+        pane.querySelectorAll('.recorte-bar').forEach(bar => {
+          const w = bar.dataset.width;
+          bar.style.width = '0%';
+          requestAnimationFrame(() => { bar.style.width = w + '%'; });
+        });
+      }
+    }
+    return;
+  }
+
   const btn = e.target.closest('[data-action]');
   if (!btn) return;
   const action = btn.dataset.action;
