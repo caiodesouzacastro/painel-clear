@@ -39,14 +39,33 @@
         {
           "id": "uf",
           "dimensao": "Por estado",
-          "titulo": "Amazônia 2024-2025 por estado (km²)",
+          "titulo": "Amazônia 2024-2025 por estado (km²) — PA, MT e AM concentram 80%",
           "valores": [
-            {"rotulo": "Pará", "valor": 1842, "max": 2000},
-            {"rotulo": "Mato Grosso", "valor": 1100, "max": 2000},
-            {"rotulo": "Amazonas", "valor": 1016, "max": 2000},
-            {"rotulo": "Rondônia", "valor": 712, "max": 2000},
-            {"rotulo": "Maranhão", "valor": 432, "max": 2000},
-            {"rotulo": "Outros estados", "valor": 694, "max": 2000}
+            {"rotulo": "Pará", "valor": 2087, "max": 2200},
+            {"rotulo": "Mato Grosso", "valor": 1572, "max": 2200},
+            {"rotulo": "Amazonas", "valor": 1014, "max": 2200},
+            {"rotulo": "Rondônia", "valor": 473, "max": 2200},
+            {"rotulo": "Maranhão", "valor": 247, "max": 2200},
+            {"rotulo": "Acre", "valor": 192, "max": 2200},
+            {"rotulo": "Roraima", "valor": 152, "max": 2200},
+            {"rotulo": "Tocantins", "valor": 35, "max": 2200},
+            {"rotulo": "Amapá", "valor": 24, "max": 2200}
+          ]
+        },
+        {
+          "id": "variacao",
+          "dimensao": "Variação 2024→2025",
+          "titulo": "Variação no desmatamento estadual (% de redução; MT em alta)",
+          "valores": [
+            {"rotulo": "Tocantins", "valor": 62.5, "max": 70},
+            {"rotulo": "Amapá", "valor": 48.2, "max": 70},
+            {"rotulo": "Roraima", "valor": 37.4, "max": 70},
+            {"rotulo": "Rondônia", "valor": 33.6, "max": 70},
+            {"rotulo": "Acre", "valor": 27.6, "max": 70},
+            {"rotulo": "Maranhão", "valor": 26.1, "max": 70},
+            {"rotulo": "Amazonas", "valor": 16.9, "max": 70},
+            {"rotulo": "Pará", "valor": 12.4, "max": 70},
+            {"rotulo": "Mato Grosso (ALTA)", "valor": 25.1, "max": 70}
           ]
         }
       ],
@@ -85,7 +104,7 @@
         {
           "id": "uf",
           "dimensao": "Por estado",
-          "titulo": "Cerrado 2025 por estado — Matopiba concentra 77,9% (km²)",
+          "titulo": "Cerrado 2025 por estado (km²)",
           "valores": [
             {"rotulo": "Maranhão", "valor": 2006, "max": 2100},
             {"rotulo": "Tocantins", "valor": 1489, "max": 2100},
@@ -94,6 +113,15 @@
             {"rotulo": "Mato Grosso", "valor": 547, "max": 2100},
             {"rotulo": "Goiás", "valor": 425, "max": 2100},
             {"rotulo": "Outros", "valor": 627, "max": 2100}
+          ]
+        },
+        {
+          "id": "matopiba",
+          "dimensao": "Matopiba vs Resto",
+          "titulo": "Concentração no Matopiba (% do desmatamento do Cerrado em 2025)",
+          "valores": [
+            {"rotulo": "Matopiba (MA+TO+PI+BA)", "valor": 77.9, "max": 100},
+            {"rotulo": "Demais estados do Cerrado", "valor": 22.1, "max": 100}
           ]
         }
       ],
@@ -131,13 +159,26 @@
         {
           "id": "setor",
           "dimensao": "Por setor",
-          "titulo": "Emissões 2023 por setor (% do total)",
+          "titulo": "Emissões 2023 por setor no Brasil (% do total)",
           "valores": [
-            {"rotulo": "Mudança de uso do solo", "valor": 49.0, "max": 55},
-            {"rotulo": "Agropecuária", "valor": 28.0, "max": 55},
-            {"rotulo": "Energia", "valor": 17.0, "max": 55},
-            {"rotulo": "Processos industriais", "valor": 4.0, "max": 55},
-            {"rotulo": "Resíduos", "valor": 4.0, "max": 55}
+            {"rotulo": "Mudança de uso do solo", "valor": 49.0, "max": 80},
+            {"rotulo": "Agropecuária", "valor": 28.0, "max": 80},
+            {"rotulo": "Energia", "valor": 17.0, "max": 80},
+            {"rotulo": "Processos industriais", "valor": 4.0, "max": 80},
+            {"rotulo": "Resíduos", "valor": 4.0, "max": 80}
+          ]
+        },
+        {
+          "id": "brasil-mundo",
+          "dimensao": "Brasil × Mundo",
+          "titulo": "Perfil emissor: Brasil vs média global (% por setor)",
+          "valores": [
+            {"rotulo": "Energia — Brasil", "valor": 17.0, "max": 80},
+            {"rotulo": "Energia — Mundo", "valor": 73.0, "max": 80},
+            {"rotulo": "Agropecuária — Brasil", "valor": 28.0, "max": 80},
+            {"rotulo": "Agropecuária — Mundo", "valor": 11.0, "max": 80},
+            {"rotulo": "Uso do solo — Brasil", "valor": 49.0, "max": 80},
+            {"rotulo": "Uso do solo — Mundo", "valor": 8.0, "max": 80}
           ]
         }
       ],
