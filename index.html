@@ -420,17 +420,18 @@ body.modal-open { overflow: hidden; }
     <h1 class="title">Indicadores para a avaliação<br>de <em>políticas públicas</em> no Brasil</h1>
     <p class="subtitle">Painel institucional que reúne indicadores-chave de fontes oficiais brasileiras — em segurança, educação, saúde, assistência social, saneamento, trabalho e meio ambiente. Acompanha o <em>Guia de Fontes de Dados</em> do FGV CLEAR.</p>
     <div class="header-meta">
-      <div class="header-meta-item">Versão<strong id="meta-versao">3.1</strong></div>
+      <div class="header-meta-item">Versão<strong id="meta-versao">4.1</strong></div>
       <div class="header-meta-item">Última atualização<strong id="meta-atualizado">Maio de 2026</strong></div>
-      <div class="header-meta-item">Temas<strong id="meta-temas">9</strong></div>
-      <div class="header-meta-item">Indicadores<strong id="meta-indicadores">27</strong></div>
+      <div class="header-meta-item">Áreas<strong id="meta-areas">9</strong></div>
+      <div class="header-meta-item">Temas<strong id="meta-temas">28</strong></div>
+      <div class="header-meta-item">Indicadores<strong id="meta-indicadores">43</strong></div>
     </div>
   </div>
 </header>
 
 <section class="filters" id="filters">
-  <span class="filter-label">Tema</span>
-  <button class="filter-chip active" data-filter="todos">Todos</button>
+  <span class="filter-label">Área</span>
+  <button class="filter-chip active" data-filter="todas">Todas</button>
 </section>
 
 <section class="indicators-grid" id="grid">
@@ -475,7 +476,8 @@ body.modal-open { overflow: hidden; }
 <div class="toast" id="toast">Link copiado!</div>
 
 <script>
-let TEMAS = [];
+/* === Estado global === */
+let AREAS = [];        // 9 áreas (carregadas dos JSONs)
 let MANIFESTO = null;
 
 const fmtNumero = (v, formato) => {
@@ -484,7 +486,36 @@ const fmtNumero = (v, formato) => {
   return new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(v);
 };
 
-/* THEME (dark mode) — persistência via localStorage */
+/* === Helpers de busca na hierarquia === */
+function findArea(areaId) {
+  return AREAS.find(a => a.id === areaId);
+}
+function findTema(areaId, temaId) {
+  const a = findArea(areaId);
+  if (!a) return null;
+  return a.temas.find(t => t.id === temaId);
+}
+function findIndicador(areaId, temaId, indId) {
+  const t = findTema(areaId, temaId);
+  if (!t) return null;
+  return t.indicadores.find(i => i.id === indId);
+}
+/* Acha o tema de qualquer área que tenha o id especificado (caso o usuário só forneça temaId) */
+function findTemaGlobal(temaId) {
+  for (const a of AREAS) {
+    const t = a.temas.find(t => t.id === temaId);
+    if (t) return { area: a, tema: t };
+  }
+  return null;
+}
+/* Lista plana de todos os temas (para a grid em modo "todos") */
+function todosOsTemas() {
+  const out = [];
+  AREAS.forEach(area => area.temas.forEach(t => out.push({ area, tema: t })));
+  return out;
+}
+
+/* === THEME === */
 function applyTheme(theme) {
   if (theme === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
@@ -510,31 +541,39 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
 });
 initTheme();
 
-/* DADOS */
+/* === Carregar dados === */
 async function carregarDados() {
   try {
     const manifestoResp = await fetch('data/manifesto.json');
     if (!manifestoResp.ok) throw new Error('manifesto.json não encontrado');
     MANIFESTO = await manifestoResp.json();
 
-    document.getElementById('meta-versao').textContent = MANIFESTO.meta.versao || '2.1';
+    document.getElementById('meta-versao').textContent = MANIFESTO.meta.versao || '4.0';
     document.getElementById('meta-atualizado').textContent = MANIFESTO.meta.atualizado || '—';
 
-    const promessas = MANIFESTO.temas.map(arq =>
+    const arquivos = MANIFESTO.temas || MANIFESTO.areas || [];
+    const promessas = arquivos.map(arq =>
       fetch('data/' + arq).then(r => { if (!r.ok) throw new Error('Erro: ' + arq); return r.json(); })
     );
-    TEMAS = await Promise.all(promessas);
-    TEMAS.sort((a, b) => (a.ordem || 99) - (b.ordem || 99));
+    AREAS = await Promise.all(promessas);
+    AREAS.sort((a, b) => (a.ordem || 99) - (b.ordem || 99));
 
-    document.getElementById('meta-temas').textContent = TEMAS.length;
-    const totalInd = TEMAS.reduce((s, t) => s + (t.indicadores?.length || 0), 0);
+    // Contagem
+    let totalTemas = 0, totalInd = 0;
+    AREAS.forEach(a => {
+      (a.temas || []).forEach(t => {
+        totalTemas++;
+        totalInd += (t.indicadores || []).length;
+      });
+    });
+    document.getElementById('meta-areas').textContent = AREAS.length;
+    document.getElementById('meta-temas').textContent = totalTemas;
     document.getElementById('meta-indicadores').textContent = totalInd;
 
     renderPublications();
     renderFilters();
-    renderGrid(TEMAS, { expandido: false });
+    renderGrid({ areaFiltro: 'todas' });
 
-    // Deep-link: se há um #indicador na URL, abre direto
     handleHash();
     window.addEventListener('hashchange', handleHash);
   } catch (err) {
@@ -562,13 +601,16 @@ function renderPublications() {
   `).join('');
 }
 
+/* === Filtros: lista de áreas === */
 function renderFilters() {
   const filtros = document.getElementById('filters');
-  TEMAS.forEach(t => {
+  // Remove chips antigas mantendo o label
+  filtros.querySelectorAll('.filter-chip:not([data-filter="todas"])').forEach(c => c.remove());
+  AREAS.forEach(a => {
     const btn = document.createElement('button');
     btn.className = 'filter-chip';
-    btn.dataset.filter = t.id;
-    btn.textContent = t.tema;
+    btn.dataset.filter = a.id;
+    btn.textContent = a.area;
     filtros.appendChild(btn);
   });
   filtros.addEventListener('click', e => {
@@ -576,18 +618,11 @@ function renderFilters() {
     document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
     e.target.classList.add('active');
     const f = e.target.dataset.filter;
-    if (f === 'todos') {
-      // Modo síntese: 1 card por tema
-      renderGrid(TEMAS, { expandido: false });
-    } else {
-      // Modo expandido: todos os indicadores do tema viram cards
-      const tema = TEMAS.find(t => t.id === f);
-      renderGrid([tema], { expandido: true });
-    }
+    renderGrid({ areaFiltro: f });
   });
 }
 
-/* Sparkline mini para os cards */
+/* === Sparkline mini para os cards === */
 function sparkSVG(serie) {
   if (!serie || serie.length < 2) return '';
   const W = 200, H = 36;
@@ -622,7 +657,6 @@ function tendenciaBadge(tendencia) {
   return `<span class="card-tendencia ${t.cls}" title="Tendência: ${t.label}"><span class="arrow">${t.arrow}</span>${t.label}</span>`;
 }
 
-/* Extrai "Mês/Ano" da string de última atualização */
 function ultimaAtualizacaoCurta(ultStr) {
   if (!ultStr) return '';
   const m = ultStr.match(/(Janeiro|Fevereiro|Março|Abril|Maio|Junho|Julho|Agosto|Setembro|Outubro|Novembro|Dezembro)\/?\s*(\d{4})/i);
@@ -631,19 +665,21 @@ function ultimaAtualizacaoCurta(ultStr) {
   return m2 ? m2[1] : '';
 }
 
-function cardHTML(tema, ind, opts) {
+/* === Card de tema === */
+function cardTemaHTML(area, tema) {
+  const ind = tema.indicadores[0]; // indicador-destaque do tema
+  if (!ind) return '';
   const ult = ultimaAtualizacaoCurta(ind.fonte?.ultimaAtualizacao);
-  const outros = (tema.indicadores.length - 1);
-  const mostrarTemaTag = !opts.expandido; // no modo expandido, todos os cards são do mesmo tema, então não repete
+  const outrosInd = tema.indicadores.length - 1;
   return `
-    <button class="indicator-card" data-tema="${tema.id}" data-ind="${ind.id}" aria-label="Ver detalhes: ${ind.titulo}">
+    <button class="indicator-card" data-area="${area.id}" data-tema="${tema.id}" aria-label="Ver tema: ${tema.tema}">
       <div class="card-top-row">
-        <div class="card-tema">${mostrarTemaTag ? tema.tema : ind.titulo.toUpperCase()}</div>
+        <div class="card-tema">${area.area}</div>
         ${ult ? `<div class="card-update">atualizado<br><strong>${ult}</strong></div>` : ''}
       </div>
-      <div class="card-titulo">${opts.expandido ? ind.titulo : ind.titulo}</div>
+      <div class="card-titulo">${tema.tema}</div>
       <div class="card-indicador">${ind.indicador}</div>
-      ${!opts.expandido && outros > 0 ? `<div class="card-extras-count">+ ${outros} ${outros === 1 ? 'indicador relacionado' : 'indicadores relacionados'}</div>` : ''}
+      ${outrosInd > 0 ? `<div class="card-extras-count">${tema.indicadores.length} indicadores</div>` : ''}
       <div class="card-valor-wrap">
         <div class="card-valor-row">
           <div class="card-valor">${fmtNumero(ind.valor, ind.formatoValor)}</div>
@@ -658,37 +694,27 @@ function cardHTML(tema, ind, opts) {
   `;
 }
 
-function renderGrid(temas, opts) {
-  opts = opts || { expandido: false };
+/* === Grid: mostra cards de tema === */
+function renderGrid(opts) {
+  opts = opts || {};
   const grid = document.getElementById('grid');
-  if (!temas.length) { grid.innerHTML = '<div class="loading">Nenhum tema encontrado.</div>'; return; }
-
-  let cardsHTML;
-  if (opts.expandido) {
-    // Modo expandido: mostra todos os indicadores do tema filtrado
-    const tema = temas[0];
-    cardsHTML = tema.indicadores.map(ind => cardHTML(tema, ind, { expandido: true })).join('');
+  let lista = [];
+  if (!opts.areaFiltro || opts.areaFiltro === 'todas') {
+    lista = todosOsTemas();
   } else {
-    // Modo síntese: 1 card (o destaque) por tema
-    cardsHTML = temas.map(tema => cardHTML(tema, tema.indicadores[0], { expandido: false })).join('');
+    const area = findArea(opts.areaFiltro);
+    if (area) lista = area.temas.map(t => ({ area, tema: t }));
   }
-
-  grid.innerHTML = cardsHTML;
-
+  if (!lista.length) { grid.innerHTML = '<div class="loading">Nenhum tema encontrado.</div>'; return; }
+  grid.innerHTML = lista.map(({ area, tema }) => cardTemaHTML(area, tema)).join('');
   grid.querySelectorAll('.indicator-card').forEach(card => {
     card.addEventListener('click', () => {
-      const tema = TEMAS.find(t => t.id === card.dataset.tema);
-      const indId = card.dataset.ind;
-      let idx = 0;
-      if (indId) {
-        const found = tema.indicadores.findIndex(i => i.id === indId);
-        if (found >= 0) idx = found;
-      }
-      abrirModal(tema, idx);
+      abrirModal(card.dataset.area, card.dataset.tema, 0);
     });
   });
 }
 
+/* === Chart SVG === */
 function gerarChartSVG(serie, formato, rotuloY) {
   const W = 720, H = 280;
   const margin = { top: 24, right: 60, bottom: 36, left: 60 };
@@ -733,6 +759,7 @@ function gerarChartSVG(serie, formato, rotuloY) {
   `;
 }
 
+/* === Recortes === */
 function gerarRecorteHTML(recorte, formato) {
   const max = Math.max(...recorte.valores.map(v => v.max || v.valor));
   return `
@@ -751,29 +778,17 @@ function gerarRecorteHTML(recorte, formato) {
   `;
 }
 
-/* Renderiza bloco de recortes — suporta tanto recorte único (objeto) quanto múltiplos (array) */
 function renderRecortesSection(ind, indSlug) {
-  // Retrocompatível: aceita ind.recorte (objeto) ou ind.recortes (array)
   let lista = [];
-  if (ind.recortes && Array.isArray(ind.recortes) && ind.recortes.length) {
-    lista = ind.recortes;
-  } else if (ind.recorte) {
-    lista = [ind.recorte];
-  }
+  if (ind.recortes && Array.isArray(ind.recortes) && ind.recortes.length) lista = ind.recortes;
+  else if (ind.recorte) lista = [ind.recorte];
   if (!lista.length) return '';
 
   if (lista.length === 1) {
-    // Recorte único: mostra direto, sem sub-abas
     const r = lista[0];
-    return `
-      <div class="section-block">
-        <h3>${r.titulo}</h3>
-        ${gerarRecorteHTML(r, ind.formatoValor)}
-      </div>
-    `;
+    return `<div class="section-block"><h3>${r.titulo}</h3>${gerarRecorteHTML(r, ind.formatoValor)}</div>`;
   }
 
-  // Múltiplos recortes: sub-abas internas
   const subtabsId = `subtabs-${indSlug}`;
   const subpanesId = `subpanes-${indSlug}`;
   const subtabsHTML = lista.map((r, i) => `
@@ -796,20 +811,27 @@ function renderRecortesSection(ind, indSlug) {
   `;
 }
 
-function renderTabs(tema, activeIdx) {
+/* === Abas do modal: indicadores DO TEMA === */
+function renderTabs(area, tema, activeIdx) {
   const tabsContainer = document.getElementById('modal-tabs');
+  if (tema.indicadores.length <= 1) {
+    tabsContainer.innerHTML = '';
+    tabsContainer.style.display = 'none';
+    return;
+  }
+  tabsContainer.style.display = '';
   tabsContainer.innerHTML = tema.indicadores.map((ind, i) => `
     <button class="modal-tab ${i === activeIdx ? 'active' : ''}" data-idx="${i}">${ind.titulo}</button>
   `).join('');
   tabsContainer.querySelectorAll('.modal-tab').forEach(t => {
-    t.addEventListener('click', () => abrirModal(tema, parseInt(t.dataset.idx), true));
+    t.addEventListener('click', () => abrirModal(area.id, tema.id, parseInt(t.dataset.idx)));
   });
 }
 
-/* Download CSV da série + recorte do indicador */
-function gerarCSV(tema, ind) {
+/* === CSV === */
+function gerarCSV(area, tema, ind) {
   const linhas = [];
-  linhas.push('# Painel CLEAR — ' + tema.tema + ' / ' + ind.titulo);
+  linhas.push('# Painel CLEAR — ' + area.area + ' / ' + tema.tema + ' / ' + ind.titulo);
   linhas.push('# Fonte: ' + (ind.fonte?.nome || ''));
   linhas.push('# URL fonte: ' + (ind.fonte?.url || ''));
   linhas.push('# Periodicidade: ' + (ind.fonte?.periodicidade || ''));
@@ -820,10 +842,7 @@ function gerarCSV(tema, ind) {
   linhas.push('');
   linhas.push('## Série histórica');
   linhas.push('ano,valor');
-  if (ind.serie) {
-    ind.serie.forEach(d => linhas.push(d.ano + ',' + d.valor));
-  }
-  // Recortes (suporta recorte único OU array de recortes)
+  if (ind.serie) ind.serie.forEach(d => linhas.push(d.ano + ',' + d.valor));
   const listaRecortes = (ind.recortes && Array.isArray(ind.recortes) && ind.recortes.length)
     ? ind.recortes
     : (ind.recorte ? [ind.recorte] : []);
@@ -839,20 +858,20 @@ function gerarCSV(tema, ind) {
   return linhas.join('\n');
 }
 
-function baixarCSV(tema, ind) {
-  const csv = gerarCSV(tema, ind);
+function baixarCSV(area, tema, ind) {
+  const csv = gerarCSV(area, tema, ind);
   const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `painel-clear_${tema.id}_${ind.id}.csv`;
+  a.download = `painel-clear_${area.id}_${tema.id}_${ind.id}.csv`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
   setTimeout(() => URL.revokeObjectURL(url), 500);
 }
 
-/* Compartilhar link do indicador */
+/* === Toast + share === */
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -860,9 +879,8 @@ function showToast(msg) {
   clearTimeout(t._timer);
   t._timer = setTimeout(() => t.classList.remove('show'), 1800);
 }
-
-function copiarLink(temaId, indId) {
-  const url = `${location.origin}${location.pathname}#${temaId}/${indId}`;
+function copiarLink(areaId, temaId, indId) {
+  const url = `${location.origin}${location.pathname}#${areaId}/${temaId}${indId ? '/' + indId : ''}`;
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(url).then(() => showToast('Link copiado para a área de transferência'));
   } else {
@@ -875,7 +893,8 @@ function copiarLink(temaId, indId) {
   }
 }
 
-function renderIndicadorBody(tema, ind) {
+/* === Corpo do indicador === */
+function renderIndicadorBody(area, tema, ind) {
   let html = `
     <div class="indicator-headline">
       <h3>${ind.titulo}</h3>
@@ -898,7 +917,7 @@ function renderIndicadorBody(tema, ind) {
       <div class="section-block">
         <div class="section-header">
           <h3>Série Histórica</h3>
-          <button class="download-btn" data-action="download" data-tema="${tema.id}" data-ind="${ind.id}">
+          <button class="download-btn" data-action="download" data-area="${area.id}" data-tema="${tema.id}" data-ind="${ind.id}">
             <span class="icon">↓</span> Baixar CSV
           </button>
         </div>
@@ -907,7 +926,7 @@ function renderIndicadorBody(tema, ind) {
     `;
   }
   if (ind.recorte || (ind.recortes && ind.recortes.length)) {
-    html += renderRecortesSection(ind, `${tema.id}-${ind.id}`);
+    html += renderRecortesSection(ind, `${area.id}-${tema.id}-${ind.id}`);
   }
 
   html += `
@@ -931,19 +950,19 @@ function renderIndicadorBody(tema, ind) {
     </div>
   `;
 
-  if (tema.capituloGuia || (tema.fontesRelacionadas && tema.fontesRelacionadas.length)) {
+  if (area.capituloGuia || (area.fontesRelacionadas && area.fontesRelacionadas.length)) {
     html += `<div class="section-block"><h3>No Guia de Fontes de Dados</h3>`;
-    if (tema.capituloGuia) {
-      html += `<div class="capitulo-tag">${tema.capituloGuia}</div>`;
+    if (area.capituloGuia) {
+      html += `<div class="capitulo-tag">${area.capituloGuia}</div>`;
       const guiaUrl = MANIFESTO.links?.guiaPdf || MANIFESTO.links?.guia;
       if (guiaUrl) {
         html += `<div><a href="${guiaUrl}" class="guia-link" target="_blank" rel="noopener">Baixar o Guia completo ↗</a></div>`;
       }
     }
-    if (tema.fontesRelacionadas && tema.fontesRelacionadas.length) {
+    if (area.fontesRelacionadas && area.fontesRelacionadas.length) {
       html += `<div style="margin-top:18px;">
         <div style="font-size:11px; color:var(--clear-gray); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.08em; font-weight:600;">Fontes relacionadas neste capítulo</div>
-        <ul class="fontes-relacionadas">${tema.fontesRelacionadas.map(f => `<li>${f}</li>`).join('')}</ul>
+        <ul class="fontes-relacionadas">${area.fontesRelacionadas.map(f => `<li>${f}</li>`).join('')}</ul>
       </div>`;
     }
     html += `</div>`;
@@ -951,7 +970,7 @@ function renderIndicadorBody(tema, ind) {
 
   html += `
     <div class="section-block" style="margin-bottom:0; padding-top: 8px; border-top: 1px solid var(--border-soft);">
-      <button class="share-row" data-action="share" data-tema="${tema.id}" data-ind="${ind.id}">
+      <button class="share-row" data-action="share" data-area="${area.id}" data-tema="${tema.id}" data-ind="${ind.id}">
         <span>↗</span><span class="label">Copiar link direto para este indicador</span>
       </button>
     </div>
@@ -960,20 +979,27 @@ function renderIndicadorBody(tema, ind) {
   return html;
 }
 
-function abrirModal(tema, idxIndicador, fromTab = false) {
-  const ind = tema.indicadores[idxIndicador];
-  if (!ind) return;
+/* === Abrir modal: agora recebe areaId, temaId, idxIndicador === */
+function abrirModal(areaId, temaId, idxIndicador = 0) {
+  const area = findArea(areaId);
+  if (!area) return;
+  const tema = area.temas.find(t => t.id === temaId);
+  if (!tema || !tema.indicadores.length) return;
+  const ind = tema.indicadores[idxIndicador] || tema.indicadores[0];
 
-  document.getElementById('modal-tema').textContent = tema.tema;
-  document.getElementById('modal-tema-title').textContent = `Indicadores de ${tema.tema}`;
-  renderTabs(tema, idxIndicador);
-  document.getElementById('modal-body').innerHTML = renderIndicadorBody(tema, ind);
+  document.getElementById('modal-tema').textContent = area.area;
+  document.getElementById('modal-tema-title').textContent = tema.tema;
+  if (tema.descricao) {
+    const subEl = document.getElementById('modal-tema-sub');
+    if (subEl) subEl.textContent = tema.descricao;
+  }
+  renderTabs(area, tema, idxIndicador);
+  document.getElementById('modal-body').innerHTML = renderIndicadorBody(area, tema, ind);
   document.getElementById('modal-overlay').classList.add('open');
   document.getElementById('modal').classList.add('open');
   document.body.classList.add('modal-open');
 
-  // Atualiza URL (#tema/indicador) sem disparar hashchange
-  const novoHash = `#${tema.id}/${ind.id}`;
+  const novoHash = `#${area.id}/${tema.id}/${ind.id}`;
   if (location.hash !== novoHash) {
     history.replaceState(null, '', novoHash);
   }
@@ -995,23 +1021,27 @@ function handleHash() {
   const h = location.hash.replace(/^#/, '');
   if (!h) return;
   const partes = h.split('/');
-  const temaId = partes[0];
-  const indId = partes[1];
-  const tema = TEMAS.find(t => t.id === temaId);
+  const areaId = partes[0];
+  const temaId = partes[1];
+  const indId = partes[2];
+  if (!areaId || !temaId) return;
+  const area = findArea(areaId);
+  if (!area) return;
+  const tema = area.temas.find(t => t.id === temaId);
   if (!tema) return;
   let idx = 0;
   if (indId) {
     const found = tema.indicadores.findIndex(i => i.id === indId);
     if (found >= 0) idx = found;
   }
-  abrirModal(tema, idx);
+  abrirModal(area.id, tema.id, idx);
 }
 
 document.getElementById('modal-close').addEventListener('click', fecharModal);
 document.getElementById('modal-overlay').addEventListener('click', fecharModal);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
 
-// Delegação para botões dentro do modal-body (download + share + sub-abas)
+/* === Delegação de cliques dentro do modal-body === */
 document.getElementById('modal-body').addEventListener('click', e => {
   // Sub-abas de recortes
   const subtab = e.target.closest('.subtab');
@@ -1025,7 +1055,6 @@ document.getElementById('modal-body').addEventListener('click', e => {
       const pane = document.getElementById(targetId);
       if (pane) {
         pane.classList.add('active');
-        // re-anima as barras quando muda sub-aba
         pane.querySelectorAll('.recorte-bar').forEach(bar => {
           const w = bar.dataset.width;
           bar.style.width = '0%';
@@ -1039,12 +1068,14 @@ document.getElementById('modal-body').addEventListener('click', e => {
   const btn = e.target.closest('[data-action]');
   if (!btn) return;
   const action = btn.dataset.action;
-  const tema = TEMAS.find(t => t.id === btn.dataset.tema);
+  const area = findArea(btn.dataset.area);
+  if (!area) return;
+  const tema = area.temas.find(t => t.id === btn.dataset.tema);
   if (!tema) return;
   const ind = tema.indicadores.find(i => i.id === btn.dataset.ind);
   if (!ind) return;
-  if (action === 'download') baixarCSV(tema, ind);
-  if (action === 'share') copiarLink(tema.id, ind.id);
+  if (action === 'download') baixarCSV(area, tema, ind);
+  if (action === 'share') copiarLink(area.id, tema.id, ind.id);
 });
 
 carregarDados();
