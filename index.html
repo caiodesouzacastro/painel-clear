@@ -420,7 +420,7 @@ body.modal-open { overflow: hidden; }
     <h1 class="title">Indicadores para a avaliação<br>de <em>políticas públicas</em> no Brasil</h1>
     <p class="subtitle">Painel institucional que reúne indicadores-chave de fontes oficiais brasileiras — em segurança, educação, saúde, assistência social, saneamento, trabalho e meio ambiente. Acompanha o <em>Guia de Fontes de Dados</em> do FGV CLEAR.</p>
     <div class="header-meta">
-      <div class="header-meta-item">Versão<strong id="meta-versao">4.1</strong></div>
+      <div class="header-meta-item">Versão<strong id="meta-versao">4.2</strong></div>
       <div class="header-meta-item">Última atualização<strong id="meta-atualizado">Maio de 2026</strong></div>
       <div class="header-meta-item">Áreas<strong id="meta-areas">9</strong></div>
       <div class="header-meta-item">Temas<strong id="meta-temas">28</strong></div>
@@ -695,16 +695,66 @@ function cardTemaHTML(area, tema) {
 }
 
 /* === Grid: mostra cards de tema === */
+/* Card de área (modo "Todas") */
+function cardAreaHTML(area) {
+  // Indicador-destaque: primeiro indicador do primeiro tema da área
+  const primeiroTema = area.temas[0];
+  const ind = primeiroTema?.indicadores?.[0];
+  if (!ind) return '';
+  const totalTemas = area.temas.length;
+  const totalInd = area.temas.reduce((s, t) => s + t.indicadores.length, 0);
+  const ult = ultimaAtualizacaoCurta(ind.fonte?.ultimaAtualizacao);
+  return `
+    <button class="indicator-card area-card" data-area="${area.id}" aria-label="Ver área: ${area.area}">
+      <div class="card-top-row">
+        <div class="card-tema">${area.area.toUpperCase()}</div>
+        ${ult ? `<div class="card-update">${totalTemas} temas<br><strong>${totalInd} indicadores</strong></div>` : ''}
+      </div>
+      <div class="card-titulo">${primeiroTema.tema}</div>
+      <div class="card-indicador">${ind.indicador}</div>
+      <div class="card-extras-count">+ ${totalTemas - 1} outros temas</div>
+      <div class="card-valor-wrap">
+        <div class="card-valor-row">
+          <div class="card-valor">${fmtNumero(ind.valor, ind.formatoValor)}</div>
+          ${tendenciaBadge(ind.tendencia)}
+        </div>
+        <div class="card-unidade">${ind.unidade}</div>
+        <div class="card-sparkline">${sparkSVG(ind.serie)}</div>
+      </div>
+      <div class="card-destaque">${ind.destaque}</div>
+      <span class="card-arrow">→</span>
+    </button>
+  `;
+}
+
 function renderGrid(opts) {
   opts = opts || {};
   const grid = document.getElementById('grid');
-  let lista = [];
+
+  // Modo "Todas": mostra cards de ÁREA (não de tema)
   if (!opts.areaFiltro || opts.areaFiltro === 'todas') {
-    lista = todosOsTemas();
-  } else {
-    const area = findArea(opts.areaFiltro);
-    if (area) lista = area.temas.map(t => ({ area, tema: t }));
+    if (!AREAS.length) { grid.innerHTML = '<div class="loading">Nenhuma área encontrada.</div>'; return; }
+    grid.innerHTML = AREAS.map(area => cardAreaHTML(area)).join('');
+    grid.querySelectorAll('.indicator-card').forEach(card => {
+      card.addEventListener('click', () => {
+        // Ao clicar no card de área, filtra por aquela área (mostra os temas dela)
+        const areaId = card.dataset.area;
+        // Ativa o chip correspondente no filtro
+        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        const chip = document.querySelector(`.filter-chip[data-filter="${areaId}"]`);
+        if (chip) chip.classList.add('active');
+        renderGrid({ areaFiltro: areaId });
+        // Scroll suave de volta ao grid (caso o usuário tenha rolado)
+        document.getElementById('grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+    return;
   }
+
+  // Modo "área filtrada": mostra cards de TEMA
+  const area = findArea(opts.areaFiltro);
+  if (!area) { grid.innerHTML = '<div class="loading">Área não encontrada.</div>'; return; }
+  const lista = area.temas.map(t => ({ area, tema: t }));
   if (!lista.length) { grid.innerHTML = '<div class="loading">Nenhum tema encontrado.</div>'; return; }
   grid.innerHTML = lista.map(({ area, tema }) => cardTemaHTML(area, tema)).join('');
   grid.querySelectorAll('.indicator-card').forEach(card => {
