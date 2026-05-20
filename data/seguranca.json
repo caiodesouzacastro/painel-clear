@@ -1,6 +1,6 @@
 {
   "id": "seguranca",
-  "tema": "Segurança Pública",
+  "area": "Segurança Pública",
   "ordem": 1,
   "capituloGuia": "Capítulo 8 — Segurança Pública",
   "fontesRelacionadas": [
@@ -9,188 +9,634 @@
     "SIM — Sistema de Informações sobre Mortalidade (MS)",
     "Registros de Ocorrências Estaduais (ISP-RJ, SSP-SP)"
   ],
-  "indicadores": [
+  "temas": [
     {
-      "id": "homicidios",
-      "titulo": "Homicídios no Brasil",
-      "indicador": "Taxa de homicídios por 100 mil habitantes",
-      "valor": 21.2,
-      "unidade": "por 100 mil hab.",
-      "destaque": "Menor taxa em 11 anos",
-      "totalAbsoluto": "45.747 homicídios registrados em 2023",
-      "tendencia": "queda",
-      "serie": [
-        {"ano": 2013, "valor": 28.6},
-        {"ano": 2014, "valor": 29.8},
-        {"ano": 2015, "valor": 28.9},
-        {"ano": 2016, "valor": 30.3},
-        {"ano": 2017, "valor": 31.6},
-        {"ano": 2018, "valor": 27.5},
-        {"ano": 2019, "valor": 21.7},
-        {"ano": 2020, "valor": 23.7},
-        {"ano": 2021, "valor": 22.3},
-        {"ano": 2022, "valor": 21.7},
-        {"ano": 2023, "valor": 21.2}
-      ],
-      "rotuloSerieY": "Por 100 mil hab.",
-      "recortes": [
+      "id": "violencia-letal",
+      "tema": "Violência letal",
+      "descricao": "Indicadores de homicídios e mortes violentas no Brasil",
+      "indicadores": [
         {
-          "id": "uf",
-          "dimensao": "Por UF",
-          "titulo": "Taxa de homicídios por 100 mil hab. (2023) — maiores e menores",
-          "valores": [
-            {"rotulo": "Amapá", "valor": 57.4, "max": 60},
-            {"rotulo": "Bahia", "valor": 43.9, "max": 60},
-            {"rotulo": "Pernambuco", "valor": 38.0, "max": 60},
-            {"rotulo": "Amazonas", "valor": 36.0, "max": 60},
-            {"rotulo": "Ceará", "valor": 34.8, "max": 60},
-            {"rotulo": "Brasil (média)", "valor": 21.2, "max": 60},
-            {"rotulo": "Distrito Federal", "valor": 11.0, "max": 60},
-            {"rotulo": "Santa Catarina", "valor": 8.8, "max": 60},
-            {"rotulo": "São Paulo", "valor": 6.4, "max": 60}
-          ]
+          "id": "homicidios",
+          "titulo": "Homicídios no Brasil",
+          "indicador": "Taxa de homicídios por 100 mil habitantes",
+          "valor": 21.2,
+          "unidade": "por 100 mil hab.",
+          "destaque": "Menor taxa em 11 anos",
+          "totalAbsoluto": "45.747 homicídios registrados em 2023",
+          "tendencia": "queda",
+          "serie": [
+            {
+              "ano": 2013,
+              "valor": 28.6
+            },
+            {
+              "ano": 2014,
+              "valor": 29.8
+            },
+            {
+              "ano": 2015,
+              "valor": 28.9
+            },
+            {
+              "ano": 2016,
+              "valor": 30.3
+            },
+            {
+              "ano": 2017,
+              "valor": 31.6
+            },
+            {
+              "ano": 2018,
+              "valor": 27.5
+            },
+            {
+              "ano": 2019,
+              "valor": 21.7
+            },
+            {
+              "ano": 2020,
+              "valor": 23.7
+            },
+            {
+              "ano": 2021,
+              "valor": 22.3
+            },
+            {
+              "ano": 2022,
+              "valor": 21.7
+            },
+            {
+              "ano": 2023,
+              "valor": 21.2
+            }
+          ],
+          "rotuloSerieY": "Por 100 mil hab.",
+          "recortes": [
+            {
+              "id": "uf",
+              "dimensao": "Por UF",
+              "titulo": "Taxa de homicídios por 100 mil hab. (2023) — maiores e menores",
+              "valores": [
+                {
+                  "rotulo": "Amapá",
+                  "valor": 57.4,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Bahia",
+                  "valor": 43.9,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Pernambuco",
+                  "valor": 38.0,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Amazonas",
+                  "valor": 36.0,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Ceará",
+                  "valor": 34.8,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 21.2,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Distrito Federal",
+                  "valor": 11.0,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Santa Catarina",
+                  "valor": 8.8,
+                  "max": 60
+                },
+                {
+                  "rotulo": "São Paulo",
+                  "valor": 6.4,
+                  "max": 60
+                }
+              ]
+            },
+            {
+              "id": "raca",
+              "dimensao": "Por raça/cor",
+              "titulo": "Homicídios registrados em 2023 — exposição relativa",
+              "valores": [
+                {
+                  "rotulo": "Pessoas negras (pretas e pardas)",
+                  "valor": 35213,
+                  "max": 36000
+                },
+                {
+                  "rotulo": "Pessoas não negras",
+                  "valor": 10534,
+                  "max": 36000
+                }
+              ]
+            },
+            {
+              "id": "idade",
+              "dimensao": "Por faixa etária",
+              "titulo": "Vítimas de homicídio em 2023, por faixa etária (%)",
+              "valores": [
+                {
+                  "rotulo": "15 a 29 anos",
+                  "valor": 47.8,
+                  "max": 50
+                },
+                {
+                  "rotulo": "30 a 49 anos",
+                  "valor": 35.2,
+                  "max": 50
+                },
+                {
+                  "rotulo": "50 anos ou mais",
+                  "valor": 14.1,
+                  "max": 50
+                },
+                {
+                  "rotulo": "Até 14 anos",
+                  "valor": 2.9,
+                  "max": 50
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "Atlas da Violência 2025 — Ipea/FBSP, a partir do SIM/MS",
+            "produtor": "Ipea e Fórum Brasileiro de Segurança Pública",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "Maio/2025 (dados de 2023)",
+            "url": "https://www.ipea.gov.br/atlasviolencia"
+          },
+          "notaMetodologica": "Taxa considera óbitos por agressão (CID-10 X85-Y09) e intervenção legal (Y35-Y36). O Atlas estima ainda 'homicídios ocultos' classificados como MVCI. Limitação: depende da qualidade do preenchimento da declaração de óbito. Os recortes por UF, raça e idade referem-se a 2023; uma pessoa negra tinha 2,7 vezes mais chance de ser vítima de homicídio do que uma não negra (94% das vítimas jovens são homens). Para análise rigorosa, consulte o Atlas da Violência."
         },
         {
-          "id": "raca",
-          "dimensao": "Por raça/cor",
-          "titulo": "Homicídios registrados em 2023 — exposição relativa",
-          "valores": [
-            {"rotulo": "Pessoas negras (pretas e pardas)", "valor": 35213, "max": 36000},
-            {"rotulo": "Pessoas não negras", "valor": 10534, "max": 36000}
-          ]
-        },
-        {
-          "id": "idade",
-          "dimensao": "Por faixa etária",
-          "titulo": "Vítimas de homicídio em 2023, por faixa etária (%)",
-          "valores": [
-            {"rotulo": "15 a 29 anos", "valor": 47.8, "max": 50},
-            {"rotulo": "30 a 49 anos", "valor": 35.2, "max": 50},
-            {"rotulo": "50 anos ou mais", "valor": 14.1, "max": 50},
-            {"rotulo": "Até 14 anos", "valor": 2.9, "max": 50}
-          ]
+          "id": "mvci",
+          "titulo": "Homicídios Ocultos (MVCI)",
+          "indicador": "Estimativa de homicídios não contabilizados (Mortes Violentas por Causa Indeterminada)",
+          "valor": 4692,
+          "unidade": "homicídios ocultos por ano (média 2013-2023)",
+          "destaque": "21 UFs reduziram MVCI em 2023",
+          "totalAbsoluto": "51.608 homicídios ocultos estimados em 11 anos",
+          "tendencia": "queda",
+          "formatoValor": "inteiro",
+          "serie": [
+            {
+              "ano": 2013,
+              "valor": 3850
+            },
+            {
+              "ano": 2014,
+              "valor": 4100
+            },
+            {
+              "ano": 2015,
+              "valor": 3950
+            },
+            {
+              "ano": 2016,
+              "valor": 4300
+            },
+            {
+              "ano": 2017,
+              "valor": 4450
+            },
+            {
+              "ano": 2018,
+              "valor": 5200
+            },
+            {
+              "ano": 2019,
+              "valor": 5400
+            },
+            {
+              "ano": 2020,
+              "valor": 5300
+            },
+            {
+              "ano": 2021,
+              "valor": 5500
+            },
+            {
+              "ano": 2022,
+              "valor": 5100
+            },
+            {
+              "ano": 2023,
+              "valor": 4470
+            }
+          ],
+          "rotuloSerieY": "Estimativa anual",
+          "recortes": [
+            {
+              "id": "concentracao",
+              "dimensao": "Por UF (concentração)",
+              "titulo": "Estados que concentram MVCI (% do total nacional 2013-2023)",
+              "valores": [
+                {
+                  "rotulo": "São Paulo",
+                  "valor": 31.0,
+                  "max": 35
+                },
+                {
+                  "rotulo": "Rio de Janeiro",
+                  "valor": 14.8,
+                  "max": 35
+                },
+                {
+                  "rotulo": "Minas Gerais",
+                  "valor": 11.5,
+                  "max": 35
+                },
+                {
+                  "rotulo": "Bahia",
+                  "valor": 9.1,
+                  "max": 35
+                },
+                {
+                  "rotulo": "Demais 23 UFs",
+                  "valor": 33.6,
+                  "max": 35
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "Atlas da Violência 2025 — Ipea/FBSP (metodologia Cerqueira & Lins, 2024)",
+            "produtor": "Ipea e Fórum Brasileiro de Segurança Pública",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "Maio/2025 (dados de 2023)",
+            "url": "https://www.ipea.gov.br/atlasviolencia"
+          },
+          "notaMetodologica": "MVCI são óbitos violentos sem identificação da intencionalidade. SP, RJ, MG e BA concentram 66,4% das MVCI. Os valores anuais da série são aproximados a partir das totalizações do Atlas — para análises rigorosas, consultar a publicação original."
         }
-      ],
-      "fonte": {
-        "nome": "Atlas da Violência 2025 — Ipea/FBSP, a partir do SIM/MS",
-        "produtor": "Ipea e Fórum Brasileiro de Segurança Pública",
-        "periodicidade": "Anual",
-        "ultimaAtualizacao": "Maio/2025 (dados de 2023)",
-        "url": "https://www.ipea.gov.br/atlasviolencia"
-      },
-      "notaMetodologica": "Taxa considera óbitos por agressão (CID-10 X85-Y09) e intervenção legal (Y35-Y36). O Atlas estima ainda 'homicídios ocultos' classificados como MVCI. Limitação: depende da qualidade do preenchimento da declaração de óbito. Os recortes por UF, raça e idade referem-se a 2023; uma pessoa negra tinha 2,7 vezes mais chance de ser vítima de homicídio do que uma não negra (94% das vítimas jovens são homens). Para análise rigorosa, consulte o Atlas da Violência."
+      ]
     },
     {
-      "id": "mvci",
-      "titulo": "Homicídios Ocultos (MVCI)",
-      "indicador": "Estimativa de homicídios não contabilizados (Mortes Violentas por Causa Indeterminada)",
-      "valor": 4692,
-      "unidade": "homicídios ocultos por ano (média 2013-2023)",
-      "destaque": "21 UFs reduziram MVCI em 2023",
-      "totalAbsoluto": "51.608 homicídios ocultos estimados em 11 anos",
-      "tendencia": "queda",
-      "formatoValor": "inteiro",
-      "serie": [
-        {"ano": 2013, "valor": 3850},
-        {"ano": 2014, "valor": 4100},
-        {"ano": 2015, "valor": 3950},
-        {"ano": 2016, "valor": 4300},
-        {"ano": 2017, "valor": 4450},
-        {"ano": 2018, "valor": 5200},
-        {"ano": 2019, "valor": 5400},
-        {"ano": 2020, "valor": 5300},
-        {"ano": 2021, "valor": 5500},
-        {"ano": 2022, "valor": 5100},
-        {"ano": 2023, "valor": 4470}
-      ],
-      "rotuloSerieY": "Estimativa anual",
-      "recortes": [
+      "id": "violencia-genero",
+      "tema": "Violência de gênero",
+      "descricao": "Indicadores de violência letal contra mulheres",
+      "indicadores": [
         {
-          "id": "concentracao",
-          "dimensao": "Por UF (concentração)",
-          "titulo": "Estados que concentram MVCI (% do total nacional 2013-2023)",
-          "valores": [
-            {"rotulo": "São Paulo", "valor": 31.0, "max": 35},
-            {"rotulo": "Rio de Janeiro", "valor": 14.8, "max": 35},
-            {"rotulo": "Minas Gerais", "valor": 11.5, "max": 35},
-            {"rotulo": "Bahia", "valor": 9.1, "max": 35},
-            {"rotulo": "Demais 23 UFs", "valor": 33.6, "max": 35}
-          ]
+          "id": "feminicidios",
+          "titulo": "Feminicídios",
+          "indicador": "Mulheres assassinadas em razão do gênero",
+          "valor": 1492,
+          "unidade": "vítimas em 2024",
+          "destaque": "Recorde da série iniciada em 2015",
+          "totalAbsoluto": "Taxa: 1,4 por 100 mil mulheres — 84% mortas em casa",
+          "tendencia": "alta",
+          "formatoValor": "inteiro",
+          "serie": [
+            {
+              "ano": 2016,
+              "valor": 933
+            },
+            {
+              "ano": 2017,
+              "valor": 1133
+            },
+            {
+              "ano": 2018,
+              "valor": 1206
+            },
+            {
+              "ano": 2019,
+              "valor": 1330
+            },
+            {
+              "ano": 2020,
+              "valor": 1354
+            },
+            {
+              "ano": 2021,
+              "valor": 1342
+            },
+            {
+              "ano": 2022,
+              "valor": 1439
+            },
+            {
+              "ano": 2023,
+              "valor": 1463
+            },
+            {
+              "ano": 2024,
+              "valor": 1492
+            }
+          ],
+          "rotuloSerieY": "Vítimas registradas",
+          "recortes": [
+            {
+              "id": "raca",
+              "dimensao": "Por raça/cor",
+              "titulo": "Vítimas de feminicídio 2024 por raça/cor (%)",
+              "valores": [
+                {
+                  "rotulo": "Mulheres negras (pretas e pardas)",
+                  "valor": 68.2,
+                  "max": 75
+                },
+                {
+                  "rotulo": "Mulheres brancas",
+                  "valor": 28.5,
+                  "max": 75
+                },
+                {
+                  "rotulo": "Outras/sem informação",
+                  "valor": 3.3,
+                  "max": 75
+                }
+              ]
+            },
+            {
+              "id": "idade",
+              "dimensao": "Por faixa etária",
+              "titulo": "Vítimas de feminicídio 2024 por idade (%)",
+              "valores": [
+                {
+                  "rotulo": "18 a 44 anos",
+                  "valor": 64.0,
+                  "max": 70
+                },
+                {
+                  "rotulo": "45 a 59 anos",
+                  "valor": 18.2,
+                  "max": 70
+                },
+                {
+                  "rotulo": "60+ anos",
+                  "valor": 9.1,
+                  "max": 70
+                },
+                {
+                  "rotulo": "Até 17 anos",
+                  "valor": 8.7,
+                  "max": 70
+                }
+              ]
+            },
+            {
+              "id": "uf",
+              "dimensao": "Por UF (taxa)",
+              "titulo": "Taxa de mortalidade feminina 2023 (por 100 mil mulheres)",
+              "valores": [
+                {
+                  "rotulo": "Roraima",
+                  "valor": 10.4,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Amazonas",
+                  "valor": 5.8,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 3.5,
+                  "max": 11
+                },
+                {
+                  "rotulo": "São Paulo",
+                  "valor": 1.8,
+                  "max": 11
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "19º Anuário Brasileiro de Segurança Pública — FBSP (2025)",
+            "produtor": "Fórum Brasileiro de Segurança Pública",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "Julho/2025 (dados de 2024)",
+            "url": "https://forumseguranca.org.br/publicacoes/anuario-brasileiro-de-seguranca-publica/"
+          },
+          "notaMetodologica": "Lei 13.104/2015 tipificou feminicídio. Dados a partir de 2016 são comparáveis. 68% das vítimas são mulheres negras; companheiro/ex-companheiro é o autor mais comum. Subnotificação é limitação relevante: muitos casos são classificados como homicídios sem a qualificadora."
         }
-      ],
-      "fonte": {
-        "nome": "Atlas da Violência 2025 — Ipea/FBSP (metodologia Cerqueira & Lins, 2024)",
-        "produtor": "Ipea e Fórum Brasileiro de Segurança Pública",
-        "periodicidade": "Anual",
-        "ultimaAtualizacao": "Maio/2025 (dados de 2023)",
-        "url": "https://www.ipea.gov.br/atlasviolencia"
-      },
-      "notaMetodologica": "MVCI são óbitos violentos sem identificação da intencionalidade. SP, RJ, MG e BA concentram 66,4% das MVCI. Os valores anuais da série são aproximados a partir das totalizações do Atlas — para análises rigorosas, consultar a publicação original."
+      ]
     },
     {
-      "id": "feminicidios",
-      "titulo": "Feminicídios",
-      "indicador": "Mulheres assassinadas em razão do gênero",
-      "valor": 1492,
-      "unidade": "vítimas em 2024",
-      "destaque": "Recorde da série iniciada em 2015",
-      "totalAbsoluto": "Taxa: 1,4 por 100 mil mulheres — 84% mortas em casa",
-      "tendencia": "alta",
-      "formatoValor": "inteiro",
-      "serie": [
-        {"ano": 2016, "valor": 933},
-        {"ano": 2017, "valor": 1133},
-        {"ano": 2018, "valor": 1206},
-        {"ano": 2019, "valor": 1330},
-        {"ano": 2020, "valor": 1354},
-        {"ano": 2021, "valor": 1342},
-        {"ano": 2022, "valor": 1439},
-        {"ano": 2023, "valor": 1463},
-        {"ano": 2024, "valor": 1492}
-      ],
-      "rotuloSerieY": "Vítimas registradas",
-      "recortes": [
+      "id": "encarceramento",
+      "tema": "Encarceramento",
+      "descricao": "Sistema prisional e população privada de liberdade",
+      "indicadores": [
         {
-          "id": "raca",
-          "dimensao": "Por raça/cor",
-          "titulo": "Vítimas de feminicídio 2024 por raça/cor (%)",
-          "valores": [
-            {"rotulo": "Mulheres negras (pretas e pardas)", "valor": 68.2, "max": 75},
-            {"rotulo": "Mulheres brancas", "valor": 28.5, "max": 75},
-            {"rotulo": "Outras/sem informação", "valor": 3.3, "max": 75}
-          ]
+          "id": "populacao-carceraria",
+          "titulo": "População carcerária",
+          "indicador": "Pessoas privadas de liberdade no sistema prisional",
+          "valor": 832295,
+          "unidade": "pessoas (junho/2024)",
+          "destaque": "3ª maior do mundo, atrás de EUA e China",
+          "totalAbsoluto": "Taxa: 387 presos por 100 mil hab.",
+          "tendencia": "alta",
+          "formatoValor": "inteiro",
+          "serie": [
+            {
+              "ano": 2015,
+              "valor": 698618
+            },
+            {
+              "ano": 2016,
+              "valor": 726712
+            },
+            {
+              "ano": 2017,
+              "valor": 726354
+            },
+            {
+              "ano": 2018,
+              "valor": 744216
+            },
+            {
+              "ano": 2019,
+              "valor": 755274
+            },
+            {
+              "ano": 2020,
+              "valor": 759518
+            },
+            {
+              "ano": 2022,
+              "valor": 832295
+            },
+            {
+              "ano": 2023,
+              "valor": 852000
+            },
+            {
+              "ano": 2024,
+              "valor": 832295
+            }
+          ],
+          "rotuloSerieY": "Pessoas presas",
+          "recortes": [
+            {
+              "id": "regime",
+              "dimensao": "Por regime",
+              "titulo": "População carcerária por regime (2024)",
+              "valores": [
+                {
+                  "rotulo": "Fechado",
+                  "valor": 363000,
+                  "max": 400000
+                },
+                {
+                  "rotulo": "Provisória (sem sentença)",
+                  "valor": 215000,
+                  "max": 400000
+                },
+                {
+                  "rotulo": "Semiaberto",
+                  "valor": 130000,
+                  "max": 400000
+                },
+                {
+                  "rotulo": "Aberto/outros",
+                  "valor": 124295,
+                  "max": 400000
+                }
+              ]
+            },
+            {
+              "id": "uf",
+              "dimensao": "Por UF",
+              "titulo": "Estados com maior população prisional (2024)",
+              "valores": [
+                {
+                  "rotulo": "São Paulo",
+                  "valor": 196000,
+                  "max": 200000
+                },
+                {
+                  "rotulo": "Minas Gerais",
+                  "valor": 85000,
+                  "max": 200000
+                },
+                {
+                  "rotulo": "Rio de Janeiro",
+                  "valor": 49500,
+                  "max": 200000
+                },
+                {
+                  "rotulo": "Pernambuco",
+                  "valor": 36000,
+                  "max": 200000
+                },
+                {
+                  "rotulo": "Paraná",
+                  "valor": 35000,
+                  "max": 200000
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "SISDEPEN — Sistema de Informações do Departamento Penitenciário Nacional",
+            "produtor": "Senappen / Ministério da Justiça",
+            "periodicidade": "Semestral",
+            "ultimaAtualizacao": "Dezembro/2024 (junho 2024)",
+            "url": "https://www.gov.br/senappen/pt-br/assuntos/estatisticas/sisdepen"
+          },
+          "notaMetodologica": "Inclui regimes fechado, semiaberto, aberto, e prisão provisória (sem sentença transitada). Brasil tem a 3ª maior população carcerária absoluta do mundo. Taxa de 387/100mil é alta por padrões internacionais (mediana global: 145/100mil). 26% dos presos são provisórios — sem condenação. Valores aproximados por UF."
         },
         {
-          "id": "idade",
-          "dimensao": "Por faixa etária",
-          "titulo": "Vítimas de feminicídio 2024 por idade (%)",
-          "valores": [
-            {"rotulo": "18 a 44 anos", "valor": 64.0, "max": 70},
-            {"rotulo": "45 a 59 anos", "valor": 18.2, "max": 70},
-            {"rotulo": "60+ anos", "valor": 9.1, "max": 70},
-            {"rotulo": "Até 17 anos", "valor": 8.7, "max": 70}
-          ]
-        },
-        {
-          "id": "uf",
-          "dimensao": "Por UF (taxa)",
-          "titulo": "Taxa de mortalidade feminina 2023 (por 100 mil mulheres)",
-          "valores": [
-            {"rotulo": "Roraima", "valor": 10.4, "max": 11},
-            {"rotulo": "Amazonas", "valor": 5.8, "max": 11},
-            {"rotulo": "Brasil (média)", "valor": 3.5, "max": 11},
-            {"rotulo": "São Paulo", "valor": 1.8, "max": 11}
-          ]
+          "id": "deficit-prisional",
+          "titulo": "Déficit do sistema prisional",
+          "indicador": "Diferença entre presos e vagas no sistema prisional",
+          "valor": 188,
+          "unidade": "mil vagas faltantes (2024)",
+          "destaque": "Taxa de ocupação: 129%",
+          "totalAbsoluto": "Cada 100 vagas ocupadas por 129 presos",
+          "tendencia": "queda",
+          "formatoValor": "inteiro",
+          "serie": [
+            {
+              "ano": 2015,
+              "valor": 260
+            },
+            {
+              "ano": 2017,
+              "valor": 304
+            },
+            {
+              "ano": 2018,
+              "valor": 312
+            },
+            {
+              "ano": 2019,
+              "valor": 313
+            },
+            {
+              "ano": 2020,
+              "valor": 308
+            },
+            {
+              "ano": 2022,
+              "valor": 230
+            },
+            {
+              "ano": 2024,
+              "valor": 188
+            }
+          ],
+          "rotuloSerieY": "Mil vagas faltantes",
+          "recortes": [
+            {
+              "id": "ocupacao-uf",
+              "dimensao": "Taxa de ocupação por UF",
+              "titulo": "Estados com maior superlotação (2024, % de ocupação)",
+              "valores": [
+                {
+                  "rotulo": "Pernambuco",
+                  "valor": 224,
+                  "max": 250
+                },
+                {
+                  "rotulo": "Ceará",
+                  "valor": 200,
+                  "max": 250
+                },
+                {
+                  "rotulo": "Mato Grosso do Sul",
+                  "valor": 195,
+                  "max": 250
+                },
+                {
+                  "rotulo": "Alagoas",
+                  "valor": 188,
+                  "max": 250
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 129,
+                  "max": 250
+                },
+                {
+                  "rotulo": "São Paulo",
+                  "valor": 122,
+                  "max": 250
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "SISDEPEN — Sistema de Informações Penitenciárias",
+            "produtor": "Senappen / Ministério da Justiça",
+            "periodicidade": "Semestral",
+            "ultimaAtualizacao": "Dezembro/2024 (junho 2024)",
+            "url": "https://www.gov.br/senappen/pt-br/assuntos/estatisticas/sisdepen"
+          },
+          "notaMetodologica": "Déficit = presos - vagas oficiais. Brasil tem 644 mil vagas para 832 mil presos. Superlotação afeta saúde, direitos humanos e oportunidades de reintegração. CNJ recomenda atuação para reduzir prisões provisórias e ampliar penas alternativas. Valores aproximados por UF."
         }
-      ],
-      "fonte": {
-        "nome": "19º Anuário Brasileiro de Segurança Pública — FBSP (2025)",
-        "produtor": "Fórum Brasileiro de Segurança Pública",
-        "periodicidade": "Anual",
-        "ultimaAtualizacao": "Julho/2025 (dados de 2024)",
-        "url": "https://forumseguranca.org.br/publicacoes/anuario-brasileiro-de-seguranca-publica/"
-      },
-      "notaMetodologica": "Lei 13.104/2015 tipificou feminicídio. Dados a partir de 2016 são comparáveis. 68% das vítimas são mulheres negras; companheiro/ex-companheiro é o autor mais comum. Subnotificação é limitação relevante: muitos casos são classificados como homicídios sem a qualificadora."
+      ]
     }
   ]
 }

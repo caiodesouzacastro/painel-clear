@@ -1,6 +1,6 @@
 {
   "id": "ambiente",
-  "tema": "Meio Ambiente",
+  "area": "Meio Ambiente",
   "ordem": 7,
   "capituloGuia": "Capítulo 9 — Infraestrutura e Território",
   "fontesRelacionadas": [
@@ -10,186 +10,530 @@
     "SEEG — Sistema de Estimativas de Emissões (Observatório do Clima)",
     "Cadastro Ambiental Rural (CAR)"
   ],
-  "indicadores": [
+  "temas": [
     {
-      "id": "amazonia",
-      "titulo": "Desmatamento na Amazônia",
-      "indicador": "Área desmatada anual (PRODES)",
-      "valor": 5796,
-      "unidade": "km² (ago/2024 a jul/2025)",
-      "destaque": "Terceira menor taxa em 37 anos de série histórica",
-      "totalAbsoluto": "Redução de 50% em 3 anos",
-      "tendencia": "queda",
-      "formatoValor": "inteiro",
-      "serie": [
-        {"ano": 2015, "valor": 6207},
-        {"ano": 2016, "valor": 7893},
-        {"ano": 2017, "valor": 6947},
-        {"ano": 2018, "valor": 7536},
-        {"ano": 2019, "valor": 10129},
-        {"ano": 2020, "valor": 10851},
-        {"ano": 2021, "valor": 13038},
-        {"ano": 2022, "valor": 11594},
-        {"ano": 2023, "valor": 9001},
-        {"ano": 2024, "valor": 6518},
-        {"ano": 2025, "valor": 5796}
-      ],
-      "rotuloSerieY": "km² desmatados",
-      "recortes": [
+      "id": "desmatamento",
+      "tema": "Desmatamento",
+      "descricao": "Perda de vegetação nativa nos biomas brasileiros",
+      "indicadores": [
         {
-          "id": "uf",
-          "dimensao": "Por estado",
-          "titulo": "Amazônia 2024-2025 por estado (km²) — PA, MT e AM concentram 80%",
-          "valores": [
-            {"rotulo": "Pará", "valor": 2087, "max": 2200},
-            {"rotulo": "Mato Grosso", "valor": 1572, "max": 2200},
-            {"rotulo": "Amazonas", "valor": 1014, "max": 2200},
-            {"rotulo": "Rondônia", "valor": 473, "max": 2200},
-            {"rotulo": "Maranhão", "valor": 247, "max": 2200},
-            {"rotulo": "Acre", "valor": 192, "max": 2200},
-            {"rotulo": "Roraima", "valor": 152, "max": 2200},
-            {"rotulo": "Tocantins", "valor": 35, "max": 2200},
-            {"rotulo": "Amapá", "valor": 24, "max": 2200}
-          ]
+          "id": "amazonia",
+          "titulo": "Desmatamento na Amazônia",
+          "indicador": "Área desmatada anual (PRODES)",
+          "valor": 5796,
+          "unidade": "km² (ago/2024 a jul/2025)",
+          "destaque": "Terceira menor taxa em 37 anos de série histórica",
+          "totalAbsoluto": "Redução de 50% em 3 anos",
+          "tendencia": "queda",
+          "formatoValor": "inteiro",
+          "serie": [
+            {
+              "ano": 2015,
+              "valor": 6207
+            },
+            {
+              "ano": 2016,
+              "valor": 7893
+            },
+            {
+              "ano": 2017,
+              "valor": 6947
+            },
+            {
+              "ano": 2018,
+              "valor": 7536
+            },
+            {
+              "ano": 2019,
+              "valor": 10129
+            },
+            {
+              "ano": 2020,
+              "valor": 10851
+            },
+            {
+              "ano": 2021,
+              "valor": 13038
+            },
+            {
+              "ano": 2022,
+              "valor": 11594
+            },
+            {
+              "ano": 2023,
+              "valor": 9001
+            },
+            {
+              "ano": 2024,
+              "valor": 6518
+            },
+            {
+              "ano": 2025,
+              "valor": 5796
+            }
+          ],
+          "rotuloSerieY": "km² desmatados",
+          "recortes": [
+            {
+              "id": "uf",
+              "dimensao": "Por estado",
+              "titulo": "Amazônia 2024-2025 por estado (km²) — PA, MT e AM concentram 80%",
+              "valores": [
+                {
+                  "rotulo": "Pará",
+                  "valor": 2087,
+                  "max": 2200
+                },
+                {
+                  "rotulo": "Mato Grosso",
+                  "valor": 1572,
+                  "max": 2200
+                },
+                {
+                  "rotulo": "Amazonas",
+                  "valor": 1014,
+                  "max": 2200
+                },
+                {
+                  "rotulo": "Rondônia",
+                  "valor": 473,
+                  "max": 2200
+                },
+                {
+                  "rotulo": "Maranhão",
+                  "valor": 247,
+                  "max": 2200
+                },
+                {
+                  "rotulo": "Acre",
+                  "valor": 192,
+                  "max": 2200
+                },
+                {
+                  "rotulo": "Roraima",
+                  "valor": 152,
+                  "max": 2200
+                },
+                {
+                  "rotulo": "Tocantins",
+                  "valor": 35,
+                  "max": 2200
+                },
+                {
+                  "rotulo": "Amapá",
+                  "valor": 24,
+                  "max": 2200
+                }
+              ]
+            },
+            {
+              "id": "variacao",
+              "dimensao": "Variação 2024→2025",
+              "titulo": "Variação no desmatamento estadual (% de redução; MT em alta)",
+              "valores": [
+                {
+                  "rotulo": "Tocantins",
+                  "valor": 62.5,
+                  "max": 70
+                },
+                {
+                  "rotulo": "Amapá",
+                  "valor": 48.2,
+                  "max": 70
+                },
+                {
+                  "rotulo": "Roraima",
+                  "valor": 37.4,
+                  "max": 70
+                },
+                {
+                  "rotulo": "Rondônia",
+                  "valor": 33.6,
+                  "max": 70
+                },
+                {
+                  "rotulo": "Acre",
+                  "valor": 27.6,
+                  "max": 70
+                },
+                {
+                  "rotulo": "Maranhão",
+                  "valor": 26.1,
+                  "max": 70
+                },
+                {
+                  "rotulo": "Amazonas",
+                  "valor": 16.9,
+                  "max": 70
+                },
+                {
+                  "rotulo": "Pará",
+                  "valor": 12.4,
+                  "max": 70
+                },
+                {
+                  "rotulo": "Mato Grosso (ALTA)",
+                  "valor": 25.1,
+                  "max": 70
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "INPE — PRODES (Programa de Cálculo do Desflorestamento)",
+            "produtor": "Instituto Nacional de Pesquisas Espaciais",
+            "periodicidade": "Anual (ciclo agosto-julho)",
+            "ultimaAtualizacao": "Outubro/2025 (ciclo 2024-2025)",
+            "url": "http://terrabrasilis.dpi.inpe.br/app/dashboard/deforestation/biomes/legal_amazon/rates"
+          },
+          "notaMetodologica": "PRODES usa imagens Landsat e Sentinel para mapear corte raso na Amazônia Legal. Para alertas em tempo quase real, o complementar é o DETER. Não capta degradação florestal (apenas conversão integral). Recortes estaduais 2025 são preliminares."
         },
         {
-          "id": "variacao",
-          "dimensao": "Variação 2024→2025",
-          "titulo": "Variação no desmatamento estadual (% de redução; MT em alta)",
-          "valores": [
-            {"rotulo": "Tocantins", "valor": 62.5, "max": 70},
-            {"rotulo": "Amapá", "valor": 48.2, "max": 70},
-            {"rotulo": "Roraima", "valor": 37.4, "max": 70},
-            {"rotulo": "Rondônia", "valor": 33.6, "max": 70},
-            {"rotulo": "Acre", "valor": 27.6, "max": 70},
-            {"rotulo": "Maranhão", "valor": 26.1, "max": 70},
-            {"rotulo": "Amazonas", "valor": 16.9, "max": 70},
-            {"rotulo": "Pará", "valor": 12.4, "max": 70},
-            {"rotulo": "Mato Grosso (ALTA)", "valor": 25.1, "max": 70}
-          ]
+          "id": "cerrado",
+          "titulo": "Desmatamento no Cerrado",
+          "indicador": "Área desmatada anual no bioma Cerrado",
+          "valor": 7235,
+          "unidade": "km² (ago/2024 a jul/2025)",
+          "destaque": "Segundo ano consecutivo de queda",
+          "totalAbsoluto": "77,9% concentrado no Matopiba (MA, TO, PI, BA)",
+          "tendencia": "queda",
+          "formatoValor": "inteiro",
+          "serie": [
+            {
+              "ano": 2017,
+              "valor": 7408
+            },
+            {
+              "ano": 2018,
+              "valor": 6657
+            },
+            {
+              "ano": 2019,
+              "valor": 6483
+            },
+            {
+              "ano": 2020,
+              "valor": 7340
+            },
+            {
+              "ano": 2021,
+              "valor": 8531
+            },
+            {
+              "ano": 2022,
+              "valor": 10689
+            },
+            {
+              "ano": 2023,
+              "valor": 11011
+            },
+            {
+              "ano": 2024,
+              "valor": 8174
+            },
+            {
+              "ano": 2025,
+              "valor": 7235
+            }
+          ],
+          "rotuloSerieY": "km² desmatados",
+          "recortes": [
+            {
+              "id": "uf",
+              "dimensao": "Por estado",
+              "titulo": "Cerrado 2025 por estado (km²)",
+              "valores": [
+                {
+                  "rotulo": "Maranhão",
+                  "valor": 2006,
+                  "max": 2100
+                },
+                {
+                  "rotulo": "Tocantins",
+                  "valor": 1489,
+                  "max": 2100
+                },
+                {
+                  "rotulo": "Piauí",
+                  "valor": 1350,
+                  "max": 2100
+                },
+                {
+                  "rotulo": "Bahia",
+                  "valor": 791,
+                  "max": 2100
+                },
+                {
+                  "rotulo": "Mato Grosso",
+                  "valor": 547,
+                  "max": 2100
+                },
+                {
+                  "rotulo": "Goiás",
+                  "valor": 425,
+                  "max": 2100
+                },
+                {
+                  "rotulo": "Outros",
+                  "valor": 627,
+                  "max": 2100
+                }
+              ]
+            },
+            {
+              "id": "matopiba",
+              "dimensao": "Matopiba vs Resto",
+              "titulo": "Concentração no Matopiba (% do desmatamento do Cerrado em 2025)",
+              "valores": [
+                {
+                  "rotulo": "Matopiba (MA+TO+PI+BA)",
+                  "valor": 77.9,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Demais estados do Cerrado",
+                  "valor": 22.1,
+                  "max": 100
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "INPE — PRODES Cerrado",
+            "produtor": "Instituto Nacional de Pesquisas Espaciais",
+            "periodicidade": "Anual (ciclo agosto-julho)",
+            "ultimaAtualizacao": "Outubro/2025 (ciclo 2024-2025)",
+            "url": "http://terrabrasilis.dpi.inpe.br/app/dashboard/deforestation/biomes/cerrado/rates"
+          },
+          "notaMetodologica": "Cerrado é o segundo maior bioma brasileiro, ocupando ~24% do território. Diferente da Amazônia, o Código Florestal exige preservação de apenas 20-35% das propriedades rurais no bioma — daí a maior pressão. Estados com maior área suprimida em 2025: Maranhão (2.006 km²), Tocantins (1.489 km²) e Piauí (1.350 km²)."
         }
-      ],
-      "fonte": {
-        "nome": "INPE — PRODES (Programa de Cálculo do Desflorestamento)",
-        "produtor": "Instituto Nacional de Pesquisas Espaciais",
-        "periodicidade": "Anual (ciclo agosto-julho)",
-        "ultimaAtualizacao": "Outubro/2025 (ciclo 2024-2025)",
-        "url": "http://terrabrasilis.dpi.inpe.br/app/dashboard/deforestation/biomes/legal_amazon/rates"
-      },
-      "notaMetodologica": "PRODES usa imagens Landsat e Sentinel para mapear corte raso na Amazônia Legal. Para alertas em tempo quase real, o complementar é o DETER. Não capta degradação florestal (apenas conversão integral). Recortes estaduais 2025 são preliminares."
-    },
-    {
-      "id": "cerrado",
-      "titulo": "Desmatamento no Cerrado",
-      "indicador": "Área desmatada anual no bioma Cerrado",
-      "valor": 7235,
-      "unidade": "km² (ago/2024 a jul/2025)",
-      "destaque": "Segundo ano consecutivo de queda",
-      "totalAbsoluto": "77,9% concentrado no Matopiba (MA, TO, PI, BA)",
-      "tendencia": "queda",
-      "formatoValor": "inteiro",
-      "serie": [
-        {"ano": 2017, "valor": 7408},
-        {"ano": 2018, "valor": 6657},
-        {"ano": 2019, "valor": 6483},
-        {"ano": 2020, "valor": 7340},
-        {"ano": 2021, "valor": 8531},
-        {"ano": 2022, "valor": 10689},
-        {"ano": 2023, "valor": 11011},
-        {"ano": 2024, "valor": 8174},
-        {"ano": 2025, "valor": 7235}
-      ],
-      "rotuloSerieY": "km² desmatados",
-      "recortes": [
-        {
-          "id": "uf",
-          "dimensao": "Por estado",
-          "titulo": "Cerrado 2025 por estado (km²)",
-          "valores": [
-            {"rotulo": "Maranhão", "valor": 2006, "max": 2100},
-            {"rotulo": "Tocantins", "valor": 1489, "max": 2100},
-            {"rotulo": "Piauí", "valor": 1350, "max": 2100},
-            {"rotulo": "Bahia", "valor": 791, "max": 2100},
-            {"rotulo": "Mato Grosso", "valor": 547, "max": 2100},
-            {"rotulo": "Goiás", "valor": 425, "max": 2100},
-            {"rotulo": "Outros", "valor": 627, "max": 2100}
-          ]
-        },
-        {
-          "id": "matopiba",
-          "dimensao": "Matopiba vs Resto",
-          "titulo": "Concentração no Matopiba (% do desmatamento do Cerrado em 2025)",
-          "valores": [
-            {"rotulo": "Matopiba (MA+TO+PI+BA)", "valor": 77.9, "max": 100},
-            {"rotulo": "Demais estados do Cerrado", "valor": 22.1, "max": 100}
-          ]
-        }
-      ],
-      "fonte": {
-        "nome": "INPE — PRODES Cerrado",
-        "produtor": "Instituto Nacional de Pesquisas Espaciais",
-        "periodicidade": "Anual (ciclo agosto-julho)",
-        "ultimaAtualizacao": "Outubro/2025 (ciclo 2024-2025)",
-        "url": "http://terrabrasilis.dpi.inpe.br/app/dashboard/deforestation/biomes/cerrado/rates"
-      },
-      "notaMetodologica": "Cerrado é o segundo maior bioma brasileiro, ocupando ~24% do território. Diferente da Amazônia, o Código Florestal exige preservação de apenas 20-35% das propriedades rurais no bioma — daí a maior pressão. Estados com maior área suprimida em 2025: Maranhão (2.006 km²), Tocantins (1.489 km²) e Piauí (1.350 km²)."
+      ]
     },
     {
       "id": "emissoes",
-      "titulo": "Emissões de Gases de Efeito Estufa",
-      "indicador": "Emissões brutas totais do Brasil",
-      "valor": 2.3,
-      "unidade": "bilhões t CO₂eq (2023)",
-      "destaque": "Mudança de uso do solo é maior fonte (~49%)",
-      "totalAbsoluto": "Meta NDC 2030: redução de 53% vs 2005",
-      "tendencia": "queda",
-      "serie": [
-        {"ano": 2015, "valor": 2.2},
-        {"ano": 2016, "valor": 2.3},
-        {"ano": 2017, "valor": 2.3},
-        {"ano": 2018, "valor": 2.4},
-        {"ano": 2019, "valor": 2.5},
-        {"ano": 2020, "valor": 2.5},
-        {"ano": 2021, "valor": 2.6},
-        {"ano": 2022, "valor": 2.5},
-        {"ano": 2023, "valor": 2.3}
-      ],
-      "rotuloSerieY": "Bilhões t CO₂eq",
-      "recortes": [
+      "tema": "Emissões e clima",
+      "descricao": "Emissões brasileiras de gases de efeito estufa",
+      "indicadores": [
         {
-          "id": "setor",
-          "dimensao": "Por setor",
-          "titulo": "Emissões 2023 por setor no Brasil (% do total)",
-          "valores": [
-            {"rotulo": "Mudança de uso do solo", "valor": 49.0, "max": 80},
-            {"rotulo": "Agropecuária", "valor": 28.0, "max": 80},
-            {"rotulo": "Energia", "valor": 17.0, "max": 80},
-            {"rotulo": "Processos industriais", "valor": 4.0, "max": 80},
-            {"rotulo": "Resíduos", "valor": 4.0, "max": 80}
-          ]
-        },
-        {
-          "id": "brasil-mundo",
-          "dimensao": "Brasil × Mundo",
-          "titulo": "Perfil emissor: Brasil vs média global (% por setor)",
-          "valores": [
-            {"rotulo": "Energia — Brasil", "valor": 17.0, "max": 80},
-            {"rotulo": "Energia — Mundo", "valor": 73.0, "max": 80},
-            {"rotulo": "Agropecuária — Brasil", "valor": 28.0, "max": 80},
-            {"rotulo": "Agropecuária — Mundo", "valor": 11.0, "max": 80},
-            {"rotulo": "Uso do solo — Brasil", "valor": 49.0, "max": 80},
-            {"rotulo": "Uso do solo — Mundo", "valor": 8.0, "max": 80}
-          ]
+          "id": "emissoes",
+          "titulo": "Emissões de Gases de Efeito Estufa",
+          "indicador": "Emissões brutas totais do Brasil",
+          "valor": 2.3,
+          "unidade": "bilhões t CO₂eq (2023)",
+          "destaque": "Mudança de uso do solo é maior fonte (~49%)",
+          "totalAbsoluto": "Meta NDC 2030: redução de 53% vs 2005",
+          "tendencia": "queda",
+          "serie": [
+            {
+              "ano": 2015,
+              "valor": 2.2
+            },
+            {
+              "ano": 2016,
+              "valor": 2.3
+            },
+            {
+              "ano": 2017,
+              "valor": 2.3
+            },
+            {
+              "ano": 2018,
+              "valor": 2.4
+            },
+            {
+              "ano": 2019,
+              "valor": 2.5
+            },
+            {
+              "ano": 2020,
+              "valor": 2.5
+            },
+            {
+              "ano": 2021,
+              "valor": 2.6
+            },
+            {
+              "ano": 2022,
+              "valor": 2.5
+            },
+            {
+              "ano": 2023,
+              "valor": 2.3
+            }
+          ],
+          "rotuloSerieY": "Bilhões t CO₂eq",
+          "recortes": [
+            {
+              "id": "setor",
+              "dimensao": "Por setor",
+              "titulo": "Emissões 2023 por setor no Brasil (% do total)",
+              "valores": [
+                {
+                  "rotulo": "Mudança de uso do solo",
+                  "valor": 49.0,
+                  "max": 80
+                },
+                {
+                  "rotulo": "Agropecuária",
+                  "valor": 28.0,
+                  "max": 80
+                },
+                {
+                  "rotulo": "Energia",
+                  "valor": 17.0,
+                  "max": 80
+                },
+                {
+                  "rotulo": "Processos industriais",
+                  "valor": 4.0,
+                  "max": 80
+                },
+                {
+                  "rotulo": "Resíduos",
+                  "valor": 4.0,
+                  "max": 80
+                }
+              ]
+            },
+            {
+              "id": "brasil-mundo",
+              "dimensao": "Brasil × Mundo",
+              "titulo": "Perfil emissor: Brasil vs média global (% por setor)",
+              "valores": [
+                {
+                  "rotulo": "Energia — Brasil",
+                  "valor": 17.0,
+                  "max": 80
+                },
+                {
+                  "rotulo": "Energia — Mundo",
+                  "valor": 73.0,
+                  "max": 80
+                },
+                {
+                  "rotulo": "Agropecuária — Brasil",
+                  "valor": 28.0,
+                  "max": 80
+                },
+                {
+                  "rotulo": "Agropecuária — Mundo",
+                  "valor": 11.0,
+                  "max": 80
+                },
+                {
+                  "rotulo": "Uso do solo — Brasil",
+                  "valor": 49.0,
+                  "max": 80
+                },
+                {
+                  "rotulo": "Uso do solo — Mundo",
+                  "valor": 8.0,
+                  "max": 80
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "SEEG — Sistema de Estimativas de Emissões e Remoções de Gases de Efeito Estufa",
+            "produtor": "Observatório do Clima (consórcio de organizações da sociedade civil)",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "2024 (dados de 2023)",
+            "url": "https://seeg.eco.br/"
+          },
+          "notaMetodologica": "SEEG é a principal fonte independente de emissões brasileiras, baseada na metodologia oficial do IPCC. Mudança de uso do solo (desmatamento) é a maior fonte no Brasil, seguida de agropecuária e energia. Diferente da maioria dos países (onde energia é dominante). Valores são estimativas; o Inventário Nacional oficial é publicado de forma menos frequente pelo MCTI."
         }
-      ],
-      "fonte": {
-        "nome": "SEEG — Sistema de Estimativas de Emissões e Remoções de Gases de Efeito Estufa",
-        "produtor": "Observatório do Clima (consórcio de organizações da sociedade civil)",
-        "periodicidade": "Anual",
-        "ultimaAtualizacao": "2024 (dados de 2023)",
-        "url": "https://seeg.eco.br/"
-      },
-      "notaMetodologica": "SEEG é a principal fonte independente de emissões brasileiras, baseada na metodologia oficial do IPCC. Mudança de uso do solo (desmatamento) é a maior fonte no Brasil, seguida de agropecuária e energia. Diferente da maioria dos países (onde energia é dominante). Valores são estimativas; o Inventário Nacional oficial é publicado de forma menos frequente pelo MCTI."
+      ]
+    },
+    {
+      "id": "hidricos",
+      "tema": "Recursos hídricos",
+      "descricao": "Disponibilidade e estresse hídrico nas bacias brasileiras",
+      "indicadores": [
+        {
+          "id": "estresse-hidrico",
+          "titulo": "Estresse hídrico nas bacias",
+          "indicador": "% das bacias brasileiras com balanço hídrico crítico ou em alerta",
+          "valor": 23.0,
+          "unidade": "% das unidades de gestão (2023)",
+          "destaque": "Crise no semiárido e em SP/MG",
+          "totalAbsoluto": "Disponibilidade per capita varia 70x entre regiões",
+          "tendencia": "alta",
+          "serie": [
+            {
+              "ano": 2017,
+              "valor": 17.0
+            },
+            {
+              "ano": 2019,
+              "valor": 18.5
+            },
+            {
+              "ano": 2020,
+              "valor": 20.2
+            },
+            {
+              "ano": 2021,
+              "valor": 22.0
+            },
+            {
+              "ano": 2022,
+              "valor": 22.5
+            },
+            {
+              "ano": 2023,
+              "valor": 23.0
+            }
+          ],
+          "rotuloSerieY": "% das bacias",
+          "recortes": [
+            {
+              "id": "regiao-hidrografica",
+              "dimensao": "Por região hidrográfica",
+              "titulo": "Bacias em situação crítica (% das UGHs em 2023)",
+              "valores": [
+                {
+                  "rotulo": "Atlântico Nordeste Oriental",
+                  "valor": 58,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Parnaíba",
+                  "valor": 42,
+                  "max": 60
+                },
+                {
+                  "rotulo": "São Francisco",
+                  "valor": 38,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Paraná",
+                  "valor": 30,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 23,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Amazônica",
+                  "valor": 5,
+                  "max": 60
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "Conjuntura dos Recursos Hídricos no Brasil (ANA)",
+            "produtor": "Agência Nacional de Águas e Saneamento Básico (ANA)",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "2024 (dados de 2023)",
+            "url": "https://www.gov.br/ana/pt-br/assuntos/o-que-e-a-ana/conjuntura-dos-recursos-hidricos"
+          },
+          "notaMetodologica": "Bacias em estresse hídrico = unidades onde a relação demanda/disponibilidade ultrapassa 40% (alerta) ou 100% (crítico). Brasil tem 12 regiões hidrográficas e 270 unidades de gestão hídrica (UGHs). A Amazônia concentra 80% da disponibilidade nacional mas só 12% da população; o Nordeste tem situação inversa. Mudanças climáticas e desmatamento agravam o problema. Valores aproximados a partir dos relatórios da ANA."
+        }
+      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "id": "saude",
-  "tema": "Saúde",
+  "area": "Saúde",
   "ordem": 3,
   "capituloGuia": "Capítulo 5 — Saúde",
   "fontesRelacionadas": [
@@ -10,197 +10,762 @@
     "SIH/SIA — Internações e Atendimento Ambulatorial",
     "Pesquisa Nacional de Saúde (PNS/IBGE)"
   ],
-  "indicadores": [
+  "temas": [
     {
-      "id": "mortalidade-infantil",
-      "titulo": "Mortalidade Infantil",
-      "indicador": "Óbitos de menores de 1 ano por mil nascidos vivos",
-      "valor": 12.4,
-      "unidade": "por mil nascidos vivos",
-      "destaque": "Tendência consistente de queda",
-      "totalAbsoluto": "Redução de 56% desde 2000",
-      "tendencia": "queda",
-      "serie": [
-        {"ano": 2000, "valor": 28.1},
-        {"ano": 2005, "valor": 22.5},
-        {"ano": 2010, "valor": 17.2},
-        {"ano": 2015, "valor": 14.6},
-        {"ano": 2018, "valor": 13.5},
-        {"ano": 2019, "valor": 13.3},
-        {"ano": 2020, "valor": 12.9},
-        {"ano": 2021, "valor": 13.8},
-        {"ano": 2022, "valor": 13.1},
-        {"ano": 2023, "valor": 12.4}
-      ],
-      "rotuloSerieY": "Por mil nascidos vivos",
-      "recortes": [
+      "id": "mortalidade-materno-infantil",
+      "tema": "Mortalidade materno-infantil",
+      "descricao": "Óbitos infantis e maternos no Brasil",
+      "indicadores": [
         {
-          "id": "regiao",
-          "dimensao": "Por região",
-          "titulo": "TMI 2023 por região (por mil nascidos vivos)",
-          "valores": [
-            {"rotulo": "Norte", "valor": 14.8, "max": 17},
-            {"rotulo": "Nordeste", "valor": 13.9, "max": 17},
-            {"rotulo": "Centro-Oeste", "valor": 12.3, "max": 17},
-            {"rotulo": "Sudeste", "valor": 11.1, "max": 17},
-            {"rotulo": "Sul", "valor": 9.8, "max": 17}
-          ]
+          "id": "mortalidade-infantil",
+          "titulo": "Mortalidade Infantil",
+          "indicador": "Óbitos de menores de 1 ano por mil nascidos vivos",
+          "valor": 12.4,
+          "unidade": "por mil nascidos vivos",
+          "destaque": "Tendência consistente de queda",
+          "totalAbsoluto": "Redução de 56% desde 2000",
+          "tendencia": "queda",
+          "serie": [
+            {
+              "ano": 2000,
+              "valor": 28.1
+            },
+            {
+              "ano": 2005,
+              "valor": 22.5
+            },
+            {
+              "ano": 2010,
+              "valor": 17.2
+            },
+            {
+              "ano": 2015,
+              "valor": 14.6
+            },
+            {
+              "ano": 2018,
+              "valor": 13.5
+            },
+            {
+              "ano": 2019,
+              "valor": 13.3
+            },
+            {
+              "ano": 2020,
+              "valor": 12.9
+            },
+            {
+              "ano": 2021,
+              "valor": 13.8
+            },
+            {
+              "ano": 2022,
+              "valor": 13.1
+            },
+            {
+              "ano": 2023,
+              "valor": 12.4
+            }
+          ],
+          "rotuloSerieY": "Por mil nascidos vivos",
+          "recortes": [
+            {
+              "id": "regiao",
+              "dimensao": "Por região",
+              "titulo": "TMI 2023 por região (por mil nascidos vivos)",
+              "valores": [
+                {
+                  "rotulo": "Norte",
+                  "valor": 14.8,
+                  "max": 17
+                },
+                {
+                  "rotulo": "Nordeste",
+                  "valor": 13.9,
+                  "max": 17
+                },
+                {
+                  "rotulo": "Centro-Oeste",
+                  "valor": 12.3,
+                  "max": 17
+                },
+                {
+                  "rotulo": "Sudeste",
+                  "valor": 11.1,
+                  "max": 17
+                },
+                {
+                  "rotulo": "Sul",
+                  "valor": 9.8,
+                  "max": 17
+                }
+              ]
+            },
+            {
+              "id": "uf",
+              "dimensao": "Por UF",
+              "titulo": "TMI 2023 — maiores e menores taxas (por mil nascidos vivos)",
+              "valores": [
+                {
+                  "rotulo": "Roraima",
+                  "valor": 23.8,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Amapá",
+                  "valor": 17.5,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Acre",
+                  "valor": 16.4,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 12.4,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Paraná",
+                  "valor": 9.6,
+                  "max": 25
+                },
+                {
+                  "rotulo": "São Paulo",
+                  "valor": 9.3,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Santa Catarina",
+                  "valor": 8.5,
+                  "max": 25
+                }
+              ]
+            },
+            {
+              "id": "sexo",
+              "dimensao": "Por sexo",
+              "titulo": "TMI 2023 por sexo (por mil nascidos vivos)",
+              "valores": [
+                {
+                  "rotulo": "Meninos",
+                  "valor": 13.4,
+                  "max": 16
+                },
+                {
+                  "rotulo": "Meninas",
+                  "valor": 11.0,
+                  "max": 16
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "IBGE — Projeções de População 2024 (a partir de SIM e Sinasc/MS)",
+            "produtor": "Instituto Brasileiro de Geografia e Estatística",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "Agosto/2024 (dados de 2023)",
+            "url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9109-projecao-da-populacao.html"
+          },
+          "notaMetodologica": "Razão entre óbitos de menores de 1 ano e nascidos vivos, vezes mil. Reflete saneamento, pré-natal, atenção ao parto e cobertura básica. No Norte, taxa para meninos chega a 16/mil e para meninas 13,6/mil. Recortes por UF e região 2023 — valores aproximados a partir de relatórios do IBGE e Ministério da Saúde; para análises precisas, consultar projeções oficiais e o SIM/Sinasc."
         },
         {
-          "id": "uf",
-          "dimensao": "Por UF",
-          "titulo": "TMI 2023 — maiores e menores taxas (por mil nascidos vivos)",
-          "valores": [
-            {"rotulo": "Roraima", "valor": 23.8, "max": 25},
-            {"rotulo": "Amapá", "valor": 17.5, "max": 25},
-            {"rotulo": "Acre", "valor": 16.4, "max": 25},
-            {"rotulo": "Brasil (média)", "valor": 12.4, "max": 25},
-            {"rotulo": "Paraná", "valor": 9.6, "max": 25},
-            {"rotulo": "São Paulo", "valor": 9.3, "max": 25},
-            {"rotulo": "Santa Catarina", "valor": 8.5, "max": 25}
-          ]
-        },
-        {
-          "id": "sexo",
-          "dimensao": "Por sexo",
-          "titulo": "TMI 2023 por sexo (por mil nascidos vivos)",
-          "valores": [
-            {"rotulo": "Meninos", "valor": 13.4, "max": 16},
-            {"rotulo": "Meninas", "valor": 11.0, "max": 16}
-          ]
+          "id": "mortalidade-materna",
+          "titulo": "Mortalidade Materna",
+          "indicador": "Óbitos maternos por 100 mil nascidos vivos (RMM)",
+          "valor": 50.7,
+          "unidade": "por 100 mil nascidos vivos",
+          "destaque": "Queda após pico pandêmico",
+          "totalAbsoluto": "Meta ODS 2030: 30 por 100 mil",
+          "tendencia": "queda",
+          "serie": [
+            {
+              "ano": 2014,
+              "valor": 60.0
+            },
+            {
+              "ano": 2015,
+              "valor": 60.6
+            },
+            {
+              "ano": 2016,
+              "valor": 64.4
+            },
+            {
+              "ano": 2017,
+              "valor": 64.5
+            },
+            {
+              "ano": 2018,
+              "valor": 59.1
+            },
+            {
+              "ano": 2019,
+              "valor": 57.9
+            },
+            {
+              "ano": 2020,
+              "valor": 74.7
+            },
+            {
+              "ano": 2021,
+              "valor": 107.5
+            },
+            {
+              "ano": 2022,
+              "valor": 55.3
+            },
+            {
+              "ano": 2023,
+              "valor": 50.7
+            }
+          ],
+          "rotuloSerieY": "Por 100 mil nasc. vivos",
+          "recortes": [
+            {
+              "id": "regiao",
+              "dimensao": "Por região",
+              "titulo": "RMM 2023 por região (por 100 mil nascidos vivos)",
+              "valores": [
+                {
+                  "rotulo": "Norte",
+                  "valor": 76.4,
+                  "max": 85
+                },
+                {
+                  "rotulo": "Nordeste",
+                  "valor": 55.8,
+                  "max": 85
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 50.7,
+                  "max": 85
+                },
+                {
+                  "rotulo": "Sudeste",
+                  "valor": 48.2,
+                  "max": 85
+                },
+                {
+                  "rotulo": "Centro-Oeste",
+                  "valor": 45.1,
+                  "max": 85
+                },
+                {
+                  "rotulo": "Sul",
+                  "valor": 38.5,
+                  "max": 85
+                }
+              ]
+            },
+            {
+              "id": "raca",
+              "dimensao": "Por raça/cor",
+              "titulo": "Óbitos maternos 2023 por raça/cor (% das vítimas)",
+              "valores": [
+                {
+                  "rotulo": "Pretas e pardas",
+                  "valor": 58.4,
+                  "max": 70
+                },
+                {
+                  "rotulo": "Brancas",
+                  "valor": 35.2,
+                  "max": 70
+                },
+                {
+                  "rotulo": "Outras/sem informação",
+                  "valor": 6.4,
+                  "max": 70
+                }
+              ]
+            },
+            {
+              "id": "causa",
+              "dimensao": "Por causa",
+              "titulo": "Distribuição das causas obstétricas (% dos óbitos)",
+              "valores": [
+                {
+                  "rotulo": "Causas diretas",
+                  "valor": 63.5,
+                  "max": 70
+                },
+                {
+                  "rotulo": "Causas indiretas",
+                  "valor": 36.5,
+                  "max": 70
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "DATASUS — SIM e Sinasc (Ministério da Saúde)",
+            "produtor": "Ministério da Saúde / Observatório Obstétrico Brasileiro",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "2024 (dados consolidados até 2023)",
+            "url": "http://plataforma.saude.gov.br/mortalidade/materna/"
+          },
+          "notaMetodologica": "Razão de Mortalidade Materna: óbitos de mulheres durante gestação, parto ou até 42 dias após o término, por 100 mil nascidos vivos. Pico em 2021 reflete impacto da Covid-19. Subnotificação é limitação clássica; valores podem ser revisados. Hipertensão, hemorragia e infecção são as principais causas."
         }
-      ],
-      "fonte": {
-        "nome": "IBGE — Projeções de População 2024 (a partir de SIM e Sinasc/MS)",
-        "produtor": "Instituto Brasileiro de Geografia e Estatística",
-        "periodicidade": "Anual",
-        "ultimaAtualizacao": "Agosto/2024 (dados de 2023)",
-        "url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9109-projecao-da-populacao.html"
-      },
-      "notaMetodologica": "Razão entre óbitos de menores de 1 ano e nascidos vivos, vezes mil. Reflete saneamento, pré-natal, atenção ao parto e cobertura básica. No Norte, taxa para meninos chega a 16/mil e para meninas 13,6/mil. Recortes por UF e região 2023 — valores aproximados a partir de relatórios do IBGE e Ministério da Saúde; para análises precisas, consultar projeções oficiais e o SIM/Sinasc."
+      ]
     },
     {
-      "id": "mortalidade-materna",
-      "titulo": "Mortalidade Materna",
-      "indicador": "Óbitos maternos por 100 mil nascidos vivos (RMM)",
-      "valor": 50.7,
-      "unidade": "por 100 mil nascidos vivos",
-      "destaque": "Queda após pico pandêmico",
-      "totalAbsoluto": "Meta ODS 2030: 30 por 100 mil",
-      "tendencia": "queda",
-      "serie": [
-        {"ano": 2014, "valor": 60.0},
-        {"ano": 2015, "valor": 60.6},
-        {"ano": 2016, "valor": 64.4},
-        {"ano": 2017, "valor": 64.5},
-        {"ano": 2018, "valor": 59.1},
-        {"ano": 2019, "valor": 57.9},
-        {"ano": 2020, "valor": 74.7},
-        {"ano": 2021, "valor": 107.5},
-        {"ano": 2022, "valor": 55.3},
-        {"ano": 2023, "valor": 50.7}
-      ],
-      "rotuloSerieY": "Por 100 mil nasc. vivos",
-      "recortes": [
+      "id": "imunizacao",
+      "tema": "Imunização",
+      "descricao": "Cobertura vacinal infantil e adulta",
+      "indicadores": [
         {
-          "id": "regiao",
-          "dimensao": "Por região",
-          "titulo": "RMM 2023 por região (por 100 mil nascidos vivos)",
-          "valores": [
-            {"rotulo": "Norte", "valor": 76.4, "max": 85},
-            {"rotulo": "Nordeste", "valor": 55.8, "max": 85},
-            {"rotulo": "Brasil (média)", "valor": 50.7, "max": 85},
-            {"rotulo": "Sudeste", "valor": 48.2, "max": 85},
-            {"rotulo": "Centro-Oeste", "valor": 45.1, "max": 85},
-            {"rotulo": "Sul", "valor": 38.5, "max": 85}
-          ]
+          "id": "vacinacao",
+          "titulo": "Cobertura Vacinal",
+          "indicador": "Cobertura da Tríplice Viral (1ª dose) — sarampo, caxumba e rubéola",
+          "valor": 96.3,
+          "unidade": "% das crianças menores de 1 ano",
+          "destaque": "Recuperação após anos de queda",
+          "totalAbsoluto": "Meta PNI: 95% — Pólio (VIP): cobertura recuperada",
+          "tendencia": "alta",
+          "serie": [
+            {
+              "ano": 2015,
+              "valor": 96.1
+            },
+            {
+              "ano": 2016,
+              "valor": 95.4
+            },
+            {
+              "ano": 2017,
+              "valor": 86.2
+            },
+            {
+              "ano": 2018,
+              "valor": 93.1
+            },
+            {
+              "ano": 2019,
+              "valor": 93.1
+            },
+            {
+              "ano": 2020,
+              "valor": 79.1
+            },
+            {
+              "ano": 2021,
+              "valor": 71.5
+            },
+            {
+              "ano": 2022,
+              "valor": 80.7
+            },
+            {
+              "ano": 2023,
+              "valor": 95.4
+            },
+            {
+              "ano": 2024,
+              "valor": 96.3
+            }
+          ],
+          "rotuloSerieY": "% cobertura",
+          "recortes": [
+            {
+              "id": "vacina",
+              "dimensao": "Por vacina",
+              "titulo": "Cobertura vacinal infantil 2024 — principais imunobiológicos (%)",
+              "valores": [
+                {
+                  "rotulo": "BCG (tuberculose)",
+                  "valor": 99.4,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Tríplice viral 1ª dose",
+                  "valor": 96.3,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Poliomielite (VIP)",
+                  "valor": 92.5,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Penta (DTP-Hib-HB)",
+                  "valor": 89.8,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Tríplice viral 2ª dose",
+                  "valor": 80.1,
+                  "max": 100
+                }
+              ]
+            },
+            {
+              "id": "regiao",
+              "dimensao": "Por região",
+              "titulo": "Cobertura da Tríplice Viral por região (2024, %)",
+              "valores": [
+                {
+                  "rotulo": "Sul",
+                  "valor": 98.4,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Sudeste",
+                  "valor": 97.7,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Centro-Oeste",
+                  "valor": 96.5,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 96.3,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Nordeste",
+                  "valor": 95.0,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Norte",
+                  "valor": 91.2,
+                  "max": 100
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "SI-PNI — Sistema de Informações do Programa Nacional de Imunizações",
+            "produtor": "Ministério da Saúde — DATASUS",
+            "periodicidade": "Mensal/anual",
+            "ultimaAtualizacao": "Janeiro/2025 (dados de 2024)",
+            "url": "http://sipni.datasus.gov.br/"
+          },
+          "notaMetodologica": "Cobertura é a razão entre doses aplicadas e população-alvo. Quedas pós-2017 e durante a pandemia foram parcialmente revertidas a partir de 2023. Em novembro/2024, o Brasil substituiu a VOP (gotinha) pela VIP injetável em todas as doses, alinhando-se às recomendações da OMS."
         },
         {
-          "id": "raca",
-          "dimensao": "Por raça/cor",
-          "titulo": "Óbitos maternos 2023 por raça/cor (% das vítimas)",
-          "valores": [
-            {"rotulo": "Pretas e pardas", "valor": 58.4, "max": 70},
-            {"rotulo": "Brancas", "valor": 35.2, "max": 70},
-            {"rotulo": "Outras/sem informação", "valor": 6.4, "max": 70}
-          ]
-        },
-        {
-          "id": "causa",
-          "dimensao": "Por causa",
-          "titulo": "Distribuição das causas obstétricas (% dos óbitos)",
-          "valores": [
-            {"rotulo": "Causas diretas", "valor": 63.5, "max": 70},
-            {"rotulo": "Causas indiretas", "valor": 36.5, "max": 70}
-          ]
+          "id": "bcg",
+          "titulo": "Cobertura BCG",
+          "indicador": "Cobertura vacinal de BCG em menores de 1 ano",
+          "valor": 99.4,
+          "unidade": "% das crianças menores de 1 ano (2024)",
+          "destaque": "Universal — aplicada na maternidade",
+          "totalAbsoluto": "Vacina mais universal do calendário infantil",
+          "tendencia": "estavel",
+          "serie": [
+            {
+              "ano": 2016,
+              "valor": 95.4
+            },
+            {
+              "ano": 2017,
+              "valor": 98.6
+            },
+            {
+              "ano": 2018,
+              "valor": 99.7
+            },
+            {
+              "ano": 2019,
+              "valor": 98.9
+            },
+            {
+              "ano": 2020,
+              "valor": 98.6
+            },
+            {
+              "ano": 2021,
+              "valor": 100.0
+            },
+            {
+              "ano": 2022,
+              "valor": 100.0
+            },
+            {
+              "ano": 2023,
+              "valor": 99.8
+            },
+            {
+              "ano": 2024,
+              "valor": 99.4
+            }
+          ],
+          "rotuloSerieY": "% das crianças <1 ano",
+          "recortes": [
+            {
+              "id": "regiao",
+              "dimensao": "Por região",
+              "titulo": "Cobertura BCG por região (2024, %)",
+              "valores": [
+                {
+                  "rotulo": "Sudeste",
+                  "valor": 99.9,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Sul",
+                  "valor": 99.8,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Centro-Oeste",
+                  "valor": 99.7,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Nordeste",
+                  "valor": 99.3,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 99.4,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Norte",
+                  "valor": 97.8,
+                  "max": 100
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "SI-PNI — Sistema de Informações do Programa Nacional de Imunizações",
+            "produtor": "Ministério da Saúde",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "2025 (dados de 2024)",
+            "url": "https://datasus.saude.gov.br/transferencia-de-arquivos/"
+          },
+          "notaMetodologica": "BCG (tuberculose) é a única vacina cuja meta da OMS é 90% e que o Brasil mantém acima de 95% historicamente, pois é aplicada na maternidade ainda no primeiro mês de vida. É o melhor indicador da cobertura básica de imunização. Coberturas podem ultrapassar 100% por correções de denominador (mais aplicações que nascidos vivos estimados pela projeção)."
         }
-      ],
-      "fonte": {
-        "nome": "DATASUS — SIM e Sinasc (Ministério da Saúde)",
-        "produtor": "Ministério da Saúde / Observatório Obstétrico Brasileiro",
-        "periodicidade": "Anual",
-        "ultimaAtualizacao": "2024 (dados consolidados até 2023)",
-        "url": "http://plataforma.saude.gov.br/mortalidade/materna/"
-      },
-      "notaMetodologica": "Razão de Mortalidade Materna: óbitos de mulheres durante gestação, parto ou até 42 dias após o término, por 100 mil nascidos vivos. Pico em 2021 reflete impacto da Covid-19. Subnotificação é limitação clássica; valores podem ser revisados. Hipertensão, hemorragia e infecção são as principais causas."
+      ]
     },
     {
-      "id": "vacinacao",
-      "titulo": "Cobertura Vacinal",
-      "indicador": "Cobertura da Tríplice Viral (1ª dose) — sarampo, caxumba e rubéola",
-      "valor": 96.3,
-      "unidade": "% das crianças menores de 1 ano",
-      "destaque": "Recuperação após anos de queda",
-      "totalAbsoluto": "Meta PNI: 95% — Pólio (VIP): cobertura recuperada",
-      "tendencia": "alta",
-      "serie": [
-        {"ano": 2015, "valor": 96.1},
-        {"ano": 2016, "valor": 95.4},
-        {"ano": 2017, "valor": 86.2},
-        {"ano": 2018, "valor": 93.1},
-        {"ano": 2019, "valor": 93.1},
-        {"ano": 2020, "valor": 79.1},
-        {"ano": 2021, "valor": 71.5},
-        {"ano": 2022, "valor": 80.7},
-        {"ano": 2023, "valor": 95.4},
-        {"ano": 2024, "valor": 96.3}
-      ],
-      "rotuloSerieY": "% cobertura",
-      "recortes": [
+      "id": "atencao-primaria",
+      "tema": "Atenção Primária",
+      "descricao": "Cobertura da rede básica de saúde e cuidados preventivos",
+      "indicadores": [
         {
-          "id": "vacina",
-          "dimensao": "Por vacina",
-          "titulo": "Cobertura vacinal infantil 2024 — principais imunobiológicos (%)",
-          "valores": [
-            {"rotulo": "BCG (tuberculose)", "valor": 99.4, "max": 100},
-            {"rotulo": "Tríplice viral 1ª dose", "valor": 96.3, "max": 100},
-            {"rotulo": "Poliomielite (VIP)", "valor": 92.5, "max": 100},
-            {"rotulo": "Penta (DTP-Hib-HB)", "valor": 89.8, "max": 100},
-            {"rotulo": "Tríplice viral 2ª dose", "valor": 80.1, "max": 100}
-          ]
+          "id": "esf",
+          "titulo": "Cobertura da Estratégia Saúde da Família",
+          "indicador": "% da população coberta pela Estratégia Saúde da Família (ESF)",
+          "valor": 65.4,
+          "unidade": "% da população (2024)",
+          "destaque": "Maior programa de atenção primária do mundo",
+          "totalAbsoluto": "~139 milhões de pessoas cobertas",
+          "tendencia": "alta",
+          "serie": [
+            {
+              "ano": 2015,
+              "valor": 62.0
+            },
+            {
+              "ano": 2016,
+              "valor": 62.6
+            },
+            {
+              "ano": 2017,
+              "valor": 64.0
+            },
+            {
+              "ano": 2018,
+              "valor": 64.4
+            },
+            {
+              "ano": 2019,
+              "valor": 65.1
+            },
+            {
+              "ano": 2020,
+              "valor": 63.0
+            },
+            {
+              "ano": 2021,
+              "valor": 60.8
+            },
+            {
+              "ano": 2022,
+              "valor": 62.3
+            },
+            {
+              "ano": 2023,
+              "valor": 64.2
+            },
+            {
+              "ano": 2024,
+              "valor": 65.4
+            }
+          ],
+          "rotuloSerieY": "% da população",
+          "recortes": [
+            {
+              "id": "regiao",
+              "dimensao": "Por região",
+              "titulo": "Cobertura ESF por região (2024, %)",
+              "valores": [
+                {
+                  "rotulo": "Nordeste",
+                  "valor": 81.2,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Norte",
+                  "valor": 67.5,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Centro-Oeste",
+                  "valor": 65.0,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 65.4,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Sul",
+                  "valor": 61.4,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Sudeste",
+                  "valor": 58.6,
+                  "max": 90
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "e-Gestor APS / Ministério da Saúde",
+            "produtor": "Secretaria de Atenção Primária à Saúde (SAPS/MS)",
+            "periodicidade": "Mensal (consolidado anual)",
+            "ultimaAtualizacao": "2025 (dados de 2024)",
+            "url": "https://egestorab.saude.gov.br/paginas/acessoPublico/relatorios/relHistoricoCoberturaAB.xhtml"
+          },
+          "notaMetodologica": "Cobertura ESF: percentual da população do município atendido por equipes de Saúde da Família credenciadas e em funcionamento. Maior cobertura no Nordeste reflete priorização histórica da política. Sudeste tem cobertura mais baixa por mix de provisão privada e UBS tradicionais (não ESF). Valores aproximados por região."
         },
         {
-          "id": "regiao",
-          "dimensao": "Por região",
-          "titulo": "Cobertura da Tríplice Viral por região (2024, %)",
-          "valores": [
-            {"rotulo": "Sul", "valor": 98.4, "max": 100},
-            {"rotulo": "Sudeste", "valor": 97.7, "max": 100},
-            {"rotulo": "Centro-Oeste", "valor": 96.5, "max": 100},
-            {"rotulo": "Brasil (média)", "valor": 96.3, "max": 100},
-            {"rotulo": "Nordeste", "valor": 95.0, "max": 100},
-            {"rotulo": "Norte", "valor": 91.2, "max": 100}
-          ]
+          "id": "pre-natal",
+          "titulo": "Pré-natal adequado",
+          "indicador": "% de gestantes com 7 ou mais consultas de pré-natal",
+          "valor": 76.4,
+          "unidade": "% das gestantes (2023)",
+          "destaque": "Meta OMS é 100% com 8+ consultas",
+          "totalAbsoluto": "Acompanhamento incompleto: 23,6%",
+          "tendencia": "alta",
+          "serie": [
+            {
+              "ano": 2016,
+              "valor": 64.5
+            },
+            {
+              "ano": 2017,
+              "valor": 66.8
+            },
+            {
+              "ano": 2018,
+              "valor": 68.2
+            },
+            {
+              "ano": 2019,
+              "valor": 70.4
+            },
+            {
+              "ano": 2020,
+              "valor": 71.3
+            },
+            {
+              "ano": 2021,
+              "valor": 72.5
+            },
+            {
+              "ano": 2022,
+              "valor": 74.2
+            },
+            {
+              "ano": 2023,
+              "valor": 76.4
+            }
+          ],
+          "rotuloSerieY": "% das gestantes",
+          "recortes": [
+            {
+              "id": "regiao",
+              "dimensao": "Por região",
+              "titulo": "Pré-natal com 7+ consultas por região (2023, %)",
+              "valores": [
+                {
+                  "rotulo": "Sul",
+                  "valor": 84.5,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Sudeste",
+                  "valor": 82.1,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Centro-Oeste",
+                  "valor": 78.4,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 76.4,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Nordeste",
+                  "valor": 71.0,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Norte",
+                  "valor": 60.8,
+                  "max": 90
+                }
+              ]
+            },
+            {
+              "id": "raca",
+              "dimensao": "Por raça/cor",
+              "titulo": "Pré-natal adequado por raça/cor (2023, %)",
+              "valores": [
+                {
+                  "rotulo": "Brancas",
+                  "valor": 82.4,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Pardas",
+                  "valor": 73.8,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Pretas",
+                  "valor": 69.2,
+                  "max": 90
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "Sinasc — Sistema de Informações sobre Nascidos Vivos (DataSUS)",
+            "produtor": "Ministério da Saúde",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "2025 (dados de 2023)",
+            "url": "https://datasus.saude.gov.br/nascidos-vivos-desde-1994"
+          },
+          "notaMetodologica": "Indicador da Rede Cegonha e linha de base do PNAB. A OMS recomenda mínimo de 8 consultas; o Brasil ainda usa o parâmetro de 7+. Mulheres pretas e da região Norte têm acesso significativamente menor, refletindo desigualdades de raça e território no acesso à saúde. Valores aproximados a partir do TabNet/DataSUS."
         }
-      ],
-      "fonte": {
-        "nome": "SI-PNI — Sistema de Informações do Programa Nacional de Imunizações",
-        "produtor": "Ministério da Saúde — DATASUS",
-        "periodicidade": "Mensal/anual",
-        "ultimaAtualizacao": "Janeiro/2025 (dados de 2024)",
-        "url": "http://sipni.datasus.gov.br/"
-      },
-      "notaMetodologica": "Cobertura é a razão entre doses aplicadas e população-alvo. Quedas pós-2017 e durante a pandemia foram parcialmente revertidas a partir de 2023. Em novembro/2024, o Brasil substituiu a VOP (gotinha) pela VIP injetável em todas as doses, alinhando-se às recomendações da OMS."
+      ]
     }
   ]
 }
