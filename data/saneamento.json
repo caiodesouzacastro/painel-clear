@@ -1,0 +1,467 @@
+{
+  "id": "saneamento",
+  "area": "Saneamento e Território",
+  "ordem": 5,
+  "capituloGuia": "Capítulo 9 — Infraestrutura e Território",
+  "fontesRelacionadas": [
+    "SINISA/SNIS — Sistema Nacional de Informações em Saneamento (MCidades)",
+    "Atlas Água e Atlas Esgotos (ANA)",
+    "PNAD Contínua (IBGE)",
+    "Munic e Estadic — Pesquisas de Capacidade Institucional",
+    "ANEEL — Agência Nacional de Energia Elétrica"
+  ],
+  "temas": [
+    {
+      "id": "saneamento-basico",
+      "tema": "Saneamento básico",
+      "descricao": "Acesso a água, coleta e tratamento de esgoto",
+      "indicadores": [
+        {
+          "id": "esgoto",
+          "titulo": "Saneamento Básico",
+          "indicador": "Atendimento de coleta de esgoto (% da população)",
+          "valor": 59.7,
+          "unidade": "% da população",
+          "destaque": "Água: 83,1% — Tratamento do esgoto coletado: 51,2%",
+          "totalAbsoluto": "R$ 28 bi investidos em 2023",
+          "tendencia": "alta",
+          "serie": [
+            {
+              "ano": 2014,
+              "valor": 49.8
+            },
+            {
+              "ano": 2016,
+              "valor": 51.9
+            },
+            {
+              "ano": 2018,
+              "valor": 53.2
+            },
+            {
+              "ano": 2019,
+              "valor": 54.1
+            },
+            {
+              "ano": 2020,
+              "valor": 55.0
+            },
+            {
+              "ano": 2021,
+              "valor": 56.0
+            },
+            {
+              "ano": 2022,
+              "valor": 56.0
+            },
+            {
+              "ano": 2023,
+              "valor": 59.7
+            }
+          ],
+          "rotuloSerieY": "% da população",
+          "recortes": [
+            {
+              "id": "componentes",
+              "dimensao": "Por componente",
+              "titulo": "Indicadores SINISA 2023 (% da população)",
+              "valores": [
+                {
+                  "rotulo": "Acesso à água",
+                  "valor": 83.1,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Coleta de esgoto",
+                  "valor": 59.7,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Esgoto tratado",
+                  "valor": 51.2,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Perdas na distribuição",
+                  "valor": 39.9,
+                  "max": 100
+                }
+              ]
+            },
+            {
+              "id": "regiao",
+              "dimensao": "Por região (esgoto)",
+              "titulo": "Cobertura de coleta de esgoto por região (2023, % da população)",
+              "valores": [
+                {
+                  "rotulo": "Sudeste",
+                  "valor": 80.8,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Centro-Oeste",
+                  "valor": 67.4,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Sul",
+                  "valor": 48.2,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 59.7,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Nordeste",
+                  "valor": 32.5,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Norte",
+                  "valor": 22.8,
+                  "max": 90
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "SINISA/SNIS — Sistema Nacional de Informações em Saneamento Básico",
+            "produtor": "Ministério das Cidades (Secretaria Nacional de Saneamento)",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "Março/2025 (dados de 2023)",
+            "url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/snis"
+          },
+          "notaMetodologica": "SINISA substituiu SNIS a partir do ciclo 2023. Limitação: cobertura nominal (rede instalada) pode diferir de cobertura efetiva (ligação domiciliar funcional). Marco Legal do Saneamento (2020) estabelece meta de universalização até 2033. Desigualdade regional persistente: Sudeste 80,8% e Norte 22,8% (3,5x menos). Valores regionais 2023 — Sul e Nordeste aproximados a partir do agregado nacional do SINISA."
+        }
+      ]
+    },
+    {
+      "id": "residuos",
+      "tema": "Resíduos sólidos",
+      "descricao": "Coleta de lixo nos domicílios brasileiros",
+      "indicadores": [
+        {
+          "id": "lixo",
+          "titulo": "Coleta de Lixo",
+          "indicador": "Domicílios com coleta direta ou indireta de lixo",
+          "valor": 92.0,
+          "unidade": "% dos domicílios",
+          "destaque": "Cobertura urbana próxima à universalização",
+          "totalAbsoluto": "Desigualdade rural × urbano persiste",
+          "tendencia": "alta",
+          "serie": [
+            {
+              "ano": 2016,
+              "valor": 89.8
+            },
+            {
+              "ano": 2017,
+              "valor": 90.2
+            },
+            {
+              "ano": 2018,
+              "valor": 90.7
+            },
+            {
+              "ano": 2019,
+              "valor": 91.1
+            },
+            {
+              "ano": 2022,
+              "valor": 91.5
+            },
+            {
+              "ano": 2023,
+              "valor": 91.8
+            },
+            {
+              "ano": 2024,
+              "valor": 92.0
+            }
+          ],
+          "rotuloSerieY": "% domicílios atendidos",
+          "recortes": [
+            {
+              "id": "situacao",
+              "dimensao": "Urbano × Rural",
+              "titulo": "Coleta de lixo por situação do domicílio (2024, %)",
+              "valores": [
+                {
+                  "rotulo": "Urbano",
+                  "valor": 97.5,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Brasil (total)",
+                  "valor": 92.0,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Rural",
+                  "valor": 35.0,
+                  "max": 100
+                }
+              ]
+            },
+            {
+              "id": "regiao",
+              "dimensao": "Por região",
+              "titulo": "Coleta de lixo por região (2024, % dos domicílios)",
+              "valores": [
+                {
+                  "rotulo": "Sul",
+                  "valor": 96.8,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Sudeste",
+                  "valor": 96.2,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Centro-Oeste",
+                  "valor": 94.1,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 92.0,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Nordeste",
+                  "valor": 84.9,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Norte",
+                  "valor": 80.2,
+                  "max": 100
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "PNAD Contínua — Características dos Domicílios (IBGE)",
+            "produtor": "Instituto Brasileiro de Geografia e Estatística",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "2025 (dados de 2024, estimativa)",
+            "url": "https://www.ibge.gov.br/estatisticas/sociais/habitacao.html"
+          },
+          "notaMetodologica": "Inclui coleta direta (caminhão) e indireta (caçamba estacionária). Cobertura urbana supera 97%; nas áreas rurais, fica próxima a 35%. Os valores da série são aproximados a partir das tabulações da PNAD; recomenda-se SIDRA/IBGE para análises detalhadas."
+        },
+        {
+          "id": "disposicao-residuos",
+          "titulo": "Disposição adequada de resíduos",
+          "indicador": "% dos resíduos coletados destinados a aterro sanitário",
+          "valor": 60.3,
+          "unidade": "% do volume coletado (2023)",
+          "destaque": "Quase 40% ainda vão para lixões e aterros controlados",
+          "totalAbsoluto": "PNRS exigia fim dos lixões em 2014",
+          "tendencia": "alta",
+          "serie": [
+            {
+              "ano": 2010,
+              "valor": 56.7
+            },
+            {
+              "ano": 2014,
+              "valor": 58.4
+            },
+            {
+              "ano": 2016,
+              "valor": 58.1
+            },
+            {
+              "ano": 2018,
+              "valor": 59.5
+            },
+            {
+              "ano": 2020,
+              "valor": 60.0
+            },
+            {
+              "ano": 2021,
+              "valor": 60.2
+            },
+            {
+              "ano": 2022,
+              "valor": 60.2
+            },
+            {
+              "ano": 2023,
+              "valor": 60.3
+            }
+          ],
+          "rotuloSerieY": "% do volume coletado",
+          "recortes": [
+            {
+              "id": "regiao",
+              "dimensao": "Por região",
+              "titulo": "Disposição em aterro sanitário por região (2023, %)",
+              "valores": [
+                {
+                  "rotulo": "Sudeste",
+                  "valor": 79.2,
+                  "max": 85
+                },
+                {
+                  "rotulo": "Sul",
+                  "valor": 71.5,
+                  "max": 85
+                },
+                {
+                  "rotulo": "Centro-Oeste",
+                  "valor": 56.4,
+                  "max": 85
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 60.3,
+                  "max": 85
+                },
+                {
+                  "rotulo": "Norte",
+                  "valor": 24.8,
+                  "max": 85
+                },
+                {
+                  "rotulo": "Nordeste",
+                  "valor": 38.2,
+                  "max": 85
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "ABRELPE — Panorama dos Resíduos Sólidos no Brasil",
+            "produtor": "Associação Brasileira de Empresas de Limpeza Pública e Resíduos Especiais",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "2024 (dados de 2023)",
+            "url": "https://abrelpe.org.br/panorama/"
+          },
+          "notaMetodologica": "Diferença entre coleta e disposição: 92% dos domicílios têm coleta, mas só 60% dos resíduos vão para aterros sanitários ambientalmente adequados. O restante vai para 'aterros controlados' (cobertura precária) ou lixões a céu aberto. Política Nacional de Resíduos Sólidos (Lei 12.305/2010) previa erradicação dos lixões até 2014, mas centenas de municípios pequenos ainda mantêm o modelo. Valores regionais aproximados."
+        }
+      ]
+    },
+    {
+      "id": "eletrificacao",
+      "tema": "Eletrificação",
+      "descricao": "Acesso à energia elétrica nos domicílios brasileiros",
+      "indicadores": [
+        {
+          "id": "energia",
+          "titulo": "Acesso à Energia Elétrica",
+          "indicador": "Domicílios com iluminação elétrica",
+          "valor": 99.8,
+          "unidade": "% dos domicílios",
+          "destaque": "Universalização praticamente atingida",
+          "totalAbsoluto": "Cerca de 200 mil domicílios ainda sem energia",
+          "tendencia": "estavel",
+          "serie": [
+            {
+              "ano": 2016,
+              "valor": 99.5
+            },
+            {
+              "ano": 2017,
+              "valor": 99.6
+            },
+            {
+              "ano": 2018,
+              "valor": 99.6
+            },
+            {
+              "ano": 2019,
+              "valor": 99.7
+            },
+            {
+              "ano": 2022,
+              "valor": 99.7
+            },
+            {
+              "ano": 2023,
+              "valor": 99.7
+            },
+            {
+              "ano": 2024,
+              "valor": 99.8
+            }
+          ],
+          "rotuloSerieY": "% domicílios",
+          "recortes": [
+            {
+              "id": "situacao",
+              "dimensao": "Urbano × Rural",
+              "titulo": "Acesso à energia elétrica (2024, % dos domicílios)",
+              "valores": [
+                {
+                  "rotulo": "Urbano",
+                  "valor": 99.96,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Brasil (total)",
+                  "valor": 99.8,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Rural",
+                  "valor": 98.2,
+                  "max": 100
+                }
+              ]
+            },
+            {
+              "id": "regiao",
+              "dimensao": "Por região",
+              "titulo": "Acesso à energia elétrica por região (2024, % dos domicílios)",
+              "valores": [
+                {
+                  "rotulo": "Sudeste",
+                  "valor": 99.99,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Sul",
+                  "valor": 99.97,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Centro-Oeste",
+                  "valor": 99.95,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Nordeste",
+                  "valor": 99.85,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 99.8,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Norte",
+                  "valor": 98.7,
+                  "max": 100
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "PNAD Contínua — Características dos Domicílios (IBGE) e Programa Luz para Todos",
+            "produtor": "IBGE / Ministério de Minas e Energia",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "2025 (dados de 2024, estimativa)",
+            "url": "https://www.gov.br/mme/pt-br/assuntos/secretarias/secretaria-nacional-de-energia-eletrica"
+          },
+          "notaMetodologica": "Cobertura nacional próxima de 100%. Bolsões de exclusão concentram-se em comunidades isoladas da Amazônia. O Programa Luz para Todos (criado em 2003) é responsável pela maior parte dos avanços recentes. Acesso ≠ regularidade: medidas de qualidade do fornecimento (interrupções, tensão) ficam a cargo da ANEEL."
+        }
+      ]
+    }
+  ]
+}

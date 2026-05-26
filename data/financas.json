@@ -1,0 +1,630 @@
+{
+  "id": "financas",
+  "area": "Finanças Municipais",
+  "ordem": 9,
+  "capituloGuia": "Capítulo 10 — Finanças Públicas",
+  "fontesRelacionadas": [
+    "FINBRA/Siconfi — Tesouro Nacional",
+    "Sistema de Transferências Constitucionais (STN)",
+    "Portal da Transparência",
+    "Multi Cidades (FNP) — anuário financeiro municipal",
+    "Receita Federal — arrecadação tributária"
+  ],
+  "temas": [
+    {
+      "id": "transferencias",
+      "tema": "Transferências constitucionais",
+      "descricao": "Fundo de Participação dos Municípios e outras transferências",
+      "indicadores": [
+        {
+          "id": "fpm",
+          "titulo": "Fundo de Participação dos Municípios",
+          "indicador": "Transferência federal automática para as prefeituras",
+          "valor": 220.8,
+          "unidade": "R$ bilhões distribuídos em 2024",
+          "destaque": "Crescimento real de 11,5% em 2024",
+          "totalAbsoluto": "Representa 17,5% a 18,5% da receita corrente municipal",
+          "tendencia": "alta",
+          "serie": [
+            {
+              "ano": 2018,
+              "valor": 92.8
+            },
+            {
+              "ano": 2019,
+              "valor": 95.1
+            },
+            {
+              "ano": 2020,
+              "valor": 102.5
+            },
+            {
+              "ano": 2021,
+              "valor": 134.2
+            },
+            {
+              "ano": 2022,
+              "valor": 168.5
+            },
+            {
+              "ano": 2023,
+              "valor": 198.0
+            },
+            {
+              "ano": 2024,
+              "valor": 220.8
+            }
+          ],
+          "rotuloSerieY": "R$ bilhões",
+          "recortes": [
+            {
+              "id": "tipo-municipio",
+              "dimensao": "Por tipo de cota",
+              "titulo": "Distribuição do FPM por tipo de cota (Constituição, art. 159)",
+              "valores": [
+                {
+                  "rotulo": "Interior (5.500+ municípios)",
+                  "valor": 86.4,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Capitais (26 + DF)",
+                  "valor": 10.0,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Reserva (pop. > 142 mil)",
+                  "valor": 3.6,
+                  "max": 100
+                }
+              ]
+            },
+            {
+              "id": "regiao",
+              "dimensao": "Por região",
+              "titulo": "Distribuição estimada do FPM 2024 por região (% do total)",
+              "valores": [
+                {
+                  "rotulo": "Nordeste",
+                  "valor": 35.3,
+                  "max": 40
+                },
+                {
+                  "rotulo": "Sudeste",
+                  "valor": 31.2,
+                  "max": 40
+                },
+                {
+                  "rotulo": "Sul",
+                  "valor": 17.6,
+                  "max": 40
+                },
+                {
+                  "rotulo": "Norte",
+                  "valor": 8.7,
+                  "max": 40
+                },
+                {
+                  "rotulo": "Centro-Oeste",
+                  "valor": 7.2,
+                  "max": 40
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "Tesouro Nacional — Sistema de Transferências Constitucionais",
+            "produtor": "Secretaria do Tesouro Nacional (STN)",
+            "periodicidade": "Decendial (consolidado anual)",
+            "ultimaAtualizacao": "Janeiro/2025 (fechamento de 2024)",
+            "url": "https://www.tesourotransparente.gov.br/temas/estados-e-municipios/transferencias-a-estados-e-municipios"
+          },
+          "notaMetodologica": "FPM é composto por 22,5% da arrecadação do IR e IPI da União (CF, art. 159), repassado em três decêndios. Desde 2024 inclui mais 1% adicional pago em setembro (LC 198/2023). Distribuição por coeficientes populacionais. Em 2024, IR cresceu 8,8% real e IPI 38,4% real. A distribuição por região é estimada a partir dos coeficientes populacionais e populações estaduais; valores efetivos por município estão no Tesouro Transparente."
+        }
+      ]
+    },
+    {
+      "id": "receita-propria",
+      "tema": "Receita própria municipal",
+      "descricao": "IPTU e demais receitas tributárias municipais",
+      "indicadores": [
+        {
+          "id": "iptu",
+          "titulo": "Arrecadação de IPTU",
+          "indicador": "Receita dos municípios com IPTU",
+          "valor": 73.4,
+          "unidade": "R$ bilhões em 2024",
+          "destaque": "Alta de 1,9% real frente a 2023",
+          "totalAbsoluto": "R$ 698 por imóvel em média — São Paulo concentra 22,3%",
+          "tendencia": "alta",
+          "serie": [
+            {
+              "ano": 2018,
+              "valor": 48.5
+            },
+            {
+              "ano": 2019,
+              "valor": 52.1
+            },
+            {
+              "ano": 2020,
+              "valor": 55.4
+            },
+            {
+              "ano": 2021,
+              "valor": 58.7
+            },
+            {
+              "ano": 2022,
+              "valor": 64.9
+            },
+            {
+              "ano": 2023,
+              "valor": 71.2
+            },
+            {
+              "ano": 2024,
+              "valor": 73.4
+            }
+          ],
+          "rotuloSerieY": "R$ bilhões",
+          "recortes": [
+            {
+              "id": "porte",
+              "dimensao": "Por porte do município",
+              "titulo": "IPTU como % da receita corrente, por porte (2024)",
+              "valores": [
+                {
+                  "rotulo": "Acima de 500 mil hab",
+                  "valor": 11.6,
+                  "max": 14
+                },
+                {
+                  "rotulo": "100 mil a 500 mil hab",
+                  "valor": 5.8,
+                  "max": 14
+                },
+                {
+                  "rotulo": "20 mil a 100 mil hab",
+                  "valor": 2.4,
+                  "max": 14
+                },
+                {
+                  "rotulo": "Até 20 mil hab",
+                  "valor": 1.0,
+                  "max": 14
+                }
+              ]
+            },
+            {
+              "id": "regiao",
+              "dimensao": "Por região (crescimento)",
+              "titulo": "Crescimento real do IPTU por região (2023→2024, %)",
+              "valores": [
+                {
+                  "rotulo": "Norte",
+                  "valor": 13.6,
+                  "max": 15
+                },
+                {
+                  "rotulo": "Nordeste",
+                  "valor": 4.0,
+                  "max": 15
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 1.9,
+                  "max": 15
+                },
+                {
+                  "rotulo": "Sul",
+                  "valor": 1.5,
+                  "max": 15
+                },
+                {
+                  "rotulo": "Sudeste",
+                  "valor": 1.4,
+                  "max": 15
+                },
+                {
+                  "rotulo": "Centro-Oeste",
+                  "valor": 0.9,
+                  "max": 15
+                }
+              ]
+            },
+            {
+              "id": "valor-medio",
+              "dimensao": "Valor médio por imóvel",
+              "titulo": "Arrecadação média por imóvel (2024, R$)",
+              "valores": [
+                {
+                  "rotulo": "Acima de 500 mil hab",
+                  "valor": 1411,
+                  "max": 2900
+                },
+                {
+                  "rotulo": "Capitais (média)",
+                  "valor": 1546,
+                  "max": 2900
+                },
+                {
+                  "rotulo": "São Paulo (cidade)",
+                  "valor": 2887,
+                  "max": 2900
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 698,
+                  "max": 2900
+                },
+                {
+                  "rotulo": "Até 20 mil hab",
+                  "valor": 129,
+                  "max": 2900
+                },
+                {
+                  "rotulo": "Macapá",
+                  "valor": 91,
+                  "max": 2900
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "Anuário Multi Cidades 2025 (FNP) — Finanças dos Municípios",
+            "produtor": "Frente Nacional de Prefeitas e Prefeitos (FNP) / FINBRA-Siconfi",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "Janeiro/2026 (dados de 2024)",
+            "url": "https://multicidadesonline.com.br/"
+          },
+          "notaMetodologica": "IPTU é tributo de competência exclusivamente municipal e principal receita própria que prefeituras controlam. Arrecadação altamente concentrada: cidades acima de 500 mil habitantes têm IPTU médio de R$ 1.412/imóvel; municípios pequenos, R$ 129. Reforma Tributária (EC 132/2023) preserva IPTU, mas extingue ISS (substituído pelo IBS). Cadastros desatualizados são a maior limitação à arrecadação efetiva."
+        },
+        {
+          "id": "iss",
+          "titulo": "Arrecadação de ISS",
+          "indicador": "Imposto Sobre Serviços de Qualquer Natureza",
+          "valor": 105.8,
+          "unidade": "R$ bilhões em 2024",
+          "destaque": "Maior receita tributária própria municipal",
+          "totalAbsoluto": "Crescimento real de 3,2% em 2024",
+          "tendencia": "alta",
+          "serie": [
+            {
+              "ano": 2018,
+              "valor": 64.5
+            },
+            {
+              "ano": 2019,
+              "valor": 70.2
+            },
+            {
+              "ano": 2020,
+              "valor": 73.1
+            },
+            {
+              "ano": 2021,
+              "valor": 82.4
+            },
+            {
+              "ano": 2022,
+              "valor": 93.8
+            },
+            {
+              "ano": 2023,
+              "valor": 102.5
+            },
+            {
+              "ano": 2024,
+              "valor": 105.8
+            }
+          ],
+          "rotuloSerieY": "R$ bilhões",
+          "recortes": [
+            {
+              "id": "porte",
+              "dimensao": "Por porte do município",
+              "titulo": "ISS como % da receita corrente (2024)",
+              "valores": [
+                {
+                  "rotulo": "Acima de 500 mil hab",
+                  "valor": 13.4,
+                  "max": 15
+                },
+                {
+                  "rotulo": "100 mil a 500 mil hab",
+                  "valor": 6.2,
+                  "max": 15
+                },
+                {
+                  "rotulo": "20 mil a 100 mil hab",
+                  "valor": 2.8,
+                  "max": 15
+                },
+                {
+                  "rotulo": "Até 20 mil hab",
+                  "valor": 1.3,
+                  "max": 15
+                }
+              ]
+            },
+            {
+              "id": "concentracao",
+              "dimensao": "Concentração",
+              "titulo": "Capitais que concentram a arrecadação (% do ISS nacional, 2024)",
+              "valores": [
+                {
+                  "rotulo": "São Paulo (cidade)",
+                  "valor": 23.6,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Rio de Janeiro",
+                  "valor": 8.4,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Belo Horizonte",
+                  "valor": 3.7,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Brasília",
+                  "valor": 3.2,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Outras capitais",
+                  "valor": 12.5,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Demais 5.500+ municípios",
+                  "valor": 48.6,
+                  "max": 25
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "FINBRA/Siconfi e Anuário Multi Cidades (FNP)",
+            "produtor": "Secretaria do Tesouro Nacional / FNP",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "Janeiro/2026 (dados de 2024)",
+            "url": "https://siconfi.tesouro.gov.br/"
+          },
+          "notaMetodologica": "ISS é o maior tributo próprio municipal — maior que IPTU em volume. Reforma Tributária (EC 132/2023) extingue ISS gradualmente até 2032, substituindo pelo IBS (compartilhado com estados). Alta concentração: 4 capitais respondem por ~39% da arrecadação nacional. Valores aproximados."
+        }
+      ]
+    },
+    {
+      "id": "estrutura-fiscal",
+      "tema": "Estrutura fiscal",
+      "descricao": "Dependência de transferências e capacidade fiscal municipal",
+      "indicadores": [
+        {
+          "id": "dependencia",
+          "titulo": "Dependência de Transferências",
+          "indicador": "Receita corrente municipal vinda de outras esferas (FPM, ICMS, Fundeb, royalties)",
+          "valor": 68.0,
+          "unidade": "% da receita corrente municipal (média)",
+          "destaque": "Municípios pequenos chegam a 90%+ de dependência",
+          "totalAbsoluto": "Receitas próprias cobrem só 32% das despesas municipais",
+          "tendencia": "estavel",
+          "serie": [
+            {
+              "ano": 2018,
+              "valor": 67.2
+            },
+            {
+              "ano": 2019,
+              "valor": 67.5
+            },
+            {
+              "ano": 2020,
+              "valor": 70.1
+            },
+            {
+              "ano": 2021,
+              "valor": 69.4
+            },
+            {
+              "ano": 2022,
+              "valor": 68.5
+            },
+            {
+              "ano": 2023,
+              "valor": 67.8
+            },
+            {
+              "ano": 2024,
+              "valor": 68.0
+            }
+          ],
+          "rotuloSerieY": "% receita corrente",
+          "recortes": [
+            {
+              "id": "porte",
+              "dimensao": "Por porte do município",
+              "titulo": "Dependência média por porte populacional (2024, %)",
+              "valores": [
+                {
+                  "rotulo": "Até 20 mil hab",
+                  "valor": 92.0,
+                  "max": 100
+                },
+                {
+                  "rotulo": "20 mil a 100 mil hab",
+                  "valor": 83.0,
+                  "max": 100
+                },
+                {
+                  "rotulo": "100 mil a 500 mil hab",
+                  "valor": 68.0,
+                  "max": 100
+                },
+                {
+                  "rotulo": "Acima de 500 mil hab",
+                  "valor": 48.0,
+                  "max": 100
+                }
+              ]
+            },
+            {
+              "id": "regiao",
+              "dimensao": "Por região",
+              "titulo": "Dependência média municipal por região (2024, %)",
+              "valores": [
+                {
+                  "rotulo": "Norte",
+                  "valor": 84.2,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Nordeste",
+                  "valor": 82.5,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Centro-Oeste",
+                  "valor": 71.8,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 68.0,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Sul",
+                  "valor": 64.3,
+                  "max": 90
+                },
+                {
+                  "rotulo": "Sudeste",
+                  "valor": 58.7,
+                  "max": 90
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "FINBRA / Siconfi — Tesouro Nacional",
+            "produtor": "Secretaria do Tesouro Nacional (STN) — coleta dos 5.568 municípios via LRF",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "2025 (dados de 2024)",
+            "url": "https://siconfi.tesouro.gov.br/"
+          },
+          "notaMetodologica": "Mede a proporção das receitas correntes municipais oriundas de transferências (FPM, cota-parte do ICMS, Fundeb, royalties, SUS, FNDE etc.) versus receitas próprias (IPTU, ISS, ITBI, taxas, contribuição de melhoria). Municípios pequenos e do Norte/Nordeste são estruturalmente mais dependentes. Limitação: não considera transferências voluntárias (emendas parlamentares, convênios). Valores agregados; análise detalhada exige FINBRA por município."
+        }
+      ]
+    },
+    {
+      "id": "despesa",
+      "tema": "Despesa municipal",
+      "descricao": "Como os municípios gastam suas receitas — controle pela Lei de Responsabilidade Fiscal",
+      "indicadores": [
+        {
+          "id": "despesa-pessoal",
+          "titulo": "Despesa com pessoal",
+          "indicador": "Gasto municipal com folha como % da Receita Corrente Líquida (RCL)",
+          "valor": 52.4,
+          "unidade": "% da RCL (média municipal 2024)",
+          "destaque": "Limite LRF é 60% — muitos municípios próximos",
+          "totalAbsoluto": "~1.200 municípios acima do limite prudencial (54%)",
+          "tendencia": "estavel",
+          "serie": [
+            {
+              "ano": 2018,
+              "valor": 51.2
+            },
+            {
+              "ano": 2019,
+              "valor": 52.1
+            },
+            {
+              "ano": 2020,
+              "valor": 50.4
+            },
+            {
+              "ano": 2021,
+              "valor": 49.8
+            },
+            {
+              "ano": 2022,
+              "valor": 50.6
+            },
+            {
+              "ano": 2023,
+              "valor": 51.8
+            },
+            {
+              "ano": 2024,
+              "valor": 52.4
+            }
+          ],
+          "rotuloSerieY": "% da RCL",
+          "recortes": [
+            {
+              "id": "porte",
+              "dimensao": "Por porte do município",
+              "titulo": "Despesa com pessoal média por porte (2024, % RCL)",
+              "valores": [
+                {
+                  "rotulo": "Até 20 mil hab",
+                  "valor": 54.6,
+                  "max": 60
+                },
+                {
+                  "rotulo": "20 mil a 100 mil hab",
+                  "valor": 52.8,
+                  "max": 60
+                },
+                {
+                  "rotulo": "100 mil a 500 mil hab",
+                  "valor": 51.4,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Acima de 500 mil hab",
+                  "valor": 49.2,
+                  "max": 60
+                }
+              ]
+            },
+            {
+              "id": "limite",
+              "dimensao": "Situação na LRF",
+              "titulo": "Municípios por situação na LRF (2024)",
+              "valores": [
+                {
+                  "rotulo": "Acima de 60% (limite)",
+                  "valor": 285,
+                  "max": 5570
+                },
+                {
+                  "rotulo": "Alerta (54% a 60%)",
+                  "valor": 920,
+                  "max": 5570
+                },
+                {
+                  "rotulo": "Abaixo do alerta",
+                  "valor": 4365,
+                  "max": 5570
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "Relatório de Gestão Fiscal (RGF/LRF) — Siconfi",
+            "produtor": "Secretaria do Tesouro Nacional (STN)",
+            "periodicidade": "Quadrimestral (consolidado anual)",
+            "ultimaAtualizacao": "2025 (dados de 2024)",
+            "url": "https://siconfi.tesouro.gov.br/"
+          },
+          "notaMetodologica": "A Lei de Responsabilidade Fiscal (LC 101/2000) impõe limite de 60% da RCL para despesa de pessoal municipal (Poder Executivo). Acima de 54% (90% do limite) o município entra em 'alerta', e acima de 57,6% (95%) é vedada contratação. Cerca de 1.200 municípios estão acima do nível prudencial, com risco de sanções e dificuldade de execução de outras políticas. Valores aproximados."
+        }
+      ]
+    }
+  ]
+}

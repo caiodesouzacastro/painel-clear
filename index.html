@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel CLEAR — Indicadores para Avaliação de Políticas Públicas</title>
+<meta name="description" content="Painel institucional do FGV CLEAR com indicadores-chave de políticas públicas brasileiras: segurança, educação, saúde, assistência social, saneamento, trabalho e meio ambiente.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Paleta Michel/CLEAR */
+  --navy: #01354A;
+  --navy2: #012030;
+  --accent-blue: #08B0EE;
+  --accent-green: #98C43B;
+
+  /* Neutros */
+  --paper: #FFFFFF;
+  --paper-warm: #F7F5EF;
+  --ink: #1A1A1C;
+  --ink-soft: #4A4A50;
+  --ink-mute: #8A8A90;
+  --line: rgba(1, 53, 74, 0.12);
+  --line-soft: rgba(1, 53, 74, 0.06);
+
+  /* Aliases p/ retrocompat com nomes usados no JS / classes existentes */
+  --clear-blue: var(--navy);
+  --clear-light-blue: var(--accent-blue);
+  --clear-light-blue-bg: rgba(8, 176, 238, 0.10);
+  --clear-salmon: var(--accent-blue);
+  --clear-light-salmon: rgba(8, 176, 238, 0.12);
+  --clear-green: #5B8A2A;
+  --clear-light-green: rgba(152, 196, 59, 0.18);
+  --clear-amber: #B89030;
+  --clear-light-amber: rgba(184, 144, 48, 0.15);
+  --clear-gray: var(--ink-soft);
+  --clear-light-gray: var(--paper-warm);
+
+  --border: var(--line);
+  --border-soft: var(--line-soft);
+  --card-bg: var(--paper);
+  --card-hover: var(--paper-warm);
+  --shadow-modal: 0 24px 80px rgba(0,0,0,0.2);
+
+  /* Tipografia */
+  --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+/* Dark mode opcional (toggle existente do painel) */
+html[data-theme="dark"] {
+  --navy: #062c3f;
+  --navy2: #041f2d;
+  --accent-blue: #5BC4F0;
+  --accent-green: #B8DA5C;
+
+  --paper: rgb(22, 25, 32);
+  --paper-warm: rgb(30, 34, 42);
+  --ink: rgb(232, 230, 225);
+  --ink-soft: rgb(180, 178, 173);
+  --ink-mute: rgb(140, 138, 132);
+  --line: rgba(180, 200, 225, 0.15);
+  --line-soft: rgba(180, 200, 225, 0.08);
+
+  --clear-blue: var(--accent-blue);
+  --clear-light-blue: var(--accent-blue);
+  --clear-light-blue-bg: rgba(91, 196, 240, 0.12);
+  --clear-salmon: var(--accent-blue);
+  --clear-light-salmon: rgba(91, 196, 240, 0.18);
+  --clear-green: var(--accent-green);
+  --clear-light-green: rgba(184, 218, 92, 0.15);
+  --clear-amber: rgb(220, 180, 100);
+  --clear-light-amber: rgba(220, 180, 100, 0.15);
+  --clear-gray: rgb(165, 165, 170);
+  --clear-light-gray: rgb(38, 40, 45);
+
+  --card-bg: rgb(28, 32, 40);
+  --card-hover: rgb(34, 40, 50);
+  --shadow-modal: 0 24px 80px rgba(0,0,0,0.6);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+  background: var(--paper);
+}
+html[data-theme="dark"] { color-scheme: dark; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.55;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+a { color: inherit; }
+
+/* HEADER NAVY MICHEL */
+.header {
+  background: var(--navy);
+  color: white;
+  padding: 56px 48px 64px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: "";
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  opacity: 0.08;
+  pointer-events: none;
+}
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: -100px; left: -80px;
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  opacity: 0.07;
+  pointer-events: none;
+}
+.header-inner { max-width: 1320px; margin: 0 auto; position: relative; z-index: 1; }
+.brand-row { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 36px; flex-wrap: wrap; gap: 16px; }
+.clear-logo { display: block; }
+.clear-logo img { height: 44px; width: auto; display: block; }
+.header-actions { display: flex; gap: 14px; align-items: center; }
+.header-meta-top {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.65);
+  text-align: right;
+  line-height: 1.5;
+}
+.top-link {
+  font-size: 12px;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.top-link:hover { color: var(--accent-green); border-color: var(--accent-green); }
+.theme-toggle {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.85);
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+  font-size: 14px;
+}
+.theme-toggle:hover { background: rgba(255,255,255,0.1); border-color: white; color: white; }
+
+.series-tag, .tagline {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+.title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+  max-width: 940px;
+  color: white;
+}
+.title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-blue);
+}
+.subtitle {
+  font-size: 17px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  max-width: 720px;
+  line-height: 1.55;
+  margin-bottom: 36px;
+}
+.subtitle em { font-style: italic; color: var(--accent-blue); }
+.header-meta {
+  display: flex;
+  gap: 56px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.18);
+  flex-wrap: wrap;
+}
+.header-meta-item {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.header-meta-item strong {
+  display: block;
+  font-family: var(--sans);
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 4px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* FILTROS */
+.filters {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 36px 48px 8px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.filter-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-mute);
+  margin-right: 14px;
+  font-weight: 500;
+}
+.filter-chip {
+  font-family: var(--sans);
+  font-size: 13px;
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--navy);
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.18s ease;
+}
+.filter-chip:hover { background: rgba(8, 176, 238, 0.08); border-color: var(--accent-blue); color: var(--navy); }
+.filter-chip.active { background: var(--navy); color: white; border-color: var(--navy); }
+
+/* GRID */
+.indicators-grid {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 24px 48px 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+@media (max-width: 1024px) { .indicators-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .indicators-grid { grid-template-columns: 1fr; } }
+.indicator-card {
+  background: var(--card-bg);
+  padding: 28px 28px 24px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+  position: relative;
+  border: none;
+  font-family: inherit;
+  text-align: left;
+  width: 100%;
+  color: var(--ink);
+}
+.indicator-card:hover { background: var(--card-hover); }
+.indicator-card:hover .card-arrow { transform: translateX(4px); opacity: 1; }
+
+.card-top-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+.card-tema {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+.card-update {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--ink-mute);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-right: 28px;
+  text-align: right;
+}
+.card-update strong { color: var(--ink); font-weight: 600; }
+
+.card-titulo {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.card-indicador { font-size: 13px; color: var(--ink-soft); line-height: 1.45; margin-bottom: 16px; }
+.card-extras-count {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  font-weight: 500;
+  margin-bottom: 14px;
+  padding: 4px 10px;
+  background: rgba(8, 176, 238, 0.10);
+  border-radius: 3px;
+  align-self: flex-start;
+}
+
+.card-valor-wrap { margin-top: auto; }
+.card-valor-row { display: flex; align-items: baseline; gap: 12px; }
+.card-valor {
+  font-family: var(--serif);
+  font-size: 52px;
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.card-tendencia {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+.card-tendencia.queda { background: var(--clear-light-green); color: var(--clear-green); }
+.card-tendencia.alta { background: var(--clear-light-amber); color: var(--clear-amber); }
+.card-tendencia.estavel { background: var(--paper-warm); color: var(--ink-mute); }
+.card-tendencia .arrow { font-size: 13px; line-height: 1; }
+
+.card-unidade { font-size: 13px; color: var(--ink-soft); font-weight: 400; margin-top: 6px; }
+.card-destaque {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-soft);
+  line-height: 1.4;
+}
+.card-arrow {
+  position: absolute;
+  top: 28px; right: 28px;
+  color: var(--accent-blue);
+  opacity: 0.4;
+  font-family: var(--serif);
+  font-size: 24px;
+  transition: all 0.2s ease;
+}
+
+/* Sparkline */
+.card-sparkline { margin-top: 12px; height: 36px; width: 100%; }
+.card-sparkline svg { width: 100%; height: 100%; display: block; }
+.card-sparkline .spark-line { fill: none; stroke: var(--accent-blue); stroke-width: 1.5; }
+.card-sparkline .spark-area { fill: var(--accent-blue); opacity: 0.12; }
+.card-sparkline .spark-dot-last { fill: var(--accent-green); }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(1, 32, 48, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 100;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.modal-overlay.open { opacity: 1; pointer-events: auto; }
+.modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -48%);
+  width: min(960px, calc(100vw - 32px));
+  max-height: 92vh;
+  overflow-y: auto;
+  background: var(--paper);
+  z-index: 101;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  box-shadow: var(--shadow-modal);
+  color: var(--ink);
+}
+.modal.open { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%); }
+.modal-header {
+  padding: 30px 40px 0;
+  background: var(--card-bg);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  border-bottom: 1px solid var(--line);
+}
+.modal-close {
+  position: absolute;
+  top: 18px; right: 22px;
+  background: transparent;
+  border: none;
+  width: 36px; height: 36px;
+  cursor: pointer;
+  color: var(--ink-mute);
+  font-size: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.modal-close:hover { background: var(--paper-warm); color: var(--navy); }
+.modal-tema-row { padding-bottom: 6px; }
+.modal-tema {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.modal-tema-title {
+  font-family: var(--serif);
+  font-size: 26px;
+  color: var(--navy);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.modal-tabs { display: flex; gap: 0; flex-wrap: wrap; margin-top: 8px; }
+.modal-tab {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 12px 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--ink-soft);
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.modal-tab:hover { color: var(--navy); }
+.modal-tab.active {
+  color: var(--navy);
+  border-bottom-color: var(--accent-blue);
+  font-weight: 600;
+}
+
+.modal-body { padding: 32px 40px 40px; }
+
+.indicator-headline { display: flex; align-items: center; gap: 14px; margin-bottom: 4px; flex-wrap: wrap; }
+.indicator-headline h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--navy);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.indicator-subheadline { font-size: 13px; color: var(--ink-soft); margin-bottom: 24px; }
+
+.hero-numbers {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 36px;
+  align-items: end;
+  padding-bottom: 28px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.hero-valor {
+  font-family: var(--serif);
+  font-size: 80px;
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+.hero-context { padding-bottom: 8px; }
+.hero-context .unidade { font-size: 14px; color: var(--ink-soft); margin-bottom: 10px; }
+.hero-context .destaque {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--ink-soft);
+  line-height: 1.35;
+}
+.hero-context .total-absoluto { font-size: 13px; color: var(--ink-soft); margin-top: 8px; }
+
+.section-block { margin-bottom: 36px; }
+.section-block:last-child { margin-bottom: 0; }
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.section-block h3 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 500;
+}
+.download-btn {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  background: var(--accent-green);
+  border: 1px solid var(--accent-green);
+  color: var(--navy2);
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  transition: all 0.18s ease;
+}
+.download-btn:hover { background: var(--navy); border-color: var(--navy); color: white; }
+.download-btn .icon { font-size: 12px; }
+
+.chart-wrap { background: var(--card-bg); border: 1px solid var(--line-soft); padding: 24px 20px 16px; border-radius: 4px; }
+.chart-svg { width: 100%; height: auto; display: block; font-family: var(--sans); }
+.chart-svg .axis-text { font-size: 10px; fill: var(--ink-soft); }
+.chart-svg .line { fill: none; stroke: var(--navy); stroke-width: 2; }
+.chart-svg .dot { fill: var(--navy); }
+.chart-svg .dot-last { fill: var(--accent-green); stroke: var(--paper); stroke-width: 2; }
+.chart-svg .area { fill: var(--accent-blue); opacity: 0.10; }
+.chart-svg .grid-line { stroke: rgba(127,127,127,0.18); stroke-width: 1; }
+.chart-svg .value-label-last {
+  font-size: 11px;
+  fill: var(--navy);
+  font-weight: 600;
+}
+.chart-svg .zero-line { stroke: rgba(127,127,127,0.4); stroke-width: 1; stroke-dasharray: 3,3; }
+
+.recortes { display: grid; gap: 11px; }
+
+.subtabs-wrap { }
+.subtabs {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.subtab {
+  font-family: inherit;
+  font-size: 12px;
+  padding: 8px 14px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-bottom: -1px;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.subtab:hover { color: var(--navy); }
+.subtab.active {
+  color: var(--navy);
+  border-bottom-color: var(--accent-blue);
+  font-weight: 600;
+}
+.subpane { display: none; }
+.subpane.active { display: block; }
+.subpane-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+.recorte-row {
+  display: grid;
+  grid-template-columns: 170px 1fr 100px;
+  gap: 16px;
+  align-items: center;
+  font-size: 13px;
+}
+.recorte-rotulo { color: var(--ink); font-weight: 500; }
+.recorte-bar-wrap { background: rgba(127,127,127,0.12); height: 24px; position: relative; overflow: hidden; border-radius: 2px; }
+.recorte-bar { background: var(--accent-blue); height: 100%; transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); width: 0; }
+.recorte-valor {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--navy);
+  text-align: right;
+  font-weight: 500;
+}
+
+.source-block {
+  padding: 24px;
+  background: rgba(8, 176, 238, 0.08);
+  border-left: 3px solid var(--accent-blue);
+  border-radius: 4px;
+}
+.source-block h4 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.source-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 24px; margin-bottom: 18px; }
+.source-item { font-size: 13px; line-height: 1.4; }
+.source-item dt {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-mute);
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+.source-item dd { color: var(--ink); font-weight: 500; }
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1px solid var(--navy);
+  padding-bottom: 1px;
+}
+.source-link:hover { color: var(--accent-blue); border-color: var(--accent-blue); }
+
+.nota-metodologica { font-size: 13.5px; line-height: 1.6; color: var(--ink); }
+.fontes-relacionadas { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.fontes-relacionadas li {
+  font-size: 12px;
+  padding: 5px 10px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--navy);
+  border-radius: 3px;
+}
+.capitulo-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  background: rgba(152, 196, 59, 0.18);
+  color: #5B8A2A;
+  border-radius: 3px;
+  font-weight: 600;
+}
+.guia-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1px solid var(--navy);
+  padding-bottom: 2px;
+  font-weight: 500;
+}
+.guia-link:hover { color: var(--accent-blue); border-color: var(--accent-blue); }
+
+.share-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-mute);
+  margin-top: 14px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+.share-row:hover { color: var(--accent-blue); }
+.share-row .label { border-bottom: 1px dashed currentColor; }
+
+/* PUBLICAÇÕES (seção navy intermediária) */
+.publications-section {
+  background: var(--navy);
+  color: white;
+  padding: 64px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.publications-section::before {
+  content: "";
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  opacity: 0.08;
+  pointer-events: none;
+}
+.publications-inner { max-width: 1320px; margin: 0 auto; position: relative; z-index: 1; }
+.pub-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.pub-heading {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  max-width: 720px;
+  line-height: 1.1;
+}
+.pub-heading em { font-style: italic; color: var(--accent-blue); }
+.pub-lede {
+  font-size: 16px;
+  color: rgba(255,255,255,0.82);
+  max-width: 640px;
+  margin-bottom: 40px;
+  line-height: 1.55;
+  font-weight: 400;
+}
+.pub-lede em { font-style: italic; color: var(--accent-blue); }
+.pub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.pub-link {
+  display: block;
+  padding: 28px 24px;
+  background: var(--navy);
+  text-decoration: none;
+  color: white;
+  transition: background 0.2s ease;
+  position: relative;
+}
+.pub-link:hover { background: var(--navy2); }
+.pub-link-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent-blue);
+  margin-bottom: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.pub-link-title {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.pub-link-desc { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.45; font-weight: 400; }
+.pub-link-arrow {
+  position: absolute;
+  top: 28px; right: 24px;
+  font-family: var(--serif);
+  font-size: 18px;
+  opacity: 0.5;
+  transition: transform 0.2s ease;
+  color: var(--accent-green);
+}
+.pub-link:hover .pub-link-arrow { transform: translateX(4px); opacity: 1; }
+
+/* FOOTER NAVY2 MICHEL */
+.footer {
+  background: var(--navy2);
+  color: rgba(255,255,255,0.75);
+  padding: 56px 48px 40px;
+  font-size: 13px;
+}
+.footer-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+.footer-logo { display: block; margin-bottom: 14px; }
+.footer-logo img { height: 36px; width: auto; display: block; }
+.footer-tag {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.65);
+  max-width: 420px;
+}
+.footer-col-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+.footer-col a {
+  display: block;
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 8px;
+  text-decoration: none;
+  border-bottom: none;
+  padding-bottom: 0;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--accent-green); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  flex-wrap: wrap;
+  letter-spacing: 0.04em;
+}
+
+.loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 24px;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 16px;
+}
+.error-msg {
+  grid-column: 1 / -1;
+  padding: 40px 24px;
+  background: rgba(8, 176, 238, 0.08);
+  border-left: 3px solid var(--accent-blue);
+  color: var(--navy);
+  font-size: 14px;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--navy);
+  color: var(--paper);
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 768px) {
+  .header { padding: 40px 24px 48px; }
+  .clear-logo img { height: 36px; }
+  .filters { padding: 28px 24px 0; }
+  .indicators-grid { padding: 20px 24px 48px; }
+  .hero-numbers { grid-template-columns: 1fr; gap: 12px; }
+  .hero-valor { font-size: 56px; }
+  .modal-body { padding: 24px 24px 32px; }
+  .modal-header { padding: 24px 24px 0; }
+  .modal-tabs { overflow-x: auto; flex-wrap: nowrap; }
+  .recorte-row { grid-template-columns: 110px 1fr 70px; gap: 10px; font-size: 12px; }
+  .source-grid { grid-template-columns: 1fr; }
+  .publications-section { padding: 48px 24px; }
+  .pub-heading { font-size: 28px; }
+  .footer { padding: 40px 24px 32px; }
+  .header-meta { gap: 28px; }
+  .header-meta-top { display: none; }
+  .card-update { display: none; }
+}
+
+body.modal-open { overflow: hidden; }
+</style>
+
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="brand-row">
+      <a href="./" class="clear-logo" aria-label="FGV CLEAR">
+        <img src="assets/img/clear-logo-branco.svg" alt="FGV CLEAR" />
+      </a>
+      <div class="header-actions">
+        <div class="header-meta-top">FGV EESP · Centro de Aprendizado<br/>em Avaliação e Resultados</div>
+        <a href="https://fgvclear.org" class="top-link" target="_blank" rel="noopener">fgvclear.org →</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema" title="Alternar tema claro/escuro">
+          <span id="theme-icon">◐</span>
+        </button>
+      </div>
+    </div>
+    <div class="tagline">Série · Avaliação na Prática</div>
+    <h1 class="title">Indicadores para a avaliação<br>de <em>políticas públicas</em> no Brasil</h1>
+    <p class="subtitle">Painel institucional que reúne indicadores-chave de fontes oficiais brasileiras — em segurança, educação, saúde, assistência social, saneamento, trabalho e meio ambiente. Acompanha o <em>Guia de Fontes de Dados</em> do FGV CLEAR.</p>
+    <div class="header-meta">
+      <div class="header-meta-item">Versão<strong id="meta-versao">4.2</strong></div>
+      <div class="header-meta-item">Última atualização<strong id="meta-atualizado">Maio de 2026</strong></div>
+      <div class="header-meta-item">Áreas<strong id="meta-areas">9</strong></div>
+      <div class="header-meta-item">Temas<strong id="meta-temas">28</strong></div>
+      <div class="header-meta-item">Indicadores<strong id="meta-indicadores">43</strong></div>
+    </div>
+  </div>
+</header>
+
+<section class="filters" id="filters">
+  <span class="filter-label">Área</span>
+  <button class="filter-chip active" data-filter="todas">Todas</button>
+</section>
+
+<section class="indicators-grid" id="grid">
+  <div class="loading">Carregando indicadores…</div>
+</section>
+
+<section class="publications-section">
+  <div class="publications-inner">
+    <div class="pub-eyebrow">Publicações CLEAR</div>
+    <h2 class="pub-heading">Explore a série <em>Avaliação na Prática</em></h2>
+    <p class="pub-lede">Este painel acompanha o <em>Guia de Fontes de Dados para Avaliação de Políticas Públicas</em> — sétimo volume da série. Os volumes anteriores tratam de métodos de avaliação: diferenças em diferenças, regressão descontínua, matching, poder estatístico e análise custo-benefício.</p>
+    <div class="pub-grid" id="pub-grid"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <a href="./" class="footer-logo" aria-label="FGV CLEAR">
+          <img src="assets/img/clear-logo-branco.svg" alt="FGV CLEAR" />
+        </a>
+        <p class="footer-tag">Painel institucional do FGV CLEAR com indicadores-chave de políticas públicas brasileiras. Acompanha o <em>Guia de Fontes de Dados</em> da série <em>Avaliação na Prática</em>.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">CLEAR</div>
+        <a href="https://fgvclear.org" target="_blank" rel="noopener">fgvclear.org</a>
+        <a href="https://fgvclear.org/publicacoes/" target="_blank" rel="noopener">Publicações</a>
+        <a href="https://fgvclear.org/cursos/" target="_blank" rel="noopener">Cursos</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Este painel</div>
+        <a href="https://github.com/caiodesouzacastro/painel-clear" target="_blank" rel="noopener">Repositório no GitHub</a>
+        <a href="https://caiodesouzacastro.github.io/clear-lab-prototypes/" target="_blank" rel="noopener">CLEAR Lab Prototypes</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 FGV CLEAR · FGV EESP</span>
+      <span>v4.2 · Maio · 2026</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay"></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="modal-header">
+    <button class="modal-close" id="modal-close" aria-label="Fechar">×</button>
+    <div class="modal-tema-row">
+      <div class="modal-tema" id="modal-tema"></div>
+      <h2 class="modal-tema-title" id="modal-tema-title"></h2>
+    </div>
+    <div class="modal-tabs" id="modal-tabs"></div>
+  </div>
+  <div class="modal-body" id="modal-body"></div>
+</div>
+
+<div class="toast" id="toast">Link copiado!</div>
+
+<script>
+/* === Estado global === */
+let AREAS = [];        // 9 áreas (carregadas dos JSONs)
+let MANIFESTO = null;
+
+const fmtNumero = (v, formato) => {
+  if (formato === 'inteiro') return new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 }).format(v);
+  if (Number.isInteger(v) && Math.abs(v) >= 100) return new Intl.NumberFormat('pt-BR').format(v);
+  return new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(v);
+};
+
+/* === Helpers de busca na hierarquia === */
+function findArea(areaId) {
+  return AREAS.find(a => a.id === areaId);
+}
+function findTema(areaId, temaId) {
+  const a = findArea(areaId);
+  if (!a) return null;
+  return a.temas.find(t => t.id === temaId);
+}
+function findIndicador(areaId, temaId, indId) {
+  const t = findTema(areaId, temaId);
+  if (!t) return null;
+  return t.indicadores.find(i => i.id === indId);
+}
+/* Acha o tema de qualquer área que tenha o id especificado (caso o usuário só forneça temaId) */
+function findTemaGlobal(temaId) {
+  for (const a of AREAS) {
+    const t = a.temas.find(t => t.id === temaId);
+    if (t) return { area: a, tema: t };
+  }
+  return null;
+}
+/* Lista plana de todos os temas (para a grid em modo "todos") */
+function todosOsTemas() {
+  const out = [];
+  AREAS.forEach(area => area.temas.forEach(t => out.push({ area, tema: t })));
+  return out;
+}
+
+/* === THEME === */
+function applyTheme(theme) {
+  if (theme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.getElementById('theme-icon').textContent = '○';
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    document.getElementById('theme-icon').textContent = '◐';
+  }
+}
+function initTheme() {
+  let theme = 'light';
+  try {
+    theme = localStorage.getItem('clear-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  } catch(e) {}
+  applyTheme(theme);
+}
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  const next = current === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  try { localStorage.setItem('clear-theme', next); } catch(e) {}
+});
+initTheme();
+
+/* === Carregar dados === */
+async function carregarDados() {
+  try {
+    const manifestoResp = await fetch('data/manifesto.json');
+    if (!manifestoResp.ok) throw new Error('manifesto.json não encontrado');
+    MANIFESTO = await manifestoResp.json();
+
+    document.getElementById('meta-versao').textContent = MANIFESTO.meta.versao || '4.0';
+    document.getElementById('meta-atualizado').textContent = MANIFESTO.meta.atualizado || '—';
+
+    const arquivos = MANIFESTO.temas || MANIFESTO.areas || [];
+    const promessas = arquivos.map(arq =>
+      fetch('data/' + arq).then(r => { if (!r.ok) throw new Error('Erro: ' + arq); return r.json(); })
+    );
+    AREAS = await Promise.all(promessas);
+    AREAS.sort((a, b) => (a.ordem || 99) - (b.ordem || 99));
+
+    // Contagem
+    let totalTemas = 0, totalInd = 0;
+    AREAS.forEach(a => {
+      (a.temas || []).forEach(t => {
+        totalTemas++;
+        totalInd += (t.indicadores || []).length;
+      });
+    });
+    document.getElementById('meta-areas').textContent = AREAS.length;
+    document.getElementById('meta-temas').textContent = totalTemas;
+    document.getElementById('meta-indicadores').textContent = totalInd;
+
+    renderPublications();
+    renderFilters();
+    renderGrid({ areaFiltro: 'todas' });
+
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+  } catch (err) {
+    console.error(err);
+    document.getElementById('grid').innerHTML =
+      '<div class="error-msg"><strong>Erro ao carregar dados.</strong> Este painel precisa ser servido via HTTP — rode <code>python -m http.server</code> na pasta ou use GitHub Pages.</div>';
+  }
+}
+
+function renderPublications() {
+  const links = MANIFESTO.links || {};
+  const items = [
+    {num: 'Vol. 7 · Novo', title: 'Guia de Fontes de Dados', desc: 'Atlas do ecossistema de fontes para avaliação de políticas públicas no Brasil.', url: links.guia || '#'},
+    {num: 'Série completa', title: 'Avaliação na Prática', desc: 'Sete volumes sobre métodos de avaliação de impacto e fontes de dados.', url: links.serie || '#'},
+    {num: 'Working papers', title: 'Todas as publicações', desc: 'Acervo completo de estudos, relatórios técnicos e papers do CLEAR.', url: links.publicacoes || '#'},
+    {num: 'Capacitação', title: 'Cursos e treinamentos', desc: 'Formação em monitoramento, avaliação e uso de evidências.', url: links.cursos || '#'}
+  ];
+  document.getElementById('pub-grid').innerHTML = items.map(i => `
+    <a href="${i.url}" class="pub-link" target="_blank" rel="noopener">
+      <div class="pub-link-num">${i.num}</div>
+      <div class="pub-link-title">${i.title}</div>
+      <div class="pub-link-desc">${i.desc}</div>
+      <span class="pub-link-arrow">→</span>
+    </a>
+  `).join('');
+}
+
+/* === Filtros: lista de áreas === */
+function renderFilters() {
+  const filtros = document.getElementById('filters');
+  // Remove chips antigas mantendo o label
+  filtros.querySelectorAll('.filter-chip:not([data-filter="todas"])').forEach(c => c.remove());
+  AREAS.forEach(a => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-chip';
+    btn.dataset.filter = a.id;
+    btn.textContent = a.area;
+    filtros.appendChild(btn);
+  });
+  filtros.addEventListener('click', e => {
+    if (!e.target.matches('.filter-chip')) return;
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    e.target.classList.add('active');
+    const f = e.target.dataset.filter;
+    renderGrid({ areaFiltro: f });
+  });
+}
+
+/* === Sparkline mini para os cards === */
+function sparkSVG(serie) {
+  if (!serie || serie.length < 2) return '';
+  const W = 200, H = 36;
+  const valores = serie.map(d => d.valor);
+  const minV = Math.min(...valores);
+  const maxV = Math.max(...valores);
+  const range = maxV - minV || 1;
+  const xScale = i => (i / (serie.length - 1)) * W;
+  const yScale = v => H - 4 - ((v - minV) / range) * (H - 8);
+  const linePath = serie.map((d, i) => `${i === 0 ? 'M' : 'L'} ${xScale(i).toFixed(1)} ${yScale(d.valor).toFixed(1)}`).join(' ');
+  const areaPath = linePath + ` L ${W} ${H} L 0 ${H} Z`;
+  const lastX = xScale(serie.length - 1);
+  const lastY = yScale(serie[serie.length - 1].valor);
+  return `
+    <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+      <path class="spark-area" d="${areaPath}"/>
+      <path class="spark-line" d="${linePath}" vector-effect="non-scaling-stroke"/>
+      <circle class="spark-dot-last" cx="${lastX.toFixed(1)}" cy="${lastY.toFixed(1)}" r="2.2"/>
+    </svg>
+  `;
+}
+
+function tendenciaBadge(tendencia) {
+  if (!tendencia) return '';
+  const map = {
+    queda: { arrow: '↓', label: 'queda', cls: 'queda' },
+    alta: { arrow: '↑', label: 'alta', cls: 'alta' },
+    estavel: { arrow: '→', label: 'estável', cls: 'estavel' }
+  };
+  const t = map[tendencia];
+  if (!t) return '';
+  return `<span class="card-tendencia ${t.cls}" title="Tendência: ${t.label}"><span class="arrow">${t.arrow}</span>${t.label}</span>`;
+}
+
+function ultimaAtualizacaoCurta(ultStr) {
+  if (!ultStr) return '';
+  const m = ultStr.match(/(Janeiro|Fevereiro|Março|Abril|Maio|Junho|Julho|Agosto|Setembro|Outubro|Novembro|Dezembro)\/?\s*(\d{4})/i);
+  if (m) return `${m[1].slice(0,3).toLowerCase()}/${m[2]}`;
+  const m2 = ultStr.match(/(\d{4})/);
+  return m2 ? m2[1] : '';
+}
+
+/* === Card de tema === */
+function cardTemaHTML(area, tema) {
+  const ind = tema.indicadores[0]; // indicador-destaque do tema
+  if (!ind) return '';
+  const ult = ultimaAtualizacaoCurta(ind.fonte?.ultimaAtualizacao);
+  const outrosInd = tema.indicadores.length - 1;
+  return `
+    <button class="indicator-card" data-area="${area.id}" data-tema="${tema.id}" aria-label="Ver tema: ${tema.tema}">
+      <div class="card-top-row">
+        <div class="card-tema">${area.area}</div>
+        ${ult ? `<div class="card-update">atualizado<br><strong>${ult}</strong></div>` : ''}
+      </div>
+      <div class="card-titulo">${tema.tema}</div>
+      <div class="card-indicador">${ind.indicador}</div>
+      ${outrosInd > 0 ? `<div class="card-extras-count">${tema.indicadores.length} indicadores</div>` : ''}
+      <div class="card-valor-wrap">
+        <div class="card-valor-row">
+          <div class="card-valor">${fmtNumero(ind.valor, ind.formatoValor)}</div>
+          ${tendenciaBadge(ind.tendencia)}
+        </div>
+        <div class="card-unidade">${ind.unidade}</div>
+        <div class="card-sparkline">${sparkSVG(ind.serie)}</div>
+      </div>
+      <div class="card-destaque">${ind.destaque}</div>
+      <span class="card-arrow">→</span>
+    </button>
+  `;
+}
+
+/* === Grid: mostra cards de tema === */
+/* Card de área (modo "Todas") */
+function cardAreaHTML(area) {
+  // Indicador-destaque: primeiro indicador do primeiro tema da área
+  const primeiroTema = area.temas[0];
+  const ind = primeiroTema?.indicadores?.[0];
+  if (!ind) return '';
+  const totalTemas = area.temas.length;
+  const totalInd = area.temas.reduce((s, t) => s + t.indicadores.length, 0);
+  const ult = ultimaAtualizacaoCurta(ind.fonte?.ultimaAtualizacao);
+  return `
+    <button class="indicator-card area-card" data-area="${area.id}" aria-label="Ver área: ${area.area}">
+      <div class="card-top-row">
+        <div class="card-tema">${area.area.toUpperCase()}</div>
+        ${ult ? `<div class="card-update">${totalTemas} temas<br><strong>${totalInd} indicadores</strong></div>` : ''}
+      </div>
+      <div class="card-titulo">${primeiroTema.tema}</div>
+      <div class="card-indicador">${ind.indicador}</div>
+      <div class="card-extras-count">+ ${totalTemas - 1} outros temas</div>
+      <div class="card-valor-wrap">
+        <div class="card-valor-row">
+          <div class="card-valor">${fmtNumero(ind.valor, ind.formatoValor)}</div>
+          ${tendenciaBadge(ind.tendencia)}
+        </div>
+        <div class="card-unidade">${ind.unidade}</div>
+        <div class="card-sparkline">${sparkSVG(ind.serie)}</div>
+      </div>
+      <div class="card-destaque">${ind.destaque}</div>
+      <span class="card-arrow">→</span>
+    </button>
+  `;
+}
+
+function renderGrid(opts) {
+  opts = opts || {};
+  const grid = document.getElementById('grid');
+
+  // Modo "Todas": mostra cards de ÁREA (não de tema)
+  if (!opts.areaFiltro || opts.areaFiltro === 'todas') {
+    if (!AREAS.length) { grid.innerHTML = '<div class="loading">Nenhuma área encontrada.</div>'; return; }
+    grid.innerHTML = AREAS.map(area => cardAreaHTML(area)).join('');
+    grid.querySelectorAll('.indicator-card').forEach(card => {
+      card.addEventListener('click', () => {
+        // Ao clicar no card de área, filtra por aquela área (mostra os temas dela)
+        const areaId = card.dataset.area;
+        // Ativa o chip correspondente no filtro
+        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        const chip = document.querySelector(`.filter-chip[data-filter="${areaId}"]`);
+        if (chip) chip.classList.add('active');
+        renderGrid({ areaFiltro: areaId });
+        // Scroll suave de volta ao grid (caso o usuário tenha rolado)
+        document.getElementById('grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+    return;
+  }
+
+  // Modo "área filtrada": mostra cards de TEMA
+  const area = findArea(opts.areaFiltro);
+  if (!area) { grid.innerHTML = '<div class="loading">Área não encontrada.</div>'; return; }
+  const lista = area.temas.map(t => ({ area, tema: t }));
+  if (!lista.length) { grid.innerHTML = '<div class="loading">Nenhum tema encontrado.</div>'; return; }
+  grid.innerHTML = lista.map(({ area, tema }) => cardTemaHTML(area, tema)).join('');
+  grid.querySelectorAll('.indicator-card').forEach(card => {
+    card.addEventListener('click', () => {
+      abrirModal(card.dataset.area, card.dataset.tema, 0);
+    });
+  });
+}
+
+/* === Chart SVG === */
+function gerarChartSVG(serie, formato, rotuloY) {
+  const W = 720, H = 280;
+  const margin = { top: 24, right: 60, bottom: 36, left: 60 };
+  const w = W - margin.left - margin.right;
+  const h = H - margin.top - margin.bottom;
+  const valores = serie.map(d => d.valor);
+  const minV = Math.min(...valores, 0);
+  const maxV = Math.max(...valores);
+  const range = maxV - minV || 1;
+  const padY = range * 0.15;
+  const yMin = minV < 0 ? minV - padY : Math.max(0, minV - padY);
+  const yMax = maxV + padY;
+  const xScale = i => margin.left + (w * i / (serie.length - 1));
+  const yScale = v => margin.top + h - ((v - yMin) / (yMax - yMin)) * h;
+  const linePath = serie.map((d, i) => `${i === 0 ? 'M' : 'L'} ${xScale(i)} ${yScale(d.valor)}`).join(' ');
+  const baseY = yScale(Math.max(yMin, 0));
+  const areaPath = linePath + ` L ${xScale(serie.length - 1)} ${baseY} L ${xScale(0)} ${baseY} Z`;
+  const yTicks = 4;
+  const yTickValues = Array.from({ length: yTicks + 1 }, (_, i) => yMin + (yMax - yMin) * i / yTicks);
+  const xLabelIdx = serie.length <= 6 ? serie.map((_, i) => i) : [0, Math.floor(serie.length / 2), serie.length - 1];
+  const zeroY = (yMin < 0 && yMax > 0) ? yScale(0) : null;
+  return `
+    <svg class="chart-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Série histórica">
+      ${yTickValues.map(v => `
+        <line class="grid-line" x1="${margin.left}" y1="${yScale(v)}" x2="${W - margin.right}" y2="${yScale(v)}"/>
+        <text class="axis-text" x="${margin.left - 8}" y="${yScale(v) + 3}" text-anchor="end">${fmtNumero(v, formato)}</text>
+      `).join('')}
+      ${zeroY !== null ? `<line class="zero-line" x1="${margin.left}" y1="${zeroY}" x2="${W - margin.right}" y2="${zeroY}"/>` : ''}
+      <path class="area" d="${areaPath}"/>
+      <path class="line" d="${linePath}"/>
+      ${serie.map((d, i) => {
+        const isLast = i === serie.length - 1;
+        return `<circle class="${isLast ? 'dot-last' : 'dot'}" cx="${xScale(i)}" cy="${yScale(d.valor)}" r="${isLast ? 5 : 3}"/>`;
+      }).join('')}
+      ${(() => {
+        const last = serie.length - 1;
+        return `<text class="value-label-last" x="${xScale(last) + 10}" y="${yScale(serie[last].valor) + 4}">${fmtNumero(serie[last].valor, formato)}</text>`;
+      })()}
+      ${xLabelIdx.map(i => `<text class="axis-text" x="${xScale(i)}" y="${H - margin.bottom + 18}" text-anchor="middle">${serie[i].ano}</text>`).join('')}
+      <text class="axis-text" x="${margin.left}" y="${margin.top - 8}" font-weight="500">${rotuloY || ''}</text>
+    </svg>
+  `;
+}
+
+/* === Recortes === */
+function gerarRecorteHTML(recorte, formato) {
+  const max = Math.max(...recorte.valores.map(v => v.max || v.valor));
+  return `
+    <div class="recortes">
+      ${recorte.valores.map(item => {
+        const pct = Math.min(100, (item.valor / (item.max || max)) * 100);
+        return `
+          <div class="recorte-row">
+            <div class="recorte-rotulo">${item.rotulo}</div>
+            <div class="recorte-bar-wrap"><div class="recorte-bar" data-width="${pct}"></div></div>
+            <div class="recorte-valor">${fmtNumero(item.valor, formato)}</div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+}
+
+function renderRecortesSection(ind, indSlug) {
+  let lista = [];
+  if (ind.recortes && Array.isArray(ind.recortes) && ind.recortes.length) lista = ind.recortes;
+  else if (ind.recorte) lista = [ind.recorte];
+  if (!lista.length) return '';
+
+  if (lista.length === 1) {
+    const r = lista[0];
+    return `<div class="section-block"><h3>${r.titulo}</h3>${gerarRecorteHTML(r, ind.formatoValor)}</div>`;
+  }
+
+  const subtabsId = `subtabs-${indSlug}`;
+  const subpanesId = `subpanes-${indSlug}`;
+  const subtabsHTML = lista.map((r, i) => `
+    <button class="subtab ${i === 0 ? 'active' : ''}" data-subtab="${subpanesId}-${i}">${r.dimensao || r.titulo}</button>
+  `).join('');
+  const subpanesHTML = lista.map((r, i) => `
+    <div class="subpane ${i === 0 ? 'active' : ''}" id="${subpanesId}-${i}">
+      <div class="subpane-title">${r.titulo}</div>
+      ${gerarRecorteHTML(r, ind.formatoValor)}
+    </div>
+  `).join('');
+  return `
+    <div class="section-block">
+      <h3>Recortes</h3>
+      <div class="subtabs-wrap" id="${subtabsId}">
+        <div class="subtabs">${subtabsHTML}</div>
+        <div class="subpanes">${subpanesHTML}</div>
+      </div>
+    </div>
+  `;
+}
+
+/* === Abas do modal: indicadores DO TEMA === */
+function renderTabs(area, tema, activeIdx) {
+  const tabsContainer = document.getElementById('modal-tabs');
+  if (tema.indicadores.length <= 1) {
+    tabsContainer.innerHTML = '';
+    tabsContainer.style.display = 'none';
+    return;
+  }
+  tabsContainer.style.display = '';
+  tabsContainer.innerHTML = tema.indicadores.map((ind, i) => `
+    <button class="modal-tab ${i === activeIdx ? 'active' : ''}" data-idx="${i}">${ind.titulo}</button>
+  `).join('');
+  tabsContainer.querySelectorAll('.modal-tab').forEach(t => {
+    t.addEventListener('click', () => abrirModal(area.id, tema.id, parseInt(t.dataset.idx)));
+  });
+}
+
+/* === CSV === */
+function gerarCSV(area, tema, ind) {
+  const linhas = [];
+  linhas.push('# Painel CLEAR — ' + area.area + ' / ' + tema.tema + ' / ' + ind.titulo);
+  linhas.push('# Fonte: ' + (ind.fonte?.nome || ''));
+  linhas.push('# URL fonte: ' + (ind.fonte?.url || ''));
+  linhas.push('# Periodicidade: ' + (ind.fonte?.periodicidade || ''));
+  linhas.push('# Última atualização: ' + (ind.fonte?.ultimaAtualizacao || ''));
+  linhas.push('# Indicador: ' + ind.indicador);
+  linhas.push('# Unidade: ' + ind.unidade);
+  linhas.push('# Baixado de: https://caiodesouzacastro.github.io/painel-clear/');
+  linhas.push('');
+  linhas.push('## Série histórica');
+  linhas.push('ano,valor');
+  if (ind.serie) ind.serie.forEach(d => linhas.push(d.ano + ',' + d.valor));
+  const listaRecortes = (ind.recortes && Array.isArray(ind.recortes) && ind.recortes.length)
+    ? ind.recortes
+    : (ind.recorte ? [ind.recorte] : []);
+  listaRecortes.forEach(r => {
+    linhas.push('');
+    linhas.push('## ' + r.titulo);
+    linhas.push('categoria,valor');
+    r.valores.forEach(d => {
+      const rotulo = String(d.rotulo).includes(',') ? '"' + d.rotulo + '"' : d.rotulo;
+      linhas.push(rotulo + ',' + d.valor);
+    });
+  });
+  return linhas.join('\n');
+}
+
+function baixarCSV(area, tema, ind) {
+  const csv = gerarCSV(area, tema, ind);
+  const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `painel-clear_${area.id}_${tema.id}_${ind.id}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 500);
+}
+
+/* === Toast + share === */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 1800);
+}
+function copiarLink(areaId, temaId, indId) {
+  const url = `${location.origin}${location.pathname}#${areaId}/${temaId}${indId ? '/' + indId : ''}`;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(() => showToast('Link copiado para a área de transferência'));
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = url;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); showToast('Link copiado'); } catch (e) { showToast('Não foi possível copiar'); }
+    document.body.removeChild(ta);
+  }
+}
+
+/* === Corpo do indicador === */
+function renderIndicadorBody(area, tema, ind) {
+  let html = `
+    <div class="indicator-headline">
+      <h3>${ind.titulo}</h3>
+      ${tendenciaBadge(ind.tendencia)}
+    </div>
+    <div class="indicator-subheadline">${ind.indicador}</div>
+
+    <div class="hero-numbers">
+      <div class="hero-valor">${fmtNumero(ind.valor, ind.formatoValor)}</div>
+      <div class="hero-context">
+        <div class="unidade">${ind.unidade}</div>
+        <div class="destaque">${ind.destaque}</div>
+        ${ind.totalAbsoluto ? `<div class="total-absoluto">${ind.totalAbsoluto}</div>` : ''}
+      </div>
+    </div>
+  `;
+
+  if (ind.serie && ind.serie.length) {
+    html += `
+      <div class="section-block">
+        <div class="section-header">
+          <h3>Série Histórica</h3>
+          <button class="download-btn" data-action="download" data-area="${area.id}" data-tema="${tema.id}" data-ind="${ind.id}">
+            <span class="icon">↓</span> Baixar CSV
+          </button>
+        </div>
+        <div class="chart-wrap">${gerarChartSVG(ind.serie, ind.formatoValor, ind.rotuloSerieY || '')}</div>
+      </div>
+    `;
+  }
+  if (ind.recorte || (ind.recortes && ind.recortes.length)) {
+    html += renderRecortesSection(ind, `${area.id}-${tema.id}-${ind.id}`);
+  }
+
+  html += `
+    <div class="section-block">
+      <h3>Sobre a fonte</h3>
+      <div class="source-block">
+        <h4>Metadados</h4>
+        <div class="source-grid">
+          <dl class="source-item"><dt>Produtor</dt><dd>${ind.fonte.produtor}</dd></dl>
+          <dl class="source-item"><dt>Periodicidade</dt><dd>${ind.fonte.periodicidade}</dd></dl>
+          <dl class="source-item"><dt>Última atualização</dt><dd>${ind.fonte.ultimaAtualizacao}</dd></dl>
+          <dl class="source-item"><dt>Fonte completa</dt><dd style="font-size:12px; font-weight:400;">${ind.fonte.nome}</dd></dl>
+        </div>
+        <a href="${ind.fonte.url}" class="source-link" target="_blank" rel="noopener">Acessar fonte original ↗</a>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h3>Nota Metodológica</h3>
+      <p class="nota-metodologica">${ind.notaMetodologica}</p>
+    </div>
+  `;
+
+  if (area.capituloGuia || (area.fontesRelacionadas && area.fontesRelacionadas.length)) {
+    html += `<div class="section-block"><h3>No Guia de Fontes de Dados</h3>`;
+    if (area.capituloGuia) {
+      html += `<div class="capitulo-tag">${area.capituloGuia}</div>`;
+      const guiaUrl = MANIFESTO.links?.guiaPdf || MANIFESTO.links?.guia;
+      if (guiaUrl) {
+        html += `<div><a href="${guiaUrl}" class="guia-link" target="_blank" rel="noopener">Baixar o Guia completo ↗</a></div>`;
+      }
+    }
+    if (area.fontesRelacionadas && area.fontesRelacionadas.length) {
+      html += `<div style="margin-top:18px;">
+        <div style="font-size:11px; color:var(--clear-gray); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.08em; font-weight:600;">Fontes relacionadas neste capítulo</div>
+        <ul class="fontes-relacionadas">${area.fontesRelacionadas.map(f => `<li>${f}</li>`).join('')}</ul>
+      </div>`;
+    }
+    html += `</div>`;
+  }
+
+  html += `
+    <div class="section-block" style="margin-bottom:0; padding-top: 8px; border-top: 1px solid var(--border-soft);">
+      <button class="share-row" data-action="share" data-area="${area.id}" data-tema="${tema.id}" data-ind="${ind.id}">
+        <span>↗</span><span class="label">Copiar link direto para este indicador</span>
+      </button>
+    </div>
+  `;
+
+  return html;
+}
+
+/* === Abrir modal: agora recebe areaId, temaId, idxIndicador === */
+function abrirModal(areaId, temaId, idxIndicador = 0) {
+  const area = findArea(areaId);
+  if (!area) return;
+  const tema = area.temas.find(t => t.id === temaId);
+  if (!tema || !tema.indicadores.length) return;
+  const ind = tema.indicadores[idxIndicador] || tema.indicadores[0];
+
+  document.getElementById('modal-tema').textContent = area.area;
+  document.getElementById('modal-tema-title').textContent = tema.tema;
+  if (tema.descricao) {
+    const subEl = document.getElementById('modal-tema-sub');
+    if (subEl) subEl.textContent = tema.descricao;
+  }
+  renderTabs(area, tema, idxIndicador);
+  document.getElementById('modal-body').innerHTML = renderIndicadorBody(area, tema, ind);
+  document.getElementById('modal-overlay').classList.add('open');
+  document.getElementById('modal').classList.add('open');
+  document.body.classList.add('modal-open');
+
+  const novoHash = `#${area.id}/${tema.id}/${ind.id}`;
+  if (location.hash !== novoHash) {
+    history.replaceState(null, '', novoHash);
+  }
+
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.recorte-bar').forEach(bar => { bar.style.width = bar.dataset.width + '%'; });
+  });
+  document.getElementById('modal').scrollTop = 0;
+}
+
+function fecharModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.getElementById('modal').classList.remove('open');
+  document.body.classList.remove('modal-open');
+  if (location.hash) history.replaceState(null, '', location.pathname);
+}
+
+function handleHash() {
+  const h = location.hash.replace(/^#/, '');
+  if (!h) return;
+  const partes = h.split('/');
+  const areaId = partes[0];
+  const temaId = partes[1];
+  const indId = partes[2];
+  if (!areaId || !temaId) return;
+  const area = findArea(areaId);
+  if (!area) return;
+  const tema = area.temas.find(t => t.id === temaId);
+  if (!tema) return;
+  let idx = 0;
+  if (indId) {
+    const found = tema.indicadores.findIndex(i => i.id === indId);
+    if (found >= 0) idx = found;
+  }
+  abrirModal(area.id, tema.id, idx);
+}
+
+document.getElementById('modal-close').addEventListener('click', fecharModal);
+document.getElementById('modal-overlay').addEventListener('click', fecharModal);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
+
+/* === Delegação de cliques dentro do modal-body === */
+document.getElementById('modal-body').addEventListener('click', e => {
+  // Sub-abas de recortes
+  const subtab = e.target.closest('.subtab');
+  if (subtab) {
+    const targetId = subtab.dataset.subtab;
+    const wrap = subtab.closest('.subtabs-wrap');
+    if (wrap) {
+      wrap.querySelectorAll('.subtab').forEach(t => t.classList.remove('active'));
+      wrap.querySelectorAll('.subpane').forEach(p => p.classList.remove('active'));
+      subtab.classList.add('active');
+      const pane = document.getElementById(targetId);
+      if (pane) {
+        pane.classList.add('active');
+        pane.querySelectorAll('.recorte-bar').forEach(bar => {
+          const w = bar.dataset.width;
+          bar.style.width = '0%';
+          requestAnimationFrame(() => { bar.style.width = w + '%'; });
+        });
+      }
+    }
+    return;
+  }
+
+  const btn = e.target.closest('[data-action]');
+  if (!btn) return;
+  const action = btn.dataset.action;
+  const area = findArea(btn.dataset.area);
+  if (!area) return;
+  const tema = area.temas.find(t => t.id === btn.dataset.tema);
+  if (!tema) return;
+  const ind = tema.indicadores.find(i => i.id === btn.dataset.ind);
+  if (!ind) return;
+  if (action === 'download') baixarCSV(area, tema, ind);
+  if (action === 'share') copiarLink(area.id, tema.id, ind.id);
+});
+
+carregarDados();
+</script>
+
+</body>
+</html>
