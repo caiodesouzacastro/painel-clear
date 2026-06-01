@@ -230,7 +230,7 @@ a { color: inherit; }
 .filters {
   max-width: 1320px;
   margin: 0 auto;
-  padding: 36px 48px 8px;
+  padding: 40px 48px 8px;
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
@@ -260,6 +260,29 @@ a { color: inherit; }
 .filter-chip:hover { background: rgba(8, 176, 238, 0.08); border-color: var(--accent-blue); color: var(--navy); }
 .filter-chip.active { background: var(--navy); color: white; border-color: var(--navy); }
 
+/* Cabeçalho da seção de indicadores */
+.section-intro {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 40px 48px 0;
+}
+.section-intro-title {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+}
+.section-intro-text {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  max-width: 720px;
+  margin-top: 12px;
+}
+.section-intro-text em { font-style: italic; color: var(--ink); }
+
 /* GRID */
 .indicators-grid {
   max-width: 1320px;
@@ -280,7 +303,7 @@ a { color: inherit; }
   transition: background 0.2s ease;
   display: flex;
   flex-direction: column;
-  min-height: 360px;
+  min-height: 260px;
   position: relative;
   border: none;
   font-family: inherit;
@@ -313,45 +336,69 @@ a { color: inherit; }
 
 .card-titulo {
   font-family: var(--serif);
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 500;
   color: var(--navy);
-  line-height: 1.2;
-  margin-bottom: 6px;
-  letter-spacing: -0.01em;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
-.card-indicador { font-size: 13px; color: var(--ink-soft); line-height: 1.45; margin-bottom: 16px; }
-.card-extras-count {
+.indicator-card:not(.area-card) .card-titulo { font-size: 22px; margin-top: 2px; }
+.card-meta {
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent-blue);
-  font-weight: 500;
-  margin-bottom: 14px;
-  padding: 4px 10px;
-  background: rgba(8, 176, 238, 0.10);
-  border-radius: 3px;
-  align-self: flex-start;
+  color: var(--ink-mute);
+  margin-top: 5px;
 }
 
-.card-valor-wrap { margin-top: auto; }
-.card-valor-row { display: flex; align-items: baseline; gap: 12px; }
-.card-valor {
+/* Lista de indicadores no card */
+.card-ind-list { display: flex; flex-direction: column; margin-top: 18px; }
+.ind-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 0;
+  border-top: 1px solid var(--line-soft);
+}
+.ind-left { min-width: 0; flex: 1; }
+.ind-name { font-size: 14px; color: var(--ink); line-height: 1.3; }
+.ind-name .ind-fonte { color: var(--accent-blue); font-size: 11px; white-space: nowrap; }
+.ind-upd {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-top: 3px;
+}
+.ind-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
+.ind-val-row { display: flex; align-items: baseline; gap: 5px; justify-content: flex-end; }
+.ind-val {
   font-family: var(--serif);
-  font-size: 52px;
+  font-size: 21px;
   font-weight: 500;
   color: var(--navy);
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
+.ind-unidade {
+  font-size: 11px;
+  color: var(--ink-soft);
+  max-width: 96px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .card-tendencia {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   font-size: 11px;
   font-weight: 600;
-  padding: 4px 9px;
+  padding: 3px 8px;
   border-radius: 999px;
   letter-spacing: 0.02em;
 }
@@ -360,33 +407,21 @@ a { color: inherit; }
 .card-tendencia.estavel { background: var(--paper-warm); color: var(--ink-mute); }
 .card-tendencia .arrow { font-size: 13px; line-height: 1; }
 
-.card-unidade { font-size: 13px; color: var(--ink-soft); font-weight: 400; margin-top: 6px; }
-.card-destaque {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 14px;
-  color: var(--ink-soft);
-  margin-top: 18px;
-  padding-top: 14px;
-  border-top: 1px solid var(--line-soft);
-  line-height: 1.4;
-}
-.card-arrow {
-  position: absolute;
-  top: 28px; right: 28px;
+.card-footer-link {
+  margin-top: auto;
+  padding-top: 18px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--accent-blue);
-  opacity: 0.4;
-  font-family: var(--serif);
-  font-size: 24px;
-  transition: all 0.2s ease;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
-
-/* Sparkline */
-.card-sparkline { margin-top: 12px; height: 36px; width: 100%; }
-.card-sparkline svg { width: 100%; height: 100%; display: block; }
-.card-sparkline .spark-line { fill: none; stroke: var(--accent-blue); stroke-width: 1.5; }
-.card-sparkline .spark-area { fill: var(--accent-blue); opacity: 0.12; }
-.card-sparkline .spark-dot-last { fill: var(--accent-green); }
+.card-footer-link .arrow { font-family: var(--serif); font-size: 16px; transition: transform 0.2s ease; }
+.indicator-card:hover .card-footer-link .arrow { transform: translateX(4px); }
 
 /* MODAL */
 .modal-overlay {
@@ -919,7 +954,7 @@ a { color: inherit; }
 @media (max-width: 768px) {
   .header { padding: 40px 24px 48px; }
   .clear-logo img { height: 36px; }
-  .filters { padding: 28px 24px 0; }
+  .filters { padding: 30px 24px 0; }
   .indicators-grid { padding: 20px 24px 48px; }
   .hero-numbers { grid-template-columns: 1fr; gap: 12px; }
   .hero-valor { font-size: 56px; }
@@ -957,8 +992,8 @@ body.modal-open { overflow: hidden; }
       </div>
     </div>
     <div class="tagline">Série · Avaliação na Prática</div>
-    <h1 class="title">Indicadores para a avaliação<br>de <em>políticas públicas</em> no Brasil</h1>
-    <p class="subtitle">Painel institucional que reúne indicadores-chave de fontes oficiais brasileiras — em segurança, educação, saúde, assistência social, saneamento, trabalho e meio ambiente. Acompanha o <em>Guia de Fontes de Dados</em> do FGV CLEAR.</p>
+    <h1 class="title">Indicadores para monitoramento<br>de <em>políticas públicas</em></h1>
+    <p class="subtitle">Painel institucional que reúne os principais indicadores de diversos temas, a partir de fontes oficiais brasileiras. Acompanha o <em>Guia de Fontes de Dados</em> do FGV CLEAR.</p>
     <div class="header-meta">
       <div class="header-meta-item">Versão<strong id="meta-versao">4.2</strong></div>
       <div class="header-meta-item">Última atualização<strong id="meta-atualizado">Maio de 2026</strong></div>
@@ -1220,67 +1255,75 @@ function ultimaAtualizacaoCurta(ultStr) {
   return m2 ? m2[1] : '';
 }
 
-/* === Card de tema === */
-function cardTemaHTML(area, tema) {
-  const ind = tema.indicadores[0]; // indicador-destaque do tema
+/* === Helpers de card === */
+function unidadeCurta(u) {
+  if (!u) return '';
+  let s = String(u).split('(')[0].trim();
+  s = s.replace(/\s+(em|distribuíd\w+|faltant\w+|consolidad\w+)\b.*$/i, '').trim();
+  const w = s.split(/\s+/);
+  if (w.length > 4) s = w.slice(0, 4).join(' ') + '…';
+  return s;
+}
+
+function indRowHTML(ind, fonteTag) {
   if (!ind) return '';
   const ult = ultimaAtualizacaoCurta(ind.fonte?.ultimaAtualizacao);
-  const outrosInd = tema.indicadores.length - 1;
+  const uni = unidadeCurta(ind.unidade);
+  const uniFull = (ind.unidade || '').replace(/"/g, '&quot;');
+  return `
+    <div class="ind-row">
+      <div class="ind-left">
+        <div class="ind-name">${ind.titulo}${fonteTag ? ` <span class="ind-fonte">· ${fonteTag}</span>` : ''}</div>
+        ${ult ? `<div class="ind-upd">atualizado ${ult}</div>` : ''}
+      </div>
+      <div class="ind-right">
+        <div class="ind-val-row">
+          <span class="ind-val">${fmtNumero(ind.valor, ind.formatoValor)}</span>
+          ${uni ? `<span class="ind-unidade" title="${uniFull}">${uni}</span>` : ''}
+        </div>
+        ${tendenciaBadge(ind.tendencia)}
+      </div>
+    </div>`;
+}
+
+/* === Card de tema (lista os indicadores do tema) === */
+function cardTemaHTML(area, tema) {
+  const inds = tema.indicadores || [];
+  if (!inds.length) return '';
+  const shown = inds.slice(0, 4);
+  const resto = inds.length - shown.length;
+  const rows = shown.map(ind => indRowHTML(ind)).join('');
   return `
     <button class="indicator-card" data-area="${area.id}" data-tema="${tema.id}" aria-label="Ver tema: ${tema.tema}">
-      <div class="card-top-row">
-        <div class="card-tema">${area.area}</div>
-        ${ult ? `<div class="card-update">atualizado<br><strong>${ult}</strong></div>` : ''}
-      </div>
+      <div class="card-tema">${area.area}</div>
       <div class="card-titulo">${tema.tema}</div>
-      <div class="card-indicador">${ind.indicador}</div>
-      ${outrosInd > 0 ? `<div class="card-extras-count">${tema.indicadores.length} indicadores</div>` : ''}
-      <div class="card-valor-wrap">
-        <div class="card-valor-row">
-          <div class="card-valor">${fmtNumero(ind.valor, ind.formatoValor)}</div>
-          ${tendenciaBadge(ind.tendencia)}
-        </div>
-        <div class="card-unidade">${ind.unidade}</div>
-        <div class="card-sparkline">${sparkSVG(ind.serie)}</div>
-      </div>
-      <div class="card-destaque">${ind.destaque}</div>
-      <span class="card-arrow">→</span>
+      <div class="card-meta">${inds.length} ${inds.length === 1 ? 'indicador' : 'indicadores'}</div>
+      <div class="card-ind-list">${rows}</div>
+      ${resto > 0 ? `<div class="card-meta" style="margin-top:10px">+ ${resto} ${resto === 1 ? 'indicador' : 'indicadores'}</div>` : ''}
+      <div class="card-footer-link">Ver detalhes <span class="arrow">→</span></div>
     </button>
   `;
 }
 
-/* === Grid: mostra cards de tema === */
-/* Card de área (modo "Todas") */
+/* === Grid: cards de tema / área === */
+/* Card de área (modo "Todas") — lista o indicador-destaque de cada tema */
 function cardAreaHTML(area) {
-  // Indicador-destaque: primeiro indicador do primeiro tema da área
-  const primeiroTema = area.temas[0];
-  const ind = primeiroTema?.indicadores?.[0];
-  if (!ind) return '';
-  const totalTemas = area.temas.length;
-  const totalInd = area.temas.reduce((s, t) => s + t.indicadores.length, 0);
-  const ult = ultimaAtualizacaoCurta(ind.fonte?.ultimaAtualizacao);
+  const temas = area.temas || [];
+  if (!temas.length) return '';
+  const totalTemas = temas.length;
+  const totalInd = temas.reduce((s, t) => s + t.indicadores.length, 0);
+  const leads = temas.map(t => t.indicadores?.[0]).filter(Boolean).slice(0, 4);
+  const rows = leads.map(ind => indRowHTML(ind)).join('');
   return `
     <button class="indicator-card area-card" data-area="${area.id}" aria-label="Ver área: ${area.area}">
-      <div class="card-top-row">
-        <div class="card-tema">${area.area.toUpperCase()}</div>
-        ${ult ? `<div class="card-update">${totalTemas} temas<br><strong>${totalInd} indicadores</strong></div>` : ''}
-      </div>
-      <div class="card-titulo">${primeiroTema.tema}</div>
-      <div class="card-indicador">${ind.indicador}</div>
-      <div class="card-extras-count">+ ${totalTemas - 1} outros temas</div>
-      <div class="card-valor-wrap">
-        <div class="card-valor-row">
-          <div class="card-valor">${fmtNumero(ind.valor, ind.formatoValor)}</div>
-          ${tendenciaBadge(ind.tendencia)}
-        </div>
-        <div class="card-unidade">${ind.unidade}</div>
-        <div class="card-sparkline">${sparkSVG(ind.serie)}</div>
-      </div>
-      <div class="card-destaque">${ind.destaque}</div>
-      <span class="card-arrow">→</span>
+      <div class="card-titulo">${area.area}</div>
+      <div class="card-meta">${totalTemas} ${totalTemas === 1 ? 'tema' : 'temas'} · ${totalInd} ${totalInd === 1 ? 'indicador' : 'indicadores'}</div>
+      <div class="card-ind-list">${rows}</div>
+      <div class="card-footer-link">Ver área <span class="arrow">→</span></div>
     </button>
   `;
 }
+
 
 function renderGrid(opts) {
   opts = opts || {};
