@@ -50,44 +50,11 @@
   --mono: 'JetBrains Mono', 'Courier New', monospace;
 }
 
-/* Dark mode opcional (toggle existente do painel) */
-html[data-theme="dark"] {
-  --navy: #062c3f;
-  --navy2: #041f2d;
-  --accent-blue: #5BC4F0;
-  --accent-green: #B8DA5C;
-
-  --paper: rgb(22, 25, 32);
-  --paper-warm: rgb(30, 34, 42);
-  --ink: rgb(232, 230, 225);
-  --ink-soft: rgb(180, 178, 173);
-  --ink-mute: rgb(140, 138, 132);
-  --line: rgba(180, 200, 225, 0.15);
-  --line-soft: rgba(180, 200, 225, 0.08);
-
-  --clear-blue: var(--accent-blue);
-  --clear-light-blue: var(--accent-blue);
-  --clear-light-blue-bg: rgba(91, 196, 240, 0.12);
-  --clear-salmon: var(--accent-blue);
-  --clear-light-salmon: rgba(91, 196, 240, 0.18);
-  --clear-green: var(--accent-green);
-  --clear-light-green: rgba(184, 218, 92, 0.15);
-  --clear-amber: rgb(220, 180, 100);
-  --clear-light-amber: rgba(220, 180, 100, 0.15);
-  --clear-gray: rgb(165, 165, 170);
-  --clear-light-gray: rgb(38, 40, 45);
-
-  --card-bg: rgb(28, 32, 40);
-  --card-hover: rgb(34, 40, 50);
-  --shadow-modal: 0 24px 80px rgba(0,0,0,0.6);
-}
-
 html {
   scroll-behavior: smooth;
   color-scheme: light;
   background: var(--paper);
 }
-html[data-theme="dark"] { color-scheme: dark; }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -151,21 +118,6 @@ a { color: inherit; }
   transition: color 0.2s, border-color 0.2s;
 }
 .top-link:hover { color: var(--accent-green); border-color: var(--accent-green); }
-.theme-toggle {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.3);
-  color: rgba(255,255,255,0.85);
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  padding: 0;
-  font-size: 14px;
-}
-.theme-toggle:hover { background: rgba(255,255,255,0.1); border-color: white; color: white; }
 
 .series-tag, .tagline {
   font-family: var(--mono);
@@ -986,9 +938,6 @@ body.modal-open { overflow: hidden; }
       <div class="header-actions">
         <div class="header-meta-top">FGV EESP · Centro de Aprendizado<br/>em Avaliação e Resultados</div>
         <a href="https://fgvclear.org" class="top-link" target="_blank" rel="noopener">fgvclear.org →</a>
-        <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema" title="Alternar tema claro/escuro">
-          <span id="theme-icon">◐</span>
-        </button>
       </div>
     </div>
     <div class="tagline">Série · Avaliação na Prática</div>
@@ -1104,32 +1053,6 @@ function todosOsTemas() {
   AREAS.forEach(area => area.temas.forEach(t => out.push({ area, tema: t })));
   return out;
 }
-
-/* === THEME === */
-function applyTheme(theme) {
-  if (theme === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    document.getElementById('theme-icon').textContent = '○';
-  } else {
-    document.documentElement.removeAttribute('data-theme');
-    document.getElementById('theme-icon').textContent = '◐';
-  }
-}
-function initTheme() {
-  let theme = 'light';
-  try {
-    theme = localStorage.getItem('clear-theme') ||
-      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  } catch(e) {}
-  applyTheme(theme);
-}
-document.getElementById('theme-toggle').addEventListener('click', () => {
-  const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-  const next = current === 'dark' ? 'light' : 'dark';
-  applyTheme(next);
-  try { localStorage.setItem('clear-theme', next); } catch(e) {}
-});
-initTheme();
 
 /* === Carregar dados === */
 async function carregarDados() {
