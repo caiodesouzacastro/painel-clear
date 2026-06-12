@@ -546,6 +546,56 @@ a { color: inherit; }
 .download-btn:hover { background: var(--navy); border-color: var(--navy); color: white; }
 .download-btn .icon { font-size: 12px; }
 
+/* === Relatório gerado no navegador === */
+.rel-trigger {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(255,255,255,0.14); color: #fff;
+  border: 1px solid rgba(255,255,255,0.38); border-radius: 8px;
+  padding: 8px 14px; font-size: 13px; font-weight: 600; font-family: var(--sans);
+  cursor: pointer; transition: background .15s;
+}
+.rel-trigger:hover { background: rgba(255,255,255,0.26); }
+.rel-overlay { position: fixed; inset: 0; background: rgba(1,32,48,0.55); z-index: 200; display: none; }
+.rel-overlay.open { display: block; }
+.rel-box {
+  position: fixed; z-index: 201; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  background: var(--paper); color: var(--ink); border-radius: 16px; padding: 30px 30px 26px;
+  width: min(460px, 92vw); box-shadow: var(--shadow-modal); display: none;
+}
+.rel-box.open { display: block; }
+.rel-box h3 { margin: 0 0 6px; font-family: var(--serif); font-size: 23px; color: var(--navy); }
+.rel-box .rel-sub { margin: 0 0 20px; font-size: 14px; color: var(--ink-soft); line-height: 1.45; }
+.rel-box label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 7px; }
+.rel-box select { width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 9px; font-size: 15px; font-family: var(--sans); color: var(--ink); background: var(--paper); margin-bottom: 22px; }
+.rel-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.rel-actions button { flex: 1 1 150px; padding: 12px 14px; border-radius: 9px; font-size: 14px; font-weight: 600; font-family: var(--sans); cursor: pointer; transition: opacity .15s; }
+.rel-actions button:hover { opacity: .88; }
+.rel-primary { background: var(--navy); color: #fff; border: 1px solid var(--navy); }
+.rel-secondary { background: var(--paper); color: var(--navy); border: 1px solid var(--navy); }
+.rel-close { position: absolute; top: 16px; right: 18px; background: none; border: none; font-size: 24px; line-height: 1; cursor: pointer; color: var(--ink-mute); }
+.rel-close:hover { color: var(--ink); }
+
+/* Documento de relatório (impressão/PDF) */
+#print-report { display: none; }
+@media print {
+  body > *:not(#print-report) { display: none !important; }
+  #print-report { display: block !important; color: #000; font-family: var(--sans); }
+  @page { margin: 15mm; }
+}
+#print-report .pr-head { border-bottom: 2px solid var(--navy); padding-bottom: 12px; margin-bottom: 18px; }
+#print-report h1 { font-family: var(--serif); font-size: 26px; color: var(--navy); margin: 0 0 4px; }
+#print-report .pr-meta { font-size: 12px; color: #555; }
+#print-report h2 { font-family: var(--serif); font-size: 19px; color: var(--navy); margin: 22px 0 4px; border-bottom: 1px solid #ccc; padding-bottom: 4px; page-break-after: avoid; }
+#print-report h3 { font-size: 14px; color: #333; margin: 14px 0 6px; page-break-after: avoid; }
+#print-report .pr-ind { margin: 0 0 12px; page-break-inside: avoid; }
+#print-report .pr-titulo { font-weight: 700; font-size: 14px; }
+#print-report .pr-valor { font-weight: 700; color: var(--navy); }
+#print-report .pr-trend { font-size: 12px; color: #555; }
+#print-report .pr-destaque { font-size: 13px; color: #333; margin: 2px 0; }
+#print-report .pr-fonte { font-size: 11px; color: #777; }
+#print-report .pr-uf { font-size: 12px; color: #444; margin-top: 2px; }
+#print-report .pr-foot { margin-top: 24px; border-top: 1px solid #ccc; padding-top: 10px; font-size: 11px; color: #777; }
+
 .chart-wrap { background: var(--card-bg); border: 1px solid var(--line-soft); padding: 24px 20px 16px; border-radius: 4px; }
 .chart-svg { width: 100%; height: auto; display: block; font-family: var(--sans); }
 .chart-svg .axis-text { font-size: 10px; fill: var(--ink-soft); }
@@ -560,6 +610,20 @@ a { color: inherit; }
   font-weight: 600;
 }
 .chart-svg .zero-line { stroke: rgba(127,127,127,0.4); stroke-width: 1; stroke-dasharray: 3,3; }
+
+/* Mapa por UF (recorte com 27 estados) */
+.recorte-mapa{display:grid;grid-template-columns:1.1fr 0.9fr;gap:18px;align-items:start;}
+@media (max-width:640px){.recorte-mapa{grid-template-columns:1fr;}}
+.mapa-svg-wrap svg{width:100%;height:auto;display:block;}
+.mapa-svg-wrap svg path{transition:opacity .15s;}
+.mapa-svg-wrap svg path:hover{opacity:.78;cursor:default;}
+.mapa-legenda{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:12px;font-size:11px;color:var(--ink-soft);}
+.mapa-legenda span{display:inline-flex;align-items:center;gap:5px;}
+.mapa-legenda .sw{width:12px;height:12px;border-radius:3px;display:inline-block;}
+.mapa-lista{max-height:320px;overflow:auto;font-size:12.5px;padding-right:4px;}
+.mapa-lista-row{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-top:1px solid var(--line-soft);}
+.mapa-lista-row:first-child{border-top:none;}
+.mapa-lista-row span:last-child{font-variant-numeric:tabular-nums;color:var(--navy);font-weight:600;}
 
 .recortes { display: grid; gap: 11px; }
 
@@ -937,6 +1001,7 @@ body.modal-open { overflow: hidden; }
       </a>
       <div class="header-actions">
         <div class="header-meta-top">FGV EESP · Centro de Aprendizado<br/>em Avaliação e Resultados</div>
+        <button type="button" class="rel-trigger" id="rel-open" aria-haspopup="dialog">↧ Gerar relatório</button>
         <a href="https://fgvclear.org" class="top-link" target="_blank" rel="noopener">fgvclear.org →</a>
       </div>
     </div>
@@ -944,11 +1009,11 @@ body.modal-open { overflow: hidden; }
     <h1 class="title">Indicadores para monitoramento<br>de <em>políticas públicas</em></h1>
     <p class="subtitle">Painel institucional que reúne os principais indicadores de diversos temas, a partir de fontes oficiais brasileiras. Acompanha o <em>Guia de Fontes de Dados</em> do FGV CLEAR.</p>
     <div class="header-meta">
-      <div class="header-meta-item">Versão<strong id="meta-versao">4.2</strong></div>
-      <div class="header-meta-item">Última atualização<strong id="meta-atualizado">Maio de 2026</strong></div>
+      <div class="header-meta-item">Versão<strong id="meta-versao">4.3</strong></div>
+      <div class="header-meta-item">Última atualização<strong id="meta-atualizado">Junho de 2026</strong></div>
       <div class="header-meta-item">Áreas<strong id="meta-areas">9</strong></div>
-      <div class="header-meta-item">Temas<strong id="meta-temas">28</strong></div>
-      <div class="header-meta-item">Indicadores<strong id="meta-indicadores">43</strong></div>
+      <div class="header-meta-item">Temas<strong id="meta-temas">30</strong></div>
+      <div class="header-meta-item">Indicadores<strong id="meta-indicadores">45</strong></div>
     </div>
   </div>
 </header>
@@ -994,7 +1059,7 @@ body.modal-open { overflow: hidden; }
     </div>
     <div class="footer-bottom">
       <span>© 2026 FGV CLEAR · FGV EESP</span>
-      <span>v4.2 · Maio · 2026</span>
+      <span>v4.3 · Junho · 2026</span>
     </div>
   </div>
 </footer>
@@ -1013,6 +1078,20 @@ body.modal-open { overflow: hidden; }
 </div>
 
 <div class="toast" id="toast">Link copiado!</div>
+
+<div class="rel-overlay" id="rel-overlay"></div>
+<div class="rel-box" id="rel-box" role="dialog" aria-modal="true" aria-labelledby="rel-title">
+  <button class="rel-close" id="rel-close" aria-label="Fechar">×</button>
+  <h3 id="rel-title">Gerar relatório</h3>
+  <p class="rel-sub">O painel monta um relatório com os indicadores, valores, tendências e fontes — pronto para salvar em PDF ou baixar em Markdown.</p>
+  <label for="rel-scope">Conteúdo do relatório</label>
+  <select id="rel-scope"></select>
+  <div class="rel-actions">
+    <button type="button" class="rel-primary" id="rel-print">Imprimir / Salvar PDF</button>
+    <button type="button" class="rel-secondary" id="rel-md">Baixar Markdown</button>
+  </div>
+</div>
+<div id="print-report" aria-hidden="true"></div>
 
 <script>
 /* === Estado global === */
@@ -1331,7 +1410,45 @@ function gerarChartSVG(serie, formato, rotuloY) {
 }
 
 /* === Recortes === */
+/* === Mapa por UF === */
+const UF_PATHS = {"AC":"M3.5 113.9 L64.3 141.1 L59.9 143.6 L54.2 145.6 L48.1 149.5 L44.0 148.3 L38.5 148.0 L33.0 149.2 L31.7 134.9 L28.2 136.9 L15.8 135.9 L8.0 132.9 L5.8 125.5 L2.1 118.8 L2.3 113.4 L3.5 113.9Z","AL":"M351.9 128.8 L353.6 131.6 L351.4 134.4 L349.1 136.7 L345.4 141.1 L341.8 142.8 L337.4 139.4 L328.2 134.6 L329.8 130.7 L331.8 130.4 L336.4 132.9 L341.4 133.4 L344.7 132.0 L347.8 129.1 L351.6 128.7 L351.9 128.8Z","AM":"M60.9 29.6 L80.7 38.9 L92.9 30.0 L106.3 54.3 L121.1 56.0 L144.4 59.2 L143.4 107.5 L103.4 123.0 L75.3 135.4 L7.7 106.0 L14.9 92.0 L29.0 86.5 L40.7 56.1 L44.2 40.7 L60.7 28.3 L60.9 29.6Z","AP":"M208.4 11.5 L210.9 23.0 L216.3 30.1 L218.3 41.7 L197.0 56.5 L190.0 41.1 L183.2 35.0 L177.1 31.8 L183.2 27.2 L186.5 27.4 L189.7 28.1 L194.9 26.3 L197.7 20.4 L201.2 14.1 L208.2 10.7 L208.4 11.5Z","BA":"M317.0 126.4 L326.6 147.3 L328.2 163.6 L319.7 178.9 L317.7 205.0 L307.8 202.6 L306.0 192.2 L281.3 182.0 L269.7 178.9 L255.9 186.8 L254.6 169.5 L252.5 153.6 L274.5 143.4 L295.8 130.1 L316.2 126.1 L317.0 126.4Z","CE":"M310.3 74.1 L318.2 78.6 L325.1 83.1 L333.0 90.6 L328.2 100.5 L323.5 106.6 L321.9 111.5 L322.3 117.4 L317.0 117.7 L306.7 110.8 L302.0 97.6 L299.2 91.5 L298.6 83.1 L299.2 74.5 L309.8 74.0 L310.3 74.1Z","ES":"M303.9 238.5 L300.5 242.0 L296.5 241.6 L294.4 238.2 L293.7 233.9 L299.8 228.7 L302.0 224.0 L299.6 220.5 L300.0 216.0 L302.6 212.5 L308.2 212.3 L312.6 226.8 L308.8 232.3 L306.5 236.6 L304.4 238.3 L303.9 238.5Z M306.2 236.9 L306.2 236.8 L306.2 236.8 L306.2 236.8 L306.2 236.9 L306.2 236.9 L306.2 236.9Z","GO":"M217.7 161.5 L230.9 166.9 L240.4 171.1 L254.2 166.3 L255.7 180.6 L245.3 193.7 L243.4 195.8 L244.1 204.5 L242.1 214.3 L223.8 217.4 L204.3 223.0 L190.7 214.6 L192.4 201.8 L205.9 185.5 L217.7 161.5Z","MA":"M246.3 130.2 L246.1 121.5 L237.0 96.2 L247.3 78.9 L253.1 64.6 L257.2 59.8 L261.2 61.4 L265.1 62.0 L267.6 64.3 L273.1 70.1 L293.6 73.5 L282.3 102.4 L262.0 117.3 L257.5 134.2 L246.1 130.5 L246.3 130.2Z M265.1 60.4 L265.2 60.3 L265.1 60.1 L265.3 59.9 L265.5 60.0 L266.1 60.0 L266.0 60.5 L265.8 60.3 L265.7 60.4 L265.5 60.7 L265.2 61.0 L264.7 60.8 L264.8 60.4 L264.8 60.2 L265.1 60.4 L265.1 60.4Z M258.6 60.0 L258.9 59.8 L258.8 59.9 L258.9 59.7 L259.1 58.7 L259.1 58.4 L259.3 58.4 L259.2 58.9 L259.0 59.3 L259.1 59.5 L259.0 59.9 L259.0 60.3 L258.6 60.6 L258.7 60.4 L258.6 60.2 L258.6 60.0Z M266.6 62.1 L266.7 62.1 L266.7 62.1 L266.8 62.2 L266.8 62.3 L266.7 62.4 L266.6 62.4 L266.5 62.4 L266.4 62.2 L266.4 62.2 L266.6 62.1 L266.7 62.0 L266.7 61.8 L266.9 61.7 L266.9 61.7 L267.0 61.7 L266.8 61.9 L266.7 62.1 L266.7 62.1 L266.6 62.1Z M266.9 62.1 L266.8 62.1 L266.8 62.1 L266.8 62.1 L266.8 62.1 L266.8 62.0 L267.0 61.7 L267.0 61.7 L267.0 61.6 L266.9 61.5 L266.9 61.5 L267.0 61.5 L267.1 61.5 L267.2 61.6 L267.2 62.0 L267.2 62.0 L267.2 62.0 L266.9 62.1 L266.9 62.1Z M258.6 59.1 L258.6 59.0 L258.7 59.1 L258.7 59.2 L258.8 59.3 L258.8 59.3 L258.8 59.3 L258.8 59.3 L258.8 59.4 L258.8 59.5 L258.7 59.6 L258.6 59.6 L258.6 59.7 L258.6 59.6 L258.5 59.6 L258.4 59.5 L258.5 59.5 L258.4 59.4 L258.4 59.3 L258.4 59.3 L258.5 59.3 L258.5 59.2 L258.5 59.1 L258.6 59.3 L258.7 59.3 L258.6 59.2 L258.6 59.1Z M259.9 59.1 L260.0 59.1 L260.0 59.2 L260.0 59.3 L260.0 59.4 L259.9 59.4 L259.6 59.4 L259.4 59.5 L259.6 59.3 L259.6 59.2 L259.7 59.2 L259.6 59.1 L259.6 59.0 L259.7 59.0 L259.8 59.0 L259.9 59.1Z M268.3 64.5 L268.4 64.4 L268.4 64.4 L268.5 64.4 L268.5 64.3 L268.5 64.3 L268.5 64.3 L268.7 64.4 L268.7 64.4 L268.7 64.4 L268.4 64.6 L268.5 64.6 L268.5 64.7 L268.5 64.7 L268.5 64.7 L268.4 64.7 L268.4 64.8 L268.4 64.8 L268.3 64.8 L268.3 64.7 L268.3 64.6 L268.3 64.5Z M267.3 62.4 L267.1 62.6 L267.0 62.6 L267.1 62.4 L267.1 62.3 L267.2 62.2 L267.2 62.2 L267.3 62.3 L267.4 62.3 L267.4 62.3 L267.4 62.3 L267.3 62.4Z M257.5 58.4 L257.6 58.5 L257.5 58.7 L257.4 58.6 L257.4 58.7 L257.4 58.7 L257.4 58.6 L257.3 58.5 L257.4 58.4 L257.5 58.3 L257.5 58.3 L257.5 58.3 L257.6 58.4 L257.6 58.4 L257.5 58.4Z M257.6 59.0 L257.6 59.0 L257.7 59.0 L257.7 59.1 L257.7 59.1 L257.7 59.1 L257.7 59.2 L257.6 59.4 L257.6 59.3 L257.6 59.3 L257.5 59.2 L257.5 59.1 L257.6 59.0Z M259.7 60.3 L259.8 60.2 L259.8 60.1 L259.9 60.1 L259.9 60.0 L260.0 60.1 L260.0 60.1 L260.0 60.2 L260.0 60.2 L259.9 60.3 L259.9 60.3 L259.8 60.3 L259.7 60.3Z M264.0 61.1 L264.0 61.2 L264.0 61.2 L263.9 61.1 L264.0 61.0 L264.0 60.9 L264.1 60.7 L264.1 60.7 L264.2 60.6 L264.2 60.7 L264.2 60.7 L264.2 60.8 L264.1 60.8 L264.1 60.8 L264.1 60.9 L264.1 60.9 L264.0 61.1Z M263.9 61.6 L264.0 61.4 L264.2 61.5 L264.2 61.5 L264.1 61.6 L263.9 61.6 L263.9 61.6Z M264.5 60.8 L264.4 60.8 L264.4 60.6 L264.4 60.5 L264.4 60.4 L264.4 60.4 L264.4 60.4 L264.4 60.5 L264.5 60.6 L264.5 60.8 L264.5 60.8Z M267.1 63.6 L267.2 63.5 L267.3 63.6 L267.3 63.6 L267.2 63.7 L267.1 63.6 L267.1 63.6Z M258.6 60.0 L258.6 60.0 L258.6 60.1 L258.6 60.2 L258.6 60.1 L258.6 60.1 L258.5 60.1 L258.5 60.1 L258.5 60.1 L258.5 59.9 L258.5 59.9 L258.5 59.9 L258.6 60.0Z M269.7 67.1 L269.6 67.1 L269.5 67.1 L269.9 66.9 L269.8 67.1 L269.7 67.1Z M269.6 67.4 L269.6 67.4 L269.6 67.3 L269.7 67.3 L269.7 67.3 L269.7 67.4 L269.7 67.5 L269.7 67.5 L269.7 67.5 L269.6 67.6 L269.6 67.5 L269.6 67.5 L269.5 67.5 L269.6 67.4 L269.6 67.4Z M261.2 60.9 L261.2 61.0 L261.2 61.0 L261.1 61.1 L261.1 61.1 L261.1 61.1 L261.0 61.0 L261.1 60.9 L261.1 60.9 L261.2 60.9Z M264.2 61.4 L264.2 61.4 L264.1 61.3 L264.2 61.2 L264.2 61.2 L264.3 61.3 L264.2 61.3 L264.2 61.3 L264.2 61.3 L264.2 61.4 L264.2 61.4Z M267.4 63.3 L267.4 63.4 L267.4 63.4 L267.4 63.4 L267.4 63.5 L267.2 63.4 L267.2 63.4 L267.2 63.4 L267.4 63.3Z M269.9 66.6 L269.8 66.7 L269.8 66.6 L269.8 66.6 L269.8 66.6 L269.9 66.5 L269.9 66.5 L269.9 66.6 L269.9 66.6Z M268.3 64.7 L268.3 64.8 L268.2 64.7 L268.2 64.6 L268.2 64.6 L268.2 64.6 L268.2 64.5 L268.2 64.5 L268.3 64.6 L268.3 64.7Z M264.0 61.2 L264.0 61.1 L264.1 61.1 L264.1 61.1 L264.1 61.3 L264.0 61.3 L264.0 61.3 L264.0 61.2Z M260.1 61.0 L260.0 61.0 L260.0 60.9 L260.1 60.8 L260.1 60.8 L260.1 60.8 L260.2 60.8 L260.2 60.9 L260.2 60.9 L260.1 60.9 L260.1 61.0Z M264.4 60.3 L264.4 60.3 L264.4 60.4 L264.4 60.4 L264.3 60.3 L264.4 60.3Z M257.6 59.5 L257.5 59.5 L257.5 59.5 L257.5 59.5 L257.6 59.4 L257.6 59.4 L257.6 59.5Z M264.8 60.9 L264.8 61.0 L264.8 61.0 L264.8 61.0 L264.8 61.0 L264.8 61.0 L264.7 60.9 L264.7 60.9 L264.8 60.9Z M268.3 64.9 L268.3 64.9 L268.3 64.8 L268.4 64.8 L268.4 64.8 L268.4 64.8 L268.5 64.9 L268.4 64.9 L268.4 64.9 L268.3 64.9Z M259.1 60.2 L259.1 60.2 L259.1 60.2 L259.1 60.3 L259.1 60.4 L259.1 60.3 L259.1 60.2 L259.1 60.2 L259.1 60.2Z M266.4 62.4 L266.5 62.4 L266.5 62.4 L266.5 62.5 L266.4 62.5 L266.4 62.4 L266.4 62.4Z M259.7 59.7 L259.7 59.7 L259.7 59.7 L259.7 59.7 L259.7 59.8 L259.7 59.8 L259.6 59.8 L259.6 59.7 L259.7 59.7 L259.7 59.7Z M285.4 71.4 L285.4 71.5 L285.4 71.4 L285.3 71.4 L285.3 71.5 L285.3 71.5 L285.3 71.5 L285.3 71.4 L285.3 71.4 L285.4 71.4Z M273.9 70.1 L273.9 70.0 L274.0 70.0 L274.0 70.1 L273.9 70.1 L273.9 70.1Z M268.4 64.4 L268.3 64.5 L268.3 64.4 L268.4 64.4 L268.4 64.4 L268.4 64.4 L268.4 64.4Z M259.0 60.1 L259.0 60.1 L259.0 60.1 L259.0 60.0 L259.0 60.1 L259.0 60.1 L259.0 60.2 L259.0 60.1Z M258.8 60.6 L258.9 60.6 L259.0 60.6 L258.9 60.6 L258.8 60.6Z M259.0 59.5 L258.9 59.6 L258.9 59.5 L258.9 59.5 L258.9 59.5 L259.0 59.5 L259.0 59.5 L259.0 59.5 L259.0 59.5Z M273.8 70.1 L273.9 70.1 L273.9 70.1 L273.9 70.1 L273.8 70.1 L273.8 70.1 L273.8 70.1 L273.8 70.1Z M263.5 61.6 L263.6 61.5 L263.6 61.6 L263.6 61.6 L263.6 61.6 L263.6 61.6 L263.5 61.6Z M266.9 62.5 L266.8 62.5 L266.8 62.5 L266.9 62.4 L266.9 62.5Z M266.0 60.4 L265.9 60.4 L265.9 60.4 L265.9 60.4 L266.0 60.4 L266.0 60.4Z M264.4 60.9 L264.5 60.8 L264.5 60.9 L264.5 60.9 L264.4 60.9Z M263.6 61.7 L263.6 61.7 L263.6 61.8 L263.6 61.8 L263.6 61.7Z M269.8 67.6 L269.8 67.6 L269.8 67.6 L269.8 67.6 L269.8 67.6Z M257.4 59.6 L257.4 59.6 L257.4 59.6 L257.4 59.7 L257.4 59.7 L257.4 59.6Z M246.3 130.2 L246.3 130.2 L246.2 130.2 L246.2 130.2 L246.2 130.2 L246.3 130.2 L246.3 130.2Z","MG":"M272.0 178.3 L288.6 185.9 L311.3 196.3 L304.2 212.7 L300.5 227.2 L288.9 245.7 L268.7 252.1 L251.4 255.3 L246.5 243.6 L226.3 233.6 L228.5 215.8 L241.7 207.5 L243.5 196.6 L255.3 187.3 L271.8 178.3 L272.0 178.3Z","MS":"M183.8 211.9 L197.4 219.7 L208.4 224.3 L190.8 254.7 L173.1 267.2 L168.4 259.6 L162.8 251.7 L156.3 251.4 L148.5 250.2 L147.6 239.4 L150.3 214.8 L156.0 208.4 L165.8 206.2 L174.8 209.0 L183.5 211.7 L183.8 211.9Z","MT":"M124.5 169.6 L126.8 154.4 L114.2 143.1 L143.5 122.0 L213.8 145.8 L211.2 173.5 L194.7 197.8 L189.9 207.0 L183.6 210.5 L172.2 209.3 L162.5 205.3 L150.3 211.2 L141.8 202.3 L123.4 177.0 L124.5 169.6Z","PA":"M247.0 54.9 L251.4 56.3 L254.5 60.9 L247.2 79.0 L233.4 104.7 L149.1 122.8 L146.3 60.6 L141.5 35.3 L150.6 31.8 L161.5 30.6 L166.1 25.7 L184.4 35.1 L209.1 49.0 L239.5 53.4 L246.7 54.6 L247.0 54.9Z M252.0 56.8 L252.0 56.9 L252.0 56.9 L251.9 57.0 L251.9 57.0 L251.7 57.2 L251.7 57.1 L251.7 57.0 L251.8 56.9 L251.8 56.9 L251.9 56.8 L251.9 56.8 L251.9 56.7 L251.9 56.7 L252.0 56.6 L252.0 56.7 L252.0 56.7 L252.1 56.8 L252.0 56.8 L252.0 56.8Z M255.0 57.9 L255.0 57.9 L255.1 58.1 L255.1 58.2 L255.1 58.2 L255.1 58.2 L255.1 58.2 L255.0 58.2 L255.0 58.1 L254.9 58.0 L254.9 58.0 L254.9 57.9 L254.9 57.8 L254.9 57.8 L254.9 57.8 L255.0 57.8 L255.0 57.9Z M246.2 54.5 L246.2 54.5 L246.3 54.5 L246.3 54.5 L246.3 54.5 L246.4 54.5 L246.5 54.5 L246.5 54.6 L246.4 54.6 L246.3 54.6 L246.3 54.6 L246.2 54.6 L246.2 54.5 L246.2 54.5Z M252.3 57.2 L252.3 57.3 L252.3 57.4 L252.2 57.4 L252.2 57.3 L252.2 57.3 L252.2 57.2 L252.3 57.2 L252.3 57.2 L252.3 57.2Z M238.8 54.2 L238.9 54.2 L238.9 54.1 L239.0 54.2 L238.9 54.2 L238.9 54.2 L238.9 54.2 L238.9 54.3 L238.8 54.2Z M251.6 57.4 L251.6 57.4 L251.6 57.4 L251.7 57.3 L251.7 57.3 L251.7 57.4 L251.7 57.4 L251.6 57.4Z M252.7 56.8 L252.7 56.8 L252.8 56.8 L252.8 56.8 L252.8 56.8 L252.7 56.8 L252.8 56.9 L252.7 56.9 L252.7 56.8Z M250.1 55.7 L250.1 55.7 L250.2 55.7 L250.2 55.7 L250.2 55.8 L250.1 55.7Z M250.1 56.0 L250.1 55.9 L250.2 56.0 L250.2 56.0 L250.2 56.0 L250.1 56.0Z M246.2 54.7 L246.2 54.7 L246.1 54.7 L246.2 54.7 L246.2 54.7 L246.3 54.7 L246.2 54.7Z M251.4 57.0 L251.3 57.0 L251.4 56.9 L251.4 56.9 L251.4 57.0Z","PB":"M335.8 103.3 L338.2 109.7 L345.2 106.9 L355.5 107.7 L358.0 114.4 L352.8 116.1 L344.7 119.6 L336.4 122.7 L337.4 116.7 L330.8 118.0 L323.9 119.0 L322.8 113.8 L323.0 108.3 L327.6 107.7 L334.7 103.7 L335.8 103.3Z M357.4 111.9 L357.5 111.9 L357.5 111.9 L357.6 111.9 L357.6 111.9 L357.6 112.0 L357.5 112.1 L357.5 112.2 L357.5 112.2 L357.4 112.2 L357.4 112.2 L357.4 112.1 L357.4 112.1 L357.4 112.0 L357.4 112.0 L357.4 112.0 L357.4 111.9 L357.4 111.9Z","PE":"M336.3 114.9 L336.5 121.8 L346.4 119.3 L356.2 116.5 L356.3 125.4 L349.0 129.3 L341.5 133.5 L331.5 129.8 L322.3 129.1 L306.0 134.1 L300.3 127.7 L305.0 122.3 L318.8 119.5 L326.0 119.1 L335.0 114.7 L336.3 114.9Z M379.9 83.2 L379.9 83.2 L380.0 83.3 L380.0 83.3 L379.9 83.4 L379.8 83.4 L379.8 83.4 L379.8 83.4 L379.7 83.5 L379.7 83.5 L379.7 83.6 L379.6 83.5 L379.5 83.5 L379.5 83.5 L379.4 83.6 L379.4 83.6 L379.3 83.6 L379.4 83.4 L379.5 83.4 L379.6 83.3 L379.9 83.2Z M379.9 83.2 L379.9 83.2 L379.9 83.1 L379.9 83.2 L379.9 83.2Z","PI":"M294.6 73.8 L298.8 83.1 L301.1 94.8 L307.1 110.3 L301.7 125.0 L287.1 134.9 L277.1 138.1 L263.4 147.2 L257.2 135.9 L257.9 126.2 L261.0 118.1 L272.9 110.3 L282.5 102.8 L284.8 84.6 L294.5 73.7 L294.6 73.8Z","PR":"M200.3 254.0 L220.1 258.8 L223.0 266.3 L226.4 273.8 L232.2 276.1 L234.1 281.9 L224.5 287.0 L217.7 286.0 L207.7 288.8 L198.7 289.9 L185.7 287.4 L184.0 282.9 L179.0 282.3 L180.0 271.1 L199.6 253.9 L200.3 254.0Z","RJ":"M269.3 260.9 L268.5 257.2 L268.4 254.7 L273.0 250.8 L282.8 249.7 L290.4 242.0 L294.7 241.0 L301.3 243.8 L292.5 255.8 L284.0 258.0 L280.6 256.6 L276.1 257.7 L271.1 258.3 L268.1 258.7 L269.3 260.9Z M271.8 259.1 L272.1 259.3 L272.5 259.5 L272.7 259.6 L273.1 259.8 L272.6 259.8 L272.2 260.0 L271.8 260.1 L271.5 260.0 L270.9 260.3 L270.7 259.9 L270.7 259.7 L271.1 259.5 L271.5 259.4 L271.8 259.0 L271.8 259.1Z M275.5 258.8 L275.8 258.8 L275.2 258.9 L274.1 259.2 L273.9 259.1 L273.8 259.0 L274.0 258.8 L274.1 258.7 L274.3 258.6 L274.6 258.8 L274.9 258.9 L275.0 258.9 L275.1 258.7 L274.8 258.5 L275.2 258.7 L275.5 258.8Z M281.4 256.2 L281.5 256.3 L281.7 256.3 L281.5 256.4 L281.5 256.6 L281.6 256.7 L281.5 256.6 L281.4 256.6 L281.1 256.6 L281.0 256.6 L280.8 256.7 L280.7 256.5 L280.8 256.5 L280.9 256.4 L281.1 256.3 L281.4 256.4 L281.4 256.2Z M274.7 257.7 L274.8 257.6 L274.8 257.6 L274.9 257.6 L274.9 257.6 L275.0 257.6 L275.1 257.6 L275.2 257.6 L275.1 257.7 L275.1 257.8 L275.0 257.8 L274.9 257.8 L274.8 257.9 L274.8 257.8 L274.8 257.7 L274.7 257.7Z M280.9 257.0 L280.9 256.9 L280.9 256.8 L280.9 256.8 L281.0 256.8 L281.0 256.8 L281.0 256.8 L281.0 256.9 L281.0 256.9 L281.1 257.0 L281.1 257.0 L281.1 257.1 L281.1 257.0 L281.0 257.0 L280.9 257.0Z M274.6 258.3 L274.6 258.4 L274.5 258.3 L274.5 258.2 L274.6 258.2 L274.6 258.1 L274.7 258.1 L274.7 258.2 L274.6 258.2 L274.6 258.3Z M268.6 260.1 L268.6 260.1 L268.6 260.2 L268.6 260.2 L268.5 260.2 L268.4 260.3 L268.4 260.3 L268.3 260.3 L268.3 260.3 L268.3 260.3 L268.4 260.2 L268.5 260.1 L268.6 260.1Z M273.5 258.2 L273.6 258.2 L273.6 258.2 L273.7 258.3 L273.7 258.3 L273.6 258.3 L273.6 258.3 L273.5 258.3 L273.5 258.3 L273.5 258.3 L273.5 258.3 L273.5 258.2Z M267.7 259.7 L267.6 259.8 L267.6 259.7 L267.6 259.7 L267.7 259.7 L267.7 259.6 L267.7 259.7 L267.7 259.7Z M295.0 252.9 L295.0 252.9 L294.9 252.9 L294.9 252.9 L294.9 252.8 L295.0 252.8 L295.0 252.8 L295.0 252.9Z M269.3 260.9 L269.3 260.9 L269.4 261.0 L269.3 261.0 L269.3 260.9Z M282.1 256.1 L282.1 256.0 L282.1 256.1 L282.1 256.1 L282.1 256.1 L282.1 256.1 L282.1 256.1Z M282.1 256.0 L282.1 256.0 L282.1 255.9 L282.1 256.0 L282.1 256.0 L282.1 256.0 L282.1 256.0Z M281.5 257.3 L281.5 257.3 L281.6 257.3 L281.5 257.3 L281.5 257.3Z M268.1 258.9 L268.1 258.9 L268.1 258.9 L268.1 258.9 L268.1 258.9 L268.1 258.9Z M275.2 257.8 L275.2 257.8 L275.3 257.8 L275.3 257.8 L275.2 257.8 L275.2 257.8Z M295.1 252.8 L295.1 252.8 L295.0 252.8 L295.1 252.7 L295.1 252.8Z M268.6 260.1 L268.6 260.1 L268.7 260.1 L268.7 260.1 L268.6 260.1Z M268.7 259.9 L268.7 259.9 L268.7 260.0 L268.7 260.0 L268.7 259.9Z M274.8 258.1 L274.7 258.1 L274.7 258.1 L274.8 258.1 L274.8 258.1Z M293.3 256.2 L293.3 256.2 L293.3 256.3 L293.3 256.3 L293.3 256.3 L293.3 256.3 L293.3 256.2Z M274.7 257.7 L274.7 257.7 L274.7 257.7 L274.7 257.7 L274.7 257.7Z","RN":"M336.5 93.2 L342.0 94.6 L348.2 94.4 L353.5 97.8 L354.9 102.6 L355.6 107.7 L349.7 107.3 L342.9 108.7 L337.5 109.7 L335.6 105.0 L331.0 104.8 L327.3 107.5 L323.9 104.9 L328.3 100.5 L335.9 92.8 L336.5 93.2Z","RO":"M68.8 138.4 L80.8 134.4 L103.3 122.3 L113.4 133.7 L124.3 149.5 L127.5 156.8 L122.4 172.1 L114.0 171.9 L107.5 167.9 L100.3 165.4 L91.2 162.5 L83.0 158.0 L78.9 146.9 L76.2 137.6 L68.9 138.3 L68.8 138.4Z","RR":"M128.6 19.4 L130.2 29.8 L135.8 35.8 L120.6 54.9 L104.9 55.0 L97.1 28.1 L86.5 13.1 L94.1 11.6 L102.8 14.0 L108.8 10.4 L115.9 6.7 L121.2 0.7 L126.8 6.1 L131.5 11.6 L128.6 19.1 L128.6 19.4Z","RS":"M200.5 336.6 L187.7 351.3 L192.0 345.0 L177.7 335.9 L166.8 331.1 L158.1 324.0 L157.1 317.2 L171.9 302.6 L184.0 296.1 L205.8 300.3 L220.2 310.7 L218.2 321.8 L211.6 330.0 L207.6 322.5 L200.5 337.2 L200.5 336.6Z M207.3 329.0 L207.4 329.5 L207.4 329.5 L207.4 329.6 L207.4 329.6 L207.4 329.7 L207.3 329.6 L207.4 329.6 L207.4 329.5 L207.4 329.5 L207.2 329.4 L207.1 329.3 L207.1 329.3 L207.1 329.3 L207.1 329.3 L207.2 329.4 L207.3 329.2 L207.3 329.2 L207.3 329.2 L207.3 329.0Z M218.2 315.2 L218.3 315.1 L218.4 315.0 L218.3 315.1 L218.4 315.1 L218.3 315.2 L218.2 315.2Z M208.7 326.5 L208.7 326.5 L208.6 326.8 L208.6 326.7 L208.7 326.5Z M219.5 313.7 L219.5 313.6 L219.6 313.6 L219.7 313.6 L219.7 313.6 L219.6 313.6 L219.6 313.7 L219.5 313.7Z M207.3 322.7 L207.4 322.7 L207.6 322.7 L207.3 322.8 L207.3 322.7Z M199.9 338.6 L199.9 338.6 L199.9 338.6 L200.0 338.6 L199.9 338.6Z M187.9 350.8 L187.9 350.8 L187.9 350.7 L187.9 350.7 L188.0 350.6 L188.0 350.6 L188.0 350.6 L188.0 350.6 L188.0 350.7 L187.9 350.7 L187.9 350.8Z M219.4 314.2 L219.4 314.1 L219.5 314.1 L219.5 314.1 L219.4 314.2Z M205.8 336.3 L205.8 336.3 L205.8 336.3 L205.8 336.4 L205.8 336.4 L205.8 336.4 L205.8 336.3Z","SC":"M185.2 290.8 L193.9 288.8 L207.8 290.6 L216.2 286.4 L223.8 287.3 L232.0 289.7 L232.1 296.7 L231.8 304.1 L219.5 314.9 L219.7 312.9 L219.6 308.2 L207.2 301.1 L194.6 297.4 L184.4 295.2 L185.2 290.8Z M233.7 298.3 L234.1 298.9 L233.5 299.9 L233.4 300.4 L232.8 301.4 L232.9 302.0 L232.2 302.4 L232.3 301.6 L232.2 301.0 L232.5 300.4 L232.7 300.0 L232.7 299.5 L232.7 299.0 L233.1 298.7 L233.7 298.3Z","SE":"M329.1 135.2 L335.7 138.5 L339.9 141.6 L343.4 144.1 L339.0 146.5 L335.5 151.3 L332.3 153.5 L330.0 152.8 L329.0 152.0 L328.6 150.3 L326.9 147.9 L328.4 146.1 L330.5 142.8 L329.1 137.8 L328.9 135.2 L329.1 135.2Z","SP":"M254.4 266.1 L238.6 276.7 L232.7 274.5 L225.5 269.9 L222.5 261.5 L201.9 254.7 L209.6 232.7 L236.6 232.2 L246.0 241.9 L249.7 249.7 L254.2 257.0 L264.6 253.4 L269.1 257.0 L263.7 262.8 L255.2 265.7 L254.4 266.1Z M261.9 266.6 L261.5 266.7 L260.7 266.7 L260.8 266.2 L261.3 265.8 L261.6 265.3 L262.0 264.9 L262.5 265.1 L262.7 265.5 L262.6 265.8 L262.4 265.9 L262.3 266.3 L262.8 266.5 L262.7 267.0 L262.2 266.8 L261.9 266.6Z M264.1 263.1 L264.2 263.2 L264.2 263.2 L264.3 263.1 L264.3 263.1 L264.4 263.1 L264.5 263.1 L264.4 263.2 L264.4 263.2 L264.3 263.2 L264.2 263.3 L264.1 263.4 L264.1 263.4 L264.1 263.3 L264.1 263.3 L264.1 263.2 L264.1 263.2 L264.1 263.2 L264.1 263.1 L264.1 263.1 L264.1 263.0 L264.1 263.1 L264.1 263.1Z M263.5 265.6 L263.8 265.6 L263.7 265.7 L263.7 265.7 L263.6 265.7 L263.5 265.7 L263.4 265.7 L263.4 265.6 L263.5 265.5 L263.6 265.5 L263.5 265.5 L263.5 265.6Z M263.3 263.4 L263.4 263.4 L263.4 263.4 L263.5 263.4 L263.5 263.5 L263.4 263.5 L263.4 263.4 L263.4 263.5 L263.3 263.4 L263.3 263.4Z M264.6 265.2 L264.6 265.1 L264.7 265.1 L264.7 265.2 L264.7 265.2 L264.7 265.2 L264.6 265.2 L264.6 265.2Z M257.7 266.2 L257.7 266.2 L257.6 266.2 L257.6 266.1 L257.7 266.1 L257.7 266.1 L257.7 266.1 L257.7 266.2Z M262.1 263.7 L262.1 263.7 L262.2 263.7 L262.3 263.7 L262.2 263.7 L262.2 263.7 L262.1 263.7 L262.1 263.7Z M264.6 265.1 L264.6 265.1 L264.6 265.0 L264.7 265.0 L264.7 265.1 L264.7 265.1 L264.6 265.1Z M258.2 265.6 L258.2 265.5 L258.3 265.6 L258.3 265.6 L258.2 265.6 L258.2 265.6Z M260.0 266.0 L260.0 266.0 L260.1 266.0 L260.0 266.1 L260.0 266.0 L260.0 266.0Z M247.4 270.9 L247.4 270.9 L247.4 271.0 L247.4 271.0 L247.4 271.0 L247.4 270.9Z M247.4 270.8 L247.4 270.8 L247.4 270.8 L247.4 270.9 L247.4 270.8 L247.4 270.8Z M264.5 263.3 L264.6 263.2 L264.6 263.2 L264.6 263.3 L264.5 263.3Z M266.2 261.9 L266.2 261.9 L266.1 261.9 L266.2 261.9 L266.2 261.9Z M265.3 261.8 L265.3 261.8 L265.4 261.8 L265.3 261.8 L265.3 261.8Z M246.7 270.8 L246.7 270.7 L246.8 270.8 L246.8 270.8 L246.7 270.8Z M261.8 266.6 L261.9 266.6 L261.9 266.6 L261.9 266.6 L261.9 266.6 L261.8 266.6Z M262.3 266.0 L262.3 266.1 L262.3 266.0 L262.3 266.0 L262.3 266.0 L262.3 266.0Z","TO":"M246.2 130.2 L255.5 141.7 L252.5 156.2 L252.4 166.1 L240.6 168.3 L233.9 169.3 L227.6 165.6 L217.4 162.0 L213.1 158.4 L218.2 135.7 L234.0 106.0 L242.2 100.8 L244.3 119.4 L251.2 121.2 L246.4 130.2 L246.2 130.2Z","DF":"M243.7 194.6 L237.2 194.8 L235.1 194.0 L234.9 193.3 L235.4 192.2 L235.6 189.9 L242.9 190.2 L243.6 190.6 L243.7 191.8 L243.5 192.3 L243.2 192.9 L243.2 193.5 L243.1 194.0 L243.4 194.4 L243.7 194.6Z"};
+const UF_SIGLA2NOME = {"AC": "Acre", "AL": "Alagoas", "AP": "Amapá", "AM": "Amazonas", "BA": "Bahia", "CE": "Ceará", "DF": "Distrito Federal", "ES": "Espírito Santo", "GO": "Goiás", "MA": "Maranhão", "MT": "Mato Grosso", "MS": "Mato Grosso do Sul", "MG": "Minas Gerais", "PA": "Pará", "PB": "Paraíba", "PR": "Paraná", "PE": "Pernambuco", "PI": "Piauí", "RJ": "Rio de Janeiro", "RN": "Rio Grande do Norte", "RS": "Rio Grande do Sul", "RO": "Rondônia", "RR": "Roraima", "SC": "Santa Catarina", "SP": "São Paulo", "SE": "Sergipe", "TO": "Tocantins"};
+const UF_NOME2SIGLA = {"Acre": "AC", "Alagoas": "AL", "Amapá": "AP", "Amazonas": "AM", "Bahia": "BA", "Ceará": "CE", "Distrito Federal": "DF", "Espírito Santo": "ES", "Goiás": "GO", "Maranhão": "MA", "Mato Grosso": "MT", "Mato Grosso do Sul": "MS", "Minas Gerais": "MG", "Pará": "PA", "Paraíba": "PB", "Paraná": "PR", "Pernambuco": "PE", "Piauí": "PI", "Rio de Janeiro": "RJ", "Rio Grande do Norte": "RN", "Rio Grande do Sul": "RS", "Rondônia": "RO", "Roraima": "RR", "Santa Catarina": "SC", "São Paulo": "SP", "Sergipe": "SE", "Tocantins": "TO"};
+const UF_RAMP = ['#eaf2f8','#bcd9ec','#7fb8db','#3f8cbf','#0a2d42'];
+function siglaDeRotulo(rot){ return UF_NOME2SIGLA[rot] || null; }
+function isMapaUF(r){
+  if(!r || !Array.isArray(r.valores)) return false;
+  let n=0; r.valores.forEach(v=>{ if(siglaDeRotulo(v.rotulo)) n++; });
+  if(r.mapa===true) return n>=1;            // opt-in: mapa parcial (ex.: biomas)
+  if(r.id!=='uf') return false;
+  return n>=20;
+}
+function gerarMapaUF(r, formato){
+  const ufVals={}; let min=Infinity, max=-Infinity;
+  r.valores.forEach(v=>{ const s=siglaDeRotulo(v.rotulo); if(s){ ufVals[s]=v.valor; if(v.valor<min)min=v.valor; if(v.valor>max)max=v.valor; }});
+  const span=(max-min)||1;
+  const bucket=v=>Math.min(4, Math.max(0, Math.floor((v-min)/span*5)));
+  let paths='';
+  for(const sig in UF_PATHS){
+    const v=ufVals[sig];
+    const fill = (v==null) ? 'rgba(127,127,127,0.14)' : UF_RAMP[bucket(v)];
+    const nome = UF_SIGLA2NOME[sig] || sig;
+    const tip = (v==null) ? (nome+' \u2014 sem dado') : (nome+' \u2014 '+fmtNumero(v, formato));
+    paths += '<path d="'+UF_PATHS[sig]+'" fill="'+fill+'" stroke="#fff" stroke-width="0.6"><title>'+tip+'</title></path>';
+  }
+  const step=span/5; let leg='';
+  for(let i=0;i<5;i++){
+    const a=Math.round((min+step*i)*10)/10, b=Math.round((min+step*(i+1))*10)/10;
+    leg += '<span><i class="sw" style="background:'+UF_RAMP[i]+'"></i>'+fmtNumero(a,formato)+'\u2013'+fmtNumero(b,formato)+'</span>';
+  }
+  leg += '<span><i class="sw" style="background:rgba(127,127,127,0.14)"></i>sem dado</span>';
+  const ord=[...r.valores].sort((x,y)=> (siglaDeRotulo(y.rotulo)?1:0)-(siglaDeRotulo(x.rotulo)?1:0) || y.valor-x.valor );
+  const lista=ord.map(v=>'<div class="mapa-lista-row"><span>'+v.rotulo+'</span><span>'+fmtNumero(v.valor,formato)+'</span></div>').join('');
+  return '<div class="recorte-mapa"><div class="mapa-svg-wrap"><svg viewBox="0 0 380 356.5" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa por UF">'+paths+'</svg><div class="mapa-legenda">'+leg+'</div></div><div class="mapa-lista">'+lista+'</div></div>';
+}
+
 function gerarRecorteHTML(recorte, formato) {
+  if (isMapaUF(recorte)) return gerarMapaUF(recorte, formato);
   const max = Math.max(...recorte.valores.map(v => v.max || v.valor));
   return `
     <div class="recortes">
@@ -1357,7 +1474,7 @@ function renderRecortesSection(ind, indSlug) {
 
   if (lista.length === 1) {
     const r = lista[0];
-    return `<div class="section-block"><h3>${r.titulo}</h3>${gerarRecorteHTML(r, ind.formatoValor)}</div>`;
+    return `<div class="section-block"><h3>${r.titulo}</h3>${gerarRecorteHTML(r, r.formato || ind.formatoValor)}</div>`;
   }
 
   const subtabsId = `subtabs-${indSlug}`;
@@ -1368,7 +1485,7 @@ function renderRecortesSection(ind, indSlug) {
   const subpanesHTML = lista.map((r, i) => `
     <div class="subpane ${i === 0 ? 'active' : ''}" id="${subpanesId}-${i}">
       <div class="subpane-title">${r.titulo}</div>
-      ${gerarRecorteHTML(r, ind.formatoValor)}
+      ${gerarRecorteHTML(r, r.formato || ind.formatoValor)}
     </div>
   `).join('');
   return `
@@ -1648,6 +1765,128 @@ document.getElementById('modal-body').addEventListener('click', e => {
   if (action === 'download') baixarCSV(area, tema, ind);
   if (action === 'share') copiarLink(area.id, tema.id, ind.id);
 });
+
+/* === Relatório gerado no navegador === */
+function relAreasDoEscopo(scope) {
+  if (scope === 'all') return AREAS;
+  const a = findArea(scope);
+  return a ? [a] : AREAS;
+}
+function relDataHoje() {
+  return new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+}
+function relTituloEscopo(scope) {
+  if (scope === 'all') return 'Painel completo';
+  const a = findArea(scope); return a ? a.area : 'Painel completo';
+}
+function relTrend(t) {
+  return t ? ({ alta: '↑ alta', queda: '↓ queda', estavel: '→ estável' }[t] || '') : '';
+}
+function relTopBottomUF(ind) {
+  const recs = (ind.recortes && ind.recortes.length) ? ind.recortes : (ind.recorte ? [ind.recorte] : []);
+  const uf = recs.find(r => r.id === 'uf');
+  if (!uf) return null;
+  const naoUF = ['Brasil (média)', 'Brasil (Censo 2022)', 'Brasil (rede total)'];
+  const est = uf.valores.filter(v => !naoUF.includes(v.rotulo));
+  if (est.length < 20) return null;
+  const ord = [...est].sort((a, b) => b.valor - a.valor);
+  const fmt = v => `${v.rotulo} ${fmtNumero(v.valor, ind.formatoValor)}`;
+  return {
+    maiores: ord.slice(0, 3).map(fmt).join(' · '),
+    menores: ord.slice(-3).reverse().map(fmt).join(' · ')
+  };
+}
+
+function gerarRelatorioMD(scope) {
+  const L = [];
+  L.push('# Painel CLEAR — Relatório de indicadores');
+  L.push('');
+  L.push(`_Gerado em ${relDataHoje()} · ${relTituloEscopo(scope)}_`);
+  L.push('');
+  L.push('FGV CLEAR — Indicadores para monitoramento de políticas públicas.  ');
+  L.push('Fonte: https://caiodesouzacastro.github.io/painel-clear/');
+  L.push('');
+  relAreasDoEscopo(scope).forEach(area => {
+    L.push(`## ${area.area}`);
+    (area.temas || []).forEach(t => {
+      L.push('');
+      L.push(`### ${t.tema}`);
+      (t.indicadores || []).forEach(ind => {
+        const trend = relTrend(ind.tendencia);
+        L.push('');
+        L.push(`**${ind.titulo}** — ${fmtNumero(ind.valor, ind.formatoValor)} ${ind.unidade}${trend ? ' (' + trend + ')' : ''}`);
+        if (ind.destaque) L.push(`- ${ind.destaque}`);
+        const tb = relTopBottomUF(ind);
+        if (tb) { L.push(`- Maiores: ${tb.maiores}`); L.push(`- Menores: ${tb.menores}`); }
+        const f = ind.fonte || {};
+        L.push(`- Fonte: ${f.nome || '—'}${f.ultimaAtualizacao ? ' · atualização: ' + f.ultimaAtualizacao : ''}${f.url ? ' · ' + f.url : ''}`);
+      });
+    });
+    L.push('');
+  });
+  L.push('---');
+  L.push('_Relatório gerado pelo painel a partir dos dados publicados. Confira os valores nas fontes oficiais antes de citar._');
+  return L.join('\n');
+}
+
+function gerarRelatorioHTML(scope) {
+  const esc = s => String(s == null ? '' : s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+  let h = `<div class="pr-head"><h1>Painel CLEAR — Relatório de indicadores</h1>`;
+  h += `<div class="pr-meta">Gerado em ${esc(relDataHoje())} · ${esc(relTituloEscopo(scope))} · FGV CLEAR · https://caiodesouzacastro.github.io/painel-clear/</div></div>`;
+  relAreasDoEscopo(scope).forEach(area => {
+    h += `<h2>${esc(area.area)}</h2>`;
+    (area.temas || []).forEach(t => {
+      h += `<h3>${esc(t.tema)}</h3>`;
+      (t.indicadores || []).forEach(ind => {
+        const trend = relTrend(ind.tendencia);
+        const f = ind.fonte || {};
+        h += `<div class="pr-ind"><span class="pr-titulo">${esc(ind.titulo)}</span> — <span class="pr-valor">${esc(fmtNumero(ind.valor, ind.formatoValor))} ${esc(ind.unidade)}</span>`;
+        if (trend) h += ` <span class="pr-trend">(${esc(trend)})</span>`;
+        if (ind.destaque) h += `<div class="pr-destaque">${esc(ind.destaque)}</div>`;
+        const tb = relTopBottomUF(ind);
+        if (tb) h += `<div class="pr-uf">Maiores: ${esc(tb.maiores)} &nbsp;·&nbsp; Menores: ${esc(tb.menores)}</div>`;
+        h += `<div class="pr-fonte">Fonte: ${esc(f.nome || '—')}${f.ultimaAtualizacao ? ' · atualização: ' + esc(f.ultimaAtualizacao) : ''}</div>`;
+        h += `</div>`;
+      });
+    });
+  });
+  h += `<div class="pr-foot">Relatório gerado pelo painel a partir dos dados publicados. Confira os valores nas fontes oficiais antes de citar. © ${new Date().getFullYear()} FGV CLEAR.</div>`;
+  return h;
+}
+
+function imprimirRelatorio(scope) {
+  document.getElementById('print-report').innerHTML = gerarRelatorioHTML(scope);
+  fecharRelatorioModal();
+  setTimeout(() => window.print(), 80);
+}
+function baixarRelatorioMD(scope) {
+  const blob = new Blob([gerarRelatorioMD(scope)], { type: 'text/markdown;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  const tag = scope === 'all' ? 'painel-completo' : scope;
+  a.download = `relatorio-painel-clear_${tag}_${new Date().toISOString().slice(0, 10)}.md`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 500);
+  fecharRelatorioModal();
+}
+function abrirRelatorioModal() {
+  const sel = document.getElementById('rel-scope');
+  sel.innerHTML = '<option value="all">Painel completo (todas as áreas)</option>' +
+    AREAS.map(a => `<option value="${a.id}">${a.area}</option>`).join('');
+  document.getElementById('rel-overlay').classList.add('open');
+  document.getElementById('rel-box').classList.add('open');
+}
+function fecharRelatorioModal() {
+  document.getElementById('rel-overlay').classList.remove('open');
+  document.getElementById('rel-box').classList.remove('open');
+}
+document.getElementById('rel-open').addEventListener('click', abrirRelatorioModal);
+document.getElementById('rel-close').addEventListener('click', fecharRelatorioModal);
+document.getElementById('rel-overlay').addEventListener('click', fecharRelatorioModal);
+document.getElementById('rel-print').addEventListener('click', () => imprimirRelatorio(document.getElementById('rel-scope').value));
+document.getElementById('rel-md').addEventListener('click', () => baixarRelatorioMD(document.getElementById('rel-scope').value));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharRelatorioModal(); });
 
 carregarDados();
 </script>

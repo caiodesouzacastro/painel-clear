@@ -957,3 +957,33 @@ Use este modelo quando for adicionar um indicador novo. Substitua os valores ent
 ---
 
 *Manual atualizado em maio de 2026 — versão 1.0*
+
+---
+
+## 16. Mapas por UF e coleta via API
+
+A partir da v4.3, **8 das 9 áreas têm mapa por UF**. Como funciona, de onde vem
+cada número e como reproduzir a coleta está documentado em **[MAPAS-E-APIS.md](MAPAS-E-APIS.md)**.
+
+Resumo prático:
+
+- Um indicador vira mapa **automaticamente** quando tem um recorte `"id": "uf"` com
+  **20+ estados**. Não há nada a "ligar" — basta ter o recorte.
+- Vários mapas são coletados **direto de API** (sem digitar à mão): desocupação e
+  renda (IBGE/SIDRA), coleta de lixo (Censo 2022/SIDRA) e receita estadual per
+  capita (SICONFI/Tesouro). Os endpoints exatos estão em `MAPAS-E-APIS.md`.
+- Outros (Atlas da Violência, IDEB, PRODES) dependem de conferência manual porque a
+  fonte só publica em PDF/portal — use os prompts de `PROMPTS-IA.md`.
+
+### Pendência aberta: mapa de habitação
+
+Habitação é a **única área sem mapa**, por falta de dado por UF em fonte aberta:
+
+- Déficit habitacional (FJP) → sem API (hub interativo).
+- Condição de ocupação (domicílios próprios) do **Censo 2022** → ainda **não publicada** no SIDRA.
+- Aglomerados subnormais no SIDRA → só **Censo 2010** (velho demais).
+
+**O que fazer quando o IBGE publicar** a condição de ocupação ou os aglomerados
+subnormais do Censo 2022 no SIDRA: puxar a tabela por UF, calcular o `%` (numerador
+÷ total de domicílios da tabela 10345, classe "Total") e adicionar um indicador novo
+com recorte `uf` — vira mapa sozinho. Passo a passo em `MAPAS-E-APIS.md`.

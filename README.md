@@ -11,17 +11,17 @@ Painel institucional do **FGV CLEAR** (Centro de Aprendizado e Pesquisa em Avali
 ## O que tem no painel
 
 - **9 áreas** de política pública
-- **28 temas** organizados hierarquicamente
-- **43 indicadores** com séries históricas e recortes (por UF, sexo, raça, idade, faixa de renda, etc.)
+- **30 temas** organizados hierarquicamente
+- **45 indicadores** com séries históricas e recortes (por UF, sexo, raça, idade, faixa de renda, etc.)
+- **Mapas coropléticos por UF em 8 das 9 áreas**, vários coletados direto de APIs oficiais (IBGE/SIDRA, SICONFI/Tesouro) — ver [MAPAS-E-APIS.md](MAPAS-E-APIS.md)
 - Fontes oficiais (IBGE, INEP, DataSUS, Atlas da Violência, Tesouro Nacional, ANA, INPE, e outras)
-- Modo claro e escuro
 - Download de dados em CSV
 - Links permanentes para cada indicador
 
 ## Como o painel é organizado
 
 ```
-Área (9)        →   Tema (28)              →   Indicador (43)
+Área (9)        →   Tema (30)              →   Indicador (45)
 ─────────────       ──────────────────────     ─────────────────
 Saúde           →   Mortalidade infantil   →   TMI Brasil
                 →   Imunização             →   Cobertura BCG
@@ -42,6 +42,9 @@ painel-clear/
 ├── index.html              ← o site
 ├── README.md               ← este arquivo
 ├── MANUTENCAO.md           ← manual de atualização
+├── MAPAS-E-APIS.md         ← mapas por UF e suas fontes/APIs
+├── CALENDARIO.md           ← quando revisar cada fonte (ritmo trimestral)
+├── PROMPTS-IA.md           ← prompts prontos para atualizar com ajuda de IA
 ├── CONTRIBUTING.md         ← regras de contribuição
 └── data/                   ← dados do painel
     ├── manifesto.json      ← lista de áreas + metadados
@@ -68,7 +71,11 @@ Os indicadores vêm de fontes oficiais brasileiras, com referência completa em 
 
 ## Versão atual
 
-**v4.2** — Maio de 2026
+**v4.3** — Junho de 2026
+
+Novidades desta versão: mapas coropléticos por UF em 8 das 9 áreas, vários com
+coleta automática via APIs oficiais (IBGE/SIDRA e SICONFI/Tesouro). Habitação
+segue sem mapa à espera de dado por UF do Censo 2022 no SIDRA (ver MAPAS-E-APIS.md).
 
 Histórico de versões disponível em [Releases](https://github.com/caiodesouzacastro/painel-clear/releases) e na lista de commits.
 
