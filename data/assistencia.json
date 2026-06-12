@@ -437,6 +437,187 @@
           "notaMetodologica": "CadÚnico identifica famílias de baixa renda (até 1/2 salário mínimo per capita) e é a porta de entrada para Bolsa Família, BPC, Tarifa Social de Energia, Pé-de-Meia e dezenas de outros programas. Limitação: cadastros desatualizados podem inflar números (revisões periódicas reduzem totais). Valores da série são aproximados a partir de séries do MDS — para análise rigorosa, consultar SAGI/MDS."
         }
       ]
+    },
+    {
+      "id": "vulnerabilidade-renda",
+      "tema": "Vulnerabilidade de renda",
+      "indicadores": [
+        {
+          "id": "renda-media-uf",
+          "titulo": "Renda Média por UF",
+          "indicador": "Rendimento médio mensal das pessoas de 14 anos ou mais",
+          "valor": 2001,
+          "unidade": "R$ por mês (pessoas 14+, 2022)",
+          "destaque": "DF lidera (R$ 3.629); Maranhão na base (R$ 1.158)",
+          "totalAbsoluto": "Proxy de vulnerabilidade de renda por UF (Censo 2022)",
+          "tendencia": "estavel",
+          "serie": [
+            {
+              "ano": 2022,
+              "valor": 2001
+            }
+          ],
+          "rotuloSerieY": "R$ por mês",
+          "formatoValor": "inteiro",
+          "recortes": [
+            {
+              "id": "uf",
+              "dimensao": "Por UF",
+              "titulo": "Rendimento médio mensal (pessoas 14+) por UF — R$, Censo 2022",
+              "valores": [
+                {
+                  "rotulo": "Distrito Federal",
+                  "valor": 3629,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Santa Catarina",
+                  "valor": 2681,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "São Paulo",
+                  "valor": 2501,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Rio Grande do Sul",
+                  "valor": 2433,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Paraná",
+                  "valor": 2386,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Mato Grosso",
+                  "valor": 2310,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Rio de Janeiro",
+                  "valor": 2210,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Mato Grosso do Sul",
+                  "valor": 2140,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Goiás",
+                  "valor": 2085,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Espírito Santo",
+                  "valor": 2003,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Minas Gerais",
+                  "valor": 1931,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Tocantins",
+                  "valor": 1771,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Rondônia",
+                  "valor": 1720,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Roraima",
+                  "valor": 1547,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Rio Grande do Norte",
+                  "valor": 1524,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Amapá",
+                  "valor": 1521,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Sergipe",
+                  "valor": 1468,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Pernambuco",
+                  "valor": 1413,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Acre",
+                  "valor": 1410,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Paraíba",
+                  "valor": 1357,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Bahia",
+                  "valor": 1326,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Amazonas",
+                  "valor": 1312,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Alagoas",
+                  "valor": 1309,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Ceará",
+                  "valor": 1301,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Pará",
+                  "valor": 1284,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Piauí",
+                  "valor": 1248,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Maranhão",
+                  "valor": 1158,
+                  "max": 3700
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 2001,
+                  "max": 3700
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "Censo Demográfico 2022 — Rendimento (IBGE)",
+            "produtor": "IBGE",
+            "periodicidade": "Decenal",
+            "ultimaAtualizacao": "Censo 2022",
+            "url": "https://sidra.ibge.gov.br/tabela/10299"
+          },
+          "notaMetodologica": "Rendimento nominal médio mensal das pessoas de 14 anos ou mais (Censo 2022, IBGE), usado como proxy de vulnerabilidade de renda por UF. Coleta automática via API SIDRA/IBGE."
+        }
+      ]
     }
   ]
 }

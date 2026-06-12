@@ -625,6 +625,187 @@
           "notaMetodologica": "A Lei de Responsabilidade Fiscal (LC 101/2000) impõe limite de 60% da RCL para despesa de pessoal municipal (Poder Executivo). Acima de 54% (90% do limite) o município entra em 'alerta', e acima de 57,6% (95%) é vedada contratação. Cerca de 1.200 municípios estão acima do nível prudencial, com risco de sanções e dificuldade de execução de outras políticas. Valores aproximados."
         }
       ]
+    },
+    {
+      "id": "fiscal-estadual",
+      "tema": "Finanças estaduais",
+      "indicadores": [
+        {
+          "id": "receita-estadual-pc",
+          "titulo": "Receita Estadual per Capita",
+          "indicador": "Receita corrente do governo estadual por habitante",
+          "valor": 7997,
+          "unidade": "R$ por habitante (gov. estadual, 2024)",
+          "destaque": "Estados de baixa população lideram (RR, AP, AC); Nordeste com os menores",
+          "totalAbsoluto": "Receita corrente dos 26 estados + DF, coletada via API do SICONFI",
+          "tendencia": "estavel",
+          "serie": [
+            {
+              "ano": 2024,
+              "valor": 7997
+            }
+          ],
+          "rotuloSerieY": "R$ por habitante",
+          "formatoValor": "inteiro",
+          "recortes": [
+            {
+              "id": "uf",
+              "dimensao": "Por UF",
+              "titulo": "Receita corrente estadual per capita por UF (R$/hab, 2024)",
+              "valores": [
+                {
+                  "rotulo": "Roraima",
+                  "valor": 16002,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Amapá",
+                  "valor": 15851,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Acre",
+                  "valor": 15483,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Mato Grosso",
+                  "valor": 15037,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Tocantins",
+                  "valor": 13718,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Distrito Federal",
+                  "valor": 13332,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Mato Grosso do Sul",
+                  "valor": 12865,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Rondônia",
+                  "valor": 12423,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Espírito Santo",
+                  "valor": 9518,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Goiás",
+                  "valor": 9164,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Amazonas",
+                  "valor": 9121,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Sergipe",
+                  "valor": 8975,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Santa Catarina",
+                  "valor": 8911,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Paraná",
+                  "valor": 8119,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Rio Grande do Sul",
+                  "valor": 8083,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "São Paulo",
+                  "valor": 8027,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Rio de Janeiro",
+                  "valor": 7732,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Alagoas",
+                  "valor": 7371,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Minas Gerais",
+                  "valor": 7269,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Rio Grande do Norte",
+                  "valor": 7162,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Piauí",
+                  "valor": 7042,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Pará",
+                  "valor": 6718,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Pernambuco",
+                  "valor": 6626,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Paraíba",
+                  "valor": 6410,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Bahia",
+                  "valor": 6076,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Maranhão",
+                  "valor": 5787,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Ceará",
+                  "valor": 5644,
+                  "max": 16500
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 7997,
+                  "max": 16500
+                }
+              ]
+            }
+          ],
+          "fonte": {
+            "nome": "SICONFI / Tesouro Nacional — Declaração de Contas Anuais (DCA)",
+            "produtor": "Secretaria do Tesouro Nacional (STN)",
+            "periodicidade": "Anual",
+            "ultimaAtualizacao": "Exercício de 2024",
+            "url": "https://apidatalake.tesouro.gov.br/ords/siconfi/"
+          },
+          "notaMetodologica": "Receita corrente do governo estadual (DCA, Anexo I-C, receitas brutas realizadas) dividida pela população do estado. Coleta automática via API do SICONFI/Tesouro Nacional."
+        }
+      ]
     }
   ]
 }

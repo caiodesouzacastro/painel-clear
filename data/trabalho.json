@@ -239,6 +239,154 @@
           "rotuloSerieY": "% desocupados",
           "recortes": [
             {
+              "id": "uf",
+              "dimensao": "Por UF",
+              "titulo": "Taxa de desocupação por UF — média anual de 2025 (%)",
+              "formato": "taxa",
+              "valores": [
+                {
+                  "rotulo": "Piauí",
+                  "valor": 9.3,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Pernambuco",
+                  "valor": 8.7,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Bahia",
+                  "valor": 8.7,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Amazonas",
+                  "valor": 8.4,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Alagoas",
+                  "valor": 8.3,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Rio Grande do Norte",
+                  "valor": 8.1,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Amapá",
+                  "valor": 7.9,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Sergipe",
+                  "valor": 7.9,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Rio de Janeiro",
+                  "valor": 7.6,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Distrito Federal",
+                  "valor": 7.5,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Pará",
+                  "valor": 6.8,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Maranhão",
+                  "valor": 6.8,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Acre",
+                  "valor": 6.6,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Ceará",
+                  "valor": 6.5,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Paraíba",
+                  "valor": 6.0,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Roraima",
+                  "valor": 5.1,
+                  "max": 10
+                },
+                {
+                  "rotulo": "São Paulo",
+                  "valor": 5.0,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Tocantins",
+                  "valor": 4.7,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Minas Gerais",
+                  "valor": 4.6,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Goiás",
+                  "valor": 4.6,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Rio Grande do Sul",
+                  "valor": 4.0,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Paraná",
+                  "valor": 3.6,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Rondônia",
+                  "valor": 3.3,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Espírito Santo",
+                  "valor": 3.3,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Mato Grosso do Sul",
+                  "valor": 3.0,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Santa Catarina",
+                  "valor": 2.3,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Mato Grosso",
+                  "valor": 2.2,
+                  "max": 10
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 5.6,
+                  "max": 10
+                }
+              ]
+            },
+            {
               "id": "sexo",
               "dimensao": "Por sexo",
               "titulo": "Taxa de desocupação por sexo (4º tri 2025, %)",

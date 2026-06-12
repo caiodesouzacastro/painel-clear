@@ -94,7 +94,7 @@
             {
               "id": "uf",
               "dimensao": "Por UF",
-              "titulo": "IDEB 2023 nos anos iniciais EF — selecionadas",
+              "titulo": "IDEB anos iniciais do EF por UF — rede pública (2023)",
               "valores": [
                 {
                   "rotulo": "Paraná",
@@ -122,8 +122,98 @@
                   "max": 7
                 },
                 {
-                  "rotulo": "Brasil (rede pública)",
+                  "rotulo": "Minas Gerais",
+                  "valor": 6.3,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Espírito Santo",
+                  "valor": 6.3,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Goiás",
+                  "valor": 6.3,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Alagoas",
+                  "valor": 6.0,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Rio Grande do Sul",
+                  "valor": 6.0,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Mato Grosso",
+                  "valor": 6.0,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Piauí",
+                  "valor": 5.9,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Rio de Janeiro",
+                  "valor": 5.9,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Acre",
+                  "valor": 5.8,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Amazonas",
                   "valor": 5.7,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Paraíba",
+                  "valor": 5.7,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Pernambuco",
+                  "valor": 5.7,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Rondônia",
+                  "valor": 5.6,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Tocantins",
+                  "valor": 5.6,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Mato Grosso do Sul",
+                  "valor": 5.6,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Roraima",
+                  "valor": 5.5,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Maranhão",
+                  "valor": 5.4,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Sergipe",
+                  "valor": 5.4,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Rio Grande do Norte",
+                  "valor": 5.3,
                   "max": 7
                 },
                 {
@@ -139,6 +229,11 @@
                 {
                   "rotulo": "Amapá",
                   "valor": 5.0,
+                  "max": 7
+                },
+                {
+                  "rotulo": "Brasil (rede pública)",
+                  "valor": 5.7,
                   "max": 7
                 }
               ]
@@ -156,10 +251,10 @@
         {
           "id": "ideb-finais",
           "titulo": "IDEB Anos Finais",
-          "indicador": "IDEB — Anos Finais do Ensino Fundamental (6º ao 9º ano, rede pública)",
-          "valor": 4.7,
-          "unidade": "escala 0-10 (anos finais EF, rede pública)",
-          "destaque": "Avanço tímido pós-pandemia",
+          "indicador": "IDEB — Anos Finais do Ensino Fundamental (6º ao 9º ano, rede total: pública+privada)",
+          "valor": 5.0,
+          "unidade": "escala 0-10 (anos finais EF, rede total)",
+          "destaque": "Rede total; Paraná, Ceará e Goiás lideram (5,5)",
           "totalAbsoluto": "Meta era 5,5 — abaixo da projeção do PNE",
           "tendencia": "alta",
           "serie": [
@@ -209,36 +304,131 @@
             {
               "id": "uf",
               "dimensao": "Por UF",
-              "titulo": "IDEB Anos Finais 2023 (rede pública) — selecionadas",
+              "titulo": "IDEB anos finais do EF por UF — rede total (2023)",
               "valores": [
                 {
+                  "rotulo": "Ceará",
+                  "valor": 5.5,
+                  "max": 6
+                },
+                {
                   "rotulo": "Paraná",
+                  "valor": 5.5,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Goiás",
+                  "valor": 5.5,
+                  "max": 6
+                },
+                {
+                  "rotulo": "São Paulo",
+                  "valor": 5.4,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Espírito Santo",
                   "valor": 5.3,
                   "max": 6
                 },
                 {
-                  "rotulo": "Pernambuco",
-                  "valor": 5.2,
-                  "max": 6
-                },
-                {
-                  "rotulo": "Ceará",
+                  "rotulo": "Piauí",
                   "valor": 5.2,
                   "max": 6
                 },
                 {
                   "rotulo": "Santa Catarina",
-                  "valor": 5.1,
+                  "valor": 5.2,
                   "max": 6
                 },
                 {
-                  "rotulo": "São Paulo",
+                  "rotulo": "Pernambuco",
                   "valor": 5.0,
                   "max": 6
                 },
                 {
-                  "rotulo": "Brasil (rede pública)",
-                  "valor": 4.7,
+                  "rotulo": "Alagoas",
+                  "valor": 5.0,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Distrito Federal",
+                  "valor": 5.0,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Tocantins",
+                  "valor": 4.9,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Minas Gerais",
+                  "valor": 4.9,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Rio de Janeiro",
+                  "valor": 4.9,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Rio Grande do Sul",
+                  "valor": 4.9,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Mato Grosso",
+                  "valor": 4.9,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Rondônia",
+                  "valor": 4.8,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Acre",
+                  "valor": 4.8,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Amazonas",
+                  "valor": 4.8,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Mato Grosso do Sul",
+                  "valor": 4.8,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Maranhão",
+                  "valor": 4.5,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Paraíba",
+                  "valor": 4.5,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Pará",
+                  "valor": 4.4,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Sergipe",
+                  "valor": 4.4,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Roraima",
+                  "valor": 4.3,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Amapá",
+                  "valor": 4.3,
                   "max": 6
                 },
                 {
@@ -247,13 +437,13 @@
                   "max": 6
                 },
                 {
-                  "rotulo": "Pará",
-                  "valor": 4.0,
+                  "rotulo": "Rio Grande do Norte",
+                  "valor": 4.1,
                   "max": 6
                 },
                 {
-                  "rotulo": "Sergipe",
-                  "valor": 3.9,
+                  "rotulo": "Brasil (rede total)",
+                  "valor": 5.0,
                   "max": 6
                 }
               ]
@@ -271,10 +461,10 @@
         {
           "id": "ideb-medio",
           "titulo": "IDEB Ensino Médio",
-          "indicador": "IDEB — Ensino Médio (rede pública estadual)",
+          "indicador": "IDEB — Ensino Médio (rede total: pública+privada)",
           "valor": 4.3,
-          "unidade": "escala 0-10 (ensino médio, rede pública)",
-          "destaque": "Etapa mais crítica — abaixo da meta",
+          "unidade": "escala 0-10 (ensino médio, rede total)",
+          "destaque": "Etapa mais crítica; Paraná lidera (4,9), Roraima menor (3,5)",
           "totalAbsoluto": "Meta era 5,2 — diferença persistente",
           "tendencia": "estavel",
           "serie": [
@@ -324,41 +514,146 @@
             {
               "id": "uf",
               "dimensao": "Por UF (estaduais)",
-              "titulo": "IDEB Ensino Médio 2023 (rede estadual) — destaques",
+              "titulo": "IDEB ensino médio por UF — rede total (2023)",
               "valores": [
                 {
-                  "rotulo": "Goiás",
-                  "valor": 5.2,
+                  "rotulo": "Paraná",
+                  "valor": 4.9,
                   "max": 6
                 },
                 {
-                  "rotulo": "Pernambuco",
-                  "valor": 5.1,
+                  "rotulo": "Espírito Santo",
+                  "valor": 4.8,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Goiás",
+                  "valor": 4.8,
                   "max": 6
                 },
                 {
                   "rotulo": "Piauí",
-                  "valor": 5.0,
+                  "valor": 4.5,
                   "max": 6
                 },
                 {
-                  "rotulo": "Ceará",
-                  "valor": 4.6,
+                  "rotulo": "Pernambuco",
+                  "valor": 4.5,
                   "max": 6
                 },
                 {
-                  "rotulo": "Brasil (rede estadual)",
-                  "valor": 4.1,
-                  "max": 6
-                },
-                {
-                  "rotulo": "Bahia",
-                  "valor": 3.5,
+                  "rotulo": "São Paulo",
+                  "valor": 4.5,
                   "max": 6
                 },
                 {
                   "rotulo": "Pará",
+                  "valor": 4.4,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Mato Grosso",
+                  "valor": 4.4,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Ceará",
+                  "valor": 4.3,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Rondônia",
+                  "valor": 4.2,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Tocantins",
+                  "valor": 4.2,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Minas Gerais",
+                  "valor": 4.2,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Santa Catarina",
+                  "valor": 4.2,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Rio Grande do Sul",
+                  "valor": 4.2,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Distrito Federal",
+                  "valor": 4.2,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Alagoas",
+                  "valor": 4.1,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Acre",
+                  "valor": 4.0,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Paraíba",
+                  "valor": 4.0,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Sergipe",
+                  "valor": 4.0,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Mato Grosso do Sul",
+                  "valor": 4.0,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Bahia",
+                  "valor": 3.9,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Amazonas",
+                  "valor": 3.8,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Amapá",
+                  "valor": 3.8,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Maranhão",
+                  "valor": 3.8,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Rio Grande do Norte",
+                  "valor": 3.7,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Rio de Janeiro",
+                  "valor": 3.7,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Roraima",
                   "valor": 3.5,
+                  "max": 6
+                },
+                {
+                  "rotulo": "Brasil (rede total)",
+                  "valor": 4.3,
                   "max": 6
                 }
               ]

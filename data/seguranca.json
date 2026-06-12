@@ -75,7 +75,7 @@
             {
               "id": "uf",
               "dimensao": "Por UF",
-              "titulo": "Taxa de homicídios por 100 mil hab. (2023) — maiores e menores",
+              "titulo": "Taxa de homicídios registrados por 100 mil hab., por UF (2023)",
               "valores": [
                 {
                   "rotulo": "Amapá",
@@ -94,17 +94,107 @@
                 },
                 {
                   "rotulo": "Amazonas",
-                  "valor": 36.0,
+                  "valor": 36.8,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Roraima",
+                  "valor": 35.9,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Alagoas",
+                  "valor": 35.3,
                   "max": 60
                 },
                 {
                   "rotulo": "Ceará",
-                  "valor": 34.8,
+                  "valor": 32.0,
                   "max": 60
                 },
                 {
-                  "rotulo": "Brasil (média)",
-                  "valor": 21.2,
+                  "rotulo": "Mato Grosso",
+                  "valor": 30.8,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Rondônia",
+                  "valor": 30.0,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Sergipe",
+                  "valor": 29.4,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Pará",
+                  "valor": 28.6,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Maranhão",
+                  "valor": 27.9,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Espírito Santo",
+                  "valor": 27.7,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Paraíba",
+                  "valor": 26.5,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Rio Grande do Norte",
+                  "valor": 26.4,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Tocantins",
+                  "valor": 25.8,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Rio de Janeiro",
+                  "valor": 24.3,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Acre",
+                  "valor": 23.7,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Piauí",
+                  "valor": 22.0,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Goiás",
+                  "valor": 21.4,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Mato Grosso do Sul",
+                  "valor": 20.7,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Paraná",
+                  "valor": 18.9,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Rio Grande do Sul",
+                  "valor": 17.2,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Minas Gerais",
+                  "valor": 12.9,
                   "max": 60
                 },
                 {
@@ -120,6 +210,11 @@
                 {
                   "rotulo": "São Paulo",
                   "valor": 6.4,
+                  "max": 60
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 21.2,
                   "max": 60
                 }
               ]
@@ -387,7 +482,7 @@
             {
               "id": "uf",
               "dimensao": "Por UF (taxa)",
-              "titulo": "Taxa de mortalidade feminina 2023 (por 100 mil mulheres)",
+              "titulo": "Taxa de homicídios de mulheres por 100 mil hab., por UF (2023)",
               "valores": [
                 {
                   "rotulo": "Roraima",
@@ -396,20 +491,141 @@
                 },
                 {
                   "rotulo": "Amazonas",
-                  "valor": 5.8,
+                  "valor": 5.9,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Bahia",
+                  "valor": 5.9,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Rondônia",
+                  "valor": 5.9,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Mato Grosso",
+                  "valor": 5.7,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Pernambuco",
+                  "valor": 5.7,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Ceará",
+                  "valor": 5.2,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Espírito Santo",
+                  "valor": 4.6,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Pará",
+                  "valor": 4.3,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Alagoas",
+                  "valor": 4.2,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Paraná",
+                  "valor": 3.9,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Piauí",
+                  "valor": 3.9,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Acre",
+                  "valor": 3.8,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Rio Grande do Sul",
+                  "valor": 3.8,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Maranhão",
+                  "valor": 3.7,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Paraíba",
+                  "valor": 3.7,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Tocantins",
+                  "valor": 3.7,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Rio de Janeiro",
+                  "valor": 3.6,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Mato Grosso do Sul",
+                  "valor": 3.4,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Rio Grande do Norte",
+                  "valor": 3.4,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Goiás",
+                  "valor": 3.3,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Sergipe",
+                  "valor": 3.3,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Amapá",
+                  "valor": 3.2,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Santa Catarina",
+                  "valor": 2.8,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Distrito Federal",
+                  "valor": 2.7,
+                  "max": 11
+                },
+                {
+                  "rotulo": "Minas Gerais",
+                  "valor": 2.6,
+                  "max": 11
+                },
+                {
+                  "rotulo": "São Paulo",
+                  "valor": 1.6,
                   "max": 11
                 },
                 {
                   "rotulo": "Brasil (média)",
                   "valor": 3.5,
                   "max": 11
-                },
-                {
-                  "rotulo": "São Paulo",
-                  "valor": 1.8,
-                  "max": 11
                 }
-              ]
+              ],
+              "formato": "taxa"
             }
           ],
           "fonte": {

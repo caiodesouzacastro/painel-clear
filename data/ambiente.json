@@ -124,7 +124,8 @@
                   "valor": 24,
                   "max": 2200
                 }
-              ]
+              ],
+              "mapa": true
             },
             {
               "id": "variacao",
@@ -278,7 +279,8 @@
                   "valor": 627,
                   "max": 2100
                 }
-              ]
+              ],
+              "mapa": true
             },
             {
               "id": "matopiba",

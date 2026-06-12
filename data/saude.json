@@ -20,11 +20,11 @@
           "id": "mortalidade-infantil",
           "titulo": "Mortalidade Infantil",
           "indicador": "Óbitos de menores de 1 ano por mil nascidos vivos",
-          "valor": 12.4,
-          "unidade": "por mil nascidos vivos",
-          "destaque": "Tendência consistente de queda",
+          "valor": 12.5,
+          "unidade": "por mil nascidos vivos (2023)",
+          "destaque": "Estável em 2023 (12,5), após forte queda de longo prazo",
           "totalAbsoluto": "Redução de 56% desde 2000",
-          "tendencia": "queda",
+          "tendencia": "estavel",
           "serie": [
             {
               "ano": 2000,
@@ -32,39 +32,39 @@
             },
             {
               "ano": 2005,
-              "valor": 22.5
+              "valor": 20.7
             },
             {
               "ano": 2010,
-              "valor": 17.2
+              "valor": 15.0
             },
             {
               "ano": 2015,
-              "valor": 14.6
+              "valor": 12.7
             },
             {
               "ano": 2018,
-              "valor": 13.5
+              "valor": 12.5
             },
             {
               "ano": 2019,
-              "valor": 13.3
+              "valor": 12.1
             },
             {
               "ano": 2020,
-              "valor": 12.9
+              "valor": 11.4
             },
             {
               "ano": 2021,
-              "valor": 13.8
+              "valor": 12.2
             },
             {
               "ano": 2022,
-              "valor": 13.1
+              "valor": 12.4
             },
             {
               "ano": 2023,
-              "valor": 12.4
+              "valor": 12.5
             }
           ],
           "rotuloSerieY": "Por mil nascidos vivos",
@@ -72,26 +72,26 @@
             {
               "id": "regiao",
               "dimensao": "Por região",
-              "titulo": "TMI 2023 por região (por mil nascidos vivos)",
+              "titulo": "TMI por região (por mil nascidos vivos, 2023)",
               "valores": [
                 {
                   "rotulo": "Norte",
-                  "valor": 14.8,
+                  "valor": 15.7,
                   "max": 17
                 },
                 {
                   "rotulo": "Nordeste",
-                  "valor": 13.9,
+                  "valor": 13.7,
                   "max": 17
                 },
                 {
                   "rotulo": "Centro-Oeste",
-                  "valor": 12.3,
+                  "valor": 12.6,
                   "max": 17
                 },
                 {
                   "rotulo": "Sudeste",
-                  "valor": 11.1,
+                  "valor": 11.6,
                   "max": 17
                 },
                 {
@@ -104,41 +104,146 @@
             {
               "id": "uf",
               "dimensao": "Por UF",
-              "titulo": "TMI 2023 — maiores e menores taxas (por mil nascidos vivos)",
+              "titulo": "TMI por UF (por mil nascidos vivos, 2023)",
               "valores": [
                 {
                   "rotulo": "Roraima",
-                  "valor": 23.8,
+                  "valor": 22.3,
                   "max": 25
                 },
                 {
                   "rotulo": "Amapá",
-                  "valor": 17.5,
+                  "valor": 20.0,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Sergipe",
+                  "valor": 18.6,
                   "max": 25
                 },
                 {
                   "rotulo": "Acre",
-                  "valor": 16.4,
+                  "valor": 17.4,
                   "max": 25
                 },
                 {
-                  "rotulo": "Brasil (média)",
-                  "valor": 12.4,
+                  "rotulo": "Amazonas",
+                  "valor": 16.9,
                   "max": 25
                 },
                 {
-                  "rotulo": "Paraná",
-                  "valor": 9.6,
+                  "rotulo": "Pará",
+                  "valor": 14.9,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Maranhão",
+                  "valor": 14.9,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Piauí",
+                  "valor": 14.8,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Bahia",
+                  "valor": 14.5,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Alagoas",
+                  "valor": 13.9,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Mato Grosso do Sul",
+                  "valor": 13.7,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Mato Grosso",
+                  "valor": 13.7,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Paraíba",
+                  "valor": 13.2,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Rio de Janeiro",
+                  "valor": 13.2,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Pernambuco",
+                  "valor": 12.9,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Tocantins",
+                  "valor": 12.7,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Rondônia",
+                  "valor": 12.3,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Goiás",
+                  "valor": 12.2,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Ceará",
+                  "valor": 11.6,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Espírito Santo",
+                  "valor": 11.4,
                   "max": 25
                 },
                 {
                   "rotulo": "São Paulo",
-                  "valor": 9.3,
+                  "valor": 11.2,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Minas Gerais",
+                  "valor": 11.1,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Rio Grande do Norte",
+                  "valor": 11.0,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Paraná",
+                  "valor": 10.7,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Distrito Federal",
+                  "valor": 10.7,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Rio Grande do Sul",
+                  "valor": 9.6,
                   "max": 25
                 },
                 {
                   "rotulo": "Santa Catarina",
-                  "valor": 8.5,
+                  "valor": 8.8,
+                  "max": 25
+                },
+                {
+                  "rotulo": "Brasil (média)",
+                  "valor": 12.5,
                   "max": 25
                 }
               ]
@@ -146,26 +251,26 @@
             {
               "id": "sexo",
               "dimensao": "Por sexo",
-              "titulo": "TMI 2023 por sexo (por mil nascidos vivos)",
+              "titulo": "TMI por sexo (por mil nascidos vivos, 2023)",
               "valores": [
                 {
-                  "rotulo": "Meninos",
-                  "valor": 13.4,
-                  "max": 16
+                  "rotulo": "Homens",
+                  "valor": 13.5,
+                  "max": 15
                 },
                 {
-                  "rotulo": "Meninas",
-                  "valor": 11.0,
-                  "max": 16
+                  "rotulo": "Mulheres",
+                  "valor": 11.4,
+                  "max": 15
                 }
               ]
             }
           ],
           "fonte": {
-            "nome": "IBGE — Projeções de População 2024 (a partir de SIM e Sinasc/MS)",
+            "nome": "IBGE — Projeção da População 2024 (3ª edição), Indicadores Implícitos (TMI a partir de SIM/Sinasc-MS)",
             "produtor": "Instituto Brasileiro de Geografia e Estatística",
             "periodicidade": "Anual",
-            "ultimaAtualizacao": "Agosto/2024 (dados de 2023)",
+            "ultimaAtualizacao": "Projeção 2024, 3ª edição (referência 2023)",
             "url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9109-projecao-da-populacao.html"
           },
           "notaMetodologica": "Razão entre óbitos de menores de 1 ano e nascidos vivos, vezes mil. Reflete saneamento, pré-natal, atenção ao parto e cobertura básica. No Norte, taxa para meninos chega a 16/mil e para meninas 13,6/mil. Recortes por UF e região 2023 — valores aproximados a partir de relatórios do IBGE e Ministério da Saúde; para análises precisas, consultar projeções oficiais e o SIM/Sinasc."
