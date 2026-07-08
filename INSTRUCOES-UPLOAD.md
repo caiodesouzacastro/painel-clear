@@ -32,10 +32,10 @@ Você não precisa instalar nada. Tudo é feito no navegador, no site do GitHub.
 
 ## O que conferir depois de subir
 
-- O cabeçalho mostra **v4.3 · 9 áreas · 30 temas · 45 indicadores**.
+- O cabeçalho mostra **v4.3 · 9 áreas · 30 temas · 45 estatísticas**.
 - Há um botão **"↧ Gerar relatório"** no topo. Clique → escolha "Painel completo"
   → **Imprimir / Salvar PDF** e **Baixar Markdown** devem funcionar.
-- Abra alguns indicadores e veja a aba **"Por UF"** com o **mapa** (segurança,
+- Abra algumas estatísticas e veja a aba **"Por UF"** com o **mapa** (segurança,
   trabalho, saúde, educação, saneamento, finanças, assistência, meio ambiente).
 - Habitação continua **sem** mapa (esperado — falta dado por UF em fonte aberta).
 

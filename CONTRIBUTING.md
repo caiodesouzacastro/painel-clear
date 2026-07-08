@@ -1,6 +1,6 @@
 # Como atualizar os dados
 
-O painel foi desenhado para ser atualizado **sem mexer no código**. Cada tema vive em um JSON na pasta `data/`, com 3 indicadores cada.
+O painel foi desenhado para ser atualizado **sem mexer no código**. Cada tema vive em um JSON na pasta `data/`, com 3 estatísticas cada.
 
 ## Estrutura de um arquivo de tema
 
@@ -21,9 +21,9 @@ Cada JSON em `data/` (ex.: `saude.json`) tem essa estrutura:
 }
 ```
 
-**Importante:** o **primeiro indicador do array** é o que aparece no card da página inicial (o "indicador-destaque" do tema). Os demais aparecem como abas no modal de detalhe.
+**Importante:** a **primeira estatística do array** é o que aparece no card da página inicial (a "estatística-destaque" do tema). Os demais aparecem como abas no modal de detalhe.
 
-## Atualizar um indicador existente
+## Atualizar uma estatística existente
 
 ### Exemplo: novos dados do Atlas da Violência saem em maio
 
@@ -35,11 +35,11 @@ Cada JSON em `data/` (ex.: `saude.json`) tem essa estrutura:
    - se necessário, `destaque` e `totalAbsoluto`
 3. Commit e push
 
-## Atualizar o indicador-destaque do tema
+## Atualizar a estatística-destaque do tema
 
-Se quiser que outro indicador apareça no card da home (por exemplo, durante o mês das mulheres, destacar Feminicídios em vez de Homicídios), basta **reordenar o array** `indicadores` — o primeiro item passa a ser o destaque.
+Se quiser que outra estatística apareça no card da home (por exemplo, durante o mês das mulheres, destacar Feminicídios em vez de Homicídios), basta **reordenar o array** `indicadores` — o primeiro item passa a ser o destaque.
 
-## Adicionar um 4º indicador a um tema
+## Adicionar uma 4ª estatística a um tema
 
 Adicione um novo objeto ao array `indicadores` do JSON do tema. As abas se ajustam automaticamente. Estrutura do objeto:
 

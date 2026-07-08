@@ -1,6 +1,6 @@
-# Painel CLEAR — Indicadores para Avaliação de Políticas Públicas
+# Painel CLEAR — Estatísticas para Avaliação de Políticas Públicas
 
-Painel institucional do **FGV CLEAR** (Centro de Aprendizado e Pesquisa em Avaliação e Resultados) que reúne indicadores-chave de fontes oficiais brasileiras em segurança, educação, saúde, assistência social, saneamento, mercado de trabalho, meio ambiente, habitação e finanças municipais.
+Painel institucional do **FGV CLEAR** (Centro de Aprendizado e Pesquisa em Avaliação e Resultados) que reúne estatísticas-chave de fontes oficiais brasileiras em segurança, educação, saúde, assistência social, saneamento, mercado de trabalho, meio ambiente, habitação e finanças municipais.
 
 🌐 **Site no ar:** https://caiodesouzacastro.github.io/painel-clear/
 
@@ -12,11 +12,11 @@ Painel institucional do **FGV CLEAR** (Centro de Aprendizado e Pesquisa em Avali
 
 - **9 áreas** de política pública
 - **30 temas** organizados hierarquicamente
-- **45 indicadores** com séries históricas e recortes (por UF, sexo, raça, idade, faixa de renda, etc.)
+- **45 estatísticas** com séries históricas e recortes (por UF, sexo, raça, idade, faixa de renda, etc.)
 - **Mapas coropléticos por UF em 8 das 9 áreas**, vários coletados direto de APIs oficiais (IBGE/SIDRA, SICONFI/Tesouro) — ver [MAPAS-E-APIS.md](MAPAS-E-APIS.md)
 - Fontes oficiais (IBGE, INEP, DataSUS, Atlas da Violência, Tesouro Nacional, ANA, INPE, e outras)
 - Download de dados em CSV
-- Links permanentes para cada indicador
+- Links permanentes para cada estatística
 
 ## Como o painel é organizado
 
@@ -33,7 +33,7 @@ Cada área = 1 arquivo JSON dentro da pasta `data/`.
 
 ## Como atualizar o painel
 
-Veja o **[Manual de Manutenção](MANUTENCAO.md)** — explica passo a passo como atualizar indicadores, adicionar dados, mover o painel para outra conta GitHub, e resolver erros comuns. Escrito para quem nunca usou GitHub.
+Veja o **[Manual de Manutenção](MANUTENCAO.md)** — explica passo a passo como atualizar estatísticas, adicionar dados, mover o painel para outra conta GitHub, e resolver erros comuns. Escrito para quem nunca usou GitHub.
 
 ## Estrutura do repositório
 
@@ -65,7 +65,7 @@ Site estático em HTML + CSS + JavaScript puro — sem frameworks, sem servidor,
 
 ## Sobre os dados
 
-Os indicadores vêm de fontes oficiais brasileiras, com referência completa em cada indicador (produtor, periodicidade, última atualização, URL). Alguns recortes específicos (por UF, raça, etc.) usam valores aproximados quando o dado oficial detalhado não está publicamente disponível — essas aproximações estão sinalizadas nas notas metodológicas.
+As estatísticas vêm de fontes oficiais brasileiras, com referência completa em cada estatística (produtor, periodicidade, última atualização, URL). Alguns recortes específicos (por UF, raça, etc.) usam valores aproximados quando o dado oficial detalhado não está publicamente disponível — essas aproximações estão sinalizadas nas notas metodológicas.
 
 > ⚠️ **Antes da divulgação institucional**: a equipe CLEAR deve auditar os valores aproximados contra as fontes primárias.
 
@@ -81,7 +81,7 @@ Histórico de versões disponível em [Releases](https://github.com/caiodesouzac
 
 ## Licença
 
-Este painel é parte do projeto do FGV CLEAR. Os dados são públicos e provenientes de fontes oficiais brasileiras. Para uso institucional ou citação, mencione: *FGV CLEAR — Painel de Indicadores para Avaliação de Políticas Públicas, [ano].*
+Este painel é parte do projeto do FGV CLEAR. Os dados são públicos e provenientes de fontes oficiais brasileiras. Para uso institucional ou citação, mencione: *FGV CLEAR — Painel de Estatísticas para Avaliação de Políticas Públicas, [ano].*
 
 ## Contato
 

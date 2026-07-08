@@ -14,24 +14,24 @@ ela busca o dado novo na fonte oficial e devolve o trecho pronto para colar no G
 ## Como funciona o ciclo
 
 1. Abra o arquivo da área no GitHub (ex.: `data/seguranca.json`) e **copie** o objeto
-   do indicador que vai atualizar (ou o arquivo inteiro, se preferir).
+   da estatística que vai atualizar (ou o arquivo inteiro, se preferir).
 2. Cole o prompt escolhido abaixo **+ o objeto/arquivo** na IA.
 3. A IA busca o dado na fonte, mostra o valor encontrado (com período e link) e
    devolve o JSON atualizado.
 4. **Confira** o número contra a fonte.
 5. Cole de volta no GitHub, salve (*commit*) e confira o site numa **janela anônima**.
 
-Faça **uma alteração por vez** e nunca mude o `id` de um indicador.
+Faça **uma alteração por vez** e nunca mude o `id` de uma estatística.
 
 ---
 
 ## Prompt 0 — Conferir o que está vencido (use a cada revisão)
 
 > Você é assistente de manutenção do Painel CLEAR. Vou colar os arquivos `data/*.json`.
-> Para cada indicador, compare `fonte.ultimaAtualizacao` e `fonte.periodicidade` com a
-> data de hoje e me diga **quais indicadores provavelmente já têm dado novo disponível**
+> Para cada estatística, compare `fonte.ultimaAtualizacao` e `fonte.periodicidade` com a
+> data de hoje e me diga **quais estatísticas provavelmente já têm dado novo disponível**
 > (ou seja, passou tempo suficiente desde a última atualização para a fonte ter divulgado
-> de novo). Liste em formato: Área › Indicador › última atualização › periodicidade ›
+> de novo). Liste em formato: Área › Estatística › última atualização › periodicidade ›
 > "provavelmente vencido?" (sim/não). Não invente datas de divulgação; baseie-se só na
 > periodicidade. No fim, sugira quais conferir primeiro.
 
@@ -39,9 +39,9 @@ Faça **uma alteração por vez** e nunca mude o `id` de um indicador.
 
 ---
 
-## Prompt 1 — Atualizar o valor de um indicador (com busca na fonte)
+## Prompt 1 — Atualizar o valor de uma estatística (com busca na fonte)
 
-> Você vai atualizar **um** indicador do Painel CLEAR. Abaixo está o objeto JSON dele.
+> Você vai atualizar **um** estatística do Painel CLEAR. Abaixo está o objeto JSON dele.
 > 1. Acesse a fonte oficial em `fonte.url` (e, se precisar, busque na web pelo nome em `fonte.nome`).
 > 2. Encontre o **valor mais recente** da métrica descrita em `indicador`/`unidade`.
 > 3. Me diga, **antes do JSON**: o valor encontrado, o período de referência e o link exato de onde tirou.
@@ -49,53 +49,53 @@ Faça **uma alteração por vez** e nunca mude o `id` de um indicador.
 >    recalcule `tendencia` comparando os dois últimos pontos da série (subiu = `"alta"`,
 >    caiu = `"queda"`, praticamente igual = `"estavel"`) e ajuste `fonte.ultimaAtualizacao`
 >    para o formato "Mês/Ano (dados de ...)".
-> 5. Não altere `id`, `titulo` nem a estrutura. Devolva **só** o objeto do indicador completo, pronto para colar.
+> 5. Não altere `id`, `titulo` nem a estrutura. Devolva **só** o objeto da estatística completa, pronto para colar.
 >
-> [cole aqui o objeto do indicador]
+> [cole aqui o objeto da estatística]
 
 ---
 
 ## Prompt 2 — Atualizar só a série histórica
 
-> Adicione o ponto mais recente à `serie` deste indicador do Painel CLEAR, mantendo a
+> Adicione o ponto mais recente à `serie` deste estatística do Painel CLEAR, mantendo a
 > ordem cronológica e o formato `{ "ano": ..., "valor": ... }`. Busque o valor na fonte
 > (`fonte.url`), me informe valor + período + link antes do JSON, recalcule `tendencia`
 > pelos dois últimos pontos e atualize `fonte.ultimaAtualizacao`. Devolva só o objeto.
 >
-> [cole aqui o objeto do indicador]
+> [cole aqui o objeto da estatística]
 
 ---
 
 ## Prompt 3 — Atualizar recortes (UF, sexo, raça, idade, renda)
 
-> Atualize os `recortes` deste indicador com os dados mais recentes da fonte. Mantenha a
+> Atualize os `recortes` deste estatística com os dados mais recentes da fonte. Mantenha a
 > mesma estrutura de cada recorte (chaves, categorias e o campo `max`) e ajuste só os
 > valores. Se uma categoria nova for necessária, siga o padrão das existentes. Busque na
-> fonte, informe os valores e o link antes do JSON, e devolva só o objeto do indicador.
+> fonte, informe os valores e o link antes do JSON, e devolva só o objeto da estatística.
 >
-> [cole aqui o objeto do indicador]
+> [cole aqui o objeto da estatística]
 
 ---
 
-## Prompt 4 — Adicionar um indicador novo
+## Prompt 4 — Adicionar uma estatística nova
 
-> Quero adicionar um indicador ao tema "[NOME DO TEMA]" da área "[ÁREA]" do Painel CLEAR.
+> Quero adicionar uma estatística ao tema "[NOME DO TEMA]" da área "[ÁREA]" do Painel CLEAR.
 > Métrica: [descreva]. Fonte: [nome + link]. Use exatamente a estrutura do "Modelo completo
-> de indicador" do `MANUTENCAO.md` (campos `id`, `titulo`, `indicador`, `valor`, `unidade`,
+> de estatística" do `MANUTENCAO.md` (campos `id`, `titulo`, `indicador`, `valor`, `unidade`,
 > `destaque`, `tendencia`, `serie`, `rotuloSerieY`, `recortes`, `fonte`, `notaMetodologica`).
 > Busque os números na fonte, mostre de onde tirou, e me devolva o objeto pronto + me diga
 > em qual arquivo e tema colar e que a contagem do cabeçalho precisa ser ajustada.
 
 ---
 
-## Prompt 5 — Gerar um "texto simples" do indicador (produto)
+## Prompt 5 — Gerar um "texto simples" da estatística (produto)
 
-> Com base neste indicador do Painel CLEAR, escreva um parágrafo curto (3–4 frases) em
-> português claro, para um público amplo: o que o indicador mede, o valor atual, como
+> Com base neste estatística do Painel CLEAR, escreva um parágrafo curto (3–4 frases) em
+> português claro, para um público amplo: o que a estatística mede, o valor atual, como
 > mudou em relação aos pontos anteriores da `serie`, e a fonte. Sem jargão, sem opinião,
 > tom institucional do FGV CLEAR. Não invente números além dos que estão no objeto.
 >
-> [cole aqui o objeto do indicador]
+> [cole aqui o objeto da estatística]
 
 ---
 

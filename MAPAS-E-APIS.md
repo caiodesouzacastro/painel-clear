@@ -6,7 +6,7 @@ Serve para dois fins: (1) auditar de onde veio cada número e (2) reproduzir a
 coleta a qualquer momento (inclusive de forma automática — ver `CALENDARIO.md`
 e a seção *Automação* no fim).
 
-> **Como o painel decide desenhar um mapa:** se um indicador tem um recorte com
+> **Como o painel decide desenhar um mapa:** se uma estatística tem um recorte com
 > `"id": "uf"` e **20 ou mais estados**, o painel renderiza o mapa automaticamente.
 > Entradas que não são UF (ex.: `"Brasil (média)"`) ficam na lista lateral, sem cor.
 
@@ -16,7 +16,7 @@ Estado atual: **8 das 9 áreas têm mapa.** Só **habitação** está pendente (
 
 ## Quadro-resumo
 
-| Área | Indicador (id) | Métrica do mapa | Fonte | Coleta |
+| Área | Estatística (id) | Métrica do mapa | Fonte | Coleta |
 |---|---|---|---|---|
 | Segurança | `homicidios` | Taxa de homicídios /100 mil (2023) | Atlas da Violência (Ipea/FBSP) | Manual (PDF) |
 | Segurança | `feminicidios` | Homicídios de mulheres /100 mil (2023) | Atlas da Violência (Ipea/FBSP) | Manual (PDF) |
@@ -100,7 +100,7 @@ A habitação é a única área sem mapa, e isso é **limitação de dado, não 
 **Quando o IBGE publicar** a condição de ocupação ou os aglomerados subnormais do
 Censo 2022 no SIDRA, o mapa entra no mesmo padrão dos outros: puxa-se a tabela por
 UF (`n3/all`), calcula-se o `%` (numerador ÷ total de domicílios — a tabela 10345,
-classe `c67/10972` "Total", dá o total por UF) e adiciona-se um indicador novo com
+classe `c67/10972` "Total", dá o total por UF) e adiciona-se uma estatística nova com
 recorte `uf`. O mapa aparece sozinho.
 
 ---
@@ -113,6 +113,6 @@ marcados "**API**" (desocupação, lixo, renda, receita estadual) podem ser
 dependendo de conferência humana porque a fonte só publica em PDF/portal.
 
 O caminho de automação é um **GitHub Action agendado** que roda um script de coleta,
-atualiza os JSONs dos indicadores "API" e gera um **relatório do que mudou**. A
+atualiza os JSONs das estatísticas "API" e gera um **relatório do que mudou**. A
 proposta detalhada (e a decisão entre *publicar direto* ou *abrir um Pull Request para
 você revisar*) está descrita junto com a entrega — ver conversa/`CALENDARIO.md`.

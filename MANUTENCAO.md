@@ -2,7 +2,7 @@
 
 Manual prático de atualização do painel **https://caiodesouzacastro.github.io/painel-clear/** para quem nunca usou GitHub.
 
-Esse documento ensina como **atualizar dados**, **trocar textos**, **adicionar indicadores**, **mover o painel para outra conta** e **resolver os erros mais comuns**.
+Esse documento ensina como **atualizar dados**, **trocar textos**, **adicionar estatísticas**, **mover o painel para outra conta** e **resolver os erros mais comuns**.
 
 > 💡 Você não precisa instalar nada no computador. Tudo é feito no navegador, dentro do site do GitHub.
 
@@ -13,10 +13,10 @@ Esse documento ensina como **atualizar dados**, **trocar textos**, **adicionar i
 1. [Conceitos básicos (leia primeiro)](#1-conceitos-básicos-leia-primeiro)
 2. [Como o painel é organizado](#2-como-o-painel-é-organizado)
 3. [Editando arquivos no GitHub — o passo a passo padrão](#3-editando-arquivos-no-github--o-passo-a-passo-padrão)
-4. [Atualizar o valor de um indicador](#4-atualizar-o-valor-de-um-indicador)
+4. [Atualizar o valor de uma estatística](#4-atualizar-o-valor-de-uma-estatística)
 5. [Atualizar a série histórica](#5-atualizar-a-série-histórica)
 6. [Atualizar recortes (por UF, sexo, raça etc)](#6-atualizar-recortes-por-uf-sexo-raça-etc)
-7. [Adicionar um indicador novo dentro de um tema existente](#7-adicionar-um-indicador-novo-dentro-de-um-tema-existente)
+7. [Adicionar uma estatística nova dentro de um tema existente](#7-adicionar-uma-estatística-nova-dentro-de-um-tema-existente)
 8. [Adicionar um tema novo](#8-adicionar-um-tema-novo)
 9. [Adicionar uma área nova](#9-adicionar-uma-área-nova)
 10. [Trocar textos do cabeçalho ou rodapé](#10-trocar-textos-do-cabeçalho-ou-rodapé)
@@ -167,7 +167,7 @@ O GitHub guarda tudo que muda automaticamente. Se quiser ver a história ou reve
 
 ---
 
-## 4. Atualizar o valor de um indicador
+## 4. Atualizar o valor de uma estatística
 
 Suponha que saiu o IDEB 2025 e você quer atualizar o valor.
 
@@ -212,7 +212,7 @@ Só aceita estes 3 valores **exatamente assim**, em letras minúsculas, sem acen
 
 ### Atualizar a data da última atualização
 
-Toda vez que mudar valores oficiais, vale atualizar também a data da fonte. Procure por `"ultimaAtualizacao"` no mesmo indicador:
+Toda vez que mudar valores oficiais, vale atualizar também a data da fonte. Procure por `"ultimaAtualizacao"` no mesma estatística:
 
 ```json
   "fonte": {
@@ -278,11 +278,11 @@ Se o IBGE/INEP/etc revisar dados antigos (acontece), basta alterar o valor da li
 
 ## 6. Atualizar recortes (por UF, sexo, raça etc)
 
-Recortes são aqueles cortes por UF, sexo, raça etc. que aparecem como sub-abas no modal de cada indicador.
+Recortes são aqueles cortes por UF, sexo, raça etc. que aparecem como sub-abas no modal de cada estatística.
 
 ### Estrutura
 
-Cada indicador tem (opcionalmente) uma seção `recortes`:
+Cada estatística tem (opcionalmente) uma seção `recortes`:
 
 ```json
       "recortes": [
@@ -349,9 +349,9 @@ Ex: adicionar Goiás na lista de UFs do IDEB.
 
 ---
 
-## 7. Adicionar um indicador novo dentro de um tema existente
+## 7. Adicionar uma estatística nova dentro de um tema existente
 
-### Estrutura mínima de um indicador
+### Estrutura mínima de uma estatística
 
 ```json
 {
@@ -387,7 +387,7 @@ Todos esses campos são **obrigatórios**, exceto:
 
 ### Passo a passo
 
-Suponha que quer adicionar um 3º indicador no tema "Mortalidade materno-infantil" da saúde.
+Suponha que quer adicionar uma 3ª estatística no tema "Mortalidade materno-infantil" da saúde.
 
 1. Abre `data/saude.json` e clica no lápis ✏️
 2. Procura `"id": "mortalidade-materno-infantil"`
@@ -411,9 +411,9 @@ Suponha que quer adicionar um 3º indicador no tema "Mortalidade materno-infanti
 },
 ```
 
-4. Encontra o **fim do último indicador** do array (a chave `}` que fecha o último indicador, antes do `]`)
+4. Encontra o **fim da última estatística** do array (a chave `}` que fecha a última estatística, antes do `]`)
 5. Adiciona uma **vírgula** depois dessa chave `}`
-6. Adiciona o novo indicador inteiro
+6. Adiciona o nova estatística inteiro
 
 Vai ficar assim:
 
@@ -435,11 +435,11 @@ Vai ficar assim:
 
 7. Commit.
 
-> 💡 **Dica:** copie um indicador parecido que já existe no painel, cole no mesmo arquivo e ajuste os valores. É mais rápido do que digitar tudo do zero, e diminui chance de erro de digitação no JSON.
+> 💡 **Dica:** copie uma estatística parecido que já existe no painel, cole no mesmo arquivo e ajuste os valores. É mais rápido do que digitar tudo do zero, e diminui chance de erro de digitação no JSON.
 
 ### Atualizar a contagem no cabeçalho
 
-Quando você adiciona indicadores, o número que aparece no topo do painel ("43 indicadores") fica desatualizado. Para acertar:
+Quando você adiciona estatísticas, o número que aparece no topo do painel ("43 estatísticas") fica desatualizado. Para acertar:
 
 1. Abre `index.html` na raiz do repositório, clica no lápis
 2. Procura por `meta-indicadores`
@@ -457,7 +457,7 @@ Quando você adiciona indicadores, o número que aparece no topo do painel ("43 
 
 ## 8. Adicionar um tema novo
 
-Tema é um agrupamento de indicadores dentro de uma área.
+Tema é um agrupamento de estatísticas dentro de uma área.
 
 ### Estrutura de um tema
 
@@ -649,7 +649,7 @@ O `manifesto.json` é a lista de áreas que o painel carrega. Se você criar um 
       <div class="header-meta-item">Indicadores<strong id="meta-indicadores">43</strong></div>
 ```
 
-4. Aumenta os números conforme o que adicionou. Se adicionou 1 área, 1 tema e 1 indicador, fica:
+4. Aumenta os números conforme o que adicionou. Se adicionou 1 área, 1 tema e 1 estatística, fica:
 
 ```html
       <div class="header-meta-item">Áreas<strong id="meta-areas">10</strong></div>
@@ -673,7 +673,7 @@ Os textos institucionais ficam no `index.html`.
 
 | O que quer mudar | Procure por |
 |---|---|
-| Título principal "Indicadores para a avaliação..." | `<h1 class="title">` |
+| Título principal "Estatísticas para a avaliação..." | `<h1 class="title">` |
 | Subtítulo abaixo do título | `<p class="subtitle">` |
 | Texto da série ("SÉRIE · AVALIAÇÃO NA PRÁTICA") | `series-tag` |
 | Texto das publicações no fundo | `pub-eyebrow` |
@@ -813,12 +813,12 @@ O número da versão fica em **dois lugares** que precisam ser sincronizados:
 
 Atualize os dois quando subir uma versão nova.
 
-### Erro: Indicador novo não aparece no painel
+### Erro: Estatística nova não aparece no painel
 
 Possíveis causas:
 1. **JSON quebrado** — valide no JSONLint (ver acima)
 2. **Você esqueceu de salvar** — confira no histórico de commits se a mudança aparece lá
-3. **Indicador criado em arquivo errado** — confira se o arquivo da área certa foi modificado
+3. **Estatística criada em arquivo errado** — confira se o arquivo da área certa foi modificado
 
 ### Erro: A área nova não aparece nos filtros
 
@@ -889,18 +889,18 @@ Se precisar restaurar:
 Esse manual cobre 95% das situações de manutenção do painel. Mas existem casos em que você vai precisar de alguém com conhecimento técnico mais profundo:
 
 ### Pode resolver sozinho (com este manual)
-- Atualizar valores de indicadores existentes
+- Atualizar valores de estatísticas existentes
 - Adicionar pontos na série histórica
 - Trocar textos
 - Adicionar/editar recortes
-- Adicionar indicadores, temas e áreas
+- Adicionar estatísticas, temas e áreas
 - Mover o painel para outra conta
 - Restaurar a partir de erros simples
 
 ### Precisa de ajuda técnica
 - O painel quebrou e você não consegue identificar onde
 - Mudar a aparência (cores, fontes, layout)
-- Adicionar funcionalidades novas (filtros adicionais, comparações entre indicadores, mapas)
+- Adicionar funcionalidades novas (filtros adicionais, comparações entre estatísticas, mapas)
 - Integrar com APIs externas (atualização automática de dados)
 - Mudar a estrutura dos JSONs ou o JavaScript do `index.html`
 - Bugs em navegadores específicos
@@ -913,9 +913,9 @@ Esse manual cobre 95% das situações de manutenção do painel. Mas existem cas
 
 ---
 
-## Anexo — Modelo completo de indicador (copiar e adaptar)
+## Anexo — Modelo completo de estatística (copiar e adaptar)
 
-Use este modelo quando for adicionar um indicador novo. Substitua os valores entre `< >`:
+Use este modelo quando for adicionar uma estatística nova. Substitua os valores entre `< >`:
 
 ```json
 {
@@ -967,7 +967,7 @@ cada número e como reproduzir a coleta está documentado em **[MAPAS-E-APIS.md]
 
 Resumo prático:
 
-- Um indicador vira mapa **automaticamente** quando tem um recorte `"id": "uf"` com
+- Uma estatística vira mapa **automaticamente** quando tem um recorte `"id": "uf"` com
   **20+ estados**. Não há nada a "ligar" — basta ter o recorte.
 - Vários mapas são coletados **direto de API** (sem digitar à mão): desocupação e
   renda (IBGE/SIDRA), coleta de lixo (Censo 2022/SIDRA) e receita estadual per
@@ -985,5 +985,5 @@ Habitação é a **única área sem mapa**, por falta de dado por UF em fonte ab
 
 **O que fazer quando o IBGE publicar** a condição de ocupação ou os aglomerados
 subnormais do Censo 2022 no SIDRA: puxar a tabela por UF, calcular o `%` (numerador
-÷ total de domicílios da tabela 10345, classe "Total") e adicionar um indicador novo
+÷ total de domicílios da tabela 10345, classe "Total") e adicionar uma estatística nova
 com recorte `uf` — vira mapa sozinho. Passo a passo em `MAPAS-E-APIS.md`.
