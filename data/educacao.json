@@ -673,7 +673,7 @@
     {
       "id": "fluxo-conclusao",
       "tema": "Acesso e conclusão",
-      "descricao": "Conclusão do ensino médio e indicadores de fluxo",
+      "descricao": "Conclusão do ensino médio e estatísticas de fluxo",
       "indicadores": [
         {
           "id": "ensino-medio",
@@ -959,7 +959,7 @@
             "ultimaAtualizacao": "2025 (dados de 2024)",
             "url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais"
           },
-          "notaMetodologica": "Distorção idade-série indica que o estudante tem 2 anos ou mais de atraso em relação à idade esperada para sua etapa. Reflete repetência acumulada e abandono temporário. Indicador relevante para políticas de recomposição da aprendizagem. Valores aproximados — números oficiais detalhados estão no INEP."
+          "notaMetodologica": "Distorção idade-série indica que o estudante tem 2 anos ou mais de atraso em relação à idade esperada para sua etapa. Reflete repetência acumulada e abandono temporário. Estatística relevante para políticas de recomposição da aprendizagem. Valores aproximados — números oficiais detalhados estão no INEP."
         }
       ]
     },

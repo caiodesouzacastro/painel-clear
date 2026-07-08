@@ -13,7 +13,7 @@
     {
       "id": "violencia-letal",
       "tema": "Violência letal",
-      "descricao": "Indicadores de homicídios e mortes violentas no Brasil",
+      "descricao": "Estatísticas de homicídios e mortes violentas no Brasil",
       "indicadores": [
         {
           "id": "homicidios",
@@ -378,7 +378,7 @@
     {
       "id": "violencia-genero",
       "tema": "Violência de gênero",
-      "descricao": "Indicadores de violência letal contra mulheres",
+      "descricao": "Estatísticas de violência letal contra mulheres",
       "indicadores": [
         {
           "id": "feminicidios",

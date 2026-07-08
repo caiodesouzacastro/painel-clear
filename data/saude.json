@@ -647,7 +647,7 @@
             "ultimaAtualizacao": "2025 (dados de 2024)",
             "url": "https://datasus.saude.gov.br/transferencia-de-arquivos/"
           },
-          "notaMetodologica": "BCG (tuberculose) é a única vacina cuja meta da OMS é 90% e que o Brasil mantém acima de 95% historicamente, pois é aplicada na maternidade ainda no primeiro mês de vida. É o melhor indicador da cobertura básica de imunização. Coberturas podem ultrapassar 100% por correções de denominador (mais aplicações que nascidos vivos estimados pela projeção)."
+          "notaMetodologica": "BCG (tuberculose) é a única vacina cuja meta da OMS é 90% e que o Brasil mantém acima de 95% historicamente, pois é aplicada na maternidade ainda no primeiro mês de vida. É a melhor estatística da cobertura básica de imunização. Coberturas podem ultrapassar 100% por correções de denominador (mais aplicações que nascidos vivos estimados pela projeção)."
         }
       ]
     },
@@ -868,7 +868,7 @@
             "ultimaAtualizacao": "2025 (dados de 2023)",
             "url": "https://datasus.saude.gov.br/nascidos-vivos-desde-1994"
           },
-          "notaMetodologica": "Indicador da Rede Cegonha e linha de base do PNAB. A OMS recomenda mínimo de 8 consultas; o Brasil ainda usa o parâmetro de 7+. Mulheres pretas e da região Norte têm acesso significativamente menor, refletindo desigualdades de raça e território no acesso à saúde. Valores aproximados a partir do TabNet/DataSUS."
+          "notaMetodologica": "Estatística da Rede Cegonha e linha de base do PNAB. A OMS recomenda mínimo de 8 consultas; o Brasil ainda usa o parâmetro de 7+. Mulheres pretas e da região Norte têm acesso significativamente menor, refletindo desigualdades de raça e território no acesso à saúde. Valores aproximados a partir do TabNet/DataSUS."
         }
       ]
     }
