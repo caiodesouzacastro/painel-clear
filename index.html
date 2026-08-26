@@ -780,7 +780,7 @@ a { color: inherit; }
 .publications-section {
   background: var(--navy);
   color: white;
-  padding: 64px 48px;
+  padding: 52px 48px 56px;
   position: relative;
   overflow: hidden;
 }
@@ -823,50 +823,22 @@ a { color: inherit; }
   font-weight: 400;
 }
 .pub-lede em { font-style: italic; color: var(--accent-blue); }
-.pub-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1px;
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.15);
-}
-.pub-link {
-  display: block;
-  padding: 28px 24px;
-  background: var(--navy);
-  text-decoration: none;
+.pl-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+  padding: 13px 22px;
+  border: 1px solid rgba(255,255,255,0.28);
   color: white;
-  transition: background 0.2s ease;
-  position: relative;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
-.pub-link:hover { background: var(--navy2); }
-.pub-link-num {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--accent-blue);
-  margin-bottom: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.pub-link-title {
-  font-family: var(--serif);
-  font-size: 19px;
-  font-weight: 500;
-  line-height: 1.25;
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
-}
-.pub-link-desc { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.45; font-weight: 400; }
-.pub-link-arrow {
-  position: absolute;
-  top: 28px; right: 24px;
-  font-family: var(--serif);
-  font-size: 18px;
-  opacity: 0.5;
-  transition: transform 0.2s ease;
-  color: var(--accent-green);
-}
-.pub-link:hover .pub-link-arrow { transform: translateX(4px); opacity: 1; }
+.pl-link:hover { background: rgba(255,255,255,0.09); border-color: var(--accent-green); }
+.pl-link .arrow { font-family: var(--serif); font-size: 16px; color: var(--accent-green); }
 
 /* FOOTER NAVY2 MICHEL */
 .footer {
@@ -1040,8 +1012,8 @@ body.modal-open { overflow: hidden; }
 <header class="header">
   <div class="header-inner">
     <div class="brand-row">
-      <a href="./" class="clear-logo" aria-label="FGV CLEAR">
-        <img src="assets/img/clear-logo-branco.svg" alt="FGV CLEAR" />
+      <a href="./" class="clear-logo" aria-label="FGV CLEAR e FGV Policy Lab">
+        <img src="assets/img/clear-policy-lab-branco.png" alt="FGV CLEAR · FGV Policy Lab" />
       </a>
       <div class="header-actions">
         <div class="header-meta-top">FGV EESP · Centro de Aprendizado<br/>em Avaliação e Resultados</div>
@@ -1072,12 +1044,12 @@ body.modal-open { overflow: hidden; }
   <div class="loading">Carregando estatísticas…</div>
 </section>
 
-<section class="publications-section">
+<section class="publications-section" id="policy-lab-band">
   <div class="publications-inner">
-    <div class="pub-eyebrow">Publicações CLEAR</div>
-    <h2 class="pub-heading">Explore a série <em>Avaliação na Prática</em></h2>
-    <p class="pub-lede">Este painel acompanha o <em>Guia de Fontes de Dados para Avaliação de Políticas Públicas</em> — sétimo volume da série. Os volumes anteriores tratam de métodos de avaliação: diferenças em diferenças, regressão descontínua, matching, poder estatístico e análise custo-benefício.</p>
-    <div class="pub-grid" id="pub-grid"></div>
+    <div class="pub-eyebrow">Iniciativa</div>
+    <h2 class="pub-heading">FGV CLEAR · <em>Policy Lab</em></h2>
+    <p class="pub-lede" id="pl-lede">Painel institucional produzido no âmbito do FGV Policy Lab.</p>
+    <div id="pl-cta"></div>
   </div>
 </section>
 
@@ -1085,8 +1057,8 @@ body.modal-open { overflow: hidden; }
   <div class="footer-inner">
     <div class="footer-grid">
       <div>
-        <a href="./" class="footer-logo" aria-label="FGV CLEAR">
-          <img src="assets/img/clear-logo-branco.svg" alt="FGV CLEAR" />
+        <a href="./" class="footer-logo" aria-label="FGV CLEAR e FGV Policy Lab">
+          <img src="assets/img/clear-policy-lab-branco.png" alt="FGV CLEAR · FGV Policy Lab" />
         </a>
         <p class="footer-tag">Painel institucional do FGV CLEAR com estatísticas-chave de políticas públicas brasileiras. Acompanha o <em>Guia de Fontes de Dados</em> da série <em>Avaliação na Prática</em>.</p>
       </div>
@@ -1276,21 +1248,16 @@ async function carregarDados() {
 }
 
 function renderPublications() {
-  const links = MANIFESTO.links || {};
-  const items = [
-    {num: 'Vol. 7 · Novo', title: 'Guia de Fontes de Dados', desc: 'Atlas do ecossistema de fontes para avaliação de políticas públicas no Brasil.', url: links.guia || '#'},
-    {num: 'Série completa', title: 'Avaliação na Prática', desc: 'Sete volumes sobre métodos de avaliação de impacto e fontes de dados.', url: links.serie || '#'},
-    {num: 'Working papers', title: 'Todas as publicações', desc: 'Acervo completo de estudos, relatórios técnicos e papers do CLEAR.', url: links.publicacoes || '#'},
-    {num: 'Capacitação', title: 'Cursos e treinamentos', desc: 'Formação em monitoramento, avaliação e uso de evidências.', url: links.cursos || '#'}
-  ];
-  document.getElementById('pub-grid').innerHTML = items.map(i => `
-    <a href="${i.url}" class="pub-link" target="_blank" rel="noopener">
-      <div class="pub-link-num">${i.num}</div>
-      <div class="pub-link-title">${i.title}</div>
-      <div class="pub-link-desc">${i.desc}</div>
-      <span class="pub-link-arrow">→</span>
-    </a>
-  `).join('');
+  // Faixa institucional: apenas o link para o site do Policy Lab.
+  // Enquanto MANIFESTO.links.policyLab estiver vazio, a faixa inteira fica oculta,
+  // para o painel nao exibir um botao que nao leva a lugar nenhum.
+  const url = (MANIFESTO.links && MANIFESTO.links.policyLab) || '';
+  const band = document.getElementById('policy-lab-band');
+  const cta = document.getElementById('pl-cta');
+  if (!band || !cta) return;
+  if (!url) { band.style.display = 'none'; return; }
+  band.style.display = '';
+  cta.innerHTML = `<a href="${url}" class="pl-link" target="_blank" rel="noopener">Conheça o FGV Policy Lab <span class="arrow">→</span></a>`;
 }
 
 /* === Filtros: lista de áreas === */
@@ -1742,7 +1709,11 @@ function renderIndicadorBody(area, tema, ind) {
     html += `<div class="section-block"><h3>No Guia de Fontes de Dados</h3>`;
     if (area.capituloGuia) {
       html += `<div class="capitulo-tag">${area.capituloGuia}</div>`;
-      const guiaUrl = MANIFESTO.links?.guiaPdf || MANIFESTO.links?.guia;
+      // O link de download só aparece quando o Guia estiver publicado no site
+      // institucional. Ver meta.guiaPublicado em data/manifesto.json.
+      const guiaUrl = MANIFESTO.meta?.guiaPublicado
+        ? (MANIFESTO.links?.guiaPdf || MANIFESTO.links?.guia)
+        : '';
       if (guiaUrl) {
         html += `<div><a href="${guiaUrl}" class="guia-link" target="_blank" rel="noopener">Baixar o Guia completo ↗</a></div>`;
       }
