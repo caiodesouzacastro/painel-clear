@@ -4,7 +4,8 @@
     "publicado": "Maio de 2026",
     "atualizado": "Junho de 2026",
     "descricao": "Painel institucional do FGV CLEAR para divulgação de estatísticas de monitoramento e avaliação de políticas públicas no Brasil. Estrutura hierárquica: áreas → temas → estatísticas.",
-    "instituicao": "FGV CLEAR — Centro de Aprendizado e Pesquisa em Avaliação e Resultados"
+    "instituicao": "FGV CLEAR — Centro de Aprendizado e Pesquisa em Avaliação e Resultados",
+    "guiaPublicado": false
   },
   "areas": [
     "seguranca.json",
@@ -34,6 +35,7 @@
     "guiaPdf": "https://fgvclear.org/wp-content/uploads/guia-fontes-de-dados.pdf",
     "serie": "https://fgvclear.org/publicacoes/avaliacao-na-pratica",
     "publicacoes": "https://fgvclear.org/publicacoes",
-    "cursos": "https://fgvclear.org/cursos"
+    "cursos": "https://fgvclear.org/cursos",
+    "policyLab": ""
   }
 }
